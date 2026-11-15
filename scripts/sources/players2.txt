@@ -1,0 +1,30 @@
+1  | Luis Fabian MINA ZAPATA  | SUWON  | 15  | 1  | 16  | 0  | 3  | 44  | 107  | 6  | 3  | 0  | 0  | 29  | 5  | 0.52
+2  | Mender GARCIA TORRES  | CHUNGBUK CHEONGJU  | 14  | 1  | 15  | 0  | 0  | 37  | 83  | 14  | 3  | 0  | 0  | 30  | 10  | 0.47
+3  | MATHEUS HENRIQUE FRIZZO  | SUWON FC  | 13  | 6  | 19  | 0  | 73  | 20  | 70  | 3  | 2  | 0  | 0  | 26  | 12  | 0.50
+4  | Elosman Euller SILVA CAVALCANTI  | SEOUL E-LAND  | 13  | 6  | 19  | 0  | 81  | 27  | 64  | 2  | 3  | 0  | 0  | 29  | 22  | 0.45
+5  | Jaeyong BAK  | SEOUL E-LAND  | 12  | 6  | 18  | 0  | 0  | 17  | 61  | 4  | 3  | 0  | 0  | 29  | 18  | 0.41
+6  | PLLANA Leonard  | HWASEONG  | 11  | 9  | 20  | 0  | 110  | 27  | 64  | 27  | 2  | 0  | 0  | 31  | 16  | 0.35
+7  | Gabriel Henrique DE SOUZA DE OLIVEIRA  | YONGIN  | 10  | 1  | 11  | 0  | 0  | 31  | 47  | 6  | 5  | 0  | 0  | 25  | 6  | 0.40
+8  | Jungwoo HA  | SUWON FC  | 10  | 1  | 11  | 0  | 0  | 22  | 48  | 12  | 4  | 0  | 0  | 29  | 24  | 0.34
+9  | Matheus Serafim Bonadiman  | DAEGU  | 10  | 10  | 20  | 0  | 2  | 22  | 68  | 11  | 2  | 0  | 0  | 30  | 13  | 0.33
+10  | Wanderson FERREIRA DE OLIVEIRA  | JEONNAM  | 10  | 7  | 17  | 0  | 129  | 9  | 75  | 8  | 2  | 0  | 0  | 30  | 4  | 0.33
+11  | EDGAR DA SILVA  | DAEGU  | 9  | 0  | 9  | 0  | 0  | 16  | 20  | 4  | 2  | 0  | 0  | 16  | 16  | 0.56
+12  | SAVA PETROV  | HWASEONG  | 9  | 2  | 11  | 0  | 0  | 13  | 40  | 4  | 3  | 0  | 0  | 23  | 21  | 0.39
+13  | Hyeonoh KIM  | GYEONGNAM  | 9  | 1  | 10  | 0  | 0  | 51  | 48  | 10  | 4  | 0  | 0  | 27  | 14  | 0.33
+14  | SILVA DOS SANTOS JOSE DENISSON  | CHUNGNAM ASAN  | 9  | 4  | 13  | 0  | 22  | 18  | 65  | 3  | 2  | 0  | 0  | 27  | 11  | 0.33
+15  | GABRIEL HONORIO RAMOS  | BUSAN  | 9  | 5  | 14  | 0  | 57  | 29  | 50  | 2  | 4  | 0  | 0  | 28  | 22  | 0.32
+16  | Gabriel FERNANDES DE LIMA  | ANSAN  | 9  | 3  | 12  | 0  | 22  | 21  | 61  | 14  | 4  | 0  | 0  | 28  | 10  | 0.32
+17  | PAVAN LAMAS Bruno Jose  | CHEONAN  | 9  | 1  | 10  | 0  | 67  | 19  | 75  | 0  | 1  | 0  | 0  | 29  | 3  | 0.31
+18  | Cesar fernando Silva melo  | DAEGU  | 8  | 9  | 17  | 0  | 96  | 11  | 61  | 1  | 3  | 0  | 0  | 19  | 11  | 0.42
+19  | Marcus Matthias DACKERS  | DAEGU  | 8  | 1  | 9  | 0  | 0  | 24  | 53  | 3  | 2  | 0  | 0  | 24  | 21  | 0.33
+20  | CRISTIAN RENATO GONALVES RIQUELME  | BUSAN  | 8  | 4  | 12  | 0  | 1  | 25  | 55  | 4  | 4  | 0  | 0  | 24  | 9  | 0.33
+21  | Hyunmuk KANG  | SUWON  | 8  | 4  | 12  | 0  | 1  | 8  | 29  | 3  | 2  | 0  | 0  | 27  | 27  | 0.30
+22  | BORJA GONZALEZ TOMAS  | PAJU  | 8  | 3  | 11  | 0  | 0  | 22  | 51  | 12  | 3  | 0  | 0  | 28  | 6  | 0.29
+23  | Jongmin KIM  | CHUNGNAM ASAN  | 8  | 3  | 11  | 0  | 0  | 26  | 44  | 13  | 1  | 0  | 0  | 29  | 21  | 0.28
+24  | WILLYAN DA SILVA BARBOSA  | CHEONAN  | 7  | 1  | 8  | 0  | 28  | 15  | 25  | 4  | 0  | 0  | 0  | 18  | 19  | 0.39
+25  | ABOUBACAR IBRAHIMA TOUNGARA  | CHEONAN  | 7  | 0  | 7  | 0  | 4  | 29  | 60  | 10  | 5  | 0  | 0  | 25  | 11  | 0.28
+26  | Jong LEE  | CHUNGBUK CHEONGJU  | 7  | 1  | 8  | 0  | 1  | 34  | 47  | 4  | 3  | 0  | 0  | 29  | 28  | 0.24
+27  | Jewook WOO  | GIMHAE  | 6  | 0  | 6  | 0  | 0  | 15  | 27  | 9  | 2  | 0  | 0  | 15  | 10  | 0.40
+28  | Danrlei MEDEIROS MOREIRA  | DAEGU  | 6  | 1  | 7  | 0  | 0  | 14  | 35  | 5  | 2  | 0  | 0  | 15  | 9  | 0.40
+29  | REIS SILVA MORAIS ISNAIRO  | SUWON  | 6  | 3  | 9  | 0  | 24  | 16  | 36  | 6  | 0  | 0  | 0  | 21  | 11  | 0.29
+30  | Hyunjun Suk  | YONGIN  | 6  | 1  | 7  | 0  | 0  | 44  | 34  | 11  | 2  | 0  | 0  | 25  | 18  | 0.24

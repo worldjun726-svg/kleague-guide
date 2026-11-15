@@ -1,0 +1,135 @@
+/* Sports editorial: paper, ink, oversized type, club colours. */
+:root{background:#f4f3ed;color:#191d20;--navy:#181d20;--line:#dedfd8;--blue:#176a56;--muted:#65716d}
+body{background:#f4f3ed}
+.header{background:#f4f3ed;color:#252b29;border-top:6px solid #171d1b;border-bottom:2px solid #171d1b}
+.header-inner{max-width:1360px;min-height:94px;gap:28px}
+.brand{color:#151b19;font-size:19px;font-weight:800;letter-spacing:-1px}
+.brand small{color:#59655e;letter-spacing:2px}
+.brand-mark{background:#d4ff3f;color:#17201a;border:2px solid #17201a;border-radius:0;transform:rotate(-7deg);width:42px;height:46px}
+.header nav{gap:23px}
+.header nav a{font-size:13px;color:#5b655e;font-weight:700}
+.header nav a:hover,.header nav a.active{color:#101810}
+.header nav a.active:after{height:6px;background:#a8cb28}
+.season-tag{color:#2b382e;border-color:#b6bdb2;border-radius:0;font-weight:700;padding:8px 10px}
+.season-tag i{background:#222f25}
+.demo-banner{background:#e7e9de;color:#455043;border-bottom:1px solid #cfd3c5;font-size:11px}
+.demo-banner strong{color:#151f16;letter-spacing:1px}
+main.container{--guide-accent:#2c601f;--guide-wash:#f0f7df}
+main[data-core="big"]{--guide-accent:#b14323;--guide-wash:#fcf0e7}
+main[data-core="center"]{--guide-accent:#435eae;--guide-wash:#eff2fc}
+.magazine-cover.guide-hero{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:0 40px;background:#19231e;border:0;border-radius:0;padding:20px 40px 0;margin:28px 0 32px;overflow:hidden;isolation:isolate}
+.magazine-cover:before{content:'';position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(120deg,transparent 0,transparent 85px,#ffffff03 85px,#ffffff03 86px)}
+main[data-core="big"] .magazine-cover{background:#271e1a}
+main[data-core="center"] .magazine-cover{background:#1c2235}
+.cover-edition{grid-column:1/-1;display:flex;justify-content:space-between;border-bottom:1px solid #ffffff38;padding-bottom:14px;color:#c0c9be;font-size:10px;font-weight:700;letter-spacing:2px}
+.guide-hero-copy{padding:34px 0 38px;align-self:center}
+.magazine-cover .guide-kicker{display:inline-flex;gap:7px;padding:6px 10px;margin-bottom:20px;background:#d4ff3f;color:#1a2319;font-size:11px;letter-spacing:.6px;transform:rotate(-2deg);font-weight:800}
+main[data-core="big"] .guide-kicker{color:#261b14;background:#ffab76}
+main[data-core="center"] .guide-kicker{color:#1b2440;background:#b8c7ff}
+.magazine-cover h1{font-size:clamp(38px,4.7vw,66px);font-weight:950;line-height:1.17;letter-spacing:-3px;white-space:pre-line;text-wrap:balance}
+.magazine-cover .guide-hero-copy>p{margin-top:23px;max-width:440px;font-size:13px;line-height:1.9;color:#c6d0c5}
+.cover-visual{position:relative;align-self:center;padding:25px 0 24px;min-width:0}
+.cover-word{display:block;color:#ffffff0a;font-family:Impact,'Arial Narrow',sans-serif;font-size:clamp(44px,5.8vw,80px);font-style:italic;letter-spacing:1px;line-height:1;white-space:nowrap;position:absolute;left:0;right:0;top:24px;z-index:-1;text-align:center}
+.cover-clubs{display:flex;justify-content:center;align-items:center;position:relative;gap:0;min-height:175px;margin:0 0 13px}
+.cover-club{width:118px;min-height:153px;padding:12px 10px 14px;background:#f7f7ed;color:#202722;display:flex;align-items:center;flex-direction:column;border-top:6px solid var(--club-color);box-shadow:5px 7px 0 #0005;transform:rotate(-11deg);flex-shrink:0;position:relative}
+.cover-club:nth-child(2){transform:rotate(5deg) translateY(-7px);z-index:1}
+.cover-club:nth-child(3){transform:rotate(14deg) translateY(7px)}
+.club-ticket{font-family:monospace;letter-spacing:1.5px;font-size:8px;font-weight:800;padding-bottom:10px;border-bottom:1px dashed #aeb4a8;width:100%;text-align:center}
+.cover-club .team-tile{width:60px;height:64px;margin:10px 0;font-size:20px}
+.cover-club>strong{font-size:12px}
+.clubs-2{gap:36px}.clubs-2 .cover-club{width:132px;min-height:170px}.clubs-2 .cover-club:nth-child(2){transform:rotate(10deg)}
+.cover-vs{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-10deg);font-family:Impact,'Arial Narrow',sans-serif;font-size:42px;color:#ffab76;z-index:2;text-shadow:3px 3px #201611}
+.clubs-3 .cover-club{transform:rotate(-7deg);width:160px;min-height:184px}.clubs-3 .team-tile{width:78px;height:80px}
+.magazine-cover .guide-hero-result{border-left:0;border-top:1px solid #ffffff28;padding:15px 0 0}
+.guide-result-label{font-size:9px;font-family:monospace;font-weight:700;letter-spacing:2px;color:#d4ff3f;margin-bottom:8px}
+.cover-2 .guide-result-label{color:#ffb188}.cover-3 .guide-result-label{color:#c6d0ff}
+.magazine-cover .guide-hero-result>strong{font-size:19px;letter-spacing:-.4px}
+.magazine-cover .guide-hero-result>p{font-size:11px;color:#c1cdc1;margin-top:5px}
+.finder-progress{margin-top:12px;border-radius:0;background:#d4ff3f;color:#18201a;font-weight:800;padding:6px 10px;font-size:11px}
+.cover-footer{grid-column:1/-1;margin:0 -40px;padding:11px 40px;background:#d4ff3f;color:#20261d;display:flex;justify-content:space-between;font-size:9px;letter-spacing:2px;font-weight:800}
+.cover-2 .cover-footer{background:#ffa56f}.cover-3 .cover-footer{background:#b9c7ff}
+.panel{border-radius:3px;border-color:#d6dbd0;box-shadow:none}
+.button,select,.tabs,.tabs button{border-radius:2px}
+.button{font-weight:800;border-color:#c9cfc2}
+.button.primary,.core-page .button.primary{background:#1d2a1d;border-color:#1d2a1d;color:#d4ff3f}
+.core-page .button.primary:hover{background:#30432b;filter:none}
+main[data-core="big"] .button.primary{color:#ffb78c}
+.text-button{color:#415842}
+.pill{border-radius:0;background:#eaf2d8;color:#345029;font-size:9px;text-transform:uppercase;letter-spacing:.4px}
+.pill.neutral{background:#eef0e9;color:#5c6559}.pill.orange{background:#ffeadc;color:#a43a1e}
+.section-title{border-top:2px solid #212a22;padding-top:16px;margin-top:32px}
+.section-title h2{font-size:21px;font-weight:900;letter-spacing:-1px}
+.question{position:relative;padding:25px 28px;border-left:4px solid #20291f;margin-bottom:16px}
+.question-title>span,.core-page .question-title>span{font-family:Impact,'Arial Narrow',sans-serif;font-size:34px;width:auto;height:auto;border-radius:0;background:none;color:#909b82;line-height:1;font-style:italic}
+.question-title h2{font-size:20px;font-weight:900}.question-title p{color:#68735f}
+.question-title>svg{color:#536547}
+.option{border-radius:2px;border-color:#d5dacc;position:relative;min-height:105px}
+.option:hover{border-color:#576d42;background:#f5f8ee;transform:translateY(-2px)}
+.core-page .option.selected{border-color:#263723;background:#edf6d5;box-shadow:inset 0 -4px #9ac032}
+.option.selected:after{color:#2c4d19;font-weight:900}
+.option strong{font-weight:900}.option small{color:#68775b}
+.finder-actions .primary{min-height:56px;font-size:14px;box-shadow:4px 4px 0 #c0cbaf}
+.finder-aside{background:#e8ebde;border:1px solid #b5bf9f;border-radius:0;padding:26px}
+.editorial-label{font-family:Impact,'Arial Narrow',sans-serif;font-size:23px;letter-spacing:1px;border-bottom:2px solid #25331d;padding-bottom:14px;margin-bottom:20px;color:#26311f}
+.finder-aside .large-icon{display:none}.finder-aside h3{font-size:21px;color:#29351f;line-height:1.6}
+.finder-aside p,.finder-aside small{color:#5c6a4d}.weight-row{border-color:#bbc5ab}.weight-row b{color:#344d1c}
+.recommendation{position:relative;border-top:7px solid var(--club-color,#3f5928);padding:25px;overflow:hidden}
+.core-page .recommendation.first{border:1px solid #a8b296;border-top:7px solid var(--club-color,#3f5928);box-shadow:5px 5px 0 #dce3cf}
+.recommendation .rec-top{margin-bottom:23px;align-items:flex-start}
+.recommendation .rec-score{font-family:Impact,'Arial Narrow',sans-serif;font-size:47px;color:#202b21;font-style:italic;line-height:1}
+.recommendation .rec-score small{font-family:inherit;font-size:12px;margin-left:4px}
+.recommendation>.team-tile{width:73px;height:78px;float:left;margin:0 18px 18px 0}
+.recommendation>h3{padding-top:10px;font-size:23px;font-weight:900}
+.recommendation>p{clear:both;color:#55624b;font-size:12px;min-height:65px}
+.recommendation>.text-button{font-size:11px}
+.score-details summary{color:#596c48}.supporting-details{background:#eeefe8;border-color:#d5d9cc}
+.guide-controls{border-top:3px solid #222b22;padding:20px;gap:18px;background:#fcfcf8}
+.tabs{background:#e8ebdf}.tabs button.selected{background:#263225;color:#f4fbdc;box-shadow:none}
+.guide-controls label{color:#424f3c;font-weight:700}
+.big-card{border-radius:2px;padding:25px;overflow:hidden}
+.core-page .featured-match{border:2px solid #273020;border-top:7px solid #f79658}
+.big-index{font-family:Impact,'Arial Narrow',sans-serif;font-size:52px;font-style:italic;color:#bf4c22}
+.big-index small{font-family:inherit;font-size:10px;color:#6c7367}
+.versus{position:relative;margin:20px -25px;padding:26px 17px;background:linear-gradient(112deg,color-mix(in srgb,var(--home-color,#385b3a) 14%,#fafbf6) 0%,color-mix(in srgb,var(--home-color,#385b3a) 14%,#fafbf6) 49.5%,#fff 49.5%,#fff 50.5%,color-mix(in srgb,var(--away-color,#a35a32) 14%,#fafbf6) 50.5%);border-top:1px solid #d6d8cf;border-bottom:1px solid #d6d8cf}
+.versus>span{font-family:Impact,'Arial Narrow',sans-serif;font-size:30px;font-style:italic;color:#253020;transform:rotate(-9deg)}
+.versus .team-tile{width:72px;height:79px}.versus strong{font-weight:900;font-size:16px;color:#253020}
+.match-reason{border-radius:0;border-left:3px solid #cf6137;padding:14px;background:#faf0e4}
+.match-reason strong{color:#963d21;letter-spacing:-.3px}.match-reason p{color:#5e594f;font-size:12px}
+.outcome-picker{border-radius:0;background:#ecede5}.outcome-picker button{border-radius:0;font-weight:800;color:#4f5c45;min-height:42px}.outcome-picker button.selected{background:#25331e;color:#dcff9d}
+.next-guide{border-radius:0;border:1px solid #c3cbb5;border-left:7px solid #25331c;background:#e9eddc;padding:24px}
+.next-guide small{letter-spacing:1px;color:#50643a}.next-guide strong{font-size:20px;font-weight:900}.next-guide span>span{color:#58654c}
+.race-scoreboard{display:flex;align-items:center;gap:0;margin:22px 0;background:#1c2434;color:#f4f6ff;border-bottom:5px solid #b9c7ff}
+.race-scoreboard>div{padding:22px 26px;border-right:1px solid #ffffff25;flex:1;min-width:0}
+.race-scoreboard span{display:block;font-size:11px;color:#aebbd8}.race-scoreboard strong{display:block;font-family:Impact,'Arial Narrow',sans-serif;font-size:48px;line-height:1.2;margin-top:9px;font-style:italic}.race-scoreboard small{font-family:'Malgun Gothic',sans-serif;font-size:12px;margin-left:8px;font-style:normal}
+.race-scoreboard p{padding:0 25px;font-size:11px;color:#bdc7db}
+.core-page .magic-card{border-radius:0;border-top:4px solid #34426b;background:#f5f6fa}
+.magic-number{font-family:Impact,'Arial Narrow',sans-serif;font-size:65px;color:#283556}.magic-number small{font-family:'Malgun Gothic',sans-serif;font-size:11px}
+.scenario-grid>div{border-radius:0;background:#f2f3ed;border-top:4px solid #c5cead}.scenario-grid>div:first-child{border-top-color:#608746}.scenario-grid>div:last-child{border-top-color:#ba6549}
+.scenario-grid strong{font-family:Impact,'Arial Narrow',sans-serif;font-style:italic;font-size:45px;color:#253522}
+.support-page .page-heading{border-bottom:2px solid #2b3326;margin-bottom:22px}.support-page .page-heading h1{font-size:32px;font-weight:900}.support-page .eyebrow{font-family:monospace;letter-spacing:2px;color:#637452}
+.team-summary{border-top:6px solid #243322}.metric-number{color:#283e22}.meter{background:#e6e9df}.meter>span{background:#718e4b}
+.match-card{border-radius:2px;border-color:#d7dcce}.archive-intro{border-radius:0;background:#e9ede0}.notice{border-radius:0;background:#fff4df;color:#79502c}
+.fine,.muted{color:#63705d}.method{border-radius:0;background:#e8ecdf}.method summary{color:#455638}
+footer{background:#1b241e;color:#e5ebdf;border-top:5px solid #c6ee51}.footer-inner strong{color:#e4f3ce}.footer-inner p,.footer-inner small{color:#b3c0a8}
+@media(min-width:761px){.finder-layout{grid-template-columns:minmax(0,1fr) 280px;gap:25px}}
+@media(max-width:1150px){
+ .header-inner{gap:20px;padding:0 24px}.header nav{gap:18px}.brand{font-size:17px}.season-tag{display:none}
+ .magazine-cover.guide-hero{padding:18px 28px 0;gap:0 25px}.cover-footer{margin:0 -28px;padding:11px 28px}.cover-club{width:96px;min-height:144px}.clubs-2 .cover-club{width:110px}
+ .magazine-cover h1{font-size:49px;letter-spacing:-2px}.race-scoreboard>div{padding:20px}.race-scoreboard p{padding:0 15px}
+}
+@media(max-width:760px){
+ .header-inner{min-height:0;padding:17px 20px 0;gap:15px}.brand{font-size:17px}.brand-mark{width:34px;height:38px}.header nav{gap:22px}.header nav a{font-size:12px;padding-bottom:16px}.demo-banner{font-size:10px;line-height:1.7}
+ .magazine-cover.guide-hero{grid-template-columns:1fr;padding:16px 21px 0;gap:0;margin:22px 0 25px}.cover-edition{font-size:8px;letter-spacing:1px;padding-bottom:12px}
+ .guide-hero-copy{padding:28px 0 15px}.magazine-cover .guide-kicker{font-size:10px;margin-bottom:18px}.magazine-cover h1{font-size:42px;letter-spacing:-2px;line-height:1.18}.magazine-cover .guide-hero-copy>p{font-size:12px;margin-top:18px;max-width:100%}
+ .cover-visual{padding:18px 0 20px}.cover-word{font-size:54px;top:15px}.cover-clubs{min-height:145px;margin-bottom:12px}.cover-club{width:88px;min-height:126px;padding:9px 8px 10px}.cover-club .team-tile{width:44px;height:48px;margin:8px 0}.club-ticket{font-size:7px;padding-bottom:7px}.cover-club>strong{font-size:10px}
+ .clubs-2{gap:38px}.clubs-2 .cover-club{width:105px;min-height:136px}.clubs-3 .cover-club{width:115px;min-height:140px}.clubs-3 .team-tile{width:54px;height:60px}.cover-vs{font-size:35px}
+ .magazine-cover .guide-hero-result{padding-top:13px}.magazine-cover .guide-hero-result>strong{font-size:18px}.magazine-cover .guide-hero-result>p{font-size:11px}.cover-footer{margin:0 -21px;padding:10px 21px;font-size:7px;letter-spacing:1px;gap:10px}.finder-progress{font-size:10px;margin-top:10px}
+ .question{padding:20px 16px}.question-title h2{font-size:17px}.question-title>span,.core-page .question-title>span{font-size:27px}.question-title p{font-size:10px}.option{min-height:110px;padding:14px 9px}.option strong{font-size:12px}.option small{font-size:10px}
+ .finder-actions{gap:15px}.finder-actions .primary{padding:13px 15px;font-size:12px}.section-title h2{font-size:19px}.recommendation>p{min-height:0}
+ .recommendation{padding:22px}.recommendation .rec-score{font-size:47px}.recommendation>h3{font-size:22px}.rec-next{min-height:48px}
+ .guide-controls{padding:16px}.big-card{padding:22px}.versus{margin:20px -22px;padding:25px 16px}.versus .team-tile{width:68px;height:72px}
+ .next-guide{padding:20px 18px}.next-guide strong{font-size:17px}.next-guide span>span{font-size:11px}
+ .race-scoreboard{flex-wrap:wrap}.race-scoreboard>div{padding:17px 12px}.race-scoreboard strong{font-size:38px}.race-scoreboard small{margin-left:4px;font-size:10px}.race-scoreboard p{width:100%;padding:12px;border-top:1px solid #ffffff25;font-size:10px}.race-scoreboard p br{display:none}
+ .magic-number{font-size:55px}.scenario-grid strong{font-size:32px}.scenario-grid>div{padding:15px 8px}.support-page .page-heading h1{font-size:26px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.option:hover{transform:none}}

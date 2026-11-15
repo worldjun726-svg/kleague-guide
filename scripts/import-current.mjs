@@ -1,0 +1,18 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+const demo=JSON.parse(readFileSync('public/data/sample-data.json','utf8'));
+const alias={'SEOUL':'seoul','ULSAN':'ulsan','DAEJEON HANA':'daejeon','GANGWON':'gangwon','JEONBUK':'jeonbuk','INCHEON':'incheon','JEJU':'jeju','ANYANG':'anyang','POHANG':'pohang','GIMCHEON':'gimcheon','BUCHEON':'bucheon','GWANGJU':'gwangju','SUWON':'suwon','SUWON FC':'suwonfc','SEOUL E-LAND':'seoule','DAEGU':'daegu','BUSAN':'busan','HWASEONG':'hwaseong','CHUNGNAM ASAN':'asan','GIMPO':'gimpo','GYEONGNAM':'gyeongnam','PAJU':'paju','CHEONAN':'cheonan','YONGIN':'yongin','CHUNGBUK CHEONGJU':'cheongju','SEONGNAM':'seongnam','ANSAN':'ansan','JEONNAM':'jeonnam','GIMHAE':'gimhae'};
+const extra=[{id:'paju',name:'파주 프런티어 FC',short:'파주',region:'경기',color:'#163866'},{id:'yongin',name:'용인 FC',short:'용인',region:'경기',color:'#217947'},{id:'gimhae',name:'김해 FC 2008',short:'김해',region:'경남',color:'#ce292f'}];
+const lines=name=>readFileSync('scripts/sources/'+name+'.txt','utf8').trim().split('\n').map(l=>l.split('|').map(x=>x.trim()));
+const rows=lines('teams').map((c,i)=>({teamId:alias[c[1]],league:i<12?1:2,rank:+c[0],played:+c[2],points:+c[3],wins:+c[4],draws:+c[5],losses:+c[6],gf:+c[7],ga:+c[8],gd:+c[9],form:c[10].split(' ').map(v=>({W:'승',D:'무',L:'패'})[v]),group:i<12?(i<6?'A':'B'):null}));
+const teams=rows.map(r=>({...([...demo.teams,...extra].find(t=>t.id===r.teamId)),league:r.league}));
+const names={'Yago CARIELLO RIBEIRO':'야고','Patryk KLIMALA':'클리말라','STEFAN MUGOSA':'무고사','Donggyeong LEE':'이동경','DAEWON KIM':'김대원','Hojae LEE':'이호재','Jaehee JEONG':'정재희','Seungwoo LEE':'이승우','Seungwon JEONG':'정승원','Minkyu JOO':'주민규','Seungmo LEE':'이승모','Jinsu SEO':'서진수','Kunhee LEE':'이건희','Minseo MOON':'문민서','CHANGMOO SHIN':'신창무','Minkyu SONG':'송민규','Jaeyong BAK':'박재용','Jungwoo HA':'하정우','Hyeonoh KIM':'김현오','Hyunmuk KANG':'강현묵','Jongmin KIM':'김종민','Jong LEE':'이종','Jewook WOO':'우제욱','Hyunjun Suk':'석현준'};
+const players=[1,2].flatMap(league=>lines('players'+league).map(c=>({id:`2026-${league}-${c[0]}`,league,sourceRank:+c[0],name:names[c[1]]||c[1],sourceName:c[1],teamId:alias[c[2]],goals:+c[3],assists:+c[4],attackPoints:+c[5],conceded:+c[6],corners:+c[7],fouls:+c[8],shots:+c[9],offsides:+c[10],yellow:+c[11],red:+c[12],cleanSheets:+c[13],appearances:+c[14],substitutions:+c[15]})));
+players.push(...JSON.parse(readFileSync('scripts/sources/supplemental-players.json','utf8')));
+const sources={team1:{url:'https://www.kleague.com/club/club.do?teamId=K35',asOf:'2026-11-13'},team2:{url:'https://www.kleague.com/club/club.do?teamId=K02',asOf:'2026-11-14'},player1:{url:'https://www.kleague.com/record/player.do',asOf:'2026-11-14'},player2:{url:'https://www.kleague.com/record/player.do?leagueId=2',asOf:'2026-11-13'}};
+const data={season:2026,retrievedAt:'2026-11-14',sources,coverage:'공식 득점 순위 리그별 30명과 개별 공식 기록으로 보완한 선수. 전체 등록 선수단이 아닙니다. 소속팀은 원문 표기를 보존합니다.',teams,standings:rows,players};
+data.teamLeaders=JSON.parse(readFileSync('scripts/sources/team-top-five.json','utf8'));
+for(const team of teams)for(const metric of ['goals','assists','appearances'])if(!data.teamLeaders.teams[team.id]?.[metric]||data.teamLeaders.teams[team.id][metric].length<5)throw Error('Missing TOP 5: '+team.id+' '+metric);
+for(const r of rows){if(r.wins+r.draws+r.losses!==r.played||r.wins*3+r.draws!==r.points||r.gf-r.ga!==r.gd)throw Error('Invalid row '+r.teamId)}
+if(teams.length!==29||players.length!==61||teams.some(t=>!t.id)||players.some(p=>!p.teamId))throw Error('Incomplete source mapping');
+writeFileSync('public/data/current-season.json',JSON.stringify(data,null,2)+'\n');
+console.log('Imported 29 teams / 61 player records. Source dates retained.');

@@ -1,0 +1,3053 @@
+{
+  "season": 2026,
+  "provider": "FootyStats",
+  "checkedAt": "2026-11-14",
+  "note": "구단별 공개 통계의 2026시즌 저장본. 페이지별 갱신 시점이 달라 공식 기록과 수치가 다를 수 있습니다.",
+  "teams": {
+    "ulsan": {
+      "sourceUrl": "https://footystats.org/clubs/ulsan-hyundai-horang-i-3836",
+      "goals": [
+        {
+          "name": "Yago Cariello",
+          "value": 17
+        },
+        {
+          "name": "Dong-Kyung Lee",
+          "value": 13
+        },
+        {
+          "name": "Marcos Vinicius Amaral Alves",
+          "value": 5
+        },
+        {
+          "name": "Seung-Hyeon Jung",
+          "value": 4
+        },
+        {
+          "name": "Young-Gwon Kim",
+          "value": 3
+        },
+        {
+          "name": "Erick Samuel Correa Farias",
+          "value": 3
+        },
+        {
+          "name": "Seok-Hyun Choi",
+          "value": 2
+        },
+        {
+          "name": "Jin-Hyun Lee",
+          "value": 2
+        }
+      ],
+      "assists": [
+        {
+          "name": "Dong-Kyung Lee",
+          "value": 13
+        },
+        {
+          "name": "Gyu-Seong Lee",
+          "value": 4
+        },
+        {
+          "name": "Hyun-Taek Cho",
+          "value": 4
+        },
+        {
+          "name": "Marcos Vinicius Amaral Alves",
+          "value": 2
+        },
+        {
+          "name": "Erick Samuel Correa Farias",
+          "value": 2
+        },
+        {
+          "name": "Thomas Oude Kotte",
+          "value": 2
+        },
+        {
+          "name": "Darijan Bojanic",
+          "value": 2
+        },
+        {
+          "name": "Yago Cariello",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Dong-Kyung Lee",
+          "value": 34
+        },
+        {
+          "name": "Hyun-Woo Cho",
+          "value": 34
+        },
+        {
+          "name": "Gyu-Seong Lee",
+          "value": 33
+        },
+        {
+          "name": "Hyun-Taek Cho",
+          "value": 33
+        },
+        {
+          "name": "Darijan Bojanic",
+          "value": 33
+        },
+        {
+          "name": "Seung-Hyeon Jung",
+          "value": 31
+        },
+        {
+          "name": "Jin-Hyun Lee",
+          "value": 31
+        },
+        {
+          "name": "Thomas Oude Kotte",
+          "value": 29
+        }
+      ]
+    },
+    "gangwon": {
+      "sourceUrl": "https://footystats.org/clubs/gangwon-fc-3831",
+      "goals": [
+        {
+          "name": "Dae-Won Kim",
+          "value": 11
+        },
+        {
+          "name": "Abdalla Halaihal",
+          "value": 8
+        },
+        {
+          "name": "Jae-Hyeon Mo",
+          "value": 3
+        },
+        {
+          "name": "Marko Tuci",
+          "value": 3
+        },
+        {
+          "name": "You-Hyeon Lee",
+          "value": 2
+        },
+        {
+          "name": "Gun-Hee Kim",
+          "value": 2
+        },
+        {
+          "name": "Dong-Hyun Kim",
+          "value": 2
+        },
+        {
+          "name": "Young-jun Go",
+          "value": 1
+        }
+      ],
+      "assists": [
+        {
+          "name": "Dae-Won Kim",
+          "value": 9
+        },
+        {
+          "name": "Jae-Hyeon Mo",
+          "value": 5
+        },
+        {
+          "name": "You-Hyeon Lee",
+          "value": 3
+        },
+        {
+          "name": "Dong-Hyun Kim",
+          "value": 2
+        },
+        {
+          "name": "Joon-Hyuck Kang",
+          "value": 2
+        },
+        {
+          "name": "Gun-Hee Kim",
+          "value": 1
+        },
+        {
+          "name": "Young-jun Go",
+          "value": 1
+        },
+        {
+          "name": "Byung-Chan Choi",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Chung-Hyo Park",
+          "value": 34
+        },
+        {
+          "name": "Dae-Won Kim",
+          "value": 32
+        },
+        {
+          "name": "Min-Woo Seo",
+          "value": 32
+        },
+        {
+          "name": "You-Hyeon Lee",
+          "value": 31
+        },
+        {
+          "name": "Joon-Hyuck Kang",
+          "value": 30
+        },
+        {
+          "name": "Young-jun Go",
+          "value": 30
+        },
+        {
+          "name": "Jae-Hyeon Mo",
+          "value": 28
+        },
+        {
+          "name": "Gun-Hee Kim",
+          "value": 26
+        }
+      ]
+    },
+    "incheon": {
+      "sourceUrl": "https://footystats.org/clubs/incheon-united-fc-3840",
+      "goals": [
+        {
+          "name": "Stefan Mugoša",
+          "value": 14
+        },
+        {
+          "name": "Morgan Ferrier",
+          "value": 7
+        },
+        {
+          "name": "Gerso Fernandes",
+          "value": 5
+        },
+        {
+          "name": "Dong-Ryul Lee",
+          "value": 4
+        },
+        {
+          "name": "Chung-Yong Lee",
+          "value": 3
+        },
+        {
+          "name": "Juan Fernández Blanco",
+          "value": 2
+        },
+        {
+          "name": "Gun-Hee Kim",
+          "value": 2
+        },
+        {
+          "name": "Myung-joo Lee",
+          "value": 2
+        }
+      ],
+      "assists": [
+        {
+          "name": "Ju-yong Lee",
+          "value": 4
+        },
+        {
+          "name": "Myung-joo Lee",
+          "value": 3
+        },
+        {
+          "name": "Min-Hyeok Lee",
+          "value": 3
+        },
+        {
+          "name": "Stefan Mugoša",
+          "value": 2
+        },
+        {
+          "name": "Morgan Ferrier",
+          "value": 2
+        },
+        {
+          "name": "Dong-Ryul Lee",
+          "value": 2
+        },
+        {
+          "name": "Chung-Yong Lee",
+          "value": 2
+        },
+        {
+          "name": "Jae-Min Seo",
+          "value": 2
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Ju-yong Lee",
+          "value": 33
+        },
+        {
+          "name": "Jae-Min Seo",
+          "value": 33
+        },
+        {
+          "name": "Gerso Fernandes",
+          "value": 33
+        },
+        {
+          "name": "Myung-joo Lee",
+          "value": 32
+        },
+        {
+          "name": "Chung-Yong Lee",
+          "value": 32
+        },
+        {
+          "name": "Juan Fernández Blanco",
+          "value": 32
+        },
+        {
+          "name": "Stefan Mugoša",
+          "value": 31
+        },
+        {
+          "name": "Myung-Sun Kim",
+          "value": 31
+        }
+      ]
+    },
+    "seoul": {
+      "sourceUrl": "https://footystats.org/clubs/fc-seoul-3833",
+      "goals": [
+        {
+          "name": "Patryk Klimala",
+          "value": 16
+        },
+        {
+          "name": "Seung-won Jeong",
+          "value": 8
+        },
+        {
+          "name": "Seung-Mo Lee",
+          "value": 6
+        },
+        {
+          "name": "Min-Kyu Song",
+          "value": 5
+        },
+        {
+          "name": "Seon-Min Moon",
+          "value": 5
+        },
+        {
+          "name": "Hrvoje Babec",
+          "value": 3
+        },
+        {
+          "name": "Anderson Oliveira",
+          "value": 3
+        },
+        {
+          "name": "Young-Wook Cho",
+          "value": 3
+        }
+      ],
+      "assists": [
+        {
+          "name": "Seung-won Jeong",
+          "value": 8
+        },
+        {
+          "name": "Seon-Min Moon",
+          "value": 8
+        },
+        {
+          "name": "Anderson Oliveira",
+          "value": 6
+        },
+        {
+          "name": "Min-Kyu Song",
+          "value": 4
+        },
+        {
+          "name": "Hrvoje Babec",
+          "value": 3
+        },
+        {
+          "name": "Jeong Son",
+          "value": 3
+        },
+        {
+          "name": "Jin-Su Kim",
+          "value": 3
+        },
+        {
+          "name": "Patryk Klimala",
+          "value": 2
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Seung-won Jeong",
+          "value": 35
+        },
+        {
+          "name": "Sung-Yun Gu",
+          "value": 35
+        },
+        {
+          "name": "Hrvoje Babec",
+          "value": 34
+        },
+        {
+          "name": "Jun Choi",
+          "value": 34
+        },
+        {
+          "name": "Seon-Min Moon",
+          "value": 33
+        },
+        {
+          "name": "Jin-Su Kim",
+          "value": 32
+        },
+        {
+          "name": "Juan Antonio Ros Martínez",
+          "value": 32
+        },
+        {
+          "name": "Yazan Abo Alarab",
+          "value": 31
+        }
+      ]
+    },
+    "gimcheon": {
+      "sourceUrl": "https://footystats.org/clubs/sangju-sangmu-phoenix-fc-3839",
+      "goals": [
+        {
+          "name": "Jae-Hyun Ko",
+          "value": 8
+        },
+        {
+          "name": "Se-Jin Park",
+          "value": 3
+        },
+        {
+          "name": "Joo-Chan Kim",
+          "value": 3
+        },
+        {
+          "name": "In-Gyun Kim",
+          "value": 3
+        },
+        {
+          "name": "Yool Heo",
+          "value": 2
+        },
+        {
+          "name": "Jae-Hyeok Oh",
+          "value": 2
+        },
+        {
+          "name": "Cheol-Woo Park",
+          "value": 2
+        },
+        {
+          "name": "Tae-Joon Park",
+          "value": 2
+        }
+      ],
+      "assists": [
+        {
+          "name": "Jae-Hyun Ko",
+          "value": 3
+        },
+        {
+          "name": "Cheol-Woo Park",
+          "value": 3
+        },
+        {
+          "name": "Yun-Sang Hong",
+          "value": 3
+        },
+        {
+          "name": "Jae-Hyeok Oh",
+          "value": 2
+        },
+        {
+          "name": "Jae-Min Jeong",
+          "value": 2
+        },
+        {
+          "name": "Min-Kyu Kang",
+          "value": 2
+        },
+        {
+          "name": "Se-Jin Park",
+          "value": 1
+        },
+        {
+          "name": "Tae-Joon Park",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Tae-Joon Park",
+          "value": 32
+        },
+        {
+          "name": "Jae-Hyun Ko",
+          "value": 29
+        },
+        {
+          "name": "In-Gyun Kim",
+          "value": 27
+        },
+        {
+          "name": "Cheol-Woo Park",
+          "value": 26
+        },
+        {
+          "name": "Yun-Sang Hong",
+          "value": 26
+        },
+        {
+          "name": "Se-Jin Park",
+          "value": 23
+        },
+        {
+          "name": "Sang-Heon Lee",
+          "value": 23
+        },
+        {
+          "name": "Jun-Soo Byeon",
+          "value": 23
+        }
+      ]
+    },
+    "pohang": {
+      "sourceUrl": "https://footystats.org/clubs/pohang-steelers-fc-3835",
+      "goals": [
+        {
+          "name": "Ho-Jae Lee",
+          "value": 8
+        },
+        {
+          "name": "Wanderson Carvalho Oliveira",
+          "value": 5
+        },
+        {
+          "name": "Jakob Tranziska",
+          "value": 4
+        },
+        {
+          "name": "Paulo Afonso da Rocha Júnior",
+          "value": 3
+        },
+        {
+          "name": "Kento Nishiya",
+          "value": 3
+        },
+        {
+          "name": "Sang-Hyeok Cho",
+          "value": 2
+        },
+        {
+          "name": "Seo-Woong Hwang",
+          "value": 1
+        },
+        {
+          "name": "Seung-Ho Kim",
+          "value": 1
+        }
+      ],
+      "assists": [
+        {
+          "name": "Wanderson Carvalho Oliveira",
+          "value": 4
+        },
+        {
+          "name": "Ki Sung-yueng",
+          "value": 3
+        },
+        {
+          "name": "Dong-Jin Kim",
+          "value": 3
+        },
+        {
+          "name": "Jakob Tranziska",
+          "value": 2
+        },
+        {
+          "name": "Jorge Luiz Barbosa Teixeira",
+          "value": 2
+        },
+        {
+          "name": "Ki-Jong Won",
+          "value": 2
+        },
+        {
+          "name": "Jeong-Won Eo",
+          "value": 2
+        },
+        {
+          "name": "Paulo Afonso da Rocha Júnior",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Dong-Jin Kim",
+          "value": 33
+        },
+        {
+          "name": "Jeong-Won Eo",
+          "value": 30
+        },
+        {
+          "name": "Chan-Yong Park",
+          "value": 30
+        },
+        {
+          "name": "Seo-Woong Hwang",
+          "value": 29
+        },
+        {
+          "name": "Wanderson Carvalho Oliveira",
+          "value": 28
+        },
+        {
+          "name": "Kento Nishiya",
+          "value": 28
+        },
+        {
+          "name": "Seung-Ho Kim",
+          "value": 28
+        },
+        {
+          "name": "Ki Sung-yueng",
+          "value": 27
+        }
+      ]
+    },
+    "jeonbuk": {
+      "sourceUrl": "https://footystats.org/clubs/jeonbuk-hyundai-motors-fc-3837",
+      "goals": [
+        {
+          "name": "Tiago Orobó",
+          "value": 11
+        },
+        {
+          "name": "Seung-Woo Lee",
+          "value": 8
+        },
+        {
+          "name": "Dong-Jun Lee",
+          "value": 4
+        },
+        {
+          "name": "Bruno Rodrigues Mota",
+          "value": 4
+        },
+        {
+          "name": "Young-Bin Kim",
+          "value": 3
+        },
+        {
+          "name": "Jin-Gyu Kim",
+          "value": 2
+        },
+        {
+          "name": "Wi-Je Cho",
+          "value": 2
+        },
+        {
+          "name": "Gytis Paulauskas",
+          "value": 1
+        }
+      ],
+      "assists": [
+        {
+          "name": "Young-Jae Lee",
+          "value": 7
+        },
+        {
+          "name": "Dong-Jun Lee",
+          "value": 5
+        },
+        {
+          "name": "Seung-Woo Lee",
+          "value": 4
+        },
+        {
+          "name": "Young-Bin Kim",
+          "value": 3
+        },
+        {
+          "name": "Jin-Gyu Kim",
+          "value": 3
+        },
+        {
+          "name": "Bruno Rodrigues Mota",
+          "value": 2
+        },
+        {
+          "name": "Sang-Yun Kang",
+          "value": 2
+        },
+        {
+          "name": "Tae-Hyun Kim",
+          "value": 2
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Seung-Woo Lee",
+          "value": 34
+        },
+        {
+          "name": "Bum-Keun Song",
+          "value": 34
+        },
+        {
+          "name": "Dong-Jun Lee",
+          "value": 33
+        },
+        {
+          "name": "Jin-Gyu Kim",
+          "value": 32
+        },
+        {
+          "name": "Young-Bin Kim",
+          "value": 31
+        },
+        {
+          "name": "Seung-Sub Kim",
+          "value": 31
+        },
+        {
+          "name": "Bruno Rodrigues Mota",
+          "value": 28
+        },
+        {
+          "name": "Wi-Je Cho",
+          "value": 28
+        }
+      ]
+    },
+    "bucheon": {
+      "sourceUrl": "https://footystats.org/clubs/bucheon-fc-1995-3852",
+      "goals": [
+        {
+          "name": "Jefferson Fernando Isídio",
+          "value": 10
+        },
+        {
+          "name": "Vitor Gabriel Claudino Rego Ferreira",
+          "value": 5
+        },
+        {
+          "name": "Jung-In Park",
+          "value": 2
+        },
+        {
+          "name": "Jong-Woo Kim",
+          "value": 2
+        },
+        {
+          "name": "Sang-Jun Kim",
+          "value": 2
+        },
+        {
+          "name": "Ye-geon Sung",
+          "value": 2
+        },
+        {
+          "name": "Jhon Franky Montaño Sinisterra",
+          "value": 1
+        },
+        {
+          "name": "Tae-Hyun An",
+          "value": 1
+        }
+      ],
+      "assists": [
+        {
+          "name": "Rodrigo Bassani da Cruz",
+          "value": 6
+        },
+        {
+          "name": "Thiago Nascimento dos Santos",
+          "value": 4
+        },
+        {
+          "name": "Jefferson Fernando Isídio",
+          "value": 3
+        },
+        {
+          "name": "Jhon Franky Montaño Sinisterra",
+          "value": 2
+        },
+        {
+          "name": "Vitor Gabriel Claudino Rego Ferreira",
+          "value": 1
+        },
+        {
+          "name": "Tae-Hyun An",
+          "value": 1
+        },
+        {
+          "name": "Patrick William Sá de Oliveira",
+          "value": 1
+        },
+        {
+          "name": "Sung-Wook Hong",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Jefferson Fernando Isídio",
+          "value": 33
+        },
+        {
+          "name": "Sung-Wook Hong",
+          "value": 33
+        },
+        {
+          "name": "Tae-Hyun An",
+          "value": 31
+        },
+        {
+          "name": "Sang-Jun Kim",
+          "value": 31
+        },
+        {
+          "name": "Thiago Nascimento dos Santos",
+          "value": 26
+        },
+        {
+          "name": "Patrick William Sá de Oliveira",
+          "value": 26
+        },
+        {
+          "name": "Min-Jun Kim",
+          "value": 26
+        },
+        {
+          "name": "Dong-Gyu Baek",
+          "value": 25
+        }
+      ]
+    },
+    "jeju": {
+      "sourceUrl": "https://footystats.org/clubs/jeju-united-fc-3832",
+      "goals": [
+        {
+          "name": "Emerson Ramon Bezerra Oliveira",
+          "value": 10
+        },
+        {
+          "name": "Geon-hee Lee",
+          "value": 6
+        },
+        {
+          "name": "Matheus Aias Barrozo Rodrigues",
+          "value": 4
+        },
+        {
+          "name": "Italo Moreira Barcelos",
+          "value": 3
+        },
+        {
+          "name": "Chang-Jun Park",
+          "value": 3
+        },
+        {
+          "name": "Shin-Jin Kim",
+          "value": 3
+        },
+        {
+          "name": "Julien Celestine",
+          "value": 2
+        },
+        {
+          "name": "Sang-Eun Shin",
+          "value": 2
+        }
+      ],
+      "assists": [
+        {
+          "name": "Emerson Ramon Bezerra Oliveira",
+          "value": 4
+        },
+        {
+          "name": "Matheus Aias Barrozo Rodrigues",
+          "value": 3
+        },
+        {
+          "name": "Italo Moreira Barcelos",
+          "value": 3
+        },
+        {
+          "name": "Ryun-Sung Kim",
+          "value": 3
+        },
+        {
+          "name": "Geon-hee Lee",
+          "value": 2
+        },
+        {
+          "name": "Byung-Wook Choi",
+          "value": 2
+        },
+        {
+          "name": "Jun-Ha Kim",
+          "value": 2
+        },
+        {
+          "name": "Chang-Min Lee",
+          "value": 2
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Dong-Jun Kim",
+          "value": 35
+        },
+        {
+          "name": "Emerson Ramon Bezerra Oliveira",
+          "value": 32
+        },
+        {
+          "name": "Geon-hee Lee",
+          "value": 32
+        },
+        {
+          "name": "Julien Celestine",
+          "value": 30
+        },
+        {
+          "name": "In-Soo Yu",
+          "value": 29
+        },
+        {
+          "name": "Tae-Hwan Kim",
+          "value": 29
+        },
+        {
+          "name": "Byung-Wook Choi",
+          "value": 28
+        },
+        {
+          "name": "Chang-Jun Park",
+          "value": 28
+        }
+      ]
+    },
+    "gwangju": {
+      "sourceUrl": "https://footystats.org/clubs/gwangju-fc-3841",
+      "goals": [
+        {
+          "name": "John Iredale",
+          "value": 11
+        },
+        {
+          "name": "Min-seo Moon",
+          "value": 6
+        },
+        {
+          "name": "Chang-moo Sin",
+          "value": 5
+        },
+        {
+          "name": "Adriel D",
+          "value": 3
+        },
+        {
+          "name": "Kyoung-Rok Choi",
+          "value": 2
+        },
+        {
+          "name": "Hólmbert Aron Fridjonsson",
+          "value": 2
+        },
+        {
+          "name": "Seungun Ha",
+          "value": 1
+        },
+        {
+          "name": "Ji-Hun Jung",
+          "value": 1
+        }
+      ],
+      "assists": [
+        {
+          "name": "Adriel D",
+          "value": 6
+        },
+        {
+          "name": "John Iredale",
+          "value": 2
+        },
+        {
+          "name": "Chang-moo Sin",
+          "value": 2
+        },
+        {
+          "name": "Hólmbert Aron Fridjonsson",
+          "value": 2
+        },
+        {
+          "name": "Seungun Ha",
+          "value": 2
+        },
+        {
+          "name": "Ji-Hun Jung",
+          "value": 2
+        },
+        {
+          "name": "Seong-Yoon Gwon",
+          "value": 2
+        },
+        {
+          "name": "Min-seo Moon",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Min-seo Moon",
+          "value": 32
+        },
+        {
+          "name": "Seungun Ha",
+          "value": 31
+        },
+        {
+          "name": "Seong-Yoon Gwon",
+          "value": 28
+        },
+        {
+          "name": "Se-Jong Ju",
+          "value": 26
+        },
+        {
+          "name": "Je-Ho Yu",
+          "value": 26
+        },
+        {
+          "name": "Young-Kyu Ahn",
+          "value": 25
+        },
+        {
+          "name": "Hólmbert Aron Fridjonsson",
+          "value": 24
+        },
+        {
+          "name": "Ji-Hun Jung",
+          "value": 24
+        }
+      ]
+    },
+    "daejeon": {
+      "sourceUrl": "https://footystats.org/clubs/daejeon-citizen-fc-3845",
+      "goals": [
+        {
+          "name": "Jae-Hee Jeong",
+          "value": 8
+        },
+        {
+          "name": "Min-Kyu Joo",
+          "value": 7
+        },
+        {
+          "name": "Diogo de Oliveira Barbosa",
+          "value": 7
+        },
+        {
+          "name": "Jin-Su Seo",
+          "value": 6
+        },
+        {
+          "name": "Gustav Ludwigson",
+          "value": 5
+        },
+        {
+          "name": "Masatoshi Ishida",
+          "value": 5
+        },
+        {
+          "name": "Chang-Rae Ha",
+          "value": 2
+        },
+        {
+          "name": "Victor Bobsin",
+          "value": 2
+        }
+      ],
+      "assists": [
+        {
+          "name": "Myung-Jae Lee",
+          "value": 8
+        },
+        {
+          "name": "Diogo de Oliveira Barbosa",
+          "value": 5
+        },
+        {
+          "name": "Gustav Ludwigson",
+          "value": 5
+        },
+        {
+          "name": "Jin-Su Seo",
+          "value": 3
+        },
+        {
+          "name": "Jung-Taek Lee",
+          "value": 3
+        },
+        {
+          "name": "Jae-Hee Jeong",
+          "value": 2
+        },
+        {
+          "name": "Masatoshi Ishida",
+          "value": 2
+        },
+        {
+          "name": "Yoon-Sung Kang",
+          "value": 2
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Gustav Ludwigson",
+          "value": 33
+        },
+        {
+          "name": "Min-Kyu Joo",
+          "value": 33
+        },
+        {
+          "name": "Chang-Geun Lee",
+          "value": 33
+        },
+        {
+          "name": "Bong-Soo Kim",
+          "value": 31
+        },
+        {
+          "name": "Diogo de Oliveira Barbosa",
+          "value": 29
+        },
+        {
+          "name": "Jin-Su Seo",
+          "value": 29
+        },
+        {
+          "name": "Jung-Taek Lee",
+          "value": 28
+        },
+        {
+          "name": "Yoon-Sung Kang",
+          "value": 28
+        }
+      ]
+    },
+    "anyang": {
+      "sourceUrl": "https://footystats.org/clubs/fc-anyang-3848",
+      "goals": [
+        {
+          "name": "Matheus Oliveira Santos",
+          "value": 12
+        },
+        {
+          "name": "Airton Moisés Santos Sousa",
+          "value": 7
+        },
+        {
+          "name": "Geon-Joo Choi",
+          "value": 5
+        },
+        {
+          "name": "Breno Herculano Almeida",
+          "value": 3
+        },
+        {
+          "name": "Woon Kim",
+          "value": 3
+        },
+        {
+          "name": "Kyung-Won Kwon",
+          "value": 2
+        },
+        {
+          "name": "Chang-Yong Lee",
+          "value": 1
+        },
+        {
+          "name": "Jeong-Hyun Kim",
+          "value": 1
+        }
+      ],
+      "assists": [
+        {
+          "name": "Matheus Oliveira Santos",
+          "value": 7
+        },
+        {
+          "name": "Ivan Jukić",
+          "value": 5
+        },
+        {
+          "name": "Woon Kim",
+          "value": 4
+        },
+        {
+          "name": "Breno Herculano Almeida",
+          "value": 3
+        },
+        {
+          "name": "York Rafael",
+          "value": 2
+        },
+        {
+          "name": "Ji-hun Kang",
+          "value": 1
+        },
+        {
+          "name": "Hyun-Woo Chae",
+          "value": 1
+        },
+        {
+          "name": "Branislav Knežević",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Matheus Oliveira Santos",
+          "value": 33
+        },
+        {
+          "name": "Geon-Joo Choi",
+          "value": 33
+        },
+        {
+          "name": "Jeong-Hyun Kim",
+          "value": 31
+        },
+        {
+          "name": "Jeong-Hoon Kim",
+          "value": 31
+        },
+        {
+          "name": "Kyung-Won Kwon",
+          "value": 30
+        },
+        {
+          "name": "Woon Kim",
+          "value": 29
+        },
+        {
+          "name": "Ji-hun Kang",
+          "value": 27
+        },
+        {
+          "name": "Dong-Jin Kim",
+          "value": 27
+        }
+      ]
+    },
+    "seongnam": {
+      "sourceUrl": "https://footystats.org/clubs/seongnam-fc-3844",
+      "goals": [
+        {
+          "name": "Jeong-Bin Lee",
+          "value": 5
+        },
+        {
+          "name": "Rodrigo Luiz Angelotti",
+          "value": 3
+        },
+        {
+          "name": "Joo-Ahn You",
+          "value": 3
+        },
+        {
+          "name": "Min-Ho Yun",
+          "value": 3
+        },
+        {
+          "name": "Elionay Freitas da Silva",
+          "value": 2
+        },
+        {
+          "name": "Tae-Yang Yang",
+          "value": 2
+        },
+        {
+          "name": "Byeong-gyu Park",
+          "value": 2
+        },
+        {
+          "name": "Min-gyu Jeon",
+          "value": 2
+        }
+      ],
+      "assists": [
+        {
+          "name": "Paul Breitner Villero Arevalo",
+          "value": 3
+        },
+        {
+          "name": "Min-Ho Yun",
+          "value": 2
+        },
+        {
+          "name": "Jun-Sang Lee",
+          "value": 2
+        },
+        {
+          "name": "Jun-Sun Ryu",
+          "value": 2
+        },
+        {
+          "name": "Sang-Hyuk Park",
+          "value": 2
+        },
+        {
+          "name": "Seung-Yong Jung",
+          "value": 2
+        },
+        {
+          "name": "Rodrigo Luiz Angelotti",
+          "value": 1
+        },
+        {
+          "name": "Joo-Ahn You",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Joo-Ahn You",
+          "value": 29
+        },
+        {
+          "name": "Venício Tomás Ferreira dos Santos Fernandes",
+          "value": 28
+        },
+        {
+          "name": "Elionay Freitas da Silva",
+          "value": 26
+        },
+        {
+          "name": "Rodrigo Luiz Angelotti",
+          "value": 24
+        },
+        {
+          "name": "Sang-Min Lee",
+          "value": 24
+        },
+        {
+          "name": "Gwang-Yeon Lee",
+          "value": 24
+        },
+        {
+          "name": "Seok-Ki Hwang",
+          "value": 23
+        },
+        {
+          "name": "Seung-Yong Jung",
+          "value": 22
+        }
+      ]
+    },
+    "daegu": {
+      "sourceUrl": "https://footystats.org/clubs/daegu-fc-3834",
+      "goals": [
+        {
+          "name": "Matheus Bonadiman Serafin",
+          "value": 10
+        },
+        {
+          "name": "Cesinha",
+          "value": 8
+        },
+        {
+          "name": "Edgar Bruno da Silva",
+          "value": 8
+        },
+        {
+          "name": "Marcus Dackers",
+          "value": 8
+        },
+        {
+          "name": "Danrlei Medeiros Moreira",
+          "value": 5
+        },
+        {
+          "name": "Gi-Hyun Park",
+          "value": 5
+        },
+        {
+          "name": "Ju-Gong Kim",
+          "value": 4
+        },
+        {
+          "name": "Gang-San Kim",
+          "value": 3
+        }
+      ],
+      "assists": [
+        {
+          "name": "Cesinha",
+          "value": 10
+        },
+        {
+          "name": "Matheus Bonadiman Serafin",
+          "value": 9
+        },
+        {
+          "name": "Ju-Gong Kim",
+          "value": 4
+        },
+        {
+          "name": "Dae-Woo Kim",
+          "value": 3
+        },
+        {
+          "name": "In-Hyeok Park",
+          "value": 2
+        },
+        {
+          "name": "Jae-Won Hwang",
+          "value": 2
+        },
+        {
+          "name": "Jae-Moon Ryu",
+          "value": 2
+        },
+        {
+          "name": "Marcus Dackers",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Gang-San Kim",
+          "value": 29
+        },
+        {
+          "name": "Matheus Bonadiman Serafin",
+          "value": 28
+        },
+        {
+          "name": "Jae-Won Hwang",
+          "value": 28
+        },
+        {
+          "name": "In-Taek Hwang",
+          "value": 28
+        },
+        {
+          "name": "Tae-Hee Han",
+          "value": 27
+        },
+        {
+          "name": "Ju-Gong Kim",
+          "value": 24
+        },
+        {
+          "name": "Dae-Woo Kim",
+          "value": 24
+        },
+        {
+          "name": "Jae-Moon Ryu",
+          "value": 24
+        }
+      ]
+    },
+    "paju": {
+      "sourceUrl": "https://footystats.org/clubs/paju-citizen-fc-671990",
+      "goals": [
+        {
+          "name": "Borja Bastón",
+          "value": 7
+        },
+        {
+          "name": "Beom-Kyung Choi",
+          "value": 3
+        },
+        {
+          "name": "Jea-Ho Lee",
+          "value": 3
+        },
+        {
+          "name": "Joon-Suk Lee",
+          "value": 2
+        },
+        {
+          "name": "Dae-Gwang Lee",
+          "value": 2
+        },
+        {
+          "name": "Jae-jun You",
+          "value": 2
+        },
+        {
+          "name": "Hyun-Tae Kim",
+          "value": 1
+        },
+        {
+          "name": "Jung-Woon Hong",
+          "value": 1
+        }
+      ],
+      "assists": [
+        {
+          "name": "Borja Bastón",
+          "value": 4
+        },
+        {
+          "name": "Joon-Suk Lee",
+          "value": 3
+        },
+        {
+          "name": "Jae-jun You",
+          "value": 3
+        },
+        {
+          "name": "Min-ki Lee",
+          "value": 2
+        },
+        {
+          "name": "Hyun-Tae Kim",
+          "value": 1
+        },
+        {
+          "name": "June-Hyuk Ahn",
+          "value": 1
+        },
+        {
+          "name": "Won-Woo Ryu",
+          "value": 1
+        },
+        {
+          "name": "Seung-ik Roh",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Hyun-Tae Kim",
+          "value": 29
+        },
+        {
+          "name": "Beom-Kyung Choi",
+          "value": 29
+        },
+        {
+          "name": "Joon-Suk Lee",
+          "value": 28
+        },
+        {
+          "name": "Borja Bastón",
+          "value": 26
+        },
+        {
+          "name": "Jung-Woon Hong",
+          "value": 26
+        },
+        {
+          "name": "Taek-Geun Lee",
+          "value": 24
+        },
+        {
+          "name": "Jae-jun You",
+          "value": 22
+        },
+        {
+          "name": "Seung-ik Roh",
+          "value": 21
+        }
+      ]
+    },
+    "asan": {
+      "sourceUrl": "https://footystats.org/clubs/asan-mugunghwa-fc-3849",
+      "goals": [
+        {
+          "name": "José Denisson Silva dos Santos",
+          "value": 9
+        },
+        {
+          "name": "Jong-Min Kim",
+          "value": 8
+        },
+        {
+          "name": "Charles Lokoli Ngoy",
+          "value": 5
+        },
+        {
+          "name": "Joon-Ho Son",
+          "value": 3
+        },
+        {
+          "name": "Ju-Sung Kim",
+          "value": 2
+        },
+        {
+          "name": "Hye-Sung Kim",
+          "value": 2
+        },
+        {
+          "name": "Naeem Mohammed",
+          "value": 2
+        },
+        {
+          "name": "Park Ju-young",
+          "value": 2
+        }
+      ],
+      "assists": [
+        {
+          "name": "Joon-Ho Son",
+          "value": 7
+        },
+        {
+          "name": "Ju-Sung Kim",
+          "value": 5
+        },
+        {
+          "name": "Gyo-Won Han",
+          "value": 5
+        },
+        {
+          "name": "José Denisson Silva dos Santos",
+          "value": 4
+        },
+        {
+          "name": "Jong-Min Kim",
+          "value": 2
+        },
+        {
+          "name": "Charles Lokoli Ngoy",
+          "value": 2
+        },
+        {
+          "name": "Hye-Sung Kim",
+          "value": 1
+        },
+        {
+          "name": "Naeem Mohammed",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Song-Hun Shin",
+          "value": 30
+        },
+        {
+          "name": "Joon-Ho Son",
+          "value": 29
+        },
+        {
+          "name": "Charles Lokoli Ngoy",
+          "value": 29
+        },
+        {
+          "name": "Hye-Sung Kim",
+          "value": 29
+        },
+        {
+          "name": "Ju-Sung Kim",
+          "value": 28
+        },
+        {
+          "name": "José Denisson Silva dos Santos",
+          "value": 27
+        },
+        {
+          "name": "Jong-Min Kim",
+          "value": 26
+        },
+        {
+          "name": "Seong-Woo Park",
+          "value": 25
+        }
+      ]
+    },
+    "cheonan": {
+      "sourceUrl": "https://footystats.org/clubs/cheonan-city-government-fc-3948",
+      "goals": [
+        {
+          "name": "Bruno José Pavan Lamas",
+          "value": 9
+        },
+        {
+          "name": "Willyan Da Silva Barbosa",
+          "value": 7
+        },
+        {
+          "name": "Aboubacar Ibrahima Toungara",
+          "value": 7
+        },
+        {
+          "name": "Jun-Ho Lee",
+          "value": 4
+        },
+        {
+          "name": "Sang-Jun Lee",
+          "value": 3
+        },
+        {
+          "name": "Gustavo Sarjani de Melo",
+          "value": 3
+        },
+        {
+          "name": "Seung-Hyeon Cha",
+          "value": 1
+        },
+        {
+          "name": "Chang-Min Ahn",
+          "value": 1
+        }
+      ],
+      "assists": [
+        {
+          "name": "Chang-Woo Park",
+          "value": 4
+        },
+        {
+          "name": "Jun-Ho Lee",
+          "value": 3
+        },
+        {
+          "name": "Ji-Seung Lee",
+          "value": 3
+        },
+        {
+          "name": "Bruno José Pavan Lamas",
+          "value": 1
+        },
+        {
+          "name": "Willyan Da Silva Barbosa",
+          "value": 1
+        },
+        {
+          "name": "Sang-Jun Lee",
+          "value": 1
+        },
+        {
+          "name": "Gustavo Sarjani de Melo",
+          "value": 1
+        },
+        {
+          "name": "Seung-Hyeon Cha",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Bruno José Pavan Lamas",
+          "value": 28
+        },
+        {
+          "name": "Chang-Woo Park",
+          "value": 27
+        },
+        {
+          "name": "Sang-Jun Lee",
+          "value": 27
+        },
+        {
+          "name": "Jun-Hyeok Choi",
+          "value": 24
+        },
+        {
+          "name": "Aboubacar Ibrahima Toungara",
+          "value": 23
+        },
+        {
+          "name": "Jun-Ho Lee",
+          "value": 22
+        },
+        {
+          "name": "Dong-hyeop Lee",
+          "value": 21
+        },
+        {
+          "name": "Gyu-Baek Choi",
+          "value": 21
+        }
+      ]
+    },
+    "busan": {
+      "sourceUrl": "https://footystats.org/clubs/busan-ipark-3846",
+      "goals": [
+        {
+          "name": "Gabriel Honorio Ramos",
+          "value": 9
+        },
+        {
+          "name": "Cristian Renato Gonçalves Riquelme",
+          "value": 8
+        },
+        {
+          "name": "Ga-On Baek",
+          "value": 5
+        },
+        {
+          "name": "Min-hyuk Kim",
+          "value": 4
+        },
+        {
+          "name": "Jin-Hyeok Kim",
+          "value": 3
+        },
+        {
+          "name": "Se-Hoon Kim",
+          "value": 3
+        },
+        {
+          "name": "Chan Kim",
+          "value": 2
+        },
+        {
+          "name": "Hee-Seung Kim",
+          "value": 2
+        }
+      ],
+      "assists": [
+        {
+          "name": "Gabriel Honorio Ramos",
+          "value": 5
+        },
+        {
+          "name": "Cristian Renato Gonçalves Riquelme",
+          "value": 5
+        },
+        {
+          "name": "Ga-On Baek",
+          "value": 3
+        },
+        {
+          "name": "Chan Kim",
+          "value": 3
+        },
+        {
+          "name": "Hwi Son",
+          "value": 3
+        },
+        {
+          "name": "Ju-Sung Woo",
+          "value": 2
+        },
+        {
+          "name": "Jin-Hyeok Kim",
+          "value": 1
+        },
+        {
+          "name": "Se-Hoon Kim",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Sang-Min Koo",
+          "value": 29
+        },
+        {
+          "name": "Seong-Jin Jeon",
+          "value": 27
+        },
+        {
+          "name": "Gabriel Honorio Ramos",
+          "value": 26
+        },
+        {
+          "name": "Ga-On Baek",
+          "value": 26
+        },
+        {
+          "name": "Ho-Ik Jang",
+          "value": 26
+        },
+        {
+          "name": "Se-Hoon Kim",
+          "value": 25
+        },
+        {
+          "name": "Min-hyuk Kim",
+          "value": 25
+        },
+        {
+          "name": "Cristian Renato Gonçalves Riquelme",
+          "value": 24
+        }
+      ]
+    },
+    "seoule": {
+      "sourceUrl": "https://footystats.org/clubs/seoul-e-land-fc-3850",
+      "goals": [
+        {
+          "name": "Euller",
+          "value": 11
+        },
+        {
+          "name": "Jae-Yong Park",
+          "value": 9
+        },
+        {
+          "name": "Ji-Ung Baek",
+          "value": 5
+        },
+        {
+          "name": "In-pyo Oh",
+          "value": 3
+        },
+        {
+          "name": "Osmar Barba Ibáñez",
+          "value": 3
+        },
+        {
+          "name": "Joo-wan An",
+          "value": 3
+        },
+        {
+          "name": "Gyung-Jun Byeon",
+          "value": 3
+        },
+        {
+          "name": "Alan Lima Cariús",
+          "value": 3
+        }
+      ],
+      "assists": [
+        {
+          "name": "Jae-Yong Park",
+          "value": 7
+        },
+        {
+          "name": "Euller",
+          "value": 6
+        },
+        {
+          "name": "In-pyo Oh",
+          "value": 4
+        },
+        {
+          "name": "Chang-Hwan Park",
+          "value": 4
+        },
+        {
+          "name": "Alan Lima Cariús",
+          "value": 3
+        },
+        {
+          "name": "Ji-Ung Baek",
+          "value": 2
+        },
+        {
+          "name": "Osmar Barba Ibáñez",
+          "value": 2
+        },
+        {
+          "name": "Gyung-Jun Byeon",
+          "value": 2
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Seong-Jun Min",
+          "value": 29
+        },
+        {
+          "name": "Euller",
+          "value": 28
+        },
+        {
+          "name": "Ji-Ung Baek",
+          "value": 28
+        },
+        {
+          "name": "Jae-Yong Park",
+          "value": 27
+        },
+        {
+          "name": "Chang-Hwan Park",
+          "value": 27
+        },
+        {
+          "name": "In-pyo Oh",
+          "value": 26
+        },
+        {
+          "name": "Oh-Kyu Kim",
+          "value": 25
+        },
+        {
+          "name": "Hyun Kim",
+          "value": 23
+        }
+      ]
+    },
+    "jeonnam": {
+      "sourceUrl": "https://footystats.org/clubs/jeonnam-dragons-fc-3838",
+      "goals": [
+        {
+          "name": "Wanderson Ferreira de Oliveira",
+          "value": 10
+        },
+        {
+          "name": "Nam Ha",
+          "value": 5
+        },
+        {
+          "name": "Sang-Hun Chu",
+          "value": 4
+        },
+        {
+          "name": "Irakli Bughridze",
+          "value": 3
+        },
+        {
+          "name": "Ji-Yong Jeong",
+          "value": 3
+        },
+        {
+          "name": "Min-Ho Yun",
+          "value": 3
+        },
+        {
+          "name": "Ronan David Jerônimo",
+          "value": 3
+        },
+        {
+          "name": "Han-Sol Choi",
+          "value": 1
+        }
+      ],
+      "assists": [
+        {
+          "name": "Wanderson Ferreira de Oliveira",
+          "value": 7
+        },
+        {
+          "name": "Bum-Soo Kim",
+          "value": 5
+        },
+        {
+          "name": "Luiz Carlos Paulino de Carvalho",
+          "value": 3
+        },
+        {
+          "name": "Nam Ha",
+          "value": 2
+        },
+        {
+          "name": "Ji-Yong Jeong",
+          "value": 2
+        },
+        {
+          "name": "Irakli Bughridze",
+          "value": 1
+        },
+        {
+          "name": "Min-Ho Yun",
+          "value": 1
+        },
+        {
+          "name": "Ronan David Jerônimo",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Wanderson Ferreira de Oliveira",
+          "value": 30
+        },
+        {
+          "name": "Bong Jin Choi",
+          "value": 29
+        },
+        {
+          "name": "Bum-Soo Kim",
+          "value": 27
+        },
+        {
+          "name": "Ji-Yong Jeong",
+          "value": 27
+        },
+        {
+          "name": "Min-Ho Yun",
+          "value": 24
+        },
+        {
+          "name": "Nam Ha",
+          "value": 22
+        },
+        {
+          "name": "Tae-Yong Park",
+          "value": 21
+        },
+        {
+          "name": "Ju-yeop Kim",
+          "value": 21
+        }
+      ]
+    },
+    "suwonfc": {
+      "sourceUrl": "https://footystats.org/clubs/suwon-fc-3843",
+      "goals": [
+        {
+          "name": "Matheus Henrique Frizzo",
+          "value": 14
+        },
+        {
+          "name": "Jung-Woo Ha",
+          "value": 9
+        },
+        {
+          "name": "Matheus Babi",
+          "value": 4
+        },
+        {
+          "name": "Seung-Bae Jung",
+          "value": 4
+        },
+        {
+          "name": "Gi-Yun Choi",
+          "value": 3
+        },
+        {
+          "name": "Boon-Cheul Goo",
+          "value": 3
+        },
+        {
+          "name": "Hyun-Yong Lee",
+          "value": 2
+        },
+        {
+          "name": "Chan-Hee Han",
+          "value": 2
+        }
+      ],
+      "assists": [
+        {
+          "name": "Matheus Henrique Frizzo",
+          "value": 6
+        },
+        {
+          "name": "Si-Young Lee",
+          "value": 6
+        },
+        {
+          "name": "Seung-Bae Jung",
+          "value": 3
+        },
+        {
+          "name": "Boon-Cheul Goo",
+          "value": 3
+        },
+        {
+          "name": "Jae-Min Seo",
+          "value": 3
+        },
+        {
+          "name": "Matheus Babi",
+          "value": 2
+        },
+        {
+          "name": "Jung-Woo Ha",
+          "value": 1
+        },
+        {
+          "name": "Gi-Yun Choi",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Si-Young Lee",
+          "value": 27
+        },
+        {
+          "name": "Boon-Cheul Goo",
+          "value": 27
+        },
+        {
+          "name": "Jae-Min Seo",
+          "value": 27
+        },
+        {
+          "name": "Jung-Woo Ha",
+          "value": 27
+        },
+        {
+          "name": "Han-Bin Yang",
+          "value": 26
+        },
+        {
+          "name": "Matheus Henrique Frizzo",
+          "value": 25
+        },
+        {
+          "name": "Gi-Yun Choi",
+          "value": 25
+        },
+        {
+          "name": "Jung-Hwan Kim",
+          "value": 24
+        }
+      ]
+    },
+    "gyeongnam": {
+      "sourceUrl": "https://footystats.org/clubs/gyeongnam-fc-3847",
+      "goals": [
+        {
+          "name": "Hyeon-Oh Kim",
+          "value": 9
+        },
+        {
+          "name": "Sang-Jun Cho",
+          "value": 4
+        },
+        {
+          "name": "Ki-Jong Won",
+          "value": 3
+        },
+        {
+          "name": "Jin-Hyuk Cho",
+          "value": 3
+        },
+        {
+          "name": "Ho-Jun Son",
+          "value": 2
+        },
+        {
+          "name": "Hyun-Seo Bae",
+          "value": 1
+        },
+        {
+          "name": "Ki-Pyo Kwon",
+          "value": 1
+        },
+        {
+          "name": "Il-Lok Yun",
+          "value": 1
+        }
+      ],
+      "assists": [
+        {
+          "name": "Ho-Jun Son",
+          "value": 3
+        },
+        {
+          "name": "Sang-Jun Cho",
+          "value": 2
+        },
+        {
+          "name": "Ki-Jong Won",
+          "value": 2
+        },
+        {
+          "name": "Il-Lok Yun",
+          "value": 2
+        },
+        {
+          "name": "Jeong-Hyun Kim",
+          "value": 2
+        },
+        {
+          "name": "Chan-Dong Lee",
+          "value": 2
+        },
+        {
+          "name": "Hyeon-Oh Kim",
+          "value": 1
+        },
+        {
+          "name": "Jin-Hyuk Cho",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Hyeon-Oh Kim",
+          "value": 27
+        },
+        {
+          "name": "Hyeong-Won Kim",
+          "value": 27
+        },
+        {
+          "name": "Jeong-Hyun Kim",
+          "value": 26
+        },
+        {
+          "name": "Ki-Pyo Kwon",
+          "value": 26
+        },
+        {
+          "name": "Sang-Jun Cho",
+          "value": 24
+        },
+        {
+          "name": "Ho-Jun Son",
+          "value": 23
+        },
+        {
+          "name": "Jung-Won Choi",
+          "value": 23
+        },
+        {
+          "name": "Il-Lok Yun",
+          "value": 21
+        }
+      ]
+    },
+    "suwon": {
+      "sourceUrl": "https://footystats.org/clubs/suwon-samsung-bluewings-fc-3842",
+      "goals": [
+        {
+          "name": "Luis Fabián Mina Zapata",
+          "value": 15
+        },
+        {
+          "name": "Hyun-Muk Kang",
+          "value": 8
+        },
+        {
+          "name": "Isnairo Reis Silva Morais",
+          "value": 6
+        },
+        {
+          "name": "Hyeon-bin Park",
+          "value": 3
+        },
+        {
+          "name": "Seong-Jin Kang",
+          "value": 3
+        },
+        {
+          "name": "Jefferson Gabriel Nascimento Brito",
+          "value": 3
+        },
+        {
+          "name": "Keelan Lebon",
+          "value": 2
+        },
+        {
+          "name": "Ji-Hyun Kim",
+          "value": 2
+        }
+      ],
+      "assists": [
+        {
+          "name": "Min-woo Kim",
+          "value": 5
+        },
+        {
+          "name": "Geon-Hee Lee",
+          "value": 5
+        },
+        {
+          "name": "Hyun-Muk Kang",
+          "value": 4
+        },
+        {
+          "name": "Isnairo Reis Silva Morais",
+          "value": 3
+        },
+        {
+          "name": "Bruno da Silva Costa",
+          "value": 3
+        },
+        {
+          "name": "Seong-Jin Kang",
+          "value": 2
+        },
+        {
+          "name": "Keelan Lebon",
+          "value": 2
+        },
+        {
+          "name": "Ho-Yeon Jeong",
+          "value": 2
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Luis Fabián Mina Zapata",
+          "value": 28
+        },
+        {
+          "name": "Geon-Hee Lee",
+          "value": 27
+        },
+        {
+          "name": "Hyun-Muk Kang",
+          "value": 26
+        },
+        {
+          "name": "Min-woo Kim",
+          "value": 25
+        },
+        {
+          "name": "Ho-Yeon Jeong",
+          "value": 25
+        },
+        {
+          "name": "Joon-Hong Kim",
+          "value": 25
+        },
+        {
+          "name": "Jong-Hyun Ko",
+          "value": 24
+        },
+        {
+          "name": "Isnairo Reis Silva Morais",
+          "value": 21
+        }
+      ]
+    },
+    "yongin": {
+      "sourceUrl": "https://footystats.org/clubs/yongin-city-government-fc-3944",
+      "goals": [
+        {
+          "name": "Gabriel Henrique de Souza de Oliveira",
+          "value": 10
+        },
+        {
+          "name": "Hyun-Jun Suk",
+          "value": 6
+        },
+        {
+          "name": "Chi-Ung Choi",
+          "value": 4
+        },
+        {
+          "name": "Donggyu Yu",
+          "value": 3
+        },
+        {
+          "name": "Seung-Joon Lee",
+          "value": 3
+        },
+        {
+          "name": "Joao Victor Souza Dos Santos",
+          "value": 3
+        },
+        {
+          "name": "Shin-Myeong Kang",
+          "value": 1
+        },
+        {
+          "name": "Bo-Seob Kim",
+          "value": 1
+        }
+      ],
+      "assists": [
+        {
+          "name": "Bo-Seob Kim",
+          "value": 6
+        },
+        {
+          "name": "Han-seo Kim",
+          "value": 3
+        },
+        {
+          "name": "Min-Woo Kim",
+          "value": 2
+        },
+        {
+          "name": "Young-Jun Choi",
+          "value": 2
+        },
+        {
+          "name": "Han-Gil Kim",
+          "value": 2
+        },
+        {
+          "name": "Hyeon-Jun Kim",
+          "value": 2
+        },
+        {
+          "name": "Tae-Ho Jin",
+          "value": 2
+        },
+        {
+          "name": "Gabriel Henrique de Souza de Oliveira",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Hyeon-Jun Kim",
+          "value": 29
+        },
+        {
+          "name": "Bo-Seob Kim",
+          "value": 27
+        },
+        {
+          "name": "Yoon-Ho Kwak",
+          "value": 27
+        },
+        {
+          "name": "Young-Jun Choi",
+          "value": 26
+        },
+        {
+          "name": "Han-seo Kim",
+          "value": 25
+        },
+        {
+          "name": "Hyun-Jun Suk",
+          "value": 25
+        },
+        {
+          "name": "Han-Gil Kim",
+          "value": 23
+        },
+        {
+          "name": "Gabriel Henrique de Souza de Oliveira",
+          "value": 23
+        }
+      ]
+    },
+    "hwaseong": {
+      "sourceUrl": "https://footystats.org/clubs/hwaseong-fc-671987",
+      "goals": [
+        {
+          "name": "Leonard Pllana",
+          "value": 11
+        },
+        {
+          "name": "Sava Petrov",
+          "value": 8
+        },
+        {
+          "name": "Stanislav Iljutcenko",
+          "value": 5
+        },
+        {
+          "name": "Rae-Jun Lee",
+          "value": 4
+        },
+        {
+          "name": "Jae-Min Jegal",
+          "value": 4
+        },
+        {
+          "name": "Jae-Seong Park",
+          "value": 3
+        },
+        {
+          "name": "Min-Jun Jang",
+          "value": 2
+        },
+        {
+          "name": "Demethryus Maciel Areias Nascimento",
+          "value": 2
+        }
+      ],
+      "assists": [
+        {
+          "name": "Leonard Pllana",
+          "value": 10
+        },
+        {
+          "name": "Stanislav Iljutcenko",
+          "value": 5
+        },
+        {
+          "name": "Jae-Min Jegal",
+          "value": 5
+        },
+        {
+          "name": "Demethryus Maciel Areias Nascimento",
+          "value": 5
+        },
+        {
+          "name": "Dae-Hwan Kim",
+          "value": 4
+        },
+        {
+          "name": "Byung-Oh Kim",
+          "value": 3
+        },
+        {
+          "name": "Sava Petrov",
+          "value": 2
+        },
+        {
+          "name": "Jae-Seong Park",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Leonard Pllana",
+          "value": 30
+        },
+        {
+          "name": "Aleksandar Vojinović",
+          "value": 30
+        },
+        {
+          "name": "Dae-Hwan Kim",
+          "value": 29
+        },
+        {
+          "name": "Jae-Min Jegal",
+          "value": 28
+        },
+        {
+          "name": "Stanislav Iljutcenko",
+          "value": 27
+        },
+        {
+          "name": "Jun-seo Park",
+          "value": 27
+        },
+        {
+          "name": "Seung-Gun Kim",
+          "value": 26
+        },
+        {
+          "name": "Jong-Sung Lee",
+          "value": 26
+        }
+      ]
+    },
+    "gimpo": {
+      "sourceUrl": "https://footystats.org/clubs/gimpo-citizen-fc-672000",
+      "goals": [
+        {
+          "name": "Luan Dias da Silva",
+          "value": 5
+        },
+        {
+          "name": "Dong-Jin Park",
+          "value": 5
+        },
+        {
+          "name": "Paulo Henrique do Pilar Silva",
+          "value": 4
+        },
+        {
+          "name": "Djalma Celestino Evaristo",
+          "value": 4
+        },
+        {
+          "name": "Si-Heon Lee",
+          "value": 3
+        },
+        {
+          "name": "Sung-joon Kim",
+          "value": 3
+        },
+        {
+          "name": "Hak-Min Lee",
+          "value": 2
+        },
+        {
+          "name": "Chan-Hyung Lee",
+          "value": 1
+        }
+      ],
+      "assists": [
+        {
+          "name": "Paulo Henrique do Pilar Silva",
+          "value": 4
+        },
+        {
+          "name": "Chang-Seok Lim",
+          "value": 3
+        },
+        {
+          "name": "Luan Dias da Silva",
+          "value": 2
+        },
+        {
+          "name": "Min-Seog Kim",
+          "value": 2
+        },
+        {
+          "name": "Sang-Hyun Park",
+          "value": 2
+        },
+        {
+          "name": "Do-Hyuk Kim",
+          "value": 2
+        },
+        {
+          "name": "Bu-Seong Jang",
+          "value": 2
+        },
+        {
+          "name": "Dong-Jin Park",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Do-Hyuk Kim",
+          "value": 28
+        },
+        {
+          "name": "Dong-Jin Park",
+          "value": 27
+        },
+        {
+          "name": "Si-Heon Lee",
+          "value": 26
+        },
+        {
+          "name": "Sung-joon Kim",
+          "value": 25
+        },
+        {
+          "name": "Dong-Min Kim",
+          "value": 25
+        },
+        {
+          "name": "Hak-Min Lee",
+          "value": 24
+        },
+        {
+          "name": "Tae-Han Kim",
+          "value": 23
+        },
+        {
+          "name": "Min-Sik Kim",
+          "value": 23
+        }
+      ]
+    },
+    "cheongju": {
+      "sourceUrl": "https://footystats.org/clubs/cheongju-fc-671998",
+      "goals": [
+        {
+          "name": "Ménder García",
+          "value": 15
+        },
+        {
+          "name": "Jong-Eon Lee",
+          "value": 7
+        },
+        {
+          "name": "Jin-Woo Jeong",
+          "value": 3
+        },
+        {
+          "name": "Jae-Won Lee",
+          "value": 1
+        },
+        {
+          "name": "Francisco Geraldes",
+          "value": 1
+        },
+        {
+          "name": "Sun-Min Kim",
+          "value": 1
+        },
+        {
+          "name": "Seung-Chan Heo",
+          "value": 1
+        },
+        {
+          "name": "Ji-Hoon Min",
+          "value": 1
+        }
+      ],
+      "assists": [
+        {
+          "name": "Rafael Alexandre Bandeira Fonseca",
+          "value": 10
+        },
+        {
+          "name": "Jae-Won Seo",
+          "value": 2
+        },
+        {
+          "name": "Ménder García",
+          "value": 1
+        },
+        {
+          "name": "Jong-Eon Lee",
+          "value": 1
+        },
+        {
+          "name": "Jae-Won Lee",
+          "value": 1
+        },
+        {
+          "name": "Sun-Min Kim",
+          "value": 1
+        },
+        {
+          "name": "Seung-Chan Heo",
+          "value": 1
+        },
+        {
+          "name": "Ji-Hoon Min",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Ménder García",
+          "value": 28
+        },
+        {
+          "name": "Sun-Min Kim",
+          "value": 28
+        },
+        {
+          "name": "Yun-Seong Jo",
+          "value": 28
+        },
+        {
+          "name": "Jong-Eon Lee",
+          "value": 27
+        },
+        {
+          "name": "Geon-Woo Park",
+          "value": 25
+        },
+        {
+          "name": "Jin-Woo Jeong",
+          "value": 25
+        },
+        {
+          "name": "Seung-Chan Heo",
+          "value": 24
+        },
+        {
+          "name": "Ji-Hoon Min",
+          "value": 24
+        }
+      ]
+    },
+    "ansan": {
+      "sourceUrl": "https://footystats.org/clubs/ansan-greeners-fc-3943",
+      "goals": [
+        {
+          "name": "Gabriel Fernandes de Lima",
+          "value": 9
+        },
+        {
+          "name": "Machop Chol",
+          "value": 5
+        },
+        {
+          "name": "Seung-Wan Ryu",
+          "value": 3
+        },
+        {
+          "name": "In-Sung Kim",
+          "value": 3
+        },
+        {
+          "name": "Seung-Woo Ryu",
+          "value": 2
+        },
+        {
+          "name": "Milan Obradović",
+          "value": 2
+        },
+        {
+          "name": "Marlon Roberto dos Santos Bibiano",
+          "value": 2
+        },
+        {
+          "name": "Hyeon-Wu Jeong",
+          "value": 2
+        }
+      ],
+      "assists": [
+        {
+          "name": "Machop Chol",
+          "value": 3
+        },
+        {
+          "name": "In-Sung Kim",
+          "value": 3
+        },
+        {
+          "name": "Dong-Hyun Kang",
+          "value": 3
+        },
+        {
+          "name": "Ji-Min Im",
+          "value": 3
+        },
+        {
+          "name": "Eung-Bin Yeon",
+          "value": 3
+        },
+        {
+          "name": "Gabriel Fernandes de Lima",
+          "value": 2
+        },
+        {
+          "name": "Jung-Hyun Kim",
+          "value": 2
+        },
+        {
+          "name": "Hyeon-Wu Jeong",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Gabriel Fernandes de Lima",
+          "value": 27
+        },
+        {
+          "name": "Dong-Hyun Kang",
+          "value": 26
+        },
+        {
+          "name": "Ji-Hoon Cho",
+          "value": 26
+        },
+        {
+          "name": "Hee-seong Lee",
+          "value": 26
+        },
+        {
+          "name": "Tim Hartzell",
+          "value": 26
+        },
+        {
+          "name": "Machop Chol",
+          "value": 25
+        },
+        {
+          "name": "Hyun-Soo Jang",
+          "value": 24
+        },
+        {
+          "name": "Jung-Hyun Kim",
+          "value": 23
+        }
+      ]
+    },
+    "gimhae": {
+      "sourceUrl": "https://footystats.org/clubs/gimhae-city-government-fc-3947",
+      "goals": [
+        {
+          "name": "Beka Mikeltadze",
+          "value": 6
+        },
+        {
+          "name": "Je-Wook Woo",
+          "value": 5
+        },
+        {
+          "name": "Seung-Jae Lee",
+          "value": 5
+        },
+        {
+          "name": "Maissa El Hadji Fall",
+          "value": 2
+        },
+        {
+          "name": "Bruno Costa",
+          "value": 1
+        },
+        {
+          "name": "Miguel Baggio Cover",
+          "value": 1
+        },
+        {
+          "name": "Jun-Gyu Lee",
+          "value": 1
+        },
+        {
+          "name": "Ho-Yeong Seong",
+          "value": 1
+        }
+      ],
+      "assists": [
+        {
+          "name": "Ho-Yeong Seong",
+          "value": 3
+        },
+        {
+          "name": "Yo-Han Park",
+          "value": 3
+        },
+        {
+          "name": "Seung-Jae Lee",
+          "value": 2
+        },
+        {
+          "name": "Kang-Uk Lee",
+          "value": 2
+        },
+        {
+          "name": "Jun-Gyu Lee",
+          "value": 1
+        },
+        {
+          "name": "Sung-Wook Kwak",
+          "value": 1
+        },
+        {
+          "name": "Uk-hyeon Hong",
+          "value": 1
+        },
+        {
+          "name": "Geon-Hee Pyo",
+          "value": 1
+        }
+      ],
+      "appearances": [
+        {
+          "name": "Seung-Jae Lee",
+          "value": 28
+        },
+        {
+          "name": "Jae-Yul Yeo",
+          "value": 28
+        },
+        {
+          "name": "Geon-Hee Pyo",
+          "value": 27
+        },
+        {
+          "name": "Beka Mikeltadze",
+          "value": 25
+        },
+        {
+          "name": "Pil-Soo Choi",
+          "value": 24
+        },
+        {
+          "name": "Yoo-Chan Lee",
+          "value": 23
+        },
+        {
+          "name": "Jun-Gyu Lee",
+          "value": 17
+        },
+        {
+          "name": "Ho-Yeong Seong",
+          "value": 16
+        }
+      ]
+    }
+  }
+}

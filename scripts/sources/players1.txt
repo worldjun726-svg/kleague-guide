@@ -1,0 +1,30 @@
+1  | Yago CARIELLO RIBEIRO  | ULSAN  | 17  | 1  | 18  | 0  | 0  | 22  | 77  | 18  | 3  | 1  | 0  | 28  | 21  | 0.61
+2  | Patryk KLIMALA  | SEOUL  | 16  | 1  | 17  | 0  | 0  | 38  | 73  | 16  | 7  | 0  | 0  | 31  | 16  | 0.52
+3  | STEFAN MUGOSA  | INCHEON  | 14  | 2  | 16  | 0  | 0  | 18  | 69  | 11  | 4  | 0  | 0  | 32  | 20  | 0.44
+4  | Donggyeong LEE  | ULSAN  | 13  | 13  | 26  | 0  | 96  | 33  | 85  | 5  | 3  | 0  | 0  | 34  | 22  | 0.38
+5  | Matheus OLIVEIRA SANTOS  | ANYANG  | 12  | 7  | 19  | 0  | 39  | 16  | 77  | 2  | 3  | 1  | 0  | 33  | 19  | 0.36
+6  | John Warwick IREDALE  | GWANGJU  | 11  | 2  | 13  | 0  | 0  | 3  | 44  | 10  | 1  | 0  | 0  | 19  | 7  | 0.58
+7  | PEREIRA DA SILVA Tiago  | JEONBUK  | 11  | 1  | 12  | 0  | 0  | 18  | 42  | 9  | 3  | 0  | 0  | 27  | 22  | 0.41
+8  | ISIDIO JEFFERSON FERNANDO  | BUCHEON  | 11  | 4  | 15  | 0  | 5  | 20  | 84  | 5  | 6  | 0  | 0  | 34  | 15  | 0.32
+9  | EMERSON RAMON BEZERRA OLIVEIRA  | JEJU  | 10  | 3  | 13  | 0  | 2  | 37  | 90  | 20  | 6  | 1  | 0  | 32  | 15  | 0.31
+10  | DAEWON KIM  | GANGWON  | 10  | 10  | 20  | 0  | 152  | 27  | 74  | 5  | 6  | 0  | 0  | 33  | 14  | 0.30
+11  | Hojae LEE  | POHANG  | 8  | 0  | 8  | 0  | 0  | 26  | 33  | 7  | 4  | 0  | 0  | 20  | 5  | 0.40
+12  | Jaehee JEONG  | DAEJEON HANA  | 8  | 2  | 10  | 0  | 24  | 4  | 36  | 2  | 1  | 0  | 0  | 26  | 24  | 0.31
+13  | ABDALLAH HLEIHIL  | GANGWON  | 8  | 0  | 8  | 0  | 0  | 10  | 33  | 8  | 4  | 0  | 0  | 29  | 29  | 0.28
+14  | Jaehyeon GO  | DAEGU  | 8  | 3  | 11  | 0  | 1  | 19  | 53  | 4  | 2  | 0  | 0  | 29  | 22  | 0.28
+15  | Diogo DE OLIVEIRA BARBOSA  | DAEJEON HANA  | 8  | 5  | 13  | 0  | 0  | 39  | 43  | 8  | 2  | 1  | 0  | 30  | 28  | 0.27
+16  | Seungwoo LEE  | JEONBUK  | 8  | 4  | 12  | 0  | 8  | 38  | 55  | 3  | 7  | 0  | 0  | 34  | 28  | 0.24
+17  | Seungwon JEONG  | SEOUL  | 8  | 7  | 15  | 0  | 145  | 20  | 58  | 5  | 4  | 0  | 0  | 35  | 10  | 0.23
+18  | AIRTON MOISES SANTOS SOUSA  | ANYANG  | 7  | 0  | 7  | 0  | 15  | 17  | 32  | 1  | 1  | 0  | 0  | 20  | 18  | 0.35
+19  | Morgan James FERRIER  | INCHEON  | 7  | 2  | 9  | 0  | 0  | 25  | 41  | 14  | 4  | 0  | 0  | 31  | 27  | 0.23
+20  | Minkyu JOO  | DAEJEON HANA  | 7  | 1  | 8  | 0  | 0  | 21  | 46  | 11  | 1  | 0  | 0  | 34  | 31  | 0.21
+21  | VITOR GABRIEL CLAUDINO REGO FERREIRA  | BUCHEON  | 6  | 1  | 7  | 0  | 0  | 37  | 23  | 5  | 6  | 0  | 0  | 20  | 19  | 0.30
+22  | Seungmo LEE  | SEOUL  | 6  | 2  | 8  | 0  | 0  | 17  | 31  | 0  | 0  | 0  | 0  | 30  | 30  | 0.20
+23  | Jinsu SEO  | DAEJEON HANA  | 6  | 3  | 9  | 0  | 15  | 21  | 34  | 3  | 1  | 0  | 0  | 30  | 23  | 0.20
+24  | Kunhee LEE  | JEJU  | 6  | 2  | 8  | 0  | 0  | 47  | 51  | 16  | 7  | 0  | 0  | 32  | 24  | 0.19
+25  | Minseo MOON  | GWANGJU  | 6  | 1  | 7  | 0  | 18  | 20  | 31  | 3  | 4  | 0  | 0  | 32  | 15  | 0.19
+26  | VINICIUS Do Amaral Alves MARCOS  | ULSAN  | 5  | 2  | 7  | 0  | 0  | 7  | 37  | 5  | 0  | 0  | 0  | 12  | 11  | 0.42
+27  | CHANGMOO SHIN  | GWANGJU  | 5  | 2  | 7  | 0  | 26  | 27  | 23  | 9  | 4  | 0  | 0  | 22  | 9  | 0.23
+28  | Ishida MASATOSHI  | DAEJEON HANA  | 5  | 2  | 7  | 0  | 0  | 14  | 40  | 0  | 1  | 0  | 0  | 23  | 22  | 0.22
+29  | Minkyu SONG  | SEOUL  | 5  | 4  | 9  | 0  | 0  | 7  | 34  | 5  | 3  | 0  | 0  | 25  | 16  | 0.20
+30  | Carvalho Oliveira WANDERSON  | POHANG  | 5  | 4  | 9  | 0  | 15  | 25  | 23  | 2  | 1  | 0  | 0  | 29  | 11  | 0.17

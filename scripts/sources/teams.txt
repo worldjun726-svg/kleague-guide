@@ -1,0 +1,29 @@
+1  | SEOUL  | 35  | 67  | 20  | 7  | 8  | 62  | 32  | 30  | L L D D W
+2  | ULSAN  | 35  | 57  | 17  | 6  | 12  | 56  | 49  | 7  | W W D W L
+3  | DAEJEON HANA  | 35  | 53  | 14  | 11  | 10  | 55  | 41  | 14  | W D W W W
+4  | GANGWON  | 35  | 51  | 12  | 15  | 8  | 44  | 34  | 10  | W L D D W
+5  | JEONBUK  | 35  | 49  | 12  | 13  | 10  | 45  | 36  | 9  | L D D W L
+6  | INCHEON  | 35  | 49  | 13  | 10  | 12  | 44  | 37  | 7  | L W W D W
+7  | JEJU  | 35  | 48  | 12  | 12  | 11  | 41  | 39  | 2  | D D L L L
+8  | ANYANG  | 35  | 46  | 11  | 13  | 11  | 42  | 50  | -8  | L W D D W
+9  | POHANG  | 35  | 44  | 11  | 11  | 13  | 33  | 42  | -9  | D D D D L
+10  | GIMCHEON  | 35  | 38  | 6  | 20  | 9  | 35  | 42  | -7  | W D L D L
+11  | BUCHEON  | 35  | 33  | 7  | 12  | 16  | 35  | 51  | -16  | D L L L L
+12  | GWANGJU  | 35  | 23  | 3  | 14  | 18  | 32  | 71  | -39  | D D W L W
+1  | SUWON  | 30  | 66  | 20  | 6  | 4  | 52  | 25  | 27  | W D W W W
+2  | SUWON FC  | 30  | 60  | 17  | 9  | 4  | 57  | 31  | 26  | W W L W W
+3  | SEOUL E-LAND  | 30  | 57  | 17  | 6  | 7  | 57  | 38  | 19  | W L W W W
+4  | DAEGU  | 30  | 56  | 16  | 8  | 6  | 58  | 40  | 18  | W D W W L
+5  | BUSAN  | 30  | 48  | 14  | 6  | 10  | 47  | 38  | 9  | L W W D L
+6  | HWASEONG  | 31  | 48  | 13  | 9  | 9  | 45  | 33  | 12  | W L D L L
+7  | CHUNGNAM ASAN  | 30  | 43  | 11  | 10  | 9  | 42  | 34  | 8  | D W W D D
+8  | GIMPO  | 30  | 39  | 9  | 12  | 9  | 39  | 41  | -2  | D L L W L
+9  | GYEONGNAM  | 30  | 38  | 9  | 11  | 10  | 33  | 37  | -4  | L W L D L
+10  | PAJU  | 30  | 35  | 9  | 8  | 13  | 30  | 36  | -6  | D W D L D
+11  | CHEONAN  | 30  | 33  | 7  | 12  | 11  | 38  | 41  | -3  | W D W W L
+12  | YONGIN  | 30  | 33  | 7  | 12  | 11  | 38  | 45  | -7  | L W W L L
+13  | CHUNGBUK CHEONGJU  | 30  | 32  | 6  | 14  | 10  | 36  | 49  | -13  | L L L W W
+14  | SEONGNAM  | 30  | 32  | 7  | 11  | 12  | 32  | 40  | -8  | L D L L L
+15  | ANSAN  | 31  | 26  | 7  | 5  | 19  | 35  | 59  | -24  | D L L W L
+16  | JEONNAM  | 30  | 25  | 5  | 10  | 15  | 37  | 55  | -18  | L D L L W
+17  | GIMHAE  | 30  | 18  | 3  | 9  | 18  | 27  | 61  | -34  | L D W L D
