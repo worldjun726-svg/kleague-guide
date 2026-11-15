@@ -1,0 +1,19 @@
+/* Shared editorial palette and typography for the journal and its guides. */
+:root{color:#17242c;background:#f8f8f4;--navy:#192b32;--line:#dce0dc;--blue:#35665b;--muted:#69716f}
+body,.app-shell{background:#f8f8f4}
+.header{background:#f8f8f4;color:#17242c;border-top:4px solid #192b32;border-bottom:1px solid #cdd1cf}
+.header-inner{max-width:1376px;min-height:88px;padding:0 48px;gap:42px}
+.brand{font-size:18px;letter-spacing:-.8px;color:#17242c}.brand b{font-weight:800}.brand small{font-size:7px;letter-spacing:1.6px;color:#69716f}.brand-mark{width:35px;height:39px;border:0;border-radius:0;background:transparent;color:#a74732;transform:none}
+.header nav{gap:25px;justify-content:center}.header nav a{font-size:12px;font-weight:600;color:#596462}.header nav a:hover,.header nav a.active{color:#a74732}.header nav a.active:after{height:2px;background:#a74732}.header nav a:last-child{color:#a74732}
+.season-tag{border:0;border-left:1px solid #cdd1cf;border-radius:0;padding:6px 0 6px 18px;font-size:9px;color:#56645e;letter-spacing:.6px}.season-tag i{background:#a74732}
+.demo-banner{background:#eef0ea;border-color:#dce0dc;color:#65706b}.demo-banner strong{color:#35473f}
+.panel{border-color:#dce0dc;border-radius:3px}.button,select,.tabs,.tabs button{border-radius:3px}.button.primary,.core-page .button.primary{background:#192b32;border-color:#192b32;color:#fff}.button.primary:hover,.core-page .button.primary:hover{background:#31515a}
+.section-title{border-top:1px solid #b4bdb7}.section-title h2{font-weight:750}.page-heading h1{letter-spacing:-1.4px}
+.magazine-cover.guide-hero{background:#192b32;border-radius:3px}.magazine-cover:before{display:none}.magazine-cover .guide-kicker{transform:none;background:#e5ebe7;color:#294d41;letter-spacing:1px}.magazine-cover h1{font-weight:800}
+.cover-footer{background:#e5ebe7;color:#294d41}.cover-2 .cover-footer{background:#f1e1d7;color:#7d4635}.cover-3 .cover-footer{background:#e0e6ed;color:#344b63}
+.finder-progress{background:#e5ebe7;color:#294d41}.guide-result-label{color:#bfd0c8}.finder-aside{background:#eef1eb;border-color:#d4dcd3}.editorial-label{font:600 15px 'Segoe UI',sans-serif;letter-spacing:1px;border-bottom:1px solid #b6c3b7}.finder-actions .primary{box-shadow:none}.question{border-left:2px solid #567367}.core-page .option.selected{background:#edf3ed;border-color:#537362;box-shadow:inset 0 -2px #537362}.core-page .recommendation.first{box-shadow:none;border-color:#b6c3b7;border-top-color:var(--club-color,#35665b)}
+.records-cover,.club-record-cover{background:#192b32}.records-cover>div>span{color:#c5d5cc}.leader-ticket{background:#e5ebe7;transform:none}.club-rank b{color:#d4e4d9}.records-cover h2{font-weight:800}.record-coverage{background:#edf0e9}.top-five-table tbody tr:first-child{background:#f0f4ef}.top-five-table tbody tr:first-child .rank{background:#d8e6d9}.season-nav{font-size:12px;color:#63716b}
+footer{background:#192b32;color:#edf0ec;border-top:0}.footer-inner{padding-top:35px;padding-bottom:35px}.footer-inner strong{color:#f0f3ee}.footer-inner p,.footer-inner small{color:#b6c5c3}.footer-inner a{color:#d8e2dc}.footer-inner a:hover{text-decoration:underline}
+@media(max-width:1200px){.header-inner{gap:22px;padding:0 32px}.header nav{gap:19px}.brand{font-size:16px}.season-tag{display:none}}
+@media(max-width:900px){.header-inner{flex-wrap:wrap;gap:0;padding-top:19px}.brand{margin-bottom:17px}.header nav{width:100%;flex-basis:100%;justify-content:flex-start;overflow-x:auto;gap:25px}.header nav a{padding:0 0 15px;min-height:36px}}
+@media(max-width:760px){.header-inner{padding:17px 20px 0;min-height:0}.brand{font-size:16px}.brand-mark{width:28px;height:32px}.header nav{gap:23px}.header nav a{font-size:11px;padding-bottom:14px}.brand small{font-size:7px}.footer-inner{gap:22px}.magazine-cover h1{font-size:40px}.records-cover{flex-wrap:wrap}.leader-ticket{flex:1}.records-cover>div{min-width:0}}
