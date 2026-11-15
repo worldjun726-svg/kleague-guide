@@ -1,0 +1,123 @@
+/* 라이브 센터 · 경기 상세 · 로그인/팬 기능. 기존 editorial 색(--navy, --line, --blue, --muted)을 그대로 쓴다. */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.live-note{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:3px;padding:8px 12px;margin:0 0 18px}
+.live-note b{color:#b8452c;letter-spacing:.08em}
+.live-loading{display:flex;gap:10px;align-items:center;justify-content:center;padding:60px 0;color:var(--muted)}
+.live-group h2{font-size:15px;margin:22px 0 8px;display:flex;gap:8px;align-items:baseline}
+.live-group h2 small{color:var(--muted);font-weight:500}
+.live-list{padding:0;overflow:hidden}
+.live-row{display:grid;grid-template-columns:74px 1fr 76px 1fr 110px;align-items:center;gap:10px;padding:13px 16px;text-decoration:none;color:inherit;border-bottom:1px solid var(--line)}
+.live-row:last-child{border-bottom:0}
+.live-row:hover{background:#f3f4ef}
+.live-team{display:flex;gap:8px;align-items:center;min-width:0}
+.live-team.home{justify-content:flex-end;text-align:right}
+.live-team b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.live-score{text-align:center;font-weight:800;font-size:18px;font-variant-numeric:tabular-nums}
+.live-score i{font-style:normal;color:var(--muted);margin:0 5px}
+.live-xg{font-size:12px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.live-status{font-size:12px;font-weight:700;color:var(--muted);display:inline-flex;gap:6px;align-items:center;font-variant-numeric:tabular-nums}
+.live-status.live{color:#c2412a}
+.live-status.live i{width:7px;height:7px;border-radius:50%;background:#c2412a;animation:livepulse 1.4s infinite}
+@keyframes livepulse{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.live-status.live i{animation:none}}
+@media (max-width:640px){.live-row{grid-template-columns:52px 1fr 54px 1fr;padding:12px}.live-xg{display:none}.live-team .team-tile{display:none}}
+
+.live-board{text-align:center;padding:22px 18px}
+.live-board .eyebrow{margin-bottom:14px}
+.board-line{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center}
+.board-team{display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;color:inherit;font-size:15px}
+.board-score{display:flex;flex-direction:column;align-items:center;gap:6px}
+.board-score strong{font-size:40px;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.timeline{list-style:none;margin:18px auto 6px;padding:0;max-width:560px;display:grid;gap:6px;font-size:13px}
+.timeline li{display:flex;gap:8px;align-items:center}
+.timeline li.away{flex-direction:row-reverse;text-align:right}
+.timeline li>span{font-weight:700;color:var(--muted);min-width:30px;font-variant-numeric:tabular-nums}
+.timeline small{color:var(--muted)}
+.card{display:inline-block;width:9px;height:12px;border-radius:1px;background:#e5b52a}.card.red{background:#c2412a}
+
+.live-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;margin-top:18px;align-items:start}
+.live-main,.live-side{display:grid;gap:18px;min-width:0}
+@media (max-width:900px){.live-grid{grid-template-columns:1fr}}
+.live-match h3{font-size:15px;margin:0 0 12px;display:flex;gap:8px;align-items:center}
+.live-match h3 small{color:var(--muted);font-weight:500}
+.stat-bars{display:grid;gap:12px}
+.stat-bar{display:grid;grid-template-columns:52px 1fr 52px;row-gap:4px;align-items:center;font-size:13px;font-variant-numeric:tabular-nums}
+.stat-bar>span{text-align:center;color:var(--muted)}
+.stat-bar>b:last-of-type{text-align:right}
+.bar-track{grid-column:1/-1;display:flex;gap:3px;height:7px}
+.bar-track i{display:block;border-radius:2px;min-width:2px}
+.lineups{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:640px){.lineups{grid-template-columns:1fr}}
+.lineup{border-top:3px solid var(--club-color,var(--navy))}
+.lineup ol{list-style:none;margin:0;padding:0}
+.lineup li button{width:100%;display:grid;grid-template-columns:26px 30px 1fr auto;gap:6px;align-items:center;padding:7px 4px;border:0;border-bottom:1px solid var(--line);background:none;text-align:left;cursor:pointer;font-size:13px}
+.lineup li:last-child button{border-bottom:0}
+.lineup li button:hover{background:#f3f4ef}
+.lineup .no{font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
+.lineup .pos{font-size:11px;color:var(--muted)}
+.lineup em{font-style:normal;margin-left:4px}
+.rating{font-size:12px;padding:2px 6px;border-radius:2px;background:#eceee8;font-variant-numeric:tabular-nums}
+.rating.hi{background:var(--navy);color:#fff}
+.player-card-head{display:flex;gap:12px;align-items:center}
+.player-card-head .no{font-size:28px;font-weight:800;color:var(--muted);min-width:40px}
+.player-card-head h3{margin:0}
+.player-card-head p{margin:2px 0 0;font-size:12px;color:var(--muted)}
+.player-card-head .text-button{margin-left:auto}
+.player-card dl{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+.player-card dl div{border:1px solid var(--line);border-radius:3px;padding:8px}
+.player-card dt{font-size:11px;color:var(--muted)}
+.player-card dd{margin:2px 0 0;font-size:20px;font-weight:800;font-variant-numeric:tabular-nums}
+.player-card .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+/* 팬 기능 */
+.auth-button{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);background:#fff;border-radius:3px;padding:6px 10px;font:inherit;font-size:12px;font-weight:700;color:inherit;text-decoration:none;cursor:pointer;white-space:nowrap;margin-left:10px}
+.auth-user{display:inline-flex;align-items:center}
+.auth-icon{border:0;background:none;padding:6px;cursor:pointer;color:var(--muted);display:inline-flex}
+.auth-icon:hover{color:#c2412a}
+.account-dialog{border:1px solid var(--line);border-radius:4px;padding:28px;width:min(420px,calc(100vw - 32px));color:inherit}
+.account-dialog::backdrop{background:rgba(18,24,28,.45)}
+.account-dialog h2{margin:4px 0 12px}
+.dialog-close{position:absolute;top:12px;right:12px;border:0;background:none;cursor:pointer;color:var(--muted)}
+.login-form{display:grid;gap:8px}
+.login-form p{margin:0 0 6px;font-size:13px;color:var(--muted)}
+.login-form label{font-size:13px;font-weight:700}
+.login-form label small{font-weight:400;color:var(--muted)}
+.login-form input{border:1px solid var(--line);border-radius:3px;padding:10px;font:inherit}
+.login-form .button{margin-top:8px;justify-content:center}
+.login-reason{background:#f3f4ef;padding:8px 10px;border-radius:3px;color:inherit!important}
+.login-sent{text-align:center;display:grid;gap:8px;justify-items:center}
+.login-sent p{margin:0;font-size:14px}
+.form-error{color:#b8452c;font-size:13px;margin:4px 0 0}
+.account-off{font-size:13px;color:var(--muted);margin:0}
+.fan-zone{display:grid;gap:14px;margin-top:22px;justify-items:start}
+.fan-zone .comment-box{width:100%}
+.button.favorite{display:inline-flex;gap:6px;align-items:center}
+.button.favorite.on{color:#c2412a;border-color:#c2412a}
+.predict-options{display:grid;gap:8px;margin-top:10px}
+.predict-options button{position:relative;display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:3px;padding:10px 12px;font:inherit;font-size:13px;cursor:pointer;overflow:hidden;text-align:left}
+.predict-options button:disabled{cursor:default}
+.predict-options button>*{position:relative;z-index:1}
+.predict-options button i{position:absolute;inset:0 auto 0 0;background:#e9ece4;z-index:0}
+.predict-options button.mine{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
+.predict-options button small{position:absolute;right:56px;font-size:11px;color:var(--muted)}
+.predict-options b{font-variant-numeric:tabular-nums}
+.comment-box h3 small{font-weight:500;color:var(--muted)}
+.comment-form{display:grid;gap:6px}
+.comment-form textarea{border:1px solid var(--line);border-radius:3px;padding:10px;font:inherit;resize:vertical}
+.comment-form>div{display:flex;justify-content:space-between;align-items:center}
+.comment-form small{color:var(--muted);font-variant-numeric:tabular-nums}
+.comments{list-style:none;margin:12px 0 0;padding:0;display:grid}
+.comments li{border-top:1px solid var(--line);padding:10px 0}
+.comments li>div{display:flex;gap:8px;align-items:center;font-size:12px}
+.comments time{color:var(--muted)}
+.comments li>div .auth-icon{margin-left:auto}
+.comments p{margin:4px 0 0;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.my-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.my-grid h2{font-size:15px;margin:0 0 10px}
+.my-grid ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.live-match .panel,.predict-box,.comment-box,.fan-zone .panel,.my-page .panel,.my-grid .panel{padding:18px}
+.live-match .panel.live-board{padding:22px 18px}
+/* 첫 화면(영상 배경) 위에서는 로그인 버튼을 투명하게 */
+.is-landing .auth-button{background:transparent;border-color:#ffffff59;color:#fff}
+.is-landing .auth-button:hover{background:#ffffff1a}
+.is-landing .auth-icon{color:#d2dce0}

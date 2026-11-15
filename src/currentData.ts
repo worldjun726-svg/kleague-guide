@@ -1,4 +1,5 @@
 ﻿import type {Team,League} from './types';
+import {withBase} from './base.ts';
 export interface SeasonRow {teamId:string;league:League;rank:number;played:number;points:number;wins:number;draws:number;losses:number;gf:number;ga:number;gd:number;form:string[];group:'A'|'B'|null}
 export interface PlayerRecord {id:string;league:League;sourceRank:number;sourceUrl?:string;checkedAt?:string;name:string;sourceName:string;teamId:string;goals:number;assists:number;attackPoints:number;conceded:number|null;corners:number|null;fouls:number|null;shots:number|null;offsides:number|null;yellow:number|null;red:number|null;cleanSheets:number|null;appearances:number;substitutions:number|null}
 export interface CurrentSeason {teamLeaders:import('./TeamTopFive').TeamLeaders;season:number;retrievedAt:string;coverage:string;sources:Record<string,{url:string;asOf:string}>;teams:Team[];standings:SeasonRow[];players:PlayerRecord[]}
@@ -17,5 +18,5 @@ export function validateCurrent(raw:unknown):CurrentSeason {
  for(const key of ['team1','team2','player1','player2'])if(!d.sources[key]?.asOf||!d.sources[key]?.url?.startsWith('https://www.kleague.com/'))throw Error('기록의 기준일과 출처가 필요합니다.');
  return d;
 }
-export async function loadCurrentSeason(signal?:AbortSignal){const r=await fetch('/data/current-season.json',{signal});if(!r.ok)throw Error('현재 시즌 기록을 불러오지 못했습니다. 다시 시도해 주세요.');return validateCurrent(await r.json())}
+export async function loadCurrentSeason(signal?:AbortSignal){const r=await fetch(withBase('/data/current-season.json'),{signal});if(!r.ok)throw Error('현재 시즌 기록을 불러오지 못했습니다. 다시 시도해 주세요.');return validateCurrent(await r.json())}
 

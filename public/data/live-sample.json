@@ -1,0 +1,2469 @@
+{
+ "meta": {
+  "mode": "sample",
+  "note": "임의 생성 샘플 · 실제 경기 기록이 아닙니다",
+  "updatedAt": "2026-11-15T21:00:00+09:00",
+  "refresh": "1시간마다 갱신 예정 (데이터 출처 연결 전)",
+  "xgModel": "샘플 값"
+ },
+ "matches": [
+  {
+   "id": "k1-r36-seoul-gangwon",
+   "league": 1,
+   "round": 36,
+   "date": "2026-11-14",
+   "kickoff": "14:00",
+   "status": "FT",
+   "minute": null,
+   "home": "seoul",
+   "away": "gangwon",
+   "venue": "서울 홈구장",
+   "probabilities": [
+    50,
+    30,
+    20
+   ],
+   "score": [
+    0,
+    1
+   ],
+   "stats": {
+    "xg": [
+     1.08,
+     1.21
+    ],
+    "shots": [
+     13,
+     15
+    ],
+    "onTarget": [
+     5,
+     6
+    ],
+    "possession": [
+     38,
+     62
+    ],
+    "corners": [
+     6,
+     5
+    ],
+    "fouls": [
+     13,
+     15
+    ],
+    "passAccuracy": [
+     77,
+     80
+    ]
+   },
+   "events": [
+    {
+     "minute": 75,
+     "type": "goal",
+     "side": "away",
+     "player": "lp0019",
+     "assist": "lp0016",
+     "xg": 0.15
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-3-3",
+     "players": [
+      {
+       "id": "lp0001",
+       "name": "한서준",
+       "number": 1,
+       "pos": "GK",
+       "age": 20,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0002",
+       "name": "임도윤",
+       "number": 2,
+       "pos": "DF",
+       "age": 20,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0003",
+       "name": "안주원",
+       "number": 4,
+       "pos": "DF",
+       "age": 23,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0004",
+       "name": "장유찬",
+       "number": 5,
+       "pos": "DF",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0005",
+       "name": "송준서",
+       "number": 3,
+       "pos": "DF",
+       "age": 28,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0006",
+       "name": "박승현",
+       "number": 6,
+       "pos": "MF",
+       "age": 26,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0007",
+       "name": "황선우",
+       "number": 8,
+       "pos": "MF",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0008",
+       "name": "서지호",
+       "number": 10,
+       "pos": "MF",
+       "age": 26,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0009",
+       "name": "클리말라",
+       "number": 7,
+       "pos": "FW",
+       "age": 22,
+       "nation": "대한민국",
+       "playerId": "2026-1-2"
+      },
+      {
+       "id": "lp0010",
+       "name": "정승원",
+       "number": 9,
+       "pos": "FW",
+       "age": 21,
+       "nation": "대한민국",
+       "playerId": "2026-1-17"
+      },
+      {
+       "id": "lp0011",
+       "name": "이승모",
+       "number": 11,
+       "pos": "FW",
+       "age": 28,
+       "nation": "대한민국",
+       "playerId": "2026-1-22"
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "id": "lp0012",
+       "name": "황하준",
+       "number": 1,
+       "pos": "GK",
+       "age": 28,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0013",
+       "name": "임주원",
+       "number": 2,
+       "pos": "DF",
+       "age": 27,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0014",
+       "name": "류현우",
+       "number": 4,
+       "pos": "DF",
+       "age": 31,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0015",
+       "name": "송주원",
+       "number": 5,
+       "pos": "DF",
+       "age": 20,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0016",
+       "name": "홍선우",
+       "number": 3,
+       "pos": "DF",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0017",
+       "name": "황시우",
+       "number": 6,
+       "pos": "MF",
+       "age": 32,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0018",
+       "name": "조유찬",
+       "number": 8,
+       "pos": "MF",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0019",
+       "name": "오하준",
+       "number": 10,
+       "pos": "MF",
+       "age": 33,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0020",
+       "name": "김대원",
+       "number": 7,
+       "pos": "FW",
+       "age": 27,
+       "nation": "대한민국",
+       "playerId": "2026-1-10"
+      },
+      {
+       "id": "lp0021",
+       "name": "ABDALLAH HLEIHIL",
+       "number": 9,
+       "pos": "FW",
+       "age": 34,
+       "nation": "해외",
+       "playerId": "2026-1-13"
+      },
+      {
+       "id": "lp0022",
+       "name": "장재원",
+       "number": 11,
+       "pos": "FW",
+       "age": 20,
+       "nation": "대한민국",
+       "playerId": null
+      }
+     ]
+    },
+    "confirmed": true
+   },
+   "ratings": {
+    "lp0001": 6.7,
+    "lp0002": 6.1,
+    "lp0003": 6.8,
+    "lp0004": 6.3,
+    "lp0005": 6.0,
+    "lp0006": 6.0,
+    "lp0007": 6.9,
+    "lp0008": 6.6,
+    "lp0009": 5.9,
+    "lp0010": 7.1,
+    "lp0011": 6.2,
+    "lp0012": 6.2,
+    "lp0013": 5.8,
+    "lp0014": 6.2,
+    "lp0015": 6.6,
+    "lp0016": 7.6,
+    "lp0017": 6.2,
+    "lp0018": 6.5,
+    "lp0019": 6.8,
+    "lp0020": 6.8,
+    "lp0021": 6.2,
+    "lp0022": 6.3
+   }
+  },
+  {
+   "id": "k1-r36-ulsan-daejeon",
+   "league": 1,
+   "round": 36,
+   "date": "2026-11-14",
+   "kickoff": "14:00",
+   "status": "FT",
+   "minute": null,
+   "home": "ulsan",
+   "away": "daejeon",
+   "venue": "울산 홈구장",
+   "probabilities": [
+    46,
+    26,
+    28
+   ],
+   "score": [
+    3,
+    2
+   ],
+   "stats": {
+    "xg": [
+     0.82,
+     1.35
+    ],
+    "shots": [
+     11,
+     14
+    ],
+    "onTarget": [
+     5,
+     6
+    ],
+    "possession": [
+     51,
+     49
+    ],
+    "corners": [
+     4,
+     8
+    ],
+    "fouls": [
+     8,
+     14
+    ],
+    "passAccuracy": [
+     77,
+     88
+    ]
+   },
+   "events": [
+    {
+     "minute": 5,
+     "type": "goal",
+     "side": "home",
+     "player": "lp0032",
+     "assist": "lp0024",
+     "xg": 0.35
+    },
+    {
+     "minute": 33,
+     "type": "goal",
+     "side": "away",
+     "player": "lp0042",
+     "assist": "lp0035",
+     "xg": 0.07
+    },
+    {
+     "minute": 40,
+     "type": "yellow",
+     "side": "home",
+     "player": "lp0033"
+    },
+    {
+     "minute": 45,
+     "type": "yellow",
+     "side": "away",
+     "player": "lp0042"
+    },
+    {
+     "minute": 51,
+     "type": "goal",
+     "side": "away",
+     "player": "lp0040",
+     "assist": "lp0037",
+     "xg": 0.47
+    },
+    {
+     "minute": 52,
+     "type": "goal",
+     "side": "home",
+     "player": "lp0033",
+     "assist": "lp0026",
+     "xg": 0.12
+    },
+    {
+     "minute": 57,
+     "type": "goal",
+     "side": "home",
+     "player": "lp0031",
+     "assist": "lp0025",
+     "xg": 0.29
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-3-3",
+     "players": [
+      {
+       "id": "lp0023",
+       "name": "장현우",
+       "number": 1,
+       "pos": "GK",
+       "age": 33,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0024",
+       "name": "조시우",
+       "number": 2,
+       "pos": "DF",
+       "age": 24,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0025",
+       "name": "권유찬",
+       "number": 4,
+       "pos": "DF",
+       "age": 21,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0026",
+       "name": "강예준",
+       "number": 5,
+       "pos": "DF",
+       "age": 22,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0027",
+       "name": "권건우",
+       "number": 3,
+       "pos": "DF",
+       "age": 24,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0028",
+       "name": "송은찬",
+       "number": 6,
+       "pos": "MF",
+       "age": 20,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0029",
+       "name": "류주원",
+       "number": 8,
+       "pos": "MF",
+       "age": 26,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0030",
+       "name": "박서준",
+       "number": 10,
+       "pos": "MF",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0031",
+       "name": "야고",
+       "number": 7,
+       "pos": "FW",
+       "age": 23,
+       "nation": "대한민국",
+       "playerId": "2026-1-1"
+      },
+      {
+       "id": "lp0032",
+       "name": "이동경",
+       "number": 9,
+       "pos": "FW",
+       "age": 27,
+       "nation": "대한민국",
+       "playerId": "2026-1-4"
+      },
+      {
+       "id": "lp0033",
+       "name": "VINICIUS Do Amaral Alves MARCOS",
+       "number": 11,
+       "pos": "FW",
+       "age": 23,
+       "nation": "해외",
+       "playerId": "2026-1-26"
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-2-3-1",
+     "players": [
+      {
+       "id": "lp0034",
+       "name": "오예준",
+       "number": 1,
+       "pos": "GK",
+       "age": 26,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0035",
+       "name": "오시우",
+       "number": 2,
+       "pos": "DF",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0036",
+       "name": "오건우",
+       "number": 4,
+       "pos": "DF",
+       "age": 21,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0037",
+       "name": "권재원",
+       "number": 5,
+       "pos": "DF",
+       "age": 26,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0038",
+       "name": "신유찬",
+       "number": 3,
+       "pos": "DF",
+       "age": 26,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0039",
+       "name": "박주원",
+       "number": 6,
+       "pos": "MF",
+       "age": 28,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0040",
+       "name": "안재원",
+       "number": 8,
+       "pos": "MF",
+       "age": 30,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0041",
+       "name": "류우진",
+       "number": 10,
+       "pos": "MF",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0042",
+       "name": "정재희",
+       "number": 7,
+       "pos": "FW",
+       "age": 22,
+       "nation": "대한민국",
+       "playerId": "2026-1-12"
+      },
+      {
+       "id": "lp0043",
+       "name": "Diogo DE OLIVEIRA BARBOSA",
+       "number": 9,
+       "pos": "FW",
+       "age": 30,
+       "nation": "해외",
+       "playerId": "2026-1-15"
+      },
+      {
+       "id": "lp0044",
+       "name": "주민규",
+       "number": 11,
+       "pos": "FW",
+       "age": 20,
+       "nation": "대한민국",
+       "playerId": "2026-1-20"
+      }
+     ]
+    },
+    "confirmed": true
+   },
+   "ratings": {
+    "lp0023": 6.2,
+    "lp0024": 6.5,
+    "lp0025": 7.3,
+    "lp0026": 7.3,
+    "lp0027": 7.2,
+    "lp0028": 7.1,
+    "lp0029": 6.9,
+    "lp0030": 6.5,
+    "lp0031": 6.8,
+    "lp0032": 7.0,
+    "lp0033": 7.7,
+    "lp0034": 6.0,
+    "lp0035": 6.3,
+    "lp0036": 6.0,
+    "lp0037": 7.6,
+    "lp0038": 6.2,
+    "lp0039": 7.0,
+    "lp0040": 7.2,
+    "lp0041": 6.2,
+    "lp0042": 7.7,
+    "lp0043": 6.2,
+    "lp0044": 6.5
+   }
+  },
+  {
+   "id": "k1-r36-jeonbuk-incheon",
+   "league": 1,
+   "round": 36,
+   "date": "2026-11-15",
+   "kickoff": "16:30",
+   "status": "LIVE",
+   "minute": 67,
+   "home": "jeonbuk",
+   "away": "incheon",
+   "venue": "전북 홈구장",
+   "probabilities": [
+    33,
+    30,
+    37
+   ],
+   "score": [
+    0,
+    1
+   ],
+   "stats": {
+    "xg": [
+     1.09,
+     1.38
+    ],
+    "shots": [
+     12,
+     13
+    ],
+    "onTarget": [
+     4,
+     5
+    ],
+    "possession": [
+     53,
+     47
+    ],
+    "corners": [
+     5,
+     4
+    ],
+    "fouls": [
+     7,
+     12
+    ],
+    "passAccuracy": [
+     88,
+     81
+    ]
+   },
+   "events": [
+    {
+     "minute": 9,
+     "type": "goal",
+     "side": "away",
+     "player": "lp0061",
+     "assist": "lp0065",
+     "xg": 0.46
+    },
+    {
+     "minute": 51,
+     "type": "yellow",
+     "side": "home",
+     "player": "lp0048"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "3-4-3",
+     "players": [
+      {
+       "id": "lp0045",
+       "name": "정선우",
+       "number": 1,
+       "pos": "GK",
+       "age": 21,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0046",
+       "name": "권태윤",
+       "number": 2,
+       "pos": "DF",
+       "age": 28,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0047",
+       "name": "이재원",
+       "number": 4,
+       "pos": "DF",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0048",
+       "name": "김주원",
+       "number": 5,
+       "pos": "DF",
+       "age": 22,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0049",
+       "name": "권은찬",
+       "number": 3,
+       "pos": "DF",
+       "age": 31,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0050",
+       "name": "조재원",
+       "number": 6,
+       "pos": "MF",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0051",
+       "name": "정태윤",
+       "number": 8,
+       "pos": "MF",
+       "age": 21,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0052",
+       "name": "정태윤",
+       "number": 10,
+       "pos": "MF",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0053",
+       "name": "PEREIRA DA SILVA Tiago",
+       "number": 7,
+       "pos": "FW",
+       "age": 29,
+       "nation": "해외",
+       "playerId": "2026-1-7"
+      },
+      {
+       "id": "lp0054",
+       "name": "이승우",
+       "number": 9,
+       "pos": "FW",
+       "age": 29,
+       "nation": "대한민국",
+       "playerId": "2026-1-16"
+      },
+      {
+       "id": "lp0055",
+       "name": "조유찬",
+       "number": 11,
+       "pos": "FW",
+       "age": 30,
+       "nation": "대한민국",
+       "playerId": null
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "id": "lp0056",
+       "name": "한선우",
+       "number": 1,
+       "pos": "GK",
+       "age": 31,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0057",
+       "name": "최선우",
+       "number": 2,
+       "pos": "DF",
+       "age": 31,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0058",
+       "name": "한주원",
+       "number": 4,
+       "pos": "DF",
+       "age": 33,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0059",
+       "name": "신준서",
+       "number": 5,
+       "pos": "DF",
+       "age": 28,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0060",
+       "name": "최은찬",
+       "number": 3,
+       "pos": "DF",
+       "age": 24,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0061",
+       "name": "임지훈",
+       "number": 6,
+       "pos": "MF",
+       "age": 30,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0062",
+       "name": "오예준",
+       "number": 8,
+       "pos": "MF",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0063",
+       "name": "이승현",
+       "number": 10,
+       "pos": "MF",
+       "age": 29,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0064",
+       "name": "무고사",
+       "number": 7,
+       "pos": "FW",
+       "age": 21,
+       "nation": "대한민국",
+       "playerId": "2026-1-3"
+      },
+      {
+       "id": "lp0065",
+       "name": "Morgan James FERRIER",
+       "number": 9,
+       "pos": "FW",
+       "age": 21,
+       "nation": "해외",
+       "playerId": "2026-1-19"
+      },
+      {
+       "id": "lp0066",
+       "name": "조승현",
+       "number": 11,
+       "pos": "FW",
+       "age": 27,
+       "nation": "대한민국",
+       "playerId": null
+      }
+     ]
+    },
+    "confirmed": true
+   },
+   "ratings": {
+    "lp0045": 7.0,
+    "lp0046": 5.8,
+    "lp0047": 6.3,
+    "lp0048": 5.8,
+    "lp0049": 6.6,
+    "lp0050": 6.8,
+    "lp0051": 6.4,
+    "lp0052": 7.2,
+    "lp0053": 6.9,
+    "lp0054": 6.7,
+    "lp0055": 6.0,
+    "lp0056": 6.2,
+    "lp0057": 6.9,
+    "lp0058": 6.5,
+    "lp0059": 6.1,
+    "lp0060": 5.8,
+    "lp0061": 7.7,
+    "lp0062": 6.2,
+    "lp0063": 5.9,
+    "lp0064": 6.5,
+    "lp0065": 7.3,
+    "lp0066": 6.6
+   }
+  },
+  {
+   "id": "k1-r37-jeju-gimcheon",
+   "league": 1,
+   "round": 37,
+   "date": "2026-11-22",
+   "kickoff": "14:00",
+   "status": "NS",
+   "minute": null,
+   "home": "jeju",
+   "away": "gimcheon",
+   "venue": "제주 홈구장",
+   "probabilities": [
+    33,
+    30,
+    37
+   ],
+   "score": null,
+   "stats": null,
+   "events": [],
+   "lineups": {
+    "home": {
+     "formation": "4-3-3",
+     "players": [
+      {
+       "id": "lp0067",
+       "name": "김시윤",
+       "number": 1,
+       "pos": "GK",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0068",
+       "name": "서재원",
+       "number": 2,
+       "pos": "DF",
+       "age": 29,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0069",
+       "name": "한준서",
+       "number": 4,
+       "pos": "DF",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0070",
+       "name": "오예준",
+       "number": 5,
+       "pos": "DF",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0071",
+       "name": "강민준",
+       "number": 3,
+       "pos": "DF",
+       "age": 29,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0072",
+       "name": "안지호",
+       "number": 6,
+       "pos": "MF",
+       "age": 20,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0073",
+       "name": "이시우",
+       "number": 8,
+       "pos": "MF",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0074",
+       "name": "김민준",
+       "number": 10,
+       "pos": "MF",
+       "age": 20,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0075",
+       "name": "EMERSON RAMON BEZERRA OLIVEIRA",
+       "number": 7,
+       "pos": "FW",
+       "age": 28,
+       "nation": "해외",
+       "playerId": "2026-1-9"
+      },
+      {
+       "id": "lp0076",
+       "name": "이건희",
+       "number": 9,
+       "pos": "FW",
+       "age": 30,
+       "nation": "대한민국",
+       "playerId": "2026-1-24"
+      },
+      {
+       "id": "lp0077",
+       "name": "신하준",
+       "number": 11,
+       "pos": "FW",
+       "age": 27,
+       "nation": "대한민국",
+       "playerId": null
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "id": "lp0078",
+       "name": "강시우",
+       "number": 1,
+       "pos": "GK",
+       "age": 22,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0079",
+       "name": "최시윤",
+       "number": 2,
+       "pos": "DF",
+       "age": 27,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0080",
+       "name": "김하준",
+       "number": 4,
+       "pos": "DF",
+       "age": 30,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0081",
+       "name": "김지훈",
+       "number": 5,
+       "pos": "DF",
+       "age": 31,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0082",
+       "name": "박우진",
+       "number": 3,
+       "pos": "DF",
+       "age": 32,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0083",
+       "name": "권준서",
+       "number": 6,
+       "pos": "MF",
+       "age": 33,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0084",
+       "name": "장재원",
+       "number": 8,
+       "pos": "MF",
+       "age": 27,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0085",
+       "name": "한하준",
+       "number": 10,
+       "pos": "MF",
+       "age": 27,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0086",
+       "name": "윤우진",
+       "number": 7,
+       "pos": "FW",
+       "age": 23,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0087",
+       "name": "오도윤",
+       "number": 9,
+       "pos": "FW",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0088",
+       "name": "강현우",
+       "number": 11,
+       "pos": "FW",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": null
+      }
+     ]
+    },
+    "confirmed": false
+   }
+  },
+  {
+   "id": "k1-r37-anyang-pohang",
+   "league": 1,
+   "round": 37,
+   "date": "2026-11-22",
+   "kickoff": "14:00",
+   "status": "NS",
+   "minute": null,
+   "home": "anyang",
+   "away": "pohang",
+   "venue": "경기 홈구장",
+   "probabilities": [
+    32,
+    22,
+    46
+   ],
+   "score": null,
+   "stats": null,
+   "events": [],
+   "lineups": {
+    "home": {
+     "formation": "4-3-3",
+     "players": [
+      {
+       "id": "lp0089",
+       "name": "류지호",
+       "number": 1,
+       "pos": "GK",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0090",
+       "name": "김하준",
+       "number": 2,
+       "pos": "DF",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0091",
+       "name": "장지훈",
+       "number": 4,
+       "pos": "DF",
+       "age": 26,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0092",
+       "name": "홍재원",
+       "number": 5,
+       "pos": "DF",
+       "age": 27,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0093",
+       "name": "오우진",
+       "number": 3,
+       "pos": "DF",
+       "age": 32,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0094",
+       "name": "신우진",
+       "number": 6,
+       "pos": "MF",
+       "age": 21,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0095",
+       "name": "안태윤",
+       "number": 8,
+       "pos": "MF",
+       "age": 22,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0096",
+       "name": "윤유찬",
+       "number": 10,
+       "pos": "MF",
+       "age": 24,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0097",
+       "name": "Matheus OLIVEIRA SANTOS",
+       "number": 7,
+       "pos": "FW",
+       "age": 30,
+       "nation": "해외",
+       "playerId": "2026-1-5"
+      },
+      {
+       "id": "lp0098",
+       "name": "AIRTON MOISES SANTOS SOUSA",
+       "number": 9,
+       "pos": "FW",
+       "age": 33,
+       "nation": "해외",
+       "playerId": "2026-1-18"
+      },
+      {
+       "id": "lp0099",
+       "name": "안시윤",
+       "number": 11,
+       "pos": "FW",
+       "age": 33,
+       "nation": "대한민국",
+       "playerId": null
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "id": "lp0100",
+       "name": "장태윤",
+       "number": 1,
+       "pos": "GK",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0101",
+       "name": "송하준",
+       "number": 2,
+       "pos": "DF",
+       "age": 22,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0102",
+       "name": "오시윤",
+       "number": 4,
+       "pos": "DF",
+       "age": 32,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0103",
+       "name": "이민준",
+       "number": 5,
+       "pos": "DF",
+       "age": 26,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0104",
+       "name": "윤승현",
+       "number": 3,
+       "pos": "DF",
+       "age": 30,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0105",
+       "name": "최주원",
+       "number": 6,
+       "pos": "MF",
+       "age": 33,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0106",
+       "name": "송예준",
+       "number": 8,
+       "pos": "MF",
+       "age": 27,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0107",
+       "name": "오우진",
+       "number": 10,
+       "pos": "MF",
+       "age": 31,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0108",
+       "name": "이호재",
+       "number": 7,
+       "pos": "FW",
+       "age": 33,
+       "nation": "대한민국",
+       "playerId": "2026-1-11"
+      },
+      {
+       "id": "lp0109",
+       "name": "Carvalho Oliveira WANDERSON",
+       "number": 9,
+       "pos": "FW",
+       "age": 33,
+       "nation": "해외",
+       "playerId": "2026-1-30"
+      },
+      {
+       "id": "lp0110",
+       "name": "서은찬",
+       "number": 11,
+       "pos": "FW",
+       "age": 23,
+       "nation": "대한민국",
+       "playerId": null
+      }
+     ]
+    },
+    "confirmed": false
+   }
+  },
+  {
+   "id": "k1-r37-bucheon-gwangju",
+   "league": 1,
+   "round": 37,
+   "date": "2026-11-23",
+   "kickoff": "16:30",
+   "status": "NS",
+   "minute": null,
+   "home": "bucheon",
+   "away": "gwangju",
+   "venue": "경기 홈구장",
+   "probabilities": [
+    53,
+    25,
+    22
+   ],
+   "score": null,
+   "stats": null,
+   "events": [],
+   "lineups": {
+    "home": {
+     "formation": "4-3-3",
+     "players": [
+      {
+       "id": "lp0111",
+       "name": "안준서",
+       "number": 1,
+       "pos": "GK",
+       "age": 31,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0112",
+       "name": "신지훈",
+       "number": 2,
+       "pos": "DF",
+       "age": 23,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0113",
+       "name": "한재원",
+       "number": 4,
+       "pos": "DF",
+       "age": 24,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0114",
+       "name": "윤승현",
+       "number": 5,
+       "pos": "DF",
+       "age": 28,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0115",
+       "name": "정지훈",
+       "number": 3,
+       "pos": "DF",
+       "age": 26,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0116",
+       "name": "윤시윤",
+       "number": 6,
+       "pos": "MF",
+       "age": 29,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0117",
+       "name": "홍은찬",
+       "number": 8,
+       "pos": "MF",
+       "age": 32,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0118",
+       "name": "신민준",
+       "number": 10,
+       "pos": "MF",
+       "age": 33,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0119",
+       "name": "ISIDIO JEFFERSON FERNANDO",
+       "number": 7,
+       "pos": "FW",
+       "age": 26,
+       "nation": "해외",
+       "playerId": "2026-1-8"
+      },
+      {
+       "id": "lp0120",
+       "name": "VITOR GABRIEL CLAUDINO REGO FERREIRA",
+       "number": 9,
+       "pos": "FW",
+       "age": 25,
+       "nation": "해외",
+       "playerId": "2026-1-21"
+      },
+      {
+       "id": "lp0121",
+       "name": "이유찬",
+       "number": 11,
+       "pos": "FW",
+       "age": 23,
+       "nation": "대한민국",
+       "playerId": null
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "id": "lp0122",
+       "name": "정시윤",
+       "number": 1,
+       "pos": "GK",
+       "age": 32,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0123",
+       "name": "황시윤",
+       "number": 2,
+       "pos": "DF",
+       "age": 31,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0124",
+       "name": "서지훈",
+       "number": 4,
+       "pos": "DF",
+       "age": 21,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0125",
+       "name": "한건우",
+       "number": 5,
+       "pos": "DF",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0126",
+       "name": "안민준",
+       "number": 3,
+       "pos": "DF",
+       "age": 23,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0127",
+       "name": "조주원",
+       "number": 6,
+       "pos": "MF",
+       "age": 32,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0128",
+       "name": "이은찬",
+       "number": 8,
+       "pos": "MF",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0129",
+       "name": "서승현",
+       "number": 10,
+       "pos": "MF",
+       "age": 29,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0130",
+       "name": "John Warwick IREDALE",
+       "number": 7,
+       "pos": "FW",
+       "age": 26,
+       "nation": "해외",
+       "playerId": "2026-1-6"
+      },
+      {
+       "id": "lp0131",
+       "name": "문민서",
+       "number": 9,
+       "pos": "FW",
+       "age": 21,
+       "nation": "대한민국",
+       "playerId": "2026-1-25"
+      },
+      {
+       "id": "lp0132",
+       "name": "신창무",
+       "number": 11,
+       "pos": "FW",
+       "age": 20,
+       "nation": "대한민국",
+       "playerId": "2026-1-27"
+      }
+     ]
+    },
+    "confirmed": false
+   }
+  },
+  {
+   "id": "k2-r38-suwon-daegu",
+   "league": 2,
+   "round": 38,
+   "date": "2026-11-15",
+   "kickoff": "16:30",
+   "status": "FT",
+   "minute": null,
+   "home": "suwon",
+   "away": "daegu",
+   "venue": "경기 홈구장",
+   "probabilities": [
+    52,
+    28,
+    20
+   ],
+   "score": [
+    1,
+    0
+   ],
+   "stats": {
+    "xg": [
+     2.24,
+     0.84
+    ],
+    "shots": [
+     23,
+     10
+    ],
+    "onTarget": [
+     9,
+     3
+    ],
+    "possession": [
+     51,
+     49
+    ],
+    "corners": [
+     7,
+     4
+    ],
+    "fouls": [
+     16,
+     14
+    ],
+    "passAccuracy": [
+     73,
+     79
+    ]
+   },
+   "events": [
+    {
+     "minute": 26,
+     "type": "goal",
+     "side": "home",
+     "player": "lp0143",
+     "assist": "lp0136",
+     "xg": 0.11
+    },
+    {
+     "minute": 56,
+     "type": "yellow",
+     "side": "home",
+     "player": "lp0136"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-2-3-1",
+     "players": [
+      {
+       "id": "lp0133",
+       "name": "류시우",
+       "number": 1,
+       "pos": "GK",
+       "age": 30,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0134",
+       "name": "임현우",
+       "number": 2,
+       "pos": "DF",
+       "age": 30,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0135",
+       "name": "안태윤",
+       "number": 4,
+       "pos": "DF",
+       "age": 33,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0136",
+       "name": "윤도윤",
+       "number": 5,
+       "pos": "DF",
+       "age": 24,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0137",
+       "name": "강지훈",
+       "number": 3,
+       "pos": "DF",
+       "age": 23,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0138",
+       "name": "최지호",
+       "number": 6,
+       "pos": "MF",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0139",
+       "name": "박승현",
+       "number": 8,
+       "pos": "MF",
+       "age": 24,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0140",
+       "name": "오도윤",
+       "number": 10,
+       "pos": "MF",
+       "age": 33,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0141",
+       "name": "Luis Fabian MINA ZAPATA",
+       "number": 7,
+       "pos": "FW",
+       "age": 31,
+       "nation": "해외",
+       "playerId": "2026-2-1"
+      },
+      {
+       "id": "lp0142",
+       "name": "강현묵",
+       "number": 9,
+       "pos": "FW",
+       "age": 21,
+       "nation": "대한민국",
+       "playerId": "2026-2-21"
+      },
+      {
+       "id": "lp0143",
+       "name": "REIS SILVA MORAIS ISNAIRO",
+       "number": 11,
+       "pos": "FW",
+       "age": 26,
+       "nation": "해외",
+       "playerId": "2026-2-29"
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-2-3-1",
+     "players": [
+      {
+       "id": "lp0144",
+       "name": "조선우",
+       "number": 1,
+       "pos": "GK",
+       "age": 32,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0145",
+       "name": "장건우",
+       "number": 2,
+       "pos": "DF",
+       "age": 31,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0146",
+       "name": "황승현",
+       "number": 4,
+       "pos": "DF",
+       "age": 33,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0147",
+       "name": "박시우",
+       "number": 5,
+       "pos": "DF",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0148",
+       "name": "이지호",
+       "number": 3,
+       "pos": "DF",
+       "age": 26,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0149",
+       "name": "권민준",
+       "number": 6,
+       "pos": "MF",
+       "age": 31,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0150",
+       "name": "이은찬",
+       "number": 8,
+       "pos": "MF",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0151",
+       "name": "최하준",
+       "number": 10,
+       "pos": "MF",
+       "age": 22,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0152",
+       "name": "Jaehyeon GO",
+       "number": 7,
+       "pos": "FW",
+       "age": 30,
+       "nation": "해외",
+       "playerId": "2026-1-14"
+      },
+      {
+       "id": "lp0153",
+       "name": "Matheus Serafim Bonadiman",
+       "number": 9,
+       "pos": "FW",
+       "age": 30,
+       "nation": "해외",
+       "playerId": "2026-2-9"
+      },
+      {
+       "id": "lp0154",
+       "name": "EDGAR DA SILVA",
+       "number": 11,
+       "pos": "FW",
+       "age": 31,
+       "nation": "해외",
+       "playerId": "2026-2-11"
+      }
+     ]
+    },
+    "confirmed": true
+   },
+   "ratings": {
+    "lp0133": 6.6,
+    "lp0134": 6.3,
+    "lp0135": 7.1,
+    "lp0136": 6.7,
+    "lp0137": 6.9,
+    "lp0138": 6.7,
+    "lp0139": 6.4,
+    "lp0140": 6.3,
+    "lp0141": 6.9,
+    "lp0142": 6.9,
+    "lp0143": 7.5,
+    "lp0144": 6.9,
+    "lp0145": 6.9,
+    "lp0146": 6.8,
+    "lp0147": 6.1,
+    "lp0148": 5.9,
+    "lp0149": 6.8,
+    "lp0150": 7.0,
+    "lp0151": 6.8,
+    "lp0152": 6.3,
+    "lp0153": 5.9,
+    "lp0154": 6.1
+   }
+  },
+  {
+   "id": "k2-r38-suwonfc-seoule",
+   "league": 2,
+   "round": 38,
+   "date": "2026-11-15",
+   "kickoff": "16:30",
+   "status": "LIVE",
+   "minute": 23,
+   "home": "suwonfc",
+   "away": "seoule",
+   "venue": "경기 홈구장",
+   "probabilities": [
+    36,
+    28,
+    36
+   ],
+   "score": [
+    0,
+    0
+   ],
+   "stats": {
+    "xg": [
+     0.58,
+     0.16
+    ],
+    "shots": [
+     6,
+     3
+    ],
+    "onTarget": [
+     3,
+     1
+    ],
+    "possession": [
+     57,
+     43
+    ],
+    "corners": [
+     1,
+     1
+    ],
+    "fouls": [
+     3,
+     4
+    ],
+    "passAccuracy": [
+     77,
+     82
+    ]
+   },
+   "events": [
+    {
+     "minute": 17,
+     "type": "yellow",
+     "side": "away",
+     "player": "lp0170"
+    }
+   ],
+   "lineups": {
+    "home": {
+     "formation": "4-3-3",
+     "players": [
+      {
+       "id": "lp0155",
+       "name": "홍민준",
+       "number": 1,
+       "pos": "GK",
+       "age": 20,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0156",
+       "name": "강건우",
+       "number": 2,
+       "pos": "DF",
+       "age": 31,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0157",
+       "name": "송하준",
+       "number": 4,
+       "pos": "DF",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0158",
+       "name": "최선우",
+       "number": 5,
+       "pos": "DF",
+       "age": 29,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0159",
+       "name": "최도윤",
+       "number": 3,
+       "pos": "DF",
+       "age": 24,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0160",
+       "name": "신선우",
+       "number": 6,
+       "pos": "MF",
+       "age": 28,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0161",
+       "name": "조건우",
+       "number": 8,
+       "pos": "MF",
+       "age": 31,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0162",
+       "name": "송우진",
+       "number": 10,
+       "pos": "MF",
+       "age": 28,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0163",
+       "name": "MATHEUS HENRIQUE FRIZZO",
+       "number": 7,
+       "pos": "FW",
+       "age": 31,
+       "nation": "해외",
+       "playerId": "2026-2-3"
+      },
+      {
+       "id": "lp0164",
+       "name": "하정우",
+       "number": 9,
+       "pos": "FW",
+       "age": 31,
+       "nation": "대한민국",
+       "playerId": "2026-2-8"
+      },
+      {
+       "id": "lp0165",
+       "name": "윤승현",
+       "number": 11,
+       "pos": "FW",
+       "age": 22,
+       "nation": "대한민국",
+       "playerId": null
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-2-3-1",
+     "players": [
+      {
+       "id": "lp0166",
+       "name": "정현우",
+       "number": 1,
+       "pos": "GK",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0167",
+       "name": "이시윤",
+       "number": 2,
+       "pos": "DF",
+       "age": 21,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0168",
+       "name": "임승현",
+       "number": 4,
+       "pos": "DF",
+       "age": 27,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0169",
+       "name": "송준서",
+       "number": 5,
+       "pos": "DF",
+       "age": 27,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0170",
+       "name": "임예준",
+       "number": 3,
+       "pos": "DF",
+       "age": 33,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0171",
+       "name": "이승현",
+       "number": 6,
+       "pos": "MF",
+       "age": 28,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0172",
+       "name": "김우진",
+       "number": 8,
+       "pos": "MF",
+       "age": 26,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0173",
+       "name": "조재원",
+       "number": 10,
+       "pos": "MF",
+       "age": 20,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0174",
+       "name": "Elosman Euller SILVA CAVALCANTI",
+       "number": 7,
+       "pos": "FW",
+       "age": 26,
+       "nation": "해외",
+       "playerId": "2026-2-4"
+      },
+      {
+       "id": "lp0175",
+       "name": "박재용",
+       "number": 9,
+       "pos": "FW",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": "2026-2-5"
+      },
+      {
+       "id": "lp0176",
+       "name": "홍유찬",
+       "number": 11,
+       "pos": "FW",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      }
+     ]
+    },
+    "confirmed": true
+   },
+   "ratings": {
+    "lp0155": 7.1,
+    "lp0156": 6.9,
+    "lp0157": 6.8,
+    "lp0158": 6.3,
+    "lp0159": 6.2,
+    "lp0160": 6.4,
+    "lp0161": 6.2,
+    "lp0162": 6.2,
+    "lp0163": 7.1,
+    "lp0164": 6.6,
+    "lp0165": 7.2,
+    "lp0166": 6.9,
+    "lp0167": 6.2,
+    "lp0168": 5.9,
+    "lp0169": 6.6,
+    "lp0170": 6.4,
+    "lp0171": 6.4,
+    "lp0172": 7.1,
+    "lp0173": 6.0,
+    "lp0174": 7.1,
+    "lp0175": 6.3,
+    "lp0176": 6.2
+   }
+  },
+  {
+   "id": "k2-r39-busan-hwaseong",
+   "league": 2,
+   "round": 39,
+   "date": "2026-11-22",
+   "kickoff": "14:00",
+   "status": "NS",
+   "minute": null,
+   "home": "busan",
+   "away": "hwaseong",
+   "venue": "부산 홈구장",
+   "probabilities": [
+    30,
+    30,
+    40
+   ],
+   "score": null,
+   "stats": null,
+   "events": [],
+   "lineups": {
+    "home": {
+     "formation": "4-3-3",
+     "players": [
+      {
+       "id": "lp0177",
+       "name": "오하준",
+       "number": 1,
+       "pos": "GK",
+       "age": 29,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0178",
+       "name": "송민준",
+       "number": 2,
+       "pos": "DF",
+       "age": 27,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0179",
+       "name": "박선우",
+       "number": 4,
+       "pos": "DF",
+       "age": 22,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0180",
+       "name": "홍태윤",
+       "number": 5,
+       "pos": "DF",
+       "age": 22,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0181",
+       "name": "송도윤",
+       "number": 3,
+       "pos": "DF",
+       "age": 27,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0182",
+       "name": "류하준",
+       "number": 6,
+       "pos": "MF",
+       "age": 23,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0183",
+       "name": "한태윤",
+       "number": 8,
+       "pos": "MF",
+       "age": 33,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0184",
+       "name": "홍도윤",
+       "number": 10,
+       "pos": "MF",
+       "age": 26,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0185",
+       "name": "GABRIEL HONORIO RAMOS",
+       "number": 7,
+       "pos": "FW",
+       "age": 28,
+       "nation": "해외",
+       "playerId": "2026-2-15"
+      },
+      {
+       "id": "lp0186",
+       "name": "CRISTIAN RENATO GONALVES RIQUELME",
+       "number": 9,
+       "pos": "FW",
+       "age": 33,
+       "nation": "해외",
+       "playerId": "2026-2-20"
+      },
+      {
+       "id": "lp0187",
+       "name": "류시우",
+       "number": 11,
+       "pos": "FW",
+       "age": 22,
+       "nation": "대한민국",
+       "playerId": null
+      }
+     ]
+    },
+    "away": {
+     "formation": "4-4-2",
+     "players": [
+      {
+       "id": "lp0188",
+       "name": "권은찬",
+       "number": 1,
+       "pos": "GK",
+       "age": 34,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0189",
+       "name": "황시윤",
+       "number": 2,
+       "pos": "DF",
+       "age": 32,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0190",
+       "name": "조시윤",
+       "number": 4,
+       "pos": "DF",
+       "age": 28,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0191",
+       "name": "황민준",
+       "number": 5,
+       "pos": "DF",
+       "age": 23,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0192",
+       "name": "정승현",
+       "number": 3,
+       "pos": "DF",
+       "age": 28,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0193",
+       "name": "황도윤",
+       "number": 6,
+       "pos": "MF",
+       "age": 25,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0194",
+       "name": "권지훈",
+       "number": 8,
+       "pos": "MF",
+       "age": 26,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0195",
+       "name": "장선우",
+       "number": 10,
+       "pos": "MF",
+       "age": 20,
+       "nation": "대한민국",
+       "playerId": null
+      },
+      {
+       "id": "lp0196",
+       "name": "PLLANA Leonard",
+       "number": 7,
+       "pos": "FW",
+       "age": 31,
+       "nation": "해외",
+       "playerId": "2026-2-6"
+      },
+      {
+       "id": "lp0197",
+       "name": "SAVA PETROV",
+       "number": 9,
+       "pos": "FW",
+       "age": 24,
+       "nation": "해외",
+       "playerId": "2026-2-12"
+      },
+      {
+       "id": "lp0198",
+       "name": "황하준",
+       "number": 11,
+       "pos": "FW",
+       "age": 33,
+       "nation": "대한민국",
+       "playerId": null
+      }
+     ]
+    },
+    "confirmed": false
+   }
+  }
+ ]
+}
