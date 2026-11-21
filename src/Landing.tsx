@@ -43,7 +43,7 @@ export default function Landing({data}:{data:Dataset}){
     <p className="landing-eyebrow"><span/>YOUR NEXT FAVORITE TEAM</p>
     <h1 id="landing-title">축구를 보는 순간,<br/>응원이 시작된다.</h1>
     <p className="landing-description">어느 팀을 응원할지, 어떤 경기를 볼지.<br/>당신의 취향과 데이터로 만나는 K리그.</p>
-    <div className="landing-actions"><a className="landing-cta" href="#/finder">나의 팀 찾기<ArrowRight size={19}/></a><a className="landing-secondary" href="#/first">K리그 처음이세요? 첫 직관 가이드<ArrowRight size={17}/></a><a className="landing-secondary" href="#/matches">시즌 기록 둘러보기<ArrowRight size={17}/></a></div>
+    <div className="landing-actions"><a className="landing-cta" href="#/finder">나의 팀 찾기<ArrowRight size={19}/></a><a className="landing-secondary" href="#/lounge">K리그 처음이세요? 직관 라운지<ArrowRight size={17}/></a><a className="landing-secondary" href="#/matches">시즌 기록 둘러보기<ArrowRight size={17}/></a></div>
    </div>
    <div className="landing-bottom"><button onClick={explore}>가이드 살펴보기<ArrowDown size={17}/></button><span>{data.meta.season} 시즌 <i/> SEASON JOURNAL</span></div>
   </section>
@@ -52,7 +52,7 @@ export default function Landing({data}:{data:Dataset}){
    <div className="landing-features">
     <a href="#/finder"><div className="feature-icon"><Heart size={25}/><span>01</span></div><h3>나의 팀 찾기</h3><p>사는 지역, 좋아하는 경기, 마음이 가는 팀.<br/>세 가지 취향으로 응원 후보를 만나세요.</p><strong>취향으로 시작하기<ArrowRight size={18}/></strong></a>
     <a href="#/schedule"><div className="feature-icon"><CalendarDays size={25}/><span>02</span></div><h3>일정 · 프리뷰</h3><p>이번 주말 경기와 중계, 예매처를 확인하고<br/>기록으로 정리한 관전 포인트를 챙기세요.</p><strong>다음 경기 보기<ArrowRight size={18}/></strong></a>
-    <a href="#/first"><div className="feature-icon"><Ticket size={25}/><span>03</span></div><h3>첫 직관 가이드</h3><p>좌석, 준비물, 응원 매너부터 선배 팬 꿀팁까지.<br/>처음 가는 경기장도 든든하게.</p><strong>첫 직관 준비하기<ArrowRight size={18}/></strong></a>
+    <a href="#/lounge"><div className="feature-icon"><Ticket size={25}/><span>03</span></div><h3>직관 라운지</h3><p>선배 팬에게 묻고, 직관 꿀팁을 나누는 커뮤니티.<br/>첫 직관 가이드와 체크리스트도 함께.</p><strong>라운지 들어가기<ArrowRight size={18}/></strong></a>
     <a href="#/center"><div className="feature-icon"><Shield size={25}/><span>04</span></div><h3>승강 센터</h3><p>잔류와 승격까지 필요한 조건을 살펴보세요.<br/>다음 경기에 응원할 이유가 더해집니다.</p><strong>우리 팀의 조건 보기<ArrowRight size={18}/></strong></a>
    </div>
   </section>

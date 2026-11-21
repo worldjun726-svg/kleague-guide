@@ -2,7 +2,7 @@ import {useEffect,useState,type CSSProperties} from 'react';
 import {Ticket,Armchair,Backpack,Megaphone,HeartHandshake,ArrowRight,MessageCircleQuestion,Sparkles,CalendarDays,Check} from 'lucide-react';
 import type {Team} from './types';
 import {go,Tile} from './components';
-import {CommentBox} from './Account';
+import {CommentBox,useAccount} from './Account';
 import {sampleTips,TIP_TOPICS} from './firstVisitSample';
 import './firstVisit.css';
 
@@ -20,13 +20,32 @@ const CHECKLIST=['경기 고르고 예매하기','좌석 구역 정하기','팀 
 function readChecks():boolean[]{try{const v=JSON.parse(localStorage.getItem(CHECK_KEY)||'[]');return CHECKLIST.map((_,i)=>v[i]===true)}catch{return CHECKLIST.map(()=>false)}}
 
 export default function FirstVisit({teams,teamId}:{teams:Team[];teamId?:string}){
+ const {user,ready}=useAccount();
+ if(!ready)return null;
+ if(!user)return <LoungeGate/>;
+ return <Lounge teams={teams} teamId={teamId}/>;
+}
+
+// 비로그인: 라운지에서 할 수 있는 일을 소개하고 로그인으로 안내한다.
+function LoungeGate(){
+ const {openLogin}=useAccount();
+ return <div className="first-visit"><section className="first-hero lounge-gate">
+  <p className="eyebrow">K LEAGUE MATCHDAY LOUNGE · 직관 라운지</p>
+  <h1>로그인 후<br/>이용할 수 있어요.</h1>
+  <p>직관 라운지는 K리그 팬들이 직관 꿀팁을 나누고, 처음 오는 팬의 질문에 답해 주는 커뮤니티예요. 이메일만 있으면 비밀번호 없이 바로 들어올 수 있어요.</p>
+  <ul className="lounge-gate-list"><li><MessageCircleQuestion size={18}/>팀별 선배 팬 꿀팁 보기 · 질문하기</li><li><Ticket size={18}/>첫 직관 다섯 단계 가이드</li><li><Check size={18}/>나만의 직관 체크리스트</li></ul>
+  <div className="first-hero-actions"><button className="button primary" onClick={()=>openLogin('직관 라운지는 로그인 후 이용할 수 있어요.')}>로그인하고 라운지 들어가기<ArrowRight size={16}/></button><a className="button" href="#/finder"><Sparkles size={16}/>먼저 나의 팀 찾기</a></div>
+ </section></div>;
+}
+
+function Lounge({teams,teamId}:{teams:Team[];teamId?:string}){
  const team=teams.find(t=>t.id===teamId);
  const [checks,setChecks]=useState(readChecks);
  useEffect(()=>{try{localStorage.setItem(CHECK_KEY,JSON.stringify(checks))}catch{}},[checks]);
  const done=checks.filter(Boolean).length;
  return <div className="first-visit">
   <section className="first-hero">
-   <p className="eyebrow">WELCOME TO K LEAGUE · 첫 직관 가이드</p>
+   <p className="eyebrow">K LEAGUE MATCHDAY LOUNGE · 직관 라운지</p>
    <h1>K리그, 처음이어도<br/>괜찮아요.</h1>
    <p>경기 고르기부터 좌석, 준비물, 응원 매너까지. 그리고 먼저 다녀온 팬들이 남긴 진짜 꿀팁까지 한곳에서 확인하세요.</p>
    <div className="first-hero-actions"><a className="button primary" href="#/finder"><Sparkles size={16}/>아직 팀이 없다면, 나의 팀 찾기</a><a className="button" href="#first-tips"><MessageCircleQuestion size={16}/>선배 팬 꿀팁 보기</a></div>
@@ -51,7 +70,7 @@ export default function FirstVisit({teams,teamId}:{teams:Team[];teamId?:string})
   <section id="first-tips" className="first-tips" aria-labelledby="first-tips-title">
    <h2 id="first-tips-title" className="first-section-title">선배 팬 꿀팁 · 질문하기</h2>
    <p className="first-tips-lead">팀을 고르면 그 팀 팬들이 남긴 꿀팁을 볼 수 있어요. 처음이라 궁금한 것도 편하게 물어보세요.</p>
-   <div className="first-team-picker" role="list">{teams.map(t=><button role="listitem" key={t.id} className={t.id===team?.id?'selected':''} aria-pressed={t.id===team?.id} onClick={()=>go('first/'+t.id)} title={t.name}><Tile team={t} small/><span>{t.short}</span></button>)}</div>
+   <div className="first-team-picker" role="list">{teams.map(t=><button role="listitem" key={t.id} className={t.id===team?.id?'selected':''} aria-pressed={t.id===team?.id} onClick={()=>go('lounge/'+t.id)} title={t.name}><Tile team={t} small/><span>{t.short}</span></button>)}</div>
    {team?<TeamTips team={team}/>:<p className="first-pick-hint">위에서 팀을 골라 주세요. 응원팀이 아직 없다면 <a href="#/finder">나의 팀 찾기</a>부터 해 보세요.</p>}
   </section>
  </div>;

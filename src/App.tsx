@@ -15,7 +15,7 @@ import {Empty} from './components';
 import {LiveCenter,LiveMatchPage,useLive} from './Live';
 import {AccountProvider,AuthButton,FavoriteButton,CommentBox,MyPage} from './Account';
 import {SchedulePage,GamePage,useGameName} from './Schedule';
-const NAV=[['live','라이브'],['schedule','일정·예매'],['matches','순위'],['big','빅매치'],['team','팀'],['final','파이널 시뮬레이터'],['center','승강 센터'],['finder','나의 팀 찾기'],['first','첫 직관']];
+const NAV=[['live','라이브'],['schedule','일정·예매'],['lounge','직관 라운지'],['matches','순위'],['big','빅매치'],['team','팀'],['final','파이널 시뮬레이터'],['center','승강 센터'],['finder','나의 팀 찾기']];
 function MyRoute({data}:{data:CurrentSeason}){
  const {data:live}=useLive();
  const team=(id:string)=>data.teams.find(t=>t.id===id);
@@ -33,7 +33,7 @@ function AppBody(){
  useEffect(()=>{const controller=new AbortController();setError('');Promise.all([loadSampleDataset(controller.signal),loadCurrentSeason(controller.signal)]).then(([s,c])=>{setSample(s);setCurrent(c)}).catch(e=>{if(e.name!=='AbortError')setError(e.message)});return()=>controller.abort()},[retry]);
  if(error||!sample||!current)return <div className="load-screen"><span className="brand-mark"><Goal/></span><h1>K리그 관전 가이드</h1>{error?<><p role="alert">{error}</p><button className="button primary" onClick={()=>setRetry(n=>n+1)}><RefreshCw size={16}/>다시 불러오기</button></>:<><LoaderCircle className="spin"/><p>이번 시즌 기록을 준비하고 있어요.</p></>}</div>;
  const data:Dataset={...sample,teams:current.teams,matches:[],forecasts:{},seasonStats:current.standings,meta:{...sample.meta,mode:'verified',season:current.season,source:'K리그 공식 순위·선수 기록',sourceUrl:'https://www.kleague.com/record/player.do',model:'',simulationRuns:0,generatedAt:current.retrievedAt}};
- const active=['player','players'].includes(page)?'team':page==='match'?'matches':page==='game'?'schedule':page;
+ const active=page==='first'?'lounge':['player','players'].includes(page)?'team':page==='match'?'matches':page==='game'?'schedule':page;
  const teamMap=Object.fromEntries(current.teams.map(t=>[t.id,t]));
  const contextTeam=current.teams.find(t=>t.id===param);
  const dates=[...new Set(Object.values(current.sources).map(s=>s.asOf))].sort();
@@ -45,7 +45,7 @@ function AppBody(){
  {['matches','team','players','player'].includes(page)&&<div className="season-nav"><a href="#/matches">시즌 순위</a><span>/</span><a href="#/team">팀 기록</a><span>/</span><a href="#/players">선수 기록</a></div>}
  {page==='matches'&&<><SeasonRecords data={current}/><p className="fine">경기별 일정·결과와 경기 리포트는 <a href="#/schedule">일정·예매</a>에서 볼 수 있습니다. · <a href="#/archive">2025 예시 경기 아카이브</a></p></>}
  {page==='finder'&&<Finder key={param||'own'} data={data} share={param}/>}
- {page==='first'&&<FirstVisit teams={current.teams} teamId={param}/>}
+ {(page==='lounge'||page==='first')&&<FirstVisit teams={current.teams} teamId={param}/>}
  {page==='team'&&<><CurrentTeam key={param} data={current} id={param} initialTab={roundParam}/>{(()=>{const t=current.teams.find(x=>x.id===param)||current.teams[0];return <div className="fan-zone"><FavoriteButton kind="team" id={t.id} label={t.name}/><CommentBox target={'team:'+t.id} title={t.short+' 응원 글'}/></div>})()}</>}
  {page==='players'&&<PlayerBrowser data={current}/>}
  {page==='player'&&<><PlayerPage data={current} id={param}/>{param&&current.players.some(p=>p.id===param)&&<div className="fan-zone"><FavoriteButton kind="player" id={param} label={current.players.find(p=>p.id===param)!.name}/></div>}</>}
@@ -61,7 +61,7 @@ function AppBody(){
  {page==='center'&&demo&&<Center data={sample} teamId={sample.teams.some(t=>t.id===param)?param:undefined} roundParam={roundParam}/>}
  {page==='archive'&&<Home data={sample}/>}
  {page==='match'&&<MatchPage data={sample} id={param}/>}
- {!['landing','live','schedule','game','me','matches','finder','team','big','final','center','match','players','player','archive'].includes(page)&&<Empty>찾을 수 없는 화면입니다. <a href="#/matches">시즌 순위로 돌아가기</a></Empty>}
+ {!['landing','live','schedule','game','me','matches','finder','team','big','final','center','match','players','player','archive','lounge','first'].includes(page)&&<Empty>찾을 수 없는 화면입니다. <a href="#/matches">시즌 순위로 돌아가기</a></Empty>}
  </main><footer><div className="container footer-inner"><div><strong>K리그 관전 가이드</strong><p>숫자를 이해하면, 응원이 더 재미있어집니다.</p></div><div><strong>데이터 출처</strong><p>K리그 공식 기록 / FootyStats 팀별 TOP 5 · {current.season}시즌 · 수집일 {current.retrievedAt}</p><small>각 기록의 원문 링크와 기준일은 상세 화면에서 확인할 수 있습니다.</small><p><a href="#/players">선수 기록 보기</a> · <a href="#/schedule">경기 일정·리포트</a> · <a href="#/archive">2025 예시 경기</a></p></div></div></footer></div>;
 }
 
