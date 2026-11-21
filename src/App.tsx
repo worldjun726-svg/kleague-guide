@@ -7,12 +7,10 @@ import {SeasonRecords,CurrentTeam,PlayerBrowser,PlayerPage} from './Records';
 import {Home,MatchPage} from './HomeTeam';
 import Finder from './Finder';
 import FirstVisit from './FirstVisit';
+import {RaceCenter,RaceBigMatches,RaceSimulator} from './RaceTabs';
 import PlayerRanks from './PlayerRanks';
-import {MainNav,NAV} from './Nav';
+import {MainNav} from './Nav';
 import Landing from './Landing';
-import {FinalSimulator} from './Forecasts';
-import BigMatches from './MatchGuide';
-import Center from './Center';
 import {Empty} from './components';
 import {LiveCenter,LiveMatchPage,useLive} from './Live';
 import {AccountProvider,AuthButton,FavoriteButton,CommentBox,MyPage} from './Account';
@@ -38,7 +36,7 @@ function AppBody(){
  const teamMap=Object.fromEntries(current.teams.map(t=>[t.id,t]));
  const contextTeam=current.teams.find(t=>t.id===param);
  const dates=[...new Set(Object.values(current.sources).map(s=>s.asOf))].sort();
- const pending=['big','final','center'].includes(page),samplePage=(pending&&demo)||page==='archive'||page==='match';
+ const samplePage=page==='archive'||page==='match';
  return <div className={'app-shell '+(page==='landing'?'is-landing':'')}><a className="skip-link" href="#main" onClick={e=>{e.preventDefault();document.getElementById('main')?.focus()}}>본문으로 이동</a><header className="header"><div className="header-inner"><a className="brand" href="#/"><span className="brand-mark"><Goal size={24}/></span><span>K리그 <b>관전 가이드</b><small>YOUR NEXT FAVORITE TEAM</small></span></a><MainNav active={active} teamId={contextTeam?.id}/><span className="season-tag"><i/>{samplePage?'2025 예시':current.season+' SEASON'}</span><AuthButton/></div></header>
  {(samplePage||page==='live')&&<div className="demo-banner"><Info size={14}/><span>{samplePage?<><strong>SAMPLE EDITION · 2025</strong> · 기능 체험용 예시 데이터입니다.</>:<><strong>LIVE CENTER · PREVIEW</strong> · 실제 경기 연동 전 미리보기 화면입니다.</>}</span></div>}
  <main id="main" tabIndex={-1} className="container" data-core={page}>
@@ -55,11 +53,9 @@ function AppBody(){
  {page==='live'&&!param&&<LiveCenter teams={teamMap}/>}
  {page==='live'&&param&&<LiveMatchPage id={param} teams={teamMap}/>}
  {page==='me'&&<MyRoute data={current}/>}
- {page==='center'&&<p className="record-coverage">2026 규정 안내: 김천상무는 최종 순위와 관계없이 강등되며, K리그2 1·2위는 자동 승격합니다. 기존 예시의 고정 방식과 다릅니다. <a href="https://www.kleague.com/about/competition.do" target="_blank" rel="noreferrer">공식 대회요강</a></p>}
- {pending&&<section className="panel current-notice"><h2>{current.season} {NAV.find(([id])=>id===page)?.[1]}</h2><p>현재 시즌의 전체 경기 일정과 결과별 계산 자료가 아직 연결되지 않았습니다. 현재 순위만으로 빅매치 지수나 매직넘버를 계산하지 않습니다.</p><p>아래 예시 체험은 2025 합성 데이터와 초기 고정 승강 규칙을 사용합니다. 2026시즌 승강 판정에 사용할 수 없습니다.</p><a className="text-button" href={'#/team/'+(contextTeam?.id||'seoul')}>현재 시즌 팀 기록 보기</a><br/><button className="button" onClick={()=>setDemo(v=>!v)}>{demo?'예시 체험 닫기':'2025 예시 기능 체험하기'}</button></section>}
- {page==='big'&&demo&&<BigMatches data={sample} teamId={sample.teams.some(t=>t.id===param)?param:undefined} roundParam={roundParam}/>}
- {page==='final'&&demo&&<FinalSimulator data={sample}/>}
- {page==='center'&&demo&&<Center data={sample} teamId={sample.teams.some(t=>t.id===param)?param:undefined} roundParam={roundParam}/>}
+ {page==='big'&&<RaceBigMatches teams={teamMap}/>}
+ {page==='final'&&<RaceSimulator teams={teamMap}/>}
+ {page==='center'&&<RaceCenter teams={teamMap}/>}
  {page==='archive'&&<Home data={sample}/>}
  {page==='match'&&<MatchPage data={sample} id={param}/>}
  {!['landing','live','schedule','game','me','matches','finder','team','big','final','center','match','players','player','archive','lounge','first'].includes(page)&&<Empty>찾을 수 없는 화면입니다. <a href="#/matches">시즌 순위로 돌아가기</a></Empty>}

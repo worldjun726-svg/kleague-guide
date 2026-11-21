@@ -1,0 +1,71 @@
+/* 승강 레이스 (Race.tsx) */
+.race{display:grid;gap:20px}
+.race-state{display:flex;align-items:center;justify-content:center;gap:10px;padding:70px 0;color:var(--muted)}
+.race-rules{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;background:#fff;border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:10px;padding:12px 16px;font-size:13px;color:#4a5b70}
+.race-rules b{color:var(--navy);margin-right:6px}
+.race-rules a{display:inline-flex;align-items:center;gap:3px;color:var(--blue);font-weight:700;font-size:12px}
+.race-meta{font-size:12px;color:var(--muted)}
+.race-block{display:grid;gap:10px}
+.race-block h2{font-size:19px}
+.race-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.race-table th{font-size:11px;font-weight:700;color:var(--muted);text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);background:#fafbfc;white-space:nowrap}
+.race-table td{padding:10px 12px;border-bottom:1px solid #eef1f5;font-size:13px;vertical-align:middle}
+.race-table tr:last-child td{border-bottom:0}
+.race-table .num{text-align:right;font-variant-numeric:tabular-nums}
+.race-table .strong{font-weight:900;font-size:15px;color:var(--navy)}
+.race-table tr.zone-up td:first-child{box-shadow:inset 4px 0 0 #2f8f5b}
+.race-table tr.zone-po td:first-child{box-shadow:inset 4px 0 0 #3175d5}
+.race-table tr.zone-down td:first-child{box-shadow:inset 4px 0 0 #c4462f}
+.race-rank{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#eef1f5;font-weight:800;font-size:12px}
+.race-team{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.race-flag{display:inline-block;margin-left:6px;font-size:10px;font-weight:700;color:#c4462f;border:1px solid currentColor;border-radius:999px;padding:0 6px}
+.race-magic{display:flex;flex-wrap:wrap;gap:4px}
+.magic{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:3px 9px;white-space:nowrap;cursor:help}
+.magic.done{background:#e3f4ea;color:#21704a}
+.magic.live{background:#fff1e6;color:#b45a1f}
+.magic.out{background:#f1f2f4;color:#7a8491}
+.magic.info{background:#fde8e4;color:#b03a26}
+.race-bar{display:inline-flex;align-items:center;gap:8px;min-width:120px}
+.race-bar i{display:block;height:8px;border-radius:4px;flex:0 0 auto;max-width:70px}
+.race-bar.up i{background:#2f8f5b}.race-bar.down i{background:#c4462f}.race-bar.po i{background:#3175d5}
+.race-bar b{font-size:12px;font-variant-numeric:tabular-nums}
+.race-method{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.race-method p{font-size:13px;color:#4a5b70}
+/* 빅매치 */
+.rbig-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.rbig-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px;border-top:4px solid var(--home)}
+.rbig-card.hot{box-shadow:0 10px 26px rgba(196,70,47,.12);border-color:#f0c9bd;border-top-color:#c4462f}
+.rbig-card .rbig-top,.rbig-card .rbig-foot{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}
+.rbig-index{display:inline-flex;align-items:center;gap:4px;color:var(--navy);font-weight:800;white-space:nowrap}
+.rbig-card.hot .rbig-index{color:#c4462f}
+.rbig-teams{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px}
+.rbig-teams>div{display:flex;flex-direction:column;align-items:center;gap:4px}
+.rbig-teams>div:last-child{align-items:center}
+.rbig-teams small{color:var(--muted);font-size:11px}
+.rbig-vs{font-weight:900;color:#c0c8d2}
+.rbig-odds{display:flex;gap:2px;font-size:11px;font-weight:700;border-radius:8px;overflow:hidden}
+.rbig-odds span{min-width:0;padding:6px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;color:#fff}
+.rbig-odds span:nth-child(1){background:var(--home)}.rbig-odds span:nth-child(2){background:#8a96a5}.rbig-odds span:nth-child(3){background:var(--away)}
+.rbig-stake{display:flex;flex-direction:column;gap:1px;font-size:12px;background:#f7f8fa;border-radius:8px;padding:8px 10px}
+.rbig-stake b{color:var(--navy)}
+.rbig-stake span{color:#4a5b70}
+.rbig-stake.quiet{color:var(--muted)}
+.rbig-card .rbig-foot a{display:inline-flex;align-items:center;gap:3px;color:var(--blue);font-weight:700}
+/* 시뮬레이터 */
+.sim-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
+.sim-fixtures,.sim-result{display:grid;gap:12px}
+.sim-result{position:sticky;top:16px}
+.sim-head{display:flex;justify-content:space-between;align-items:center}
+.sim-round h3{font-size:13px;color:var(--muted);margin:6px 0}
+.sim-match{display:grid;gap:6px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px}
+.sim-date{font-size:11px;color:var(--muted)}
+.sim-pick{display:grid;grid-template-columns:1fr 54px 1fr;gap:6px}
+.sim-pick button{display:flex;align-items:center;justify-content:center;gap:4px;border:1px solid var(--line);background:#fafbfc;border-radius:8px;padding:8px 6px;font-size:12px;font-weight:700;min-height:42px}
+.sim-pick button .race-team b{font-weight:700}
+.sim-pick button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.race-table.compact td{padding:8px 10px}
+.sim-prob{display:inline-flex;align-items:baseline;gap:5px;font-variant-numeric:tabular-nums}
+.sim-prob small{font-size:10px;font-weight:700}
+.sim-prob small.good{color:#21704a}.sim-prob small.bad{color:#c4462f}
+@media(max-width:900px){.sim-layout{grid-template-columns:1fr}.sim-result{position:static}}
+@media(max-width:640px){.race-table .hide-sm{display:none}.race-table th,.race-table td{padding:8px 7px}.race-bar{min-width:90px}.race-bar i{max-width:40px}.rbig-list{grid-template-columns:1fr}}
