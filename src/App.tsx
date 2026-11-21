@@ -7,6 +7,8 @@ import {SeasonRecords,CurrentTeam,PlayerBrowser,PlayerPage} from './Records';
 import {Home,MatchPage} from './HomeTeam';
 import Finder from './Finder';
 import FirstVisit from './FirstVisit';
+import Sidebar from './Sidebar';
+import {withBase} from './base';
 import LiveScores from './LiveScores';
 import {RaceCenter,RaceBigMatches,RaceSimulator} from './RaceTabs';
 import PlayerRanks from './PlayerRanks';
@@ -38,9 +40,9 @@ function AppBody(){
  const contextTeam=current.teams.find(t=>t.id===param);
  const dates=[...new Set(Object.values(current.sources).map(s=>s.asOf))].sort();
  const samplePage=page==='archive'||page==='match';
- return <div className={'app-shell '+(page==='landing'?'is-landing':'')}><a className="skip-link" href="#main" onClick={e=>{e.preventDefault();document.getElementById('main')?.focus()}}>본문으로 이동</a><header className="header"><div className="header-inner"><a className="brand" href="#/"><span className="brand-mark"><Goal size={24}/></span><span>K리그 <b>관전 가이드</b><small>YOUR NEXT FAVORITE TEAM</small></span></a><MainNav active={active} teamId={contextTeam?.id}/><span className="season-tag"><i/>{samplePage?'2025 예시':current.season+' SEASON'}</span><AuthButton/></div></header>
+ return <div className={'app-shell '+(page==='landing'?'is-landing':'')}><a className="skip-link" href="#main" onClick={e=>{e.preventDefault();document.getElementById('main')?.focus()}}>본문으로 이동</a><header className="header"><div className="header-inner"><a className="brand" href="#/" aria-label="K LEAGUE GUIDE 홈"><img className="brand-emblem" src={withBase('/media/league/kleague-emblem.png')} alt=""/><span className="brand-word">K LEAGUE<b>GUIDE</b></span></a><MainNav active={active} teamId={contextTeam?.id}/><span className="season-tag"><i/>{samplePage?'2025 예시':current.season+' SEASON'}</span><AuthButton/></div></header>
  {samplePage&&<div className="demo-banner"><Info size={14}/><span>{samplePage?<><strong>SAMPLE EDITION · 2025</strong> · 기능 체험용 예시 데이터입니다.</>:<><strong>LIVE CENTER · PREVIEW</strong> · 실제 경기 연동 전 미리보기 화면입니다.</>}</span></div>}
- <main id="main" tabIndex={-1} className="container" data-core={page}>
+ <div className="shell-body"><Sidebar teams={current.teams} standings={current.standings} activeTeam={page==='team'?param:undefined}/><main id="main" tabIndex={-1} className="container" data-core={page}>
  {page==='landing'&&<Landing data={data}/>}
  {['matches','team','players','player'].includes(page)&&<div className="season-nav"><a href="#/matches">시즌 순위</a><span>/</span><a href="#/team">팀 기록</a><span>/</span><a href="#/players">선수 기록</a></div>}
  {page==='matches'&&<><SeasonRecords data={current}/><p className="fine">경기별 일정·결과와 경기 리포트는 <a href="#/schedule">일정·예매</a>에서 볼 수 있습니다. · <a href="#/archive">2025 예시 경기 아카이브</a></p></>}
@@ -59,6 +61,6 @@ function AppBody(){
  {page==='archive'&&<Home data={sample}/>}
  {page==='match'&&<MatchPage data={sample} id={param}/>}
  {!['landing','live','schedule','game','me','matches','finder','team','big','final','center','match','players','player','archive','lounge','first'].includes(page)&&<Empty>찾을 수 없는 화면입니다. <a href="#/matches">시즌 순위로 돌아가기</a></Empty>}
- </main><footer><div className="container footer-inner"><div><strong>K리그 관전 가이드</strong><p>숫자를 이해하면, 응원이 더 재미있어집니다.</p></div><div><strong>데이터 출처</strong><p>K리그 공식 기록 / FootyStats 팀별 TOP 5 · {current.season}시즌 · 수집일 {current.retrievedAt}</p><small>각 기록의 원문 링크와 기준일은 상세 화면에서 확인할 수 있습니다.</small><p><a href="#/players">선수 기록 보기</a> · <a href="#/schedule">경기 일정·리포트</a> · <a href="#/archive">2025 예시 경기</a></p></div></div></footer></div>;
+ </main></div><footer><div className="container footer-inner"><div><strong>K LEAGUE GUIDE</strong><p>숫자를 이해하면, 응원이 더 재미있어집니다.</p></div><div><strong>데이터 출처</strong><p>K리그 공식 기록 / FootyStats 팀별 TOP 5 · {current.season}시즌 · 수집일 {current.retrievedAt}</p><small>각 기록의 원문 링크와 기준일은 상세 화면에서 확인할 수 있습니다.</small><p><a href="#/players">선수 기록 보기</a> · <a href="#/schedule">경기 일정·리포트</a> · <a href="#/archive">2025 예시 경기</a></p></div></div></footer></div>;
 }
 

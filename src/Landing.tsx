@@ -4,6 +4,8 @@ import type {Dataset} from './types';
 import {Tile} from './components';
 import {withBase} from './base.ts';
 
+// 첫 화면 영상 재생 속도. 1보다 작을수록 장면이 천천히 넘어간다.
+const HERO_SPEED=0.5;
 function HeroMedia({src,poster}:{src?:string|null;poster?:string|null}){
  const video=useRef<HTMLVideoElement>(null);
  const [reduced,setReduced]=useState(()=>matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -24,7 +26,7 @@ function HeroMedia({src,poster}:{src?:string|null;poster?:string|null}){
   <div className="landing-stage" aria-hidden="true">
    <div className="stadium-glow"/><div className="stadium-field"><span className="field-midline"/><span className="field-circle"/><span className="field-goal left"/><span className="field-goal right"/></div>
    {poster&&<img key={poster} className="landing-poster" src={poster} alt="" onError={e=>{e.currentTarget.hidden=true}}/>}
-   {src&&!failed&&<video ref={video} className={'landing-video '+(ready?'ready':'')} src={src} poster={poster??undefined} autoPlay={!reduced} muted loop playsInline preload="metadata" tabIndex={-1} disablePictureInPicture onLoadedData={()=>setReady(true)} onPlay={()=>setPlaying(true)} onPause={()=>setPlaying(false)} onError={()=>{setFailed(true);setPlaying(false)}}/>}
+   {src&&!failed&&<video ref={video} className={'landing-video '+(ready?'ready':'')} src={src} poster={poster??undefined} autoPlay={!reduced} muted loop playsInline preload="metadata" tabIndex={-1} disablePictureInPicture onLoadedData={e=>{e.currentTarget.playbackRate=HERO_SPEED;setReady(true)}} onRateChange={e=>{if(e.currentTarget.playbackRate!==HERO_SPEED)e.currentTarget.playbackRate=HERO_SPEED}} onPlay={()=>setPlaying(true)} onPause={()=>setPlaying(false)} onError={()=>{setFailed(true);setPlaying(false)}}/>}
   </div>
   <div className="landing-media-tools">
    {src&&!failed?<button className="media-control" onClick={toggle} aria-label={playing?'배경 영상 일시정지':'배경 영상 재생'}>{playing?<Pause size={14}/>:<Play size={14}/>}<span>{playing?'영상 일시정지':'영상 재생'}</span></button>:null}

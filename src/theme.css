@@ -1,91 +1,135 @@
-/* 사이트 공통 테마 — 흰 바탕 + 강한 레드 포인트의 스포츠 미디어 스타일.
+/* 사이트 공통 테마 — 어두운 크롬(헤더·사이드바) + 옐로 포인트 + 밝은 회색 본문 위 둥근 흰 카드.
    다른 CSS 뒤에 불러와서(main.tsx 마지막) 공통 요소의 색·모양을 덮어쓴다. */
-:root{--red:#e8423b;--red-dark:#c9302a;--ink:#1d2127;--navy:#1d2127;--blue:#e8423b;--orange:#e8423b;--line:#e8eaee;--muted:#7b818a;--soft:#f5f6f8}
-body,.app-shell{background:#fff;color:var(--ink)}
-.app-shell main.container{background:transparent}
+:root{--chrome:#1b1d21;--chrome-2:#23262b;--chrome-3:#2e3238;--accent:#ffd21f;--accent-ink:#1b1d21;--bg:#eef0f3;
+ --ink:#1b1d21;--navy:#1b1d21;--red:#9a6f00;--blue:#9a6f00;--orange:#ffd21f;--line:#e4e7eb;--muted:#7b818a;--soft:#f5f6f8}
+body,.app-shell{background:var(--bg);color:var(--ink)}
+.app-shell .latin,.brand-word,.app-shell .page-heading .eyebrow{font-family:'Barlow Condensed','Noto Sans KR',sans-serif}
 
 /* ── 헤더 ── */
-.app-shell .header,.app-shell.is-landing .header{position:sticky;top:0;inset:auto;z-index:30;background:#fff;color:var(--ink);border:0;border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,.03)}
-.app-shell .header-inner,.app-shell.is-landing .header-inner{border-bottom:0;min-height:72px}
-.app-shell .brand,.app-shell.is-landing .brand{color:var(--ink)}
-.app-shell .brand b{color:var(--red)}
-.app-shell .brand small,.app-shell.is-landing .brand small{color:#9aa0a8}
-.app-shell .brand-mark,.app-shell.is-landing .brand-mark{background:var(--red);color:#fff;border:0;border-radius:8px;width:36px;height:36px;display:grid;place-items:center;transform:skewX(-8deg)}
-.app-shell .brand-mark svg{transform:skewX(8deg)}
-.app-shell .header nav .nav-group,.app-shell .header nav .nav-group-wrap a.nav-group,.app-shell.is-landing .header nav .nav-group,.app-shell.is-landing .header nav .nav-group-wrap a.nav-group{color:#3a3f46;font-weight:700}
-.app-shell .header nav .nav-group:hover,.app-shell .header nav .nav-group.active,.app-shell .header nav .nav-group-wrap.open .nav-group,.app-shell .header nav .nav-group-wrap a.nav-group.active,.app-shell .header nav .nav-group-wrap a.nav-group:hover{color:var(--red)}
-.app-shell .header nav .nav-group.active:after{background:var(--red);height:3px}
-.app-shell .header nav .nav-menu a.nav-item.active{background:#fdecea;color:var(--red)}
-.app-shell .auth-button{border-color:var(--line);color:var(--ink)}
-.app-shell .season-tag{border-color:var(--line);color:var(--muted)}.app-shell .season-tag i{background:var(--red)}
+.app-shell .header,.app-shell.is-landing .header{position:sticky;top:0;inset:auto;z-index:30;background:var(--chrome);color:#fff;border:0;box-shadow:0 1px 0 #ffffff12}
+.app-shell .header-inner,.app-shell.is-landing .header-inner{max-width:none;border-bottom:0;min-height:68px;padding:0 28px}
+.app-shell .brand,.app-shell.is-landing .brand{display:flex;align-items:center;gap:11px;color:#fff;margin-bottom:0}
+.brand-emblem{height:40px;width:auto;background:#fff;border-radius:9px;padding:4px 5px;display:block}
+.brand-word{font-style:italic;font-weight:900;font-size:27px;line-height:1;letter-spacing:.3px;text-transform:uppercase;color:#fff;white-space:nowrap}
+.brand-word b{color:var(--accent);margin-left:7px;font-weight:900}
+.app-shell .header nav .nav-group,.app-shell .header nav .nav-group-wrap a.nav-group,.app-shell.is-landing .header nav .nav-group,.app-shell.is-landing .header nav .nav-group-wrap a.nav-group{color:#b9bec5;font-weight:700;text-transform:none}
+.app-shell .header nav .nav-group:hover,.app-shell .header nav .nav-group.active,.app-shell .header nav .nav-group-wrap.open .nav-group,.app-shell .header nav .nav-group-wrap a.nav-group.active,.app-shell .header nav .nav-group-wrap a.nav-group:hover,.app-shell.is-landing .header nav .nav-group-wrap a.nav-group:hover{color:#fff}
+.app-shell .header nav .nav-group.active:after{background:var(--accent);height:3px;border-radius:3px 3px 0 0}
+.app-shell .header nav .nav-menu{background:var(--chrome-2);border-color:var(--chrome-3);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.app-shell .header nav .nav-menu a.nav-item{color:#e8eaed}
+.app-shell .header nav .nav-menu a.nav-item small{color:#8e949c}
+.app-shell .header nav .nav-menu a.nav-item:hover{background:var(--chrome-3);color:#fff}
+.app-shell .header nav .nav-menu a.nav-item.active{background:#ffd21f1f;color:var(--accent)}
+.app-shell .auth-button,.app-shell.is-landing .auth-button{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:800;border-radius:8px}
+.app-shell .auth-icon{color:#b9bec5}
+.app-shell .season-tag{display:none}
+
+/* ── 본문 + 사이드바 ── */
+.shell-body{display:grid;grid-template-columns:252px minmax(0,1fr);align-items:start;min-height:calc(100vh - 68px)}
+.shell-body main.container,.app-shell.is-landing .shell-body main.container{width:auto;max-width:1320px;margin:0;padding:28px 32px 70px;min-width:0}
+.sidebar{position:sticky;top:68px;height:calc(100vh - 68px);overflow-y:auto;background:var(--chrome-2);color:#cfd3d8;padding:16px 12px 24px;display:grid;gap:18px;align-content:start;scrollbar-width:thin;scrollbar-color:#454a52 transparent}
+.side-live{display:flex;align-items:center;gap:10px;background:var(--chrome-3);border-radius:12px;padding:12px;color:#fff}
+.side-live:hover{background:#383d44}
+.side-live>span:nth-child(2){flex:1;display:grid}
+.side-live b{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-size:17px;letter-spacing:.5px}
+.side-live small{font-size:11px;color:#9aa0a8}
+.side-live-dot{width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center}
+.side-league h2{margin:0 4px 8px;background:#fff;border-radius:8px;padding:6px 10px;display:flex}
+.side-league h2 img{height:22px;width:auto}
+.side-league ul{list-style:none;margin:0;padding:0;display:grid;gap:1px}
+.side-league a{display:flex;align-items:center;gap:9px;padding:6px 8px;border-radius:8px;font-size:13px;color:#d6d9dd}
+.side-league a:hover{background:var(--chrome-3);color:#fff}
+.side-league a.active{background:#ffd21f1f;color:var(--accent)}
+.side-rank{width:18px;text-align:right;font-size:11px;color:#7d838b;font-variant-numeric:tabular-nums}
+.side-name{flex:1;font-weight:600}
+.side-pts{font-size:12px;font-weight:800;color:#9aa0a8;font-variant-numeric:tabular-nums}
+.side-league .team-tile.small{width:22px;height:22px}
+.side-note{font-size:10px;color:#6f757d;margin:0 6px}
 
 /* ── 제목 ── */
-.app-shell .page-heading .eyebrow,.app-shell .eyebrow{color:var(--red);font-weight:800;letter-spacing:1.5px}
+.app-shell .page-heading .eyebrow,.app-shell .eyebrow{color:#9a6f00;font-weight:800;letter-spacing:1.5px;font-size:13px}
 .app-shell .page-heading h1{color:var(--ink);font-weight:900}
-.app-shell .page-heading h1:after{content:'';display:block;width:44px;height:4px;background:var(--red);margin-top:12px}
+.app-shell .page-heading h1:after{content:'';display:block;width:44px;height:5px;background:var(--accent);border-radius:3px;margin-top:12px}
 .app-shell .section-title h2{color:var(--ink)}
 
 /* ── 버튼 ── */
-.app-shell .button{border-radius:4px;border:1.5px solid var(--line);background:#fff;color:var(--ink);font-weight:700}
-.app-shell .button:hover{border-color:var(--red);color:var(--red)}
-.app-shell .button.primary{background:var(--red);border-color:var(--red);color:#fff}
-.app-shell .button.primary:hover{background:var(--red-dark);border-color:var(--red-dark);color:#fff}
-.app-shell .text-button{color:var(--red)}
+.app-shell .button{border-radius:10px;border:1.5px solid var(--line);background:#fff;color:var(--ink);font-weight:700}
+.app-shell .button:hover{border-color:var(--ink);color:var(--ink)}
+.app-shell .button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.app-shell .button.primary:hover{background:#ffdc4d;border-color:#ffdc4d;color:var(--accent-ink)}
+.app-shell .text-button{color:#8a6400}
 
-/* ── 탭: 흰 알약 모양, 선택된 항목은 레드 글씨 + 밑줄 ── */
-.app-shell .tabs{background:#fff;border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.07);padding:4px 6px;width:auto;display:inline-flex;gap:2px;border:1px solid #f0f1f3}
-.app-shell .tabs button{background:transparent;border:0;border-radius:999px;color:#6b7179;font-weight:700;padding:9px 18px;flex:none;box-shadow:none;position:relative}
-.app-shell .tabs button.selected{background:transparent;color:var(--red);box-shadow:none}
-.app-shell .tabs button.selected:after{content:'';position:absolute;left:50%;bottom:4px;width:18px;height:2px;margin-left:-9px;background:var(--red);border-radius:2px}
+/* ── 탭: 흰 바탕 위 옐로 선택 ── */
+.app-shell .tabs{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(17,24,39,.06);padding:4px;width:auto;display:inline-flex;gap:2px;border:0}
+.app-shell .tabs button{background:transparent;border:0;border-radius:9px;color:#6b7179;font-weight:700;padding:9px 18px;flex:none;box-shadow:none}
+.app-shell .tabs button.selected{background:var(--chrome);color:#fff;box-shadow:none}
+.app-shell .tabs button.selected:after{display:none}
 
 /* ── 카드·표 ── */
-.app-shell .panel{border-radius:8px;border-color:var(--line);box-shadow:0 6px 20px rgba(17,24,39,.05)}
+.app-shell .panel,.app-shell .rank-table,.app-shell .race-table,.app-shell .ls-card,.app-shell .rbig-card,.app-shell .race-focus,.app-shell .first-checklist,.app-shell .share-card-section,.app-shell .rank-leader,.app-shell .first-steps li,.app-shell .race-rules,.app-shell .race-method{border-radius:14px;border-color:transparent;box-shadow:0 2px 12px rgba(17,24,39,.06)}
+.app-shell .rank-leader{border-top:4px solid var(--club-color)}
+.app-shell .rank-leader.selected,.app-shell .sim-pick button.on{background:var(--chrome);border-color:var(--chrome);color:#fff}
+.app-shell .rank-no.r1{background:var(--accent);color:var(--accent-ink)}
 .app-shell .pill{border-radius:999px}
-.app-shell .pill.blue{background:#fdecea;color:var(--red)}
-.app-shell .record-source a,.app-shell .fine a{color:var(--red)}
-.rank-leader.selected,.app-shell .sim-pick button.on{background:var(--ink);border-color:var(--ink)}
-.app-shell .rank-no.r1{background:var(--red)}
+.app-shell .pill.blue{background:#fff4c2;color:#7a5800}
+.app-shell .record-source a,.app-shell .fine a{color:#8a6400}
+.app-shell .ls-card.live{border-top-color:#ff4d4f}
+.app-shell .fc-bar i,.app-shell .ls-dot.on{background:var(--accent)}
+.app-shell .fc-progress b,.app-shell .rf-kpis .prob b{color:var(--ink)}
+.app-shell .rf-kpis .prob{background:#fff4c2}
+.app-shell .fc-icon{background:#fff4c2;color:#7a5800}
+.app-shell .fc-group label input:checked+.first-check-box{background:var(--chrome);border-color:var(--chrome)}
 
 /* ── 푸터 ── */
-.app-shell .footer{background:var(--ink)}
+.app-shell footer{background:var(--chrome);color:#b9bec5}
 
-/* ── 첫 화면: 사선으로 잘린 사진 + 오른쪽 레드 헤드라인 ── */
-.app-shell .landing-hero{min-height:600px;min-height:min(640px,calc(100svh - 72px));padding:70px 0 90px;background:#fff;color:var(--ink);display:flex;align-items:center}
-.app-shell .landing-stage{right:auto;width:58%;clip-path:polygon(0 0,100% 0,80% 100%,0 100%);z-index:0}
-.app-shell .landing-shade{display:none}
-.app-shell .landing-copy{position:relative;z-index:1;width:40%;max-width:540px;margin:0 5% 0 auto}
-.app-shell .landing-eyebrow{color:var(--ink);letter-spacing:2px}
-.app-shell .landing-eyebrow>span{background:var(--red)}
-.app-shell .landing-copy h1{color:var(--red);font-size:clamp(34px,3.7vw,56px);letter-spacing:-2px;line-height:1.25}
-.app-shell .landing-description{color:#5a6068;font-size:15px}
-.app-shell .landing-actions{flex-wrap:wrap;gap:14px 24px}
-.app-shell .landing-cta{background:#fff;color:var(--red);border:2px solid var(--red);border-radius:4px;padding:14px 20px;min-height:0;gap:24px}
-.app-shell .landing-cta:hover{background:var(--red);color:#fff;transform:none}
-.app-shell .landing-secondary{color:var(--ink);border-bottom-color:var(--red);font-weight:700}
-.app-shell .landing-bottom{border-top:1px solid var(--line);padding:16px 5%;max-width:none;background:#fff;z-index:2}
-.app-shell .landing-bottom>button{color:var(--ink)}
-.app-shell .landing-bottom>span{color:var(--muted)}.app-shell .landing-bottom i{background:var(--red)}
-.app-shell .landing-media-tools{right:auto;left:24px;bottom:110px}
-/* 레드 띠: 기능 소개를 흰 카드로 */
-.app-shell .landing-intro{max-width:none;width:100%;background:var(--red);color:#fff;padding:80px max(32px,calc((100% - 1240px)/2)) 90px}
-.app-shell .landing-intro-heading>p{color:#ffd9d6}
-.app-shell .landing-intro-heading h2{color:#fff}
-.app-shell .landing-intro-heading>span{color:#ffe4e2}
-.app-shell .landing-features{gap:18px;margin-top:44px}
-.app-shell .landing-features>a{background:#fff;color:var(--ink);border:0;border-radius:6px;padding:26px 24px 22px;box-shadow:0 14px 30px rgba(120,20,15,.25);display:flex;flex-direction:column;transition:transform .2s}
+/* ── 첫 화면: 둥근 영상 카드 + 컬러 타일 ── */
+.app-shell .landing-page{background:transparent}
+.app-shell .landing-hero{position:relative;min-height:520px;border-radius:20px;overflow:hidden;padding:64px 56px;background:#111;color:#fff;display:flex;align-items:center;box-shadow:0 18px 40px rgba(17,24,39,.18)}
+.app-shell .landing-stage{inset:0;width:auto;clip-path:none;z-index:-3}
+.app-shell .landing-shade{display:block;background:linear-gradient(90deg,#0b0d10f7 0%,#0b0d10eb 38%,#0b0d1080 58%,#0b0d1000 78%)}
+.app-shell .landing-copy{width:auto;max-width:560px;margin:0;position:relative;z-index:1}
+.app-shell .landing-eyebrow{color:var(--accent);letter-spacing:2px;margin-bottom:18px}
+.app-shell .landing-eyebrow>span{background:var(--accent)}
+.app-shell .landing-copy h1{color:#fff;font-size:clamp(34px,3.8vw,58px);letter-spacing:-2px;line-height:1.2}
+.app-shell .landing-description{color:#d2d6db;font-size:15px}
+.app-shell .landing-actions{flex-wrap:wrap;gap:14px 22px;margin-top:30px}
+.app-shell .landing-cta{background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:15px 22px;min-height:0;gap:22px}
+.app-shell .landing-cta:hover{background:#ffdc4d;transform:none}
+.app-shell .landing-secondary{color:#fff;border-bottom-color:var(--accent);font-weight:700}
+.app-shell .landing-bottom{display:none}
+.app-shell .landing-media-tools{right:24px;left:auto;bottom:22px}
+.app-shell .landing-video,.app-shell .landing-poster{object-position:70% 50%}
+.app-shell .landing-intro{max-width:none;width:auto;background:transparent;color:var(--ink);padding:44px 0 20px}
+.app-shell .landing-intro-heading>p{color:#9a6f00}
+.app-shell .landing-intro-heading h2{color:var(--ink);font-size:34px}
+.app-shell .landing-intro-heading>span{color:var(--muted)}
+.app-shell .landing-features{gap:16px;margin-top:30px}
+.app-shell .landing-features>a{color:#fff;border:0;border-radius:16px;padding:22px 20px;box-shadow:0 10px 24px rgba(17,24,39,.12);display:flex;flex-direction:column;transition:transform .2s;min-height:220px}
+.app-shell .landing-features>a:nth-child(1){background:#14b886}
+.app-shell .landing-features>a:nth-child(2){background:#ff8a3d}
+.app-shell .landing-features>a:nth-child(3){background:#ff5a5f}
+.app-shell .landing-features>a:nth-child(4){background:var(--accent);color:var(--accent-ink)}
 .app-shell .landing-features>a:hover{transform:translateY(-4px)}
-.app-shell .landing-features .feature-icon{color:var(--red)}
-.app-shell .landing-features p{color:#6b7179;flex:1}
-.app-shell .landing-features strong{color:var(--red)}
-.app-shell .landing-club-section{background:#fff}
-.app-shell .landing-club-section a{color:var(--red)}
+.app-shell .landing-features .feature-icon{color:inherit;opacity:.95}
+.app-shell .landing-features .feature-icon span{color:inherit;opacity:.7}
+.app-shell .landing-features h3{color:inherit}
+.app-shell .landing-features p{color:inherit;opacity:.88;flex:1}
+.app-shell .landing-features strong{color:inherit}
+.app-shell .landing-club-section{background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(17,24,39,.06);margin:20px 0 0;max-width:none;width:auto}
+.app-shell .landing-club-section a{color:#8a6400}
+.app-shell .landing-sample-note{color:var(--muted)}
 
+@media(max-width:1100px){
+ .shell-body{grid-template-columns:1fr}
+ .sidebar{display:none}
+ .shell-body main.container,.app-shell.is-landing .shell-body main.container{padding:20px 18px 60px}
+}
 @media(max-width:900px){
- .app-shell .landing-hero{display:block;min-height:0;padding:0 0 70px}
- .app-shell .landing-stage{position:relative;inset:auto;width:100%;height:300px;clip-path:polygon(0 0,100% 0,100% 82%,0 100%)}
- .app-shell .landing-copy{width:auto;max-width:none;margin:28px 22px 0}
- .app-shell .landing-media-tools{top:240px;bottom:auto}
+ .app-shell .header-inner,.app-shell.is-landing .header-inner{padding:12px 18px 0}
+ .brand-word{font-size:23px}.brand-emblem{height:34px}
+ .app-shell .landing-hero{padding:40px 24px;min-height:440px}
  .app-shell .landing-features{grid-template-columns:1fr 1fr}
 }
-@media(max-width:560px){.app-shell .landing-features{grid-template-columns:1fr}.app-shell .tabs button{padding:8px 12px}}
-.app-shell .landing-video,.app-shell .landing-poster{object-position:82% 50%}
+@media(max-width:560px){.app-shell .landing-features{grid-template-columns:1fr}.app-shell .tabs button{padding:8px 12px}.brand-word{font-size:21px}}
+@media(max-width:900px){.app-shell .landing-shade{background:linear-gradient(180deg,#0b0d10d9 0%,#0b0d10c7 60%,#0b0d10ee 100%)}}
