@@ -9,6 +9,13 @@ export const supabase: SupabaseClient | null = accountEnabled
   ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {auth: {flowType: 'pkce', detectSessionInUrl: true, persistSession: true}})
   : null;
 
+// 선호 구단: 가입할 때 고르고, 내 페이지에서 바꾼다. Supabase 계정의 user_metadata.club 에 저장한다.
+export const clubOf = (u: User | null) => (u?.user_metadata?.club as string | undefined) || null;
+export async function setPreferredClub(club: string) {
+  if (!supabase) throw new Error('로그인 기능이 아직 설정되지 않았습니다.');
+  const {error} = await supabase.auth.updateUser({data: {club}});
+  if (error) throw new Error('선호 구단을 저장하지 못했습니다: ' + error.message);
+}
 export const nicknameOf = (u: User | null) => (u?.user_metadata?.nickname as string | undefined) || (u?.email ? u.email.split('@')[0] : '팬');
 
 export function useUser() {
@@ -26,9 +33,9 @@ export function useUser() {
 // 로그인 링크가 돌아올 주소: 지금 보고 있는 사이트 주소(경로까지, ?·# 제외)
 const redirectTo = () => location.origin + location.pathname;
 
-export async function sendLoginLink(email: string, nickname: string) {
+export async function sendLoginLink(email: string, nickname: string, club?: string) {
   if (!supabase) throw new Error('로그인 기능이 아직 설정되지 않았습니다.');
-  const {error} = await supabase.auth.signInWithOtp({email, options: {emailRedirectTo: redirectTo(), data: {nickname}}});
+  const {error} = await supabase.auth.signInWithOtp({email, options: {emailRedirectTo: redirectTo(), data: club ? {nickname, club} : {nickname}}});
   if (error) throw new Error(error.message.includes('rate') ? '잠시 후 다시 시도해 주세요. 메일 발송 횟수 제한에 걸렸습니다.' : '로그인 링크를 보내지 못했습니다: ' + error.message);
 }
 export async function signOut() { await supabase?.auth.signOut(); }

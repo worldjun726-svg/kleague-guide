@@ -3,6 +3,7 @@ import {ArrowRight,ArrowDown,Heart,CalendarDays,Shield,Pause,Play,Ticket} from '
 import type {Dataset} from './types';
 import {Tile} from './components';
 import {withBase} from './base.ts';
+import MyClub from './MyClub';
 
 // 첫 화면 영상 재생 속도. 1보다 작을수록 장면이 천천히 넘어간다.
 const HERO_SPEED=0.5;
@@ -38,6 +39,7 @@ export default function Landing({data}:{data:Dataset}){
  const features=useRef<HTMLElement>(null);
  function explore(){features.current?.focus({preventScroll:true});features.current?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
  return <div className="landing-page">
+  <MyClub data={data}/>
   <section className="landing-hero" aria-labelledby="landing-title">
    <HeroMedia src={data.heroMedia?.videoSrc?withBase(data.heroMedia.videoSrc):null} poster={data.heroMedia?.posterSrc?withBase(data.heroMedia.posterSrc):null}/>
    <div className="landing-shade" aria-hidden="true"/>

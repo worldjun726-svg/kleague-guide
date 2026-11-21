@@ -1,8 +1,35 @@
 import {createContext, useContext, useEffect, useRef, useState, type ReactNode} from 'react';
 import type {User} from '@supabase/supabase-js';
 import {Heart, LogIn, LogOut, Mail, Send, Trash2, X, UserRound} from 'lucide-react';
-import {accountEnabled, addComment, deleteComment, listComments, listFavorites, myPredictions, nicknameOf, predictionSummary, savePrediction, sendLoginLink, setFavorite, signOut, useUser, type Comment, type FavoriteKind} from './accountApi';
+import {clubOf, setPreferredClub, accountEnabled, addComment, deleteComment, listComments, listFavorites, myPredictions, nicknameOf, predictionSummary, savePrediction, sendLoginLink, setFavorite, signOut, useUser, type Comment, type FavoriteKind} from './accountApi';
 import {OUTCOMES} from './components';
+
+// 가입 창·구단 선택에 쓰는 구단 목록. App이 현재 시즌 자료를 받으면 채운다.
+export interface ClubOption {id: string; name: string; league: number}
+let CLUBS: ClubOption[] = [];
+export const setClubOptions = (list: ClubOption[]) => { CLUBS = list; };
+function ClubSelect({id, value, onChange}: {id: string; value: string; onChange: (v: string) => void}) {
+  return <select id={id} value={value} onChange={e => onChange(e.target.value)}>
+    <option value="">구단을 골라 주세요</option>
+    {[1, 2].map(l => <optgroup key={l} label={'K리그' + l}>{CLUBS.filter(c => c.league === l).sort((a, b) => a.name.localeCompare(b.name, 'ko')).map(c => <option key={c.id} value={c.id}>{c.name}</option>)}</optgroup>)}
+  </select>;
+}
+// 선호 구단 고르기·바꾸기 (내 페이지, 홈 화면 안내에서 사용)
+export function ClubPicker({compact = false}: {compact?: boolean}) {
+  const {user} = useAccount();
+  const [value, setValue] = useState(clubOf(user) ?? ''), [state, setState] = useState<'idle' | 'saving' | 'saved'>('idle'), [error, setError] = useState('');
+  useEffect(() => { setValue(clubOf(user) ?? ''); }, [user]);
+  async function save() {
+    if (!value) return; setState('saving'); setError('');
+    try { await setPreferredClub(value); setState('saved'); setTimeout(() => setState('idle'), 2000); } catch (e) { setError((e as Error).message); setState('idle'); }
+  }
+  return <div className={'club-picker' + (compact ? ' compact' : '')}>
+    <label htmlFor="club-pick" className="sr-only">선호 구단</label>
+    <ClubSelect id="club-pick" value={value} onChange={v => { setValue(v); setState('idle'); }}/>
+    <button className="button primary" disabled={!value || value === clubOf(user) || state === 'saving'} onClick={save}>{state === 'saving' ? '저장 중…' : state === 'saved' ? '저장했어요' : '저장'}</button>
+    {error && <p className="form-error" role="alert">{error}</p>}
+  </div>;
+}
 
 // ── 로그인 상태를 화면 전체에 나눠 주는 상자 ──
 interface AccountState { user: User | null; ready: boolean; openLogin: (reason?: string) => void }
@@ -21,12 +48,12 @@ export function AccountProvider({children}: {children: ReactNode}) {
 
 function LoginDialog({reason, onClose}: {reason: string; onClose: () => void}) {
   const ref = useRef<HTMLDialogElement>(null);
-  const [email, setEmail] = useState(''), [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState(''), [nickname, setNickname] = useState(''), [club, setClub] = useState('');
   const [state, setState] = useState<'idle' | 'sending' | 'sent'>('idle'), [error, setError] = useState('');
   useEffect(() => { const d = ref.current; d?.showModal(); return () => d?.close(); }, []);
   async function submit(e: React.FormEvent) {
     e.preventDefault(); setError(''); setState('sending');
-    try { await sendLoginLink(email.trim(), nickname.trim() || email.split('@')[0]); setState('sent'); }
+    try { await sendLoginLink(email.trim(), nickname.trim() || email.split('@')[0], club || undefined); setState('sent'); }
     catch (err) { setError((err as Error).message); setState('idle'); }
   }
   return <dialog ref={ref} className="account-dialog" onClose={onClose} aria-labelledby="login-title">
@@ -42,6 +69,8 @@ function LoginDialog({reason, onClose}: {reason: string; onClose: () => void}) {
         <input id="login-email" type="email" required autoComplete="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="name@example.com"/>
         <label htmlFor="login-nickname">닉네임 <small>응원 글에 보이는 이름 · 처음 가입할 때만 저장</small></label>
         <input id="login-nickname" maxLength={20} value={nickname} onChange={e => setNickname(e.target.value)} placeholder="예: 수원의 함성"/>
+        <label htmlFor="login-club">선호 구단 <small>처음 가입할 때 저장 · 내 페이지에서 언제든 바꿀 수 있어요</small></label>
+        <ClubSelect id="login-club" value={club} onChange={setClub}/>
         {error && <p className="form-error" role="alert">{error}</p>}
         <button className="button primary" disabled={state === 'sending'}><Send size={15}/>{state === 'sending' ? '보내는 중…' : '로그인 링크 받기'}</button>
       </form>}
@@ -137,6 +166,7 @@ export function MyPage({teamName, playerName, matchName}: {teamName: (id: string
   const teams = fav.filter(f => f.kind === 'team'), players = fav.filter(f => f.kind === 'player');
   return <div className="my-page">
     <div className="page-heading"><div><div className="eyebrow">MY K LEAGUE</div><h1>{nicknameOf(user)}님의 관전 노트</h1><p>저장한 응원팀과 선수, 내가 남긴 경기 예측입니다.</p></div></div>
+    <section className="panel my-club"><h2>선호 구단</h2><p className="fine">선호 구단의 순위·다음 경기가 홈 화면 맨 위에 보이고, 왼쪽 순위표에서 강조돼요.</p><ClubPicker/></section>
     <div className="my-grid">
       <section className="panel"><h2>응원팀</h2>{teams.length ? <ul>{teams.map(t => <li key={t.item_id}><a href={'#/team/' + t.item_id}>{teamName(t.item_id) ?? t.item_id}</a></li>)}</ul> : <p className="fine">팀 화면에서 하트를 눌러 응원팀을 저장해 보세요. <a href="#/finder">나의 팀 찾기</a></p>}</section>
       <section className="panel"><h2>관심 선수</h2>{players.length ? <ul>{players.map(p => <li key={p.item_id}><a href={'#/player/' + p.item_id}>{playerName(p.item_id) ?? p.item_id}</a></li>)}</ul> : <p className="fine">선수 화면에서 하트를 눌러 저장할 수 있어요.</p>}</section>
