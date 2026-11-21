@@ -42,3 +42,16 @@
 .side-league a.mine:hover{background:#ffdc4d;color:#1b1d21}
 .side-mine{font-style:normal;font-size:9px;font-weight:900;background:#1b1d21;color:#ffd21f;border-radius:4px;padding:1px 4px;margin-left:6px;vertical-align:1px}
 @media(max-width:900px){.mc-grid{grid-template-columns:1fr}.mc-kpis .hide-sm{display:none}.myclub{padding:18px}}
+
+/* 내 정보 (Account.tsx · MyInfo) */
+.my-info{margin-bottom:16px;display:grid;gap:12px}
+.my-info dl{margin:0;display:grid;gap:14px}
+.my-info dl>div{display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:start;padding-top:12px;border-top:1px solid var(--line)}
+.my-info dt{font-weight:800;font-size:13px;padding-top:10px}
+.my-info dd{margin:0;display:grid;gap:6px}
+.my-info dd small{color:var(--muted);font-size:12px}
+.my-info dl>div:first-child dd{padding-top:10px;font-weight:600}
+.my-nick{display:flex;gap:8px;flex-wrap:wrap}
+.my-nick input{min-width:200px;border-radius:10px;border:1.5px solid var(--line);padding:10px 12px;font:inherit;font-weight:700}
+.auth-sub{font-size:10px;font-weight:800;opacity:.7;margin-left:6px;border-left:1px solid currentColor;padding-left:6px}
+@media(max-width:560px){.my-info dl>div{grid-template-columns:1fr}.my-info dt{padding-top:0}.auth-sub{display:none}}

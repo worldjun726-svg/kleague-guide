@@ -16,6 +16,11 @@ export async function setPreferredClub(club: string) {
   const {error} = await supabase.auth.updateUser({data: {club}});
   if (error) throw new Error('선호 구단을 저장하지 못했습니다: ' + error.message);
 }
+export async function setNickname(nickname: string) {
+  if (!supabase) throw new Error('로그인 기능이 아직 설정되지 않았습니다.');
+  const {error} = await supabase.auth.updateUser({data: {nickname}});
+  if (error) throw new Error('닉네임을 저장하지 못했습니다: ' + error.message);
+}
 export const nicknameOf = (u: User | null) => (u?.user_metadata?.nickname as string | undefined) || (u?.email ? u.email.split('@')[0] : '팬');
 
 export function useUser() {

@@ -1,7 +1,7 @@
 import {createContext, useContext, useEffect, useRef, useState, type ReactNode} from 'react';
 import type {User} from '@supabase/supabase-js';
 import {Heart, LogIn, LogOut, Mail, Send, Trash2, X, UserRound} from 'lucide-react';
-import {clubOf, setPreferredClub, accountEnabled, addComment, deleteComment, listComments, listFavorites, myPredictions, nicknameOf, predictionSummary, savePrediction, sendLoginLink, setFavorite, signOut, useUser, type Comment, type FavoriteKind} from './accountApi';
+import {clubOf, setPreferredClub, setNickname, accountEnabled, addComment, deleteComment, listComments, listFavorites, myPredictions, nicknameOf, predictionSummary, savePrediction, sendLoginLink, setFavorite, signOut, useUser, type Comment, type FavoriteKind} from './accountApi';
 import {OUTCOMES} from './components';
 
 // 가입 창·구단 선택에 쓰는 구단 목록. App이 현재 시즌 자료를 받으면 채운다.
@@ -81,7 +81,7 @@ export function AuthButton() {
   const {user, ready, openLogin} = useAccount();
   if (!ready) return null;
   if (!user) return <button className="auth-button" onClick={() => openLogin()}><LogIn size={15}/>로그인</button>;
-  return <span className="auth-user"><a href="#/me" className="auth-button"><UserRound size={15}/>{nicknameOf(user)}</a><button className="auth-icon" onClick={() => signOut()} aria-label="로그아웃" title="로그아웃"><LogOut size={15}/></button></span>;
+  return <span className="auth-user"><a href="#/me" className="auth-button" title="내 정보 · MY 팀 변경"><UserRound size={15}/>{nicknameOf(user)}<span className="auth-sub">내 정보</span></a><button className="auth-icon" onClick={() => signOut()} aria-label="로그아웃" title="로그아웃"><LogOut size={15}/></button></span>;
 }
 
 // ── 응원팀·관심 선수 저장 ──
@@ -166,11 +166,32 @@ export function MyPage({teamName, playerName, matchName}: {teamName: (id: string
   const teams = fav.filter(f => f.kind === 'team'), players = fav.filter(f => f.kind === 'player');
   return <div className="my-page">
     <div className="page-heading"><div><div className="eyebrow">MY K LEAGUE</div><h1>{nicknameOf(user)}님의 관전 노트</h1><p>저장한 응원팀과 선수, 내가 남긴 경기 예측입니다.</p></div></div>
-    <section className="panel my-club"><h2>선호 구단</h2><p className="fine">선호 구단의 순위·다음 경기가 홈 화면 맨 위에 보이고, 왼쪽 순위표에서 강조돼요.</p><ClubPicker/></section>
+    <MyInfo/>
     <div className="my-grid">
       <section className="panel"><h2>응원팀</h2>{teams.length ? <ul>{teams.map(t => <li key={t.item_id}><a href={'#/team/' + t.item_id}>{teamName(t.item_id) ?? t.item_id}</a></li>)}</ul> : <p className="fine">팀 화면에서 하트를 눌러 응원팀을 저장해 보세요. <a href="#/finder">나의 팀 찾기</a></p>}</section>
       <section className="panel"><h2>관심 선수</h2>{players.length ? <ul>{players.map(p => <li key={p.item_id}><a href={'#/player/' + p.item_id}>{playerName(p.item_id) ?? p.item_id}</a></li>)}</ul> : <p className="fine">선수 화면에서 하트를 눌러 저장할 수 있어요.</p>}</section>
       <section className="panel"><h2>내 경기 예측</h2>{preds.length ? <ul>{preds.map(p => <li key={p.match_id}><a href={'#/live/' + p.match_id}>{matchName(p.match_id) ?? p.match_id}</a> · <b>{OUTCOMES[p.pick]}</b></li>)}</ul> : <p className="fine"><a href="#/live">라이브 센터</a>에서 경기 결과를 예측해 보세요.</p>}</section>
     </div>
   </div>;
+}
+
+// ── 내 정보: 이메일, 닉네임 변경, MY 팀(선호 구단) 변경 ──
+function MyInfo() {
+  const {user} = useAccount();
+  const [nick, setNick] = useState(nicknameOf(user)), [state, setState] = useState<'idle' | 'saving' | 'saved'>('idle'), [error, setError] = useState('');
+  useEffect(() => { setNick(nicknameOf(user)); }, [user]);
+  if (!user) return null;
+  async function saveNick(e: React.FormEvent) {
+    e.preventDefault(); const v = nick.trim(); if (!v) return;
+    setState('saving'); setError('');
+    try { await setNickname(v); setState('saved'); setTimeout(() => setState('idle'), 2000); } catch (err) { setError((err as Error).message); setState('idle'); }
+  }
+  return <section className="panel my-info" id="my-info" aria-labelledby="my-info-title">
+    <h2 id="my-info-title">내 정보</h2>
+    <dl>
+      <div><dt>이메일</dt><dd>{user.email}</dd></div>
+      <div><dt>닉네임</dt><dd><form onSubmit={saveNick} className="my-nick"><label htmlFor="my-nick" className="sr-only">닉네임</label><input id="my-nick" maxLength={20} value={nick} onChange={e => { setNick(e.target.value); setState('idle'); }}/><button className="button" disabled={!nick.trim() || nick.trim() === nicknameOf(user) || state === 'saving'}>{state === 'saving' ? '저장 중…' : state === 'saved' ? '저장했어요' : '닉네임 저장'}</button></form>{error && <p className="form-error" role="alert">{error}</p>}<small>앞으로 쓰는 응원 글에 이 이름이 보여요.</small></dd></div>
+      <div><dt>MY 팀</dt><dd><ClubPicker/><small>MY 팀의 순위·다음 경기가 홈 화면 맨 위에 보이고, 홈 배경색과 왼쪽 순위표 강조가 이 팀으로 바뀌어요.</small></dd></div>
+    </dl>
+  </section>;
 }

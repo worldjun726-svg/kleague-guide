@@ -64,7 +64,7 @@ export default function MyClub({data}:{data:Dataset}){
    <a href={'#/schedule/'+team.id}><CalendarDays size={15}/>전체 일정</a>
    <a href={'#/team/'+team.id}><BarChart3 size={15}/>팀 기록</a>
    <a href={'#/lounge/'+team.id}><MessageCircle size={15}/>직관 라운지</a>
-   <a href="#/me"><Star size={15}/>선호 구단 바꾸기</a>
+   <a href="#/me"><Star size={15}/>MY 팀 바꾸기</a>
   </nav>
  </section>;
 }
