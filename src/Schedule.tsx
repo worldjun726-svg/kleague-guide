@@ -1,9 +1,9 @@
-import {useMemo, useState, type CSSProperties, type ReactNode} from 'react';
+import {useMemo, useRef, useState, type CSSProperties, type ReactNode} from 'react';
 import {ArrowLeft, ArrowRight, CalendarDays, CalendarPlus, ChevronLeft, ChevronRight, ExternalLink, LoaderCircle, RefreshCw, Ticket, Tv, MapPin, Newspaper, Instagram, Youtube, Globe, Users} from 'lucide-react';
 import type {Team, League} from './types';
 import {Tile, Heading, Empty, SectionTitle, Form, Chart} from './components';
 import {CommentBox, PredictionBox} from './Account';
-import ScheduleCalendar from './ScheduleCalendar';
+import {DatePopup, fmtDate} from './ScheduleCalendar';
 import {
   useMatches, useMatchDetail, dayLabel, kickoff, minuteLabel, resultFor, teamProfile, metricTable, styleTags, outlook, backtest,
   matchInsights, previewPoints, METRICS, type SeasonMatch, type SeasonMatches, type MatchStats, type MatchDetail, type MetricKey, type Split, type TeamProfile,
@@ -69,38 +69,50 @@ function ByDate({list, data, teams, focus}: {list: SeasonMatch[]; data: SeasonMa
 export function SchedulePage({teams, teamParam}: {teams: Teams; teamParam?: string}) {
   const {data, error, reload} = useMatches();
   const focusTeam = teamParam && teams[teamParam] ? teamParam : '';
+  const today = new Date(Date.now() + 9 * 3600_000).toISOString().slice(0, 10);
   const [league, setLeague] = useState<League>(focusTeam ? teams[focusTeam].league : 1);
   const [round, setRound] = useState<number | null>(null);
-  const [day, setDay] = useState<string | null>(null), [showCal, setShowCal] = useState(true);
+  // 기본은 오늘 날짜의 경기. 라운드 화살표를 누르면 라운드별 보기로 바뀐다. 팀 일정은 날짜를 고르기 전까지 팀 전체 일정.
+  const [day, setDay] = useState(today), [mode, setMode] = useState<'day' | 'round'>('day'), [picked, setPicked] = useState(false), [pop, setPop] = useState(false);
+  const opener = useRef<HTMLButtonElement>(null);
   if (!data) return <Loading error={error} reload={reload}/>;
   const leagueMatches = data.matches.filter(m => m.league === league);
   const rounds = [...new Set(leagueMatches.map(m => m.round))].sort((x, y) => x - y);
   const nextRound = leagueMatches.find(m => m.status === 'NS')?.round ?? rounds.at(-1)!;
-  const current = round ?? nextRound;
+  const dayAll = data.matches.filter(m => m.date === day && (!focusTeam || m.home === focusTeam || m.away === focusTeam)).sort((a, b) => a.time.localeCompare(b.time) || a.league - b.league);
+  const dayList = focusTeam ? dayAll : dayAll.filter(m => m.league === league), otherLeague = focusTeam ? [] : dayAll.filter(m => m.league !== league);
+  const current = round ?? (mode === 'day' && dayList[0] ? dayList[0].round : nextRound);
   const shown = leagueMatches.filter(m => m.round === current);
   const upcoming = data.matches.filter(m => m.status === 'NS').slice(0, 1)[0];
   const teamList = focusTeam ? data.matches.filter(m => m.home === focusTeam || m.away === focusTeam) : [];
-  const setTeam = (id: string) => { location.hash = '/schedule' + (id ? '/' + id : ''); if (id) setLeague(teams[id].league); setDay(null); };
-  const dayList = day ? data.matches.filter(m => m.date === day && (!focusTeam || m.home === focusTeam || m.away === focusTeam)).sort((a, b) => a.time.localeCompare(b.time) || a.league - b.league) : [];
-  const pickDay = (d: string) => { setDay(d); setTimeout(() => document.getElementById('sc-dayview')?.scrollIntoView({behavior: 'smooth', block: 'start'}), 60); };
+  const setTeam = (id: string) => { location.hash = '/schedule' + (id ? '/' + id : ''); if (id) setLeague(teams[id].league); setPicked(false); setMode('day'); };
+  const goRound = (r: number) => { setRound(r); setMode('round'); };
+  const showTeamAll = focusTeam && !picked;
   return <>
     <Heading eyebrow="2026 / FIXTURES & TICKETS" title="이번 주말, 어디로 갈까?" description="경기 일정과 중계, 예매처를 확인하고 경기 전 프리뷰로 관전 포인트를 챙기세요."
       aside={upcoming && <a className="button primary" href={'#/game/' + upcoming.id}>가장 가까운 경기<ArrowRight size={16}/></a>}/>
     <div className="toolbar">
-      <div className="tabs" aria-label="리그">{([1, 2] as League[]).map(l => <button key={l} aria-pressed={!focusTeam && league === l} className={!focusTeam && league === l ? 'selected' : ''} onClick={() => { setTeam(''); setLeague(l); setRound(null); setDay(null); }}>K리그 {l}</button>)}</div>
-      <label className="select-label">우리 팀 일정<select aria-label="팀별 일정" value={focusTeam} onChange={e => setTeam(e.target.value)}><option value="">전체 경기 (라운드별)</option>{Object.values(teams).sort((x, y) => x.league - y.league || x.name.localeCompare(y.name)).map(t => <option key={t.id} value={t.id}>{t.name} · K{t.league}</option>)}</select></label>
+      <div className="tabs" aria-label="리그">{([1, 2] as League[]).map(l => <button key={l} aria-pressed={!focusTeam && league === l} className={!focusTeam && league === l ? 'selected' : ''} onClick={() => { setTeam(''); setLeague(l); setRound(null); }}>K리그 {l}</button>)}</div>
+      <label className="select-label">우리 팀 일정<select aria-label="팀별 일정" value={focusTeam} onChange={e => setTeam(e.target.value)}><option value="">전체 경기</option>{Object.values(teams).sort((x, y) => x.league - y.league || x.name.localeCompare(y.name)).map(t => <option key={t.id} value={t.id}>{t.name} · K{t.league}</option>)}</select></label>
     </div>
     <SourceLine data={data}/>
-    <div className="sc-togglebar"><button className="text-button sc-toggle" onClick={() => setShowCal(v => !v)}><CalendarDays size={14}/>{showCal ? '달력 접기' : '달력으로 보기'}</button></div>
-    {showCal && <ScheduleCalendar data={data} teams={teams} selected={day} onSelect={pickDay} focusTeam={focusTeam || undefined} startDate={(focusTeam ? teamList.find(m => m.status === 'NS') : shown[0])?.date}/>}
-    {day ? <section id="sc-dayview" className="sc-dayview"><div className="sc-dayhead"><h2>{dayList[0] ? dayLabel(dayList[0]) : day} 경기 {dayList.length}개</h2><button className="text-button" onClick={() => setDay(null)}><ArrowLeft size={14}/>{focusTeam ? '팀 일정으로' : '라운드별 보기로'}</button></div>{dayList.length ? <ByDate list={dayList} data={data} teams={teams}/> : <Empty>이날은 경기가 없어요.</Empty>}</section> : focusTeam ? <TeamFixtures team={teams[focusTeam]} list={teamList} data={data} teams={teams}/> : <>
-      <div className="round-nav panel">
-        <button className="icon-button" disabled={current === rounds[0]} onClick={() => setRound(rounds[rounds.indexOf(current) - 1])} aria-label="이전 라운드"><ChevronLeft size={18}/></button>
+    <div className="date-bar">
+      <div className="date-now"><small>{showTeamAll ? `${teams[focusTeam].short} 일정` : mode === 'round' ? '라운드별 보기' : '선택한 날짜'}</small><strong>{showTeamAll ? '시즌 전체 일정' : mode === 'round' ? `K리그${league} ${current}R` : fmtDate(day)}</strong>{!showTeamAll && mode === 'day' && day === today && <em>오늘</em>}</div>
+      <button ref={opener} className="button primary" onClick={() => setPop(true)} aria-haspopup="dialog"><CalendarDays size={16}/>날짜 선택</button>
+    </div>
+    <DatePopup open={pop} onClose={() => setPop(false)} selected={day} onPick={d => { setDay(d); setMode('day'); setRound(null); setPicked(true); }} data={data} teams={teams} focusTeam={focusTeam || undefined} opener={opener}/>
+    {showTeamAll ? <TeamFixtures team={teams[focusTeam]} list={teamList} data={data} teams={teams}/> : <>
+      {!focusTeam && <div className="round-nav panel">
+        <button className="icon-button" disabled={current === rounds[0]} onClick={() => goRound(rounds[rounds.indexOf(current) - 1])} aria-label="이전 라운드"><ChevronLeft size={18}/></button>
         <div><strong>{current}R</strong><span>{shown[0]?.phase ?? `K리그${league}`} · {shown.every(m => m.status === 'FT') ? '종료' : shown.some(m => m.status === 'FT') ? '진행 중' : '예정'}</span></div>
-        <button className="icon-button" disabled={current === rounds.at(-1)} onClick={() => setRound(rounds[rounds.indexOf(current) + 1])} aria-label="다음 라운드"><ChevronRight size={18}/></button>
-        {current !== nextRound && <button className="text-button" onClick={() => setRound(null)}>다가오는 라운드로</button>}
-      </div>
-      <ByDate list={shown} data={data} teams={teams}/>
+        <button className="icon-button" disabled={current === rounds.at(-1)} onClick={() => goRound(rounds[rounds.indexOf(current) + 1])} aria-label="다음 라운드"><ChevronRight size={18}/></button>
+        {mode === 'round' && <button className="text-button" onClick={() => { setMode('day'); setRound(null); }}>선택한 날짜({fmtDate(day)})로</button>}
+      </div>}
+      {mode === 'round' ? <ByDate list={shown} data={data} teams={teams}/> : <section className="sc-dayview" aria-live="polite">
+        {dayList.length ? <ByDate list={dayList} data={data} teams={teams} focus={focusTeam || undefined}/> : <Empty>해당 날짜에 예정된 경기가 없습니다.</Empty>}
+        {otherLeague.length > 0 && <button className="text-button sc-other" onClick={() => setLeague(league === 1 ? 2 : 1)}>이날 K리그{league === 1 ? 2 : 1} 경기 {otherLeague.length}개 보기<ArrowRight size={14}/></button>}
+        {focusTeam && <button className="text-button sc-other" onClick={() => setPicked(false)}><ArrowLeft size={14}/>{teams[focusTeam].short} 전체 일정으로</button>}
+      </section>}
     </>}
     <p className="fine">예매는 각 구단의 공식 예매처(티켓링크·인터파크 티켓 등) 또는 구단 홈페이지에서 진행됩니다. 이 사이트는 예매를 대행하지 않습니다. 경기 시간·중계는 변경될 수 있으니 공식 일정을 확인하세요.</p>
   </>;

@@ -42,3 +42,26 @@
 @media(max-width:640px){.sc-cell{min-height:48px;padding:4px}.sc-dots i{min-width:14px;height:14px;font-size:9px;padding:0 3px}.sc-pop{display:none!important}.sc-legend{margin-left:0}}
 .sc-togglebar{display:flex;justify-content:flex-end;margin-top:6px}
 .sc-toggle{display:inline-flex;align-items:center;gap:5px}
+
+/* 날짜 표시 + 날짜 선택 버튼 */
+.date-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(17,24,39,.06);padding:14px 18px;margin:14px 0}
+.date-now{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.date-now small{font-size:12px;color:var(--muted);font-weight:700}
+.date-now strong{font-size:20px;font-weight:900}
+.date-now em{font-style:normal;font-size:11px;font-weight:900;background:#ffd21f;color:#1b1d21;border-radius:999px;padding:2px 8px}
+.date-bar .button{display:inline-flex;align-items:center;gap:6px}
+.sc-other{display:inline-flex;align-items:center;gap:5px;justify-self:start}
+/* 날짜 선택 팝업 */
+.date-popup{padding:0;border:0;border-radius:18px;width:min(620px,calc(100vw - 24px));max-width:none;max-height:calc(100dvh - 24px);overflow:auto;background:#fff;color:var(--ink,#1b1d21);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.date-popup::backdrop{background:rgba(15,17,20,.55);backdrop-filter:blur(2px)}
+.dp-inner{padding:16px 18px 18px;display:grid;gap:4px}
+.dp-head{display:flex;align-items:center;justify-content:space-between}
+.dp-head h2{font-size:18px}
+.dp-close{width:36px;height:36px;border-radius:10px}
+.date-popup .sched-cal{box-shadow:none;padding:0;margin:4px 0 0}
+.date-popup .sc-cell{min-height:56px}
+.date-popup .sc-cell:not(.has):not(.empty){cursor:pointer;border:1.5px solid transparent}
+.date-popup .sc-cell:not(.has):not(.empty):hover,.date-popup .sc-cell:focus-visible{border-color:#1b1d21}
+.date-popup .sc-cell:focus-visible{outline:3px solid #ffd21f;outline-offset:1px}
+.dp-hint{font-size:11px;color:var(--muted);margin-top:8px}
+@media(max-width:640px){.dp-inner{padding:12px}.date-popup .sc-cell{min-height:42px;padding:4px}.date-popup .sc-head strong{font-size:16px}.date-popup .sc-legend{display:none}.date-now strong{font-size:18px}}

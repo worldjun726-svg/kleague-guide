@@ -1,4 +1,4 @@
-﻿import {useEffect,useState} from 'react';
+﻿import {useEffect,useState,type CSSProperties} from 'react';
 import {Goal,Info,Sparkles,LoaderCircle,RefreshCw} from 'lucide-react';
 import type {Dataset} from './types';
 import {loadSampleDataset} from './sampleApi';
@@ -16,7 +16,9 @@ import {MainNav} from './Nav';
 import Landing from './Landing';
 import {Empty} from './components';
 import {useLive} from './Live';
-import {AccountProvider,AuthButton,FavoriteButton,CommentBox,MyPage,setClubOptions} from './Account';
+import {AccountProvider,AuthButton,FavoriteButton,CommentBox,MyPage,setClubOptions,useAccount} from './Account';
+import {clubOf} from './accountApi';
+import {inkOn} from './clubTheme';
 import {SchedulePage,GamePage,useGameName} from './Schedule';
 function MyRoute({data}:{data:CurrentSeason}){
  const {data:live}=useLive();
@@ -31,6 +33,7 @@ function AppBody(){
  const [route,setRoute]=useState(()=>location.hash.slice(2)||'landing');
  const [sample,setSample]=useState<Dataset|null>(null),[current,setCurrent]=useState<CurrentSeason|null>(null),[error,setError]=useState(''),[retry,setRetry]=useState(0),[demo,setDemo]=useState(false);
  const [page,param,roundParam]=route.split('/');
+ const {user}=useAccount();
  useEffect(()=>{const read=()=>{setRoute(location.hash.slice(2)||'landing');setDemo(false);window.scrollTo(0,0)};window.addEventListener('hashchange',read);return()=>window.removeEventListener('hashchange',read)},[]);
  useEffect(()=>{const controller=new AbortController();setError('');Promise.all([loadSampleDataset(controller.signal),loadCurrentSeason(controller.signal)]).then(([s,c])=>{setSample(s);setCurrent(c)}).catch(e=>{if(e.name!=='AbortError')setError(e.message)});return()=>controller.abort()},[retry]);
  if(error||!sample||!current)return <div className="load-screen"><span className="brand-mark"><Goal/></span><h1>K리그 관전 가이드</h1>{error?<><p role="alert">{error}</p><button className="button primary" onClick={()=>setRetry(n=>n+1)}><RefreshCw size={16}/>다시 불러오기</button></>:<><LoaderCircle className="spin"/><p>이번 시즌 기록을 준비하고 있어요.</p></>}</div>;
@@ -41,7 +44,8 @@ function AppBody(){
  const contextTeam=current.teams.find(t=>t.id===param);
  const dates=[...new Set(Object.values(current.sources).map(s=>s.asOf))].sort();
  const samplePage=page==='archive'||page==='match';
- return <div className={'app-shell '+(page==='landing'?'is-landing':'')}><a className="skip-link" href="#main" onClick={e=>{e.preventDefault();document.getElementById('main')?.focus()}}>본문으로 이동</a><header className="header"><div className="header-inner"><a className="brand" href="#/" aria-label="K LEAGUE GUIDE 홈"><img className="brand-emblem" src={withBase('/media/league/kleague-emblem.png')} alt=""/><span className="brand-word">K LEAGUE<b>GUIDE</b></span></a><MainNav active={active} teamId={contextTeam?.id}/><span className="season-tag"><i/>{samplePage?'2025 예시':current.season+' SEASON'}</span><AuthButton/></div></header>
+ const myColor=page==='landing'?current.teams.find(t=>t.id===clubOf(user))?.color:undefined,myInk=myColor?inkOn(myColor):null;
+ return <div className={'app-shell '+(page==='landing'?'is-landing':'')+(myInk?' club-bg '+(myInk.dark?'club-dark':'club-light'):'')} style={myColor?({'--home-bg':myColor,'--on-club':myInk!.ink} as CSSProperties):undefined}><a className="skip-link" href="#main" onClick={e=>{e.preventDefault();document.getElementById('main')?.focus()}}>본문으로 이동</a><header className="header"><div className="header-inner"><a className="brand" href="#/" aria-label="K LEAGUE GUIDE 홈"><img className="brand-emblem" src={withBase('/media/league/kleague-emblem.png')} alt=""/><span className="brand-word">K LEAGUE<b>GUIDE</b></span></a><MainNav active={active} teamId={contextTeam?.id}/><span className="season-tag"><i/>{samplePage?'2025 예시':current.season+' SEASON'}</span><AuthButton/></div></header>
  {samplePage&&<div className="demo-banner"><Info size={14}/><span>{samplePage?<><strong>SAMPLE EDITION · 2025</strong> · 기능 체험용 예시 데이터입니다.</>:<><strong>LIVE CENTER · PREVIEW</strong> · 실제 경기 연동 전 미리보기 화면입니다.</>}</span></div>}
  <div className="shell-body"><Sidebar teams={current.teams} standings={current.standings} activeTeam={page==='team'?param:undefined}/><main id="main" tabIndex={-1} className="container" data-core={page}>
  {page==='landing'&&<Landing data={data}/>}
