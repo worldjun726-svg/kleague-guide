@@ -33,7 +33,7 @@ function LoginDialog({reason, onClose}: {reason: string; onClose: () => void}) {
     <button className="dialog-close" onClick={onClose} aria-label="닫기"><X size={18}/></button>
     <p className="eyebrow">K LEAGUE GUIDE · ACCOUNT</p>
     <h2 id="login-title">로그인</h2>
-    {!accountEnabled ? <p className="account-off">로그인 기능은 아직 준비 중입니다. 사이트 관리자가 Supabase 연결 정보를 넣으면 열립니다.</p>
+    {!accountEnabled ? <p className="account-off">지금은 로그인을 사용할 수 없습니다. 잠시 후 다시 시도해 주세요.</p>
       : state === 'sent' ? <div className="login-sent"><Mail size={28}/><p><b>{email}</b>로 로그인 링크를 보냈어요.</p><p>메일의 링크를 이 브라우저에서 누르면 로그인됩니다. 메일이 안 보이면 스팸함도 확인해 주세요.</p><button className="button" onClick={onClose}>확인</button></div>
       : <form onSubmit={submit} className="login-form">
         {reason && <p className="login-reason">{reason}</p>}
@@ -100,7 +100,7 @@ export function PredictionBox({matchId, kickoff, names}: {matchId: string; kicko
 }
 
 // ── 응원 글 ──
-export function CommentBox({target, title = '응원 글'}: {target: string; title?: string}) {
+export function CommentBox({target, title = '응원 글', placeholder = '응원 한마디를 남겨 주세요 (300자 이내)', empty = '아직 글이 없어요. 첫 응원을 남겨 보세요.'}: {target: string; title?: string; placeholder?: string; empty?: string}) {
   const {user, openLogin} = useAccount();
   const [list, setList] = useState<Comment[]>([]), [body, setBody] = useState(''), [error, setError] = useState(''), [busy, setBusy] = useState(false);
   const load = () => listComments(target).then(setList).catch(() => setError('글을 불러오지 못했습니다.'));
@@ -116,12 +116,12 @@ export function CommentBox({target, title = '응원 글'}: {target: string; titl
     {!accountEnabled ? <p className="account-off">로그인 기능이 연결되면 응원 글을 남길 수 있어요.</p> : <>
       <form onSubmit={submit} className="comment-form">
         <label htmlFor={'cf-' + target} className="sr-only">응원 글 쓰기</label>
-        <textarea id={'cf-' + target} maxLength={300} rows={2} value={body} onChange={e => setBody(e.target.value)} onFocus={() => { if (!user) openLogin('응원 글을 남기려면 로그인해 주세요.'); }} placeholder={user ? '응원 한마디를 남겨 주세요 (300자 이내)' : '로그인하고 응원 글을 남겨 보세요'}/>
+        <textarea id={'cf-' + target} maxLength={300} rows={2} value={body} onChange={e => setBody(e.target.value)} onFocus={() => { if (!user) openLogin('응원 글을 남기려면 로그인해 주세요.'); }} placeholder={user ? placeholder : '로그인하고 글을 남겨 보세요'}/>
         <div><small>{body.length}/300</small><button className="button primary" disabled={busy || !body.trim()}><Send size={14}/>올리기</button></div>
       </form>
       {error && <p className="form-error" role="alert">{error}</p>}
       {list.length ? <ul className="comments">{list.map(c => <li key={c.id}><div><b>{c.nickname}</b><time dateTime={c.created_at}>{new Date(c.created_at).toLocaleString('ko-KR', {month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'})}</time>{user?.id === c.user_id && <button className="auth-icon" onClick={() => remove(c.id)} aria-label="내 글 지우기"><Trash2 size={14}/></button>}</div><p>{c.body}</p></li>)}</ul>
-        : <p className="fine">아직 글이 없어요. 첫 응원을 남겨 보세요.</p>}
+        : <p className="fine">{empty}</p>}
     </>}
   </section>;
 }

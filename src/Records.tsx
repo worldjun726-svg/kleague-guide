@@ -7,7 +7,7 @@ import './records.css';
 import TeamTopFive from './TeamTopFive';
 import {TeamHub,TeamAnalysis} from './Schedule';
 
-function Source({data,kind,league}:{data:CurrentSeason;kind:'team'|'player';league:League}){const s=data.sources[kind+league];return <p className="record-source">{s.asOf} 기준 · 공식 기록을 저장한 자료 · 실시간 갱신 아님 <a href={s.url} target="_blank" rel="noreferrer">공식 원문 <ExternalLink size={12}/></a></p>}
+function Source({data,kind,league}:{data:CurrentSeason;kind:'team'|'player';league:League}){const s=data.sources[kind+league];return <p className="record-source">{s.asOf} 기준 · 출처 <a href={s.url} target="_blank" rel="noreferrer">K리그 공식 기록 <ExternalLink size={12}/></a></p>}
 function LeagueTabs({league,set}:{league:League;set:(l:League)=>void}){return <div className="tabs" aria-label="기록 리그">{([1,2] as League[]).map(l=><button key={l} aria-pressed={league===l} className={l===league?'selected':''} onClick={()=>set(l)}>K리그 {l}</button>)}</div>}
 export function SeasonRecords({data}:{data:CurrentSeason}){
  const [league,setLeague]=useState<League>(1),[query,setQuery]=useState('');

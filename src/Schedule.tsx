@@ -22,7 +22,7 @@ function Loading({error, reload}: {error: string; reload: () => void}) {
 }
 function SourceLine({data}: {data: SeasonMatches}) {
   const at = new Date(data.fetchedAt).toLocaleString('ko-KR', {month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'});
-  return <p className="record-source">K리그 공식 홈페이지 일정·경기 기록 · {at} 수집 · 실시간 갱신 아님 <a href={data.source.schedule} target="_blank" rel="noreferrer">공식 일정 <ExternalLink size={12}/></a></p>;
+  return <p className="record-source">{at} 업데이트 · 출처 <a href={data.source.schedule} target="_blank" rel="noreferrer">K리그 공식 홈페이지 <ExternalLink size={12}/></a></p>;
 }
 
 // ── 예매·캘린더 ───────────────────────────────────────────

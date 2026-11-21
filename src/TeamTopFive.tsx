@@ -16,7 +16,7 @@ export default function TeamTopFive({data,teamId}:{data:CurrentSeason;teamId:str
   <div className="toolbar"><div className="tabs" aria-label="TOP 5 기록 선택">{(Object.keys(labels) as LeaderMetric[]).map(key=><button key={key} className={metric===key?'selected':''} aria-pressed={metric===key} onClick={()=>setMetric(key)}>{labels[key]} TOP 5</button>)}</div><span className="fine">{source.season} 시즌 · {team.short}</span></div>
   <div className="panel table-scroll top-five-table"><table><caption>{team.name} · {labels[metric]} 상위 5명</caption><thead><tr><th scope="col">순위</th><th scope="col">선수</th><th scope="col">{labels[metric]}</th></tr></thead><tbody>{rows.map(p=>{const rank=ordered.findIndex(x=>x.value===p.value)+1,tied=ordered.filter(x=>x.value===p.value).length>1;return <tr key={p.name}><td><b className="rank">{rank}</b>{tied&&<small>공동</small>}</td><td><strong>{korean[p.name]||p.name}</strong>{korean[p.name]&&<small>{p.name}</small>}</td><td className="points">{p.value}<small>{metric==='goals'?'골':metric==='assists'?'도움':'경기'}</small></td></tr>})}</tbody></table></div>
   <p className="fine">기록 높은 순 · 동률은 공동 순위로 표시하며, 5명 경계에서는 출처의 표시 순서를 따릅니다.</p>
-  <p className="record-source">{source.provider} 구단별 기록 · 확인일 {source.checkedAt} · 실시간 갱신 아님 <a href={club.sourceUrl} target="_blank" rel="noreferrer">팀별 기록 원문 ↗</a><br/>{source.note}</p>
+  <p className="record-source">{source.checkedAt} 기준 · 출처 <a href={club.sourceUrl} target="_blank" rel="noreferrer">{source.provider} ↗</a><br/>{source.note}</p>
   <a className="text-button" href="#/players">선수별 상세 기록 검색 →</a>
  </section>;
 }

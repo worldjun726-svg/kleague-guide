@@ -1,0 +1,79 @@
+/* 첫 직관 가이드 · 팀 찾기 공유 카드 */
+.first-visit{display:grid;gap:44px;padding-top:28px}
+.first-hero{background:var(--navy);color:#fff;border-radius:18px;padding:52px 48px;position:relative;overflow:hidden}
+.first-hero::after{content:'';position:absolute;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;background:var(--orange);opacity:.85}
+.first-hero>*{position:relative;z-index:1;max-width:640px}
+.first-hero .eyebrow{color:rgba(255,255,255,.7)}
+.first-hero h1{font-size:40px;margin:10px 0 14px;color:#fff}
+.first-hero p{color:rgba(255,255,255,.85)}
+.first-hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.first-hero-actions .button.primary{background:var(--orange);border-color:var(--orange);color:#fff}
+.first-hero-actions .button:not(.primary){background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.3)}
+.first-section-title{font-size:24px;margin-bottom:18px}
+.first-steps{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.first-steps li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:8px;position:relative}
+.first-steps li>svg{color:var(--blue)}
+.first-steps h3{font-size:17px}
+.first-steps p{font-size:13.5px;color:#4a5b70;flex:1}
+.first-steps a{display:inline-flex;align-items:center;gap:4px;font-weight:700;color:var(--blue);font-size:13px}
+.first-step-no{position:absolute;right:18px;top:16px;font-weight:900;font-size:22px;color:#dfe6ef}
+.first-checklist{display:grid;grid-template-columns:240px 1fr;gap:10px 28px;align-items:start}
+.first-checklist h2{font-size:19px}
+.first-checklist p{color:var(--muted);font-size:13px}
+.first-checklist ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.first-checklist label{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid var(--line);border-radius:999px;cursor:pointer;font-weight:600;font-size:13px;background:#fff}
+.first-checklist input{position:absolute;opacity:0;width:1px;height:1px}
+.first-check-box{width:20px;height:20px;border-radius:50%;border:2px solid #c6d0dc;display:grid;place-items:center;color:transparent}
+.first-checklist input:checked+.first-check-box{background:var(--blue);border-color:var(--blue);color:#fff}
+.first-checklist input:focus-visible+.first-check-box{outline:3px solid #e6a354;outline-offset:2px}
+.first-checklist small{grid-column:2;color:var(--muted)}
+.first-tips-lead{color:#4a5b70;margin:-8px 0 16px}
+.first-team-picker{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.first-team-picker button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 12px 4px 4px;font-size:13px;font-weight:600}
+.first-team-picker button.selected{border-color:var(--navy);background:var(--navy);color:#fff}
+.first-pick-hint{padding:28px;text-align:center;border:1px dashed #c6d0dc;border-radius:14px;color:var(--muted)}
+.first-pick-hint a{color:var(--blue);font-weight:700}
+.first-team-tips{display:grid;gap:16px;border-top:4px solid var(--club-color,var(--blue));padding-top:20px}
+.first-team-tips>header{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.first-team-tips>header>div{flex:1;min-width:160px}
+.sample-notice{background:#fff7ec;border:1px solid #f1d3ad;color:#8a5521;border-radius:10px;padding:10px 14px;font-size:13px}
+.sample-notice b{margin-right:6px;background:var(--orange);color:#fff;border-radius:4px;padding:1px 6px;font-size:11px}
+.tip-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.tip-list li{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.tip-list p{font-size:13.5px;flex:1}
+.tip-list li>div{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.tip-list b{color:#34475e}
+.tip-topic{align-self:flex-start;font-size:11px;font-weight:700;color:var(--club-color,var(--blue));border:1px solid currentColor;border-radius:999px;padding:1px 9px}
+
+/* 팀 찾기 공유 카드 */
+.share-card-section{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:32px;align-items:center;margin:28px 0;padding:28px;background:#fff;border:1px solid var(--line);border-radius:18px}
+.share-card{aspect-ratio:4/5;background:var(--navy);color:#fff;border-radius:16px;padding:26px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:6px}
+.share-card::before{content:'';position:absolute;right:-90px;top:-90px;width:260px;height:260px;border-radius:50%;background:var(--club-color);opacity:.9}
+.share-card>*{position:relative}
+.share-kicker{font-size:10px;letter-spacing:1.5px;font-weight:700;opacity:.7}
+.share-card p{margin-top:28px;font-weight:700;font-size:17px}
+.share-card strong{font-size:30px;line-height:1.25;letter-spacing:-1px}
+.share-card small{opacity:.85}
+.share-taste{margin-top:10px;background:rgba(255,255,255,.12);border-radius:8px;padding:8px 10px;font-size:12px}
+.share-card ol{list-style:none;margin:auto 0 0;padding:0;display:grid;gap:8px}
+.share-card li{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px}
+.share-card li i{width:28px;height:28px;border-radius:50%;background:var(--club-color);display:grid;place-items:center;font-style:normal;font-size:11px}
+.share-card li b{margin-left:auto;font-weight:500;opacity:.7}
+.share-copy{display:grid;gap:10px}
+.share-copy h2{font-size:24px}
+.share-copy>p:not(.eyebrow){color:#4a5b70}
+.share-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.shared-banner{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:24px 0 8px;padding:20px 24px;border-radius:16px;background:#fff;border:1px solid var(--line);border-left:6px solid var(--club-color)}
+.shared-banner>div:nth-child(2){flex:1;min-width:220px}
+.shared-banner h2 b{color:var(--club-color)}
+.shared-banner p:not(.eyebrow){color:var(--muted);font-size:13px}
+.shared-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+
+@media (max-width:720px){
+ .first-hero{padding:36px 22px}
+ .first-hero h1{font-size:30px}
+ .first-checklist{grid-template-columns:1fr}
+ .first-checklist small{grid-column:1}
+ .share-card-section{grid-template-columns:1fr;padding:18px}
+ .share-card{max-width:340px;width:100%;margin:auto}
+}

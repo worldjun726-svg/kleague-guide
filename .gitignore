@@ -4,3 +4,4 @@ test-results/
 playwright-report/
 *.tsbuildinfo
 __pycache__/
+config/

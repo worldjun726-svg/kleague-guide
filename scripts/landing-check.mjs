@@ -39,7 +39,7 @@ try{
  data.heroMedia={videoSrc:null,posterSrc:null};
  await page.route('**/data/sample-data.json',r=>r.fulfill({json:data}));
  mediaRequests.length=0;
- await page.reload();await page.locator('.media-placeholder').waitFor();
+ await page.reload();await page.locator('#landing-title').waitFor();
  assert.equal(await page.locator('.landing-video').count(),0);assert.deepEqual(mediaRequests,[]);
  await page.unroute('**/data/sample-data.json');
  await page.emulateMedia({reducedMotion:'reduce'});await page.reload();
@@ -57,8 +57,7 @@ try{
  assert.ok(await page.getByRole('button',{name:'배경 영상 재생',exact:true}).isVisible());
  await page.waitForFunction(()=>document.querySelector('.landing-video')?.networkState!==0);
  for(const route of pending)await route.abort();
- await page.locator('.media-placeholder').waitFor();
- assert.match(await page.locator('.media-placeholder').innerText(),/임시 배경/);
+ await page.locator('.media-control').waitFor({state:'detached'});
  await page.locator('.landing-cta').click();await page.getByLabel('사는 지역').waitFor();
  assert.equal(await page.locator('.landing-video').count(),0);
  assert.deepEqual(errors,[]);
