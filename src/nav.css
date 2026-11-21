@@ -1,0 +1,24 @@
+/* 상단 메뉴 묶음 (Nav.tsx) */
+.header nav{overflow:visible!important}
+.header nav .nav-group-wrap{position:relative;display:flex;align-items:stretch}
+.header nav .nav-group{display:flex;align-items:center;gap:5px;position:relative;background:none;border:0;padding:0;font:inherit;font-size:13px;font-weight:700;color:#596462;white-space:nowrap}
+.header nav .nav-group:hover,.header nav .nav-group.active,.header nav .nav-group-wrap.open .nav-group{color:#a74732}
+.header nav .nav-group.active:after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:#a74732}
+.header nav .nav-group svg{transition:transform .15s}
+.header nav .nav-group-wrap.open .nav-group svg{transform:rotate(180deg)}
+.header nav .nav-current{font-weight:600;opacity:.85}
+.header nav .nav-menu{position:absolute;top:calc(100% - 6px);left:50%;transform:translateX(-50%);z-index:40;list-style:none;margin:0;padding:8px;min-width:220px;background:#fff;border:1px solid #d9dedb;border-radius:12px;box-shadow:0 14px 34px rgba(17,38,61,.16)}
+.header nav .nav-menu a.nav-item{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 12px;border-radius:8px;color:#25364b;font-size:13px;white-space:nowrap}
+.header nav .nav-menu a.nav-item:after{display:none}
+.header nav .nav-menu a.nav-item:hover{background:#f2f4f1;color:#25364b}
+.header nav .nav-menu a.nav-item.active{background:#fbefe9;color:#a74732}
+.header nav .nav-menu a.nav-item small{font-size:11px;font-weight:500;color:#7a8580}
+.is-landing .header nav .nav-group{color:#d2dce0}
+.is-landing .header nav .nav-group:hover,.is-landing .header nav .nav-group-wrap.open .nav-group{color:#fff}
+@media(max-width:900px){
+ .header nav{overflow:visible;justify-content:flex-start;gap:22px}
+ .header nav .nav-group{font-size:12px;padding-bottom:14px}
+ .header nav .nav-current{display:none}
+ .header nav .nav-menu{left:0;transform:none;top:calc(100% - 4px)}
+ .header nav .nav-group-wrap:last-child .nav-menu{left:auto;right:0}
+}

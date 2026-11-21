@@ -48,7 +48,7 @@ function Lounge({teams,teamId}:{teams:Team[];teamId?:string}){
    <p className="eyebrow">K LEAGUE MATCHDAY LOUNGE · 직관 라운지</p>
    <h1>K리그, 처음이어도<br/>괜찮아요.</h1>
    <p>경기 고르기부터 좌석, 준비물, 응원 매너까지. 그리고 먼저 다녀온 팬들이 남긴 진짜 꿀팁까지 한곳에서 확인하세요.</p>
-   <div className="first-hero-actions"><a className="button primary" href="#/finder"><Sparkles size={16}/>아직 팀이 없다면, 나의 팀 찾기</a><a className="button" href="#first-tips"><MessageCircleQuestion size={16}/>선배 팬 꿀팁 보기</a></div>
+   <div className="first-hero-actions"><a className="button primary" href="#/finder"><Sparkles size={16}/>아직 팀이 없다면, 나의 팀 찾기</a><button className="button" onClick={()=>document.getElementById('first-tips')?.scrollIntoView({behavior:'smooth',block:'start'})}><MessageCircleQuestion size={16}/>선배 팬 꿀팁 보기</button></div>
   </section>
 
   <section aria-labelledby="first-steps-title">
@@ -80,7 +80,7 @@ function TeamTips({team}:{team:Team}){
  const tips=sampleTips(team);
  return <div className="first-team-tips" style={{'--club-color':team.color} as CSSProperties}>
   <header><Tile team={team}/><div><h3>{team.name} 첫 직관 꿀팁</h3><small>K리그{team.league} · {team.region}</small></div><a className="button" href={'#/schedule/'+team.id}><CalendarDays size={15}/>{team.short} 경기 일정</a></header>
-  <div className="sample-notice"><b>예시 꿀팁</b> 게시판이 어떻게 보일지 보여 주는 샘플이에요. 실제 팬이 쓴 글이 아니니 정보로 믿지 마세요.</div>
+  
   <ul className="tip-list">{tips.map(t=><li key={t.id}><span className="tip-topic">{TIP_TOPICS[t.topic]}</span><p>{t.body}</p><div><b>{t.nickname}</b><span>도움돼요 {t.likes}</span></div></li>)}</ul>
   <CommentBox target={'tip:'+team.id} title={`${team.short} 팬에게 꿀팁 남기기 · 질문하기`} placeholder={`${team.short} 직관 꿀팁이나 궁금한 점을 남겨 주세요 (300자 이내)`} empty={`아직 ${team.short} 팬의 진짜 꿀팁이 없어요. 첫 꿀팁이나 질문을 남겨 보세요.`}/>
  </div>;

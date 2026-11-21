@@ -7,6 +7,7 @@ import {SeasonRecords,CurrentTeam,PlayerBrowser,PlayerPage} from './Records';
 import {Home,MatchPage} from './HomeTeam';
 import Finder from './Finder';
 import FirstVisit from './FirstVisit';
+import {MainNav,NAV} from './Nav';
 import Landing from './Landing';
 import {FinalSimulator} from './Forecasts';
 import BigMatches from './MatchGuide';
@@ -15,7 +16,6 @@ import {Empty} from './components';
 import {LiveCenter,LiveMatchPage,useLive} from './Live';
 import {AccountProvider,AuthButton,FavoriteButton,CommentBox,MyPage} from './Account';
 import {SchedulePage,GamePage,useGameName} from './Schedule';
-const NAV=[['live','라이브'],['schedule','일정·예매'],['lounge','직관 라운지'],['matches','순위'],['big','빅매치'],['team','팀'],['final','파이널 시뮬레이터'],['center','승강 센터'],['finder','나의 팀 찾기']];
 function MyRoute({data}:{data:CurrentSeason}){
  const {data:live}=useLive();
  const team=(id:string)=>data.teams.find(t=>t.id===id);
@@ -38,7 +38,7 @@ function AppBody(){
  const contextTeam=current.teams.find(t=>t.id===param);
  const dates=[...new Set(Object.values(current.sources).map(s=>s.asOf))].sort();
  const pending=['big','final','center'].includes(page),samplePage=(pending&&demo)||page==='archive'||page==='match';
- return <div className={'app-shell '+(page==='landing'?'is-landing':'')}><a className="skip-link" href="#main" onClick={e=>{e.preventDefault();document.getElementById('main')?.focus()}}>본문으로 이동</a><header className="header"><div className="header-inner"><a className="brand" href="#/"><span className="brand-mark"><Goal size={24}/></span><span>K리그 <b>관전 가이드</b><small>YOUR NEXT FAVORITE TEAM</small></span></a><nav aria-label="주 메뉴">{NAV.map(([id,label])=><a key={id} href={'#/'+id+(contextTeam&&['big','center','team','schedule'].includes(id)?'/'+contextTeam.id:'')} className={active===id?'active':''} aria-current={active===id?'page':undefined}>{label}{id==='finder'&&<Sparkles size={13}/>}</a>)}</nav><span className="season-tag"><i/>{samplePage?'2025 예시':current.season+' SEASON'}</span><AuthButton/></div></header>
+ return <div className={'app-shell '+(page==='landing'?'is-landing':'')}><a className="skip-link" href="#main" onClick={e=>{e.preventDefault();document.getElementById('main')?.focus()}}>본문으로 이동</a><header className="header"><div className="header-inner"><a className="brand" href="#/"><span className="brand-mark"><Goal size={24}/></span><span>K리그 <b>관전 가이드</b><small>YOUR NEXT FAVORITE TEAM</small></span></a><MainNav active={active} teamId={contextTeam?.id}/><span className="season-tag"><i/>{samplePage?'2025 예시':current.season+' SEASON'}</span><AuthButton/></div></header>
  {(samplePage||page==='live')&&<div className="demo-banner"><Info size={14}/><span>{samplePage?<><strong>SAMPLE EDITION · 2025</strong> · 기능 체험용 예시 데이터입니다.</>:<><strong>LIVE CENTER · PREVIEW</strong> · 실제 경기 연동 전 미리보기 화면입니다.</>}</span></div>}
  <main id="main" tabIndex={-1} className="container" data-core={page}>
  {page==='landing'&&<Landing data={data}/>}
