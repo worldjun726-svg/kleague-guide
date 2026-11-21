@@ -7,12 +7,13 @@ import {SeasonRecords,CurrentTeam,PlayerBrowser,PlayerPage} from './Records';
 import {Home,MatchPage} from './HomeTeam';
 import Finder from './Finder';
 import FirstVisit from './FirstVisit';
+import LiveScores from './LiveScores';
 import {RaceCenter,RaceBigMatches,RaceSimulator} from './RaceTabs';
 import PlayerRanks from './PlayerRanks';
 import {MainNav} from './Nav';
 import Landing from './Landing';
 import {Empty} from './components';
-import {LiveCenter,LiveMatchPage,useLive} from './Live';
+import {useLive} from './Live';
 import {AccountProvider,AuthButton,FavoriteButton,CommentBox,MyPage} from './Account';
 import {SchedulePage,GamePage,useGameName} from './Schedule';
 function MyRoute({data}:{data:CurrentSeason}){
@@ -38,7 +39,7 @@ function AppBody(){
  const dates=[...new Set(Object.values(current.sources).map(s=>s.asOf))].sort();
  const samplePage=page==='archive'||page==='match';
  return <div className={'app-shell '+(page==='landing'?'is-landing':'')}><a className="skip-link" href="#main" onClick={e=>{e.preventDefault();document.getElementById('main')?.focus()}}>본문으로 이동</a><header className="header"><div className="header-inner"><a className="brand" href="#/"><span className="brand-mark"><Goal size={24}/></span><span>K리그 <b>관전 가이드</b><small>YOUR NEXT FAVORITE TEAM</small></span></a><MainNav active={active} teamId={contextTeam?.id}/><span className="season-tag"><i/>{samplePage?'2025 예시':current.season+' SEASON'}</span><AuthButton/></div></header>
- {(samplePage||page==='live')&&<div className="demo-banner"><Info size={14}/><span>{samplePage?<><strong>SAMPLE EDITION · 2025</strong> · 기능 체험용 예시 데이터입니다.</>:<><strong>LIVE CENTER · PREVIEW</strong> · 실제 경기 연동 전 미리보기 화면입니다.</>}</span></div>}
+ {samplePage&&<div className="demo-banner"><Info size={14}/><span>{samplePage?<><strong>SAMPLE EDITION · 2025</strong> · 기능 체험용 예시 데이터입니다.</>:<><strong>LIVE CENTER · PREVIEW</strong> · 실제 경기 연동 전 미리보기 화면입니다.</>}</span></div>}
  <main id="main" tabIndex={-1} className="container" data-core={page}>
  {page==='landing'&&<Landing data={data}/>}
  {['matches','team','players','player'].includes(page)&&<div className="season-nav"><a href="#/matches">시즌 순위</a><span>/</span><a href="#/team">팀 기록</a><span>/</span><a href="#/players">선수 기록</a></div>}
@@ -50,8 +51,7 @@ function AppBody(){
  {page==='player'&&<><PlayerPage data={current} id={param}/>{param&&current.players.some(p=>p.id===param)&&<div className="fan-zone"><FavoriteButton kind="player" id={param} label={current.players.find(p=>p.id===param)!.name}/></div>}</>}
  {page==='schedule'&&<SchedulePage key={param||'all'} teams={teamMap} teamParam={param}/>}
  {page==='game'&&<GamePage key={param} id={param} teams={teamMap}/>}
- {page==='live'&&!param&&<LiveCenter teams={teamMap}/>}
- {page==='live'&&param&&<LiveMatchPage id={param} teams={teamMap}/>}
+ {page==='live'&&<LiveScores teams={teamMap}/>}
  {page==='me'&&<MyRoute data={current}/>}
  {page==='big'&&<RaceBigMatches teams={teamMap}/>}
  {page==='final'&&<RaceSimulator teams={teamMap}/>}
