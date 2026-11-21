@@ -1,12 +1,12 @@
 import type {CSSProperties} from 'react';
-import {CalendarDays,MapPin,Tv,Shield,MessageCircle,BarChart3,ArrowRight,Star,Newspaper,ExternalLink} from 'lucide-react';
+import {CalendarDays,MapPin,Tv,Shield,MessageCircle,BarChart3,ArrowRight,Star,Newspaper,ExternalLink,PlayCircle,Play} from 'lucide-react';
 import type {Dataset,League} from './types';
 import {Tile,Form} from './components';
 import {useAccount,ClubPicker} from './Account';
 import {clubOf,nicknameOf} from './accountApi';
 import {useMatches,dayLabel,type SeasonMatch} from './matchData';
 import {table,magicFor} from './race';
-import {useNews,newsFor} from './news';
+import {useNews,newsFor,useHighlights,shortTitle,kindOf} from './news';
 import './myClub.css';
 
 // 홈 화면 맨 위: 로그인한 사람의 MY 팀 대시보드 — 다가오는 일정과 MY 팀 뉴스를 가장 먼저.
@@ -15,6 +15,7 @@ export default function MyClub({data}:{data:Dataset}){
  const {user,ready}=useAccount();
  const {data:season}=useMatches();
  const {data:news,error:newsError}=useNews();
+ const highlights=useHighlights(user?clubOf(user)??undefined:undefined);
  if(!ready||!user)return null;
  const club=clubOf(user),team=club?data.teams.find(t=>t.id===club):undefined;
  if(!team)return <section className="myclub myclub-empty">
@@ -59,7 +60,14 @@ export default function MyClub({data}:{data:Dataset}){
      <span className="mc-news-text"><small>{a.category==='club'?'구단 소식':'리그 소식'}{a.date?' · '+a.date.slice(5).replace('-','.'):''}</small><strong>{a.title.replace(/^\[[^\]]+\]\s*_?/,'')}</strong></span>
      <ExternalLink size={12}/>
     </a></li>)}</ul>:<p className="mc-meta">{newsError?'뉴스를 불러오지 못했어요.':news?`최근 공식 소식 중 ${team.short} 기사가 아직 없어요.`:'뉴스를 불러오는 중…'}</p>}
-    <p className="mc-source">출처 K리그 공식 홈페이지 구단·리그 소식{news?` · ${new Date(news.retrievedAt).toLocaleDateString('ko-KR',{month:'numeric',day:'numeric'})} 기준`:''}</p>
+    <div className="mc-hl">
+     <h3><PlayCircle size={15}/>{team.short} 하이라이트</h3>
+     {highlights===null?<p className="mc-meta">영상을 불러오는 중…</p>:highlights.length?<ul>{highlights.slice(0,3).map(h=><li key={h.seq}><a href={h.url} target="_blank" rel="noreferrer" title={h.title}>
+      <span className="mc-hl-thumb">{h.thumb&&<img src={h.thumb} alt="" loading="lazy"/>}<i><Play size={16}/></i></span>
+      <strong>{shortTitle(h.title)}</strong><small>{kindOf(h.title)}{h.date?' · '+h.date.slice(5).replace('-','.'):''}</small>
+     </a></li>)}</ul>:<p className="mc-meta">아직 {team.short} 하이라이트가 없어요.</p>}
+    </div>
+    <p className="mc-source">출처 K리그 공식 홈페이지 구단·리그 소식·영상{news?` · ${new Date(news.retrievedAt).toLocaleDateString('ko-KR',{month:'numeric',day:'numeric'})} 기준`:''}</p>
    </div>
   </div>
   <div className="mc-foot">

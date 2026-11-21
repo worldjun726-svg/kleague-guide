@@ -26,3 +26,15 @@ export function newsFor(team:Team,items:NewsItem[],limit=6){
  const keys=[`[${team.short}]`,squash(team.name),...(ALIASES[team.id]??[])].map(squash);
  return items.filter(it=>{const t=squash(it.title);return keys.some(k=>t.includes(k))}).slice(0,limit);
 }
+
+// 구단별 하이라이트 영상 (scripts/fetch-highlights.mjs 가 매일 받아 public/data/highlights.json 에 저장)
+export interface Highlight {seq:number;title:string;date:string|null;thumb:string|null;url:string}
+let hlCache:Promise<{retrievedAt:string;teams:Record<string,Highlight[]>}>|null=null;
+export function useHighlights(team?:string){
+ const [list,setList]=useState<Highlight[]|null>(null);
+ useEffect(()=>{if(!team)return;let alive=true;hlCache??=fetch(withBase('/data/highlights.json')).then(r=>{if(!r.ok)throw Error();return r.json()}).catch(e=>{hlCache=null;throw e});hlCache.then(d=>alive&&setList(d.teams[team]??[])).catch(()=>alive&&setList([]));return()=>{alive=false}},[team]);
+ return list;
+}
+// "[30분 하이라이트] 하나은행 K리그1 2026 35R 대전 vs 인천 (2026-11-08)" → "35R 대전 vs 인천"
+export const shortTitle=(t:string)=>(/(\d+R\s+.+?)\s*\(\d{4}-\d{2}-\d{2}\)/.exec(t)?.[1]??t.replace(/^\[[^\]]+\]\s*/,'')).trim();
+export const kindOf=(t:string)=>/^\[([^\]]+)\]/.exec(t)?.[1]??'하이라이트';

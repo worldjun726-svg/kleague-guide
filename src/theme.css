@@ -134,28 +134,24 @@ body,.app-shell{background:var(--bg);color:var(--ink)}
 @media(max-width:560px){.app-shell .landing-features{grid-template-columns:1fr}.app-shell .tabs button{padding:8px 12px}.brand-word{font-size:21px}}
 @media(max-width:900px){.app-shell .landing-shade{background:linear-gradient(180deg,#0b0d10d9 0%,#0b0d10c7 60%,#0b0d10ee 100%)}}
 
-/* ── 선호 구단 배경 (첫 화면 본문 영역만) ──
-   --home-bg: 구단 메인컬러 그대로, --on-club: 그 위에서 대비가 더 큰 글자색(흰색/검정). 카드는 각자 흰 배경 유지. */
-.app-shell.club-bg .shell-body{background:var(--home-bg)}
-.app-shell.club-bg .shell-body main.container{background:var(--home-bg)}
-.app-shell.club-bg .landing-intro,.app-shell.club-bg .landing-intro-heading h2,.app-shell.club-bg .landing-intro-heading>span,.app-shell.club-bg .landing-sample-note{color:var(--on-club)}
-.app-shell.club-bg .landing-intro-heading>p{color:var(--on-club);opacity:.85}
-.app-shell.club-bg .landing-intro-heading>span{opacity:.9}
-.app-shell.club-bg .myclub,.app-shell.club-bg .landing-club-section{box-shadow:0 10px 30px rgba(0,0,0,.18)}
-.app-shell.club-bg .landing-features>a{box-shadow:0 10px 26px rgba(0,0,0,.22);outline:2px solid #ffffff38;outline-offset:-2px}
-.app-shell.club-bg .landing-hero{box-shadow:0 18px 44px rgba(0,0,0,.3)}
-.app-shell.club-bg.club-dark .landing-features>a:nth-child(4){outline-color:#ffffff60}
-.app-shell.club-bg.club-light .landing-features>a{outline-color:#1b1d2130}
-
 /* ── 선호 구단 배경: 모든 탭 ──
    본문 바탕에 직접 놓인 글자(제목·설명·안내·링크)만 구단색 위 글자색(--on-club)으로 바꾸고,
    흰 카드·표·입력 칸 안의 글자는 원래 색을 그대로 쓴다. */
-.app-shell.club-bg{background:var(--home-bg)}
 .app-shell.club-bg main.container{color:var(--on-club)}
 .app-shell.club-bg main :is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.landing-features,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar){color:var(--ink)}
 .app-shell.club-bg main :is(h1,h2,h3,h4,p,small,span,label,dt,dd,li,strong,b,a:not(.button),button.text-button,.eyebrow,.fine,.record-source,.race-meta):not(:is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.landing-features,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar) *):not(:is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.landing-features,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar)){color:var(--on-club)}
 .app-shell.club-bg main :is(.fine,.record-source,.race-meta,.page-heading p,.rank-table-head span,.first-tips-lead):not(:is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.landing-features,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar) *){opacity:.92}
 .app-shell.club-bg main a:not(.button):not(:is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.landing-features,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar) *){text-decoration:underline;text-underline-offset:3px}
-.app-shell.club-bg main .page-heading h1:after{background:var(--on-club)}
-.app-shell.club-bg.club-dark main .page-heading h1:after{background:#ffd21f}
 .app-shell.club-bg main :is(.panel,.ls-card,.rbig-card,.race-focus,.rank-table,.race-table,.date-bar,.first-checklist,.share-card-section,.race-rules,.race-method,.rank-leader){box-shadow:0 8px 26px rgba(0,0,0,.18)}
+
+
+/* ── 선호 구단 배경: 2026 홈 유니폼 디자인 (모든 탭 본문) ──
+   --kit-bg: 유니폼 무늬로 만든 배경(src/kits.ts), --club-main: 유니폼 바탕색, --on-club: 그 위 글자색 */
+.app-shell.club-bg{background:var(--club-main)}
+.app-shell.club-bg .shell-body{background:var(--kit-bg);background-attachment:fixed}
+.app-shell.club-bg .shell-body main.container{background:transparent}
+.app-shell.club-bg main .page-heading .eyebrow:not(:is(.panel,.myclub) *){color:var(--on-club);opacity:.85}
+.app-shell.club-bg main .page-heading h1:after{background:#ffd21f}
+.app-shell.club-bg.club-light main .page-heading h1:after{background:var(--on-club)}
+.app-shell.club-bg main :is(.panel,.myclub,.ls-card,.rbig-card,.race-focus,.rank-table,.race-table,.date-bar,.first-checklist,.share-card-section,.race-rules,.race-method,.rank-leader,.landing-club-section){box-shadow:0 16px 36px rgba(0,0,0,.25),0 2px 6px rgba(0,0,0,.08)}
+.app-shell.club-bg main :is(.page-heading h1,.page-heading p,.section-title h2,.race-block h2,.rank-table-head h2):not(:is(.panel,.myclub) *){text-shadow:0 1px 2px color-mix(in srgb,var(--club-main) 60%,transparent)}

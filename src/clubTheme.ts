@@ -15,3 +15,17 @@ export function inkOn(hex: string): {ink: string; dark: boolean; ratio: number} 
   const L = luminance(hex), white = contrast(1, L), dark = contrast(luminance(DARK_INK), L);
   return white >= dark ? {ink: '#ffffff', dark: true, ratio: white} : {ink: DARK_INK, dark: false, ratio: dark};
 }
+
+// 두 색을 t(0~1) 비율로 섞는다. mix(구단색, '#ffffff', 0.72) → 구단색 28% + 흰색 72% 의 파스텔 톤
+export function mix(hex: string, other: string, t: number) {
+  const p = (h: string) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const [a, b] = [p(hex), p(other)];
+  return '#' + a.map((v, i) => Math.round(v * (1 - t) + b[i] * t).toString(16).padStart(2, '0')).join('');
+}
+// 선호 구단 배경 팔레트(유니폼 줄무늬): 구단 메인컬러 그대로 + 위→아래 음영.
+// 글자가 흰색인 구단은 아래로 갈수록 어둡게, 글자가 검정인 밝은 구단은 아래로 갈수록 밝게 해서 대비가 줄지 않게 한다.
+export function clubPalette(hex: string) {
+  const on = inkOn(hex);
+  const end = on.dark ? mix(hex, '#000000', 0.32) : mix(hex, '#ffffff', 0.2);
+  return {main: hex, end, ink: on.ink, dark: on.dark, ratio: on.ratio};
+}
