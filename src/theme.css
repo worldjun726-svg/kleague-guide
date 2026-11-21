@@ -1,0 +1,91 @@
+/* 사이트 공통 테마 — 흰 바탕 + 강한 레드 포인트의 스포츠 미디어 스타일.
+   다른 CSS 뒤에 불러와서(main.tsx 마지막) 공통 요소의 색·모양을 덮어쓴다. */
+:root{--red:#e8423b;--red-dark:#c9302a;--ink:#1d2127;--navy:#1d2127;--blue:#e8423b;--orange:#e8423b;--line:#e8eaee;--muted:#7b818a;--soft:#f5f6f8}
+body,.app-shell{background:#fff;color:var(--ink)}
+.app-shell main.container{background:transparent}
+
+/* ── 헤더 ── */
+.app-shell .header,.app-shell.is-landing .header{position:sticky;top:0;inset:auto;z-index:30;background:#fff;color:var(--ink);border:0;border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,.03)}
+.app-shell .header-inner,.app-shell.is-landing .header-inner{border-bottom:0;min-height:72px}
+.app-shell .brand,.app-shell.is-landing .brand{color:var(--ink)}
+.app-shell .brand b{color:var(--red)}
+.app-shell .brand small,.app-shell.is-landing .brand small{color:#9aa0a8}
+.app-shell .brand-mark,.app-shell.is-landing .brand-mark{background:var(--red);color:#fff;border:0;border-radius:8px;width:36px;height:36px;display:grid;place-items:center;transform:skewX(-8deg)}
+.app-shell .brand-mark svg{transform:skewX(8deg)}
+.app-shell .header nav .nav-group,.app-shell .header nav .nav-group-wrap a.nav-group,.app-shell.is-landing .header nav .nav-group,.app-shell.is-landing .header nav .nav-group-wrap a.nav-group{color:#3a3f46;font-weight:700}
+.app-shell .header nav .nav-group:hover,.app-shell .header nav .nav-group.active,.app-shell .header nav .nav-group-wrap.open .nav-group,.app-shell .header nav .nav-group-wrap a.nav-group.active,.app-shell .header nav .nav-group-wrap a.nav-group:hover{color:var(--red)}
+.app-shell .header nav .nav-group.active:after{background:var(--red);height:3px}
+.app-shell .header nav .nav-menu a.nav-item.active{background:#fdecea;color:var(--red)}
+.app-shell .auth-button{border-color:var(--line);color:var(--ink)}
+.app-shell .season-tag{border-color:var(--line);color:var(--muted)}.app-shell .season-tag i{background:var(--red)}
+
+/* ── 제목 ── */
+.app-shell .page-heading .eyebrow,.app-shell .eyebrow{color:var(--red);font-weight:800;letter-spacing:1.5px}
+.app-shell .page-heading h1{color:var(--ink);font-weight:900}
+.app-shell .page-heading h1:after{content:'';display:block;width:44px;height:4px;background:var(--red);margin-top:12px}
+.app-shell .section-title h2{color:var(--ink)}
+
+/* ── 버튼 ── */
+.app-shell .button{border-radius:4px;border:1.5px solid var(--line);background:#fff;color:var(--ink);font-weight:700}
+.app-shell .button:hover{border-color:var(--red);color:var(--red)}
+.app-shell .button.primary{background:var(--red);border-color:var(--red);color:#fff}
+.app-shell .button.primary:hover{background:var(--red-dark);border-color:var(--red-dark);color:#fff}
+.app-shell .text-button{color:var(--red)}
+
+/* ── 탭: 흰 알약 모양, 선택된 항목은 레드 글씨 + 밑줄 ── */
+.app-shell .tabs{background:#fff;border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.07);padding:4px 6px;width:auto;display:inline-flex;gap:2px;border:1px solid #f0f1f3}
+.app-shell .tabs button{background:transparent;border:0;border-radius:999px;color:#6b7179;font-weight:700;padding:9px 18px;flex:none;box-shadow:none;position:relative}
+.app-shell .tabs button.selected{background:transparent;color:var(--red);box-shadow:none}
+.app-shell .tabs button.selected:after{content:'';position:absolute;left:50%;bottom:4px;width:18px;height:2px;margin-left:-9px;background:var(--red);border-radius:2px}
+
+/* ── 카드·표 ── */
+.app-shell .panel{border-radius:8px;border-color:var(--line);box-shadow:0 6px 20px rgba(17,24,39,.05)}
+.app-shell .pill{border-radius:999px}
+.app-shell .pill.blue{background:#fdecea;color:var(--red)}
+.app-shell .record-source a,.app-shell .fine a{color:var(--red)}
+.rank-leader.selected,.app-shell .sim-pick button.on{background:var(--ink);border-color:var(--ink)}
+.app-shell .rank-no.r1{background:var(--red)}
+
+/* ── 푸터 ── */
+.app-shell .footer{background:var(--ink)}
+
+/* ── 첫 화면: 사선으로 잘린 사진 + 오른쪽 레드 헤드라인 ── */
+.app-shell .landing-hero{min-height:600px;min-height:min(640px,calc(100svh - 72px));padding:70px 0 90px;background:#fff;color:var(--ink);display:flex;align-items:center}
+.app-shell .landing-stage{right:auto;width:58%;clip-path:polygon(0 0,100% 0,80% 100%,0 100%);z-index:0}
+.app-shell .landing-shade{display:none}
+.app-shell .landing-copy{position:relative;z-index:1;width:40%;max-width:540px;margin:0 5% 0 auto}
+.app-shell .landing-eyebrow{color:var(--ink);letter-spacing:2px}
+.app-shell .landing-eyebrow>span{background:var(--red)}
+.app-shell .landing-copy h1{color:var(--red);font-size:clamp(34px,3.7vw,56px);letter-spacing:-2px;line-height:1.25}
+.app-shell .landing-description{color:#5a6068;font-size:15px}
+.app-shell .landing-actions{flex-wrap:wrap;gap:14px 24px}
+.app-shell .landing-cta{background:#fff;color:var(--red);border:2px solid var(--red);border-radius:4px;padding:14px 20px;min-height:0;gap:24px}
+.app-shell .landing-cta:hover{background:var(--red);color:#fff;transform:none}
+.app-shell .landing-secondary{color:var(--ink);border-bottom-color:var(--red);font-weight:700}
+.app-shell .landing-bottom{border-top:1px solid var(--line);padding:16px 5%;max-width:none;background:#fff;z-index:2}
+.app-shell .landing-bottom>button{color:var(--ink)}
+.app-shell .landing-bottom>span{color:var(--muted)}.app-shell .landing-bottom i{background:var(--red)}
+.app-shell .landing-media-tools{right:auto;left:24px;bottom:110px}
+/* 레드 띠: 기능 소개를 흰 카드로 */
+.app-shell .landing-intro{max-width:none;width:100%;background:var(--red);color:#fff;padding:80px max(32px,calc((100% - 1240px)/2)) 90px}
+.app-shell .landing-intro-heading>p{color:#ffd9d6}
+.app-shell .landing-intro-heading h2{color:#fff}
+.app-shell .landing-intro-heading>span{color:#ffe4e2}
+.app-shell .landing-features{gap:18px;margin-top:44px}
+.app-shell .landing-features>a{background:#fff;color:var(--ink);border:0;border-radius:6px;padding:26px 24px 22px;box-shadow:0 14px 30px rgba(120,20,15,.25);display:flex;flex-direction:column;transition:transform .2s}
+.app-shell .landing-features>a:hover{transform:translateY(-4px)}
+.app-shell .landing-features .feature-icon{color:var(--red)}
+.app-shell .landing-features p{color:#6b7179;flex:1}
+.app-shell .landing-features strong{color:var(--red)}
+.app-shell .landing-club-section{background:#fff}
+.app-shell .landing-club-section a{color:var(--red)}
+
+@media(max-width:900px){
+ .app-shell .landing-hero{display:block;min-height:0;padding:0 0 70px}
+ .app-shell .landing-stage{position:relative;inset:auto;width:100%;height:300px;clip-path:polygon(0 0,100% 0,100% 82%,0 100%)}
+ .app-shell .landing-copy{width:auto;max-width:none;margin:28px 22px 0}
+ .app-shell .landing-media-tools{top:240px;bottom:auto}
+ .app-shell .landing-features{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){.app-shell .landing-features{grid-template-columns:1fr}.app-shell .tabs button{padding:8px 12px}}
+.app-shell .landing-video,.app-shell .landing-poster{object-position:82% 50%}

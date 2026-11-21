@@ -1,7 +1,7 @@
-import {useMemo,useState,type CSSProperties} from 'react';
+import {useEffect,useMemo,useState,type CSSProperties} from 'react';
 import {LoaderCircle,RefreshCw,ExternalLink,Flame,ArrowRight,RotateCcw} from 'lucide-react';
 import type {League,Team} from './types';
-import {Heading,Tile,Empty} from './components';
+import {Heading,Tile,Empty,go} from './components';
 import {useMatches,type SeasonMatches} from './matchData';
 import {table,magicFor,simulate,bigMatches,remainingMatches,kickoffLabel,KEYS,GIMCHEON,type Row,type Outcome,type SimResult} from './race';
 import './race.css';
@@ -36,33 +36,39 @@ function useSim(data:SeasonMatches,league:League,fixed:Record<string,Outcome>={}
 }
 
 // ── 승강 매직넘버 ──
-export function RaceCenter({teams}:{teams:Teams}){
- const {data,error,reload}=useMatches();const [league,setLeague]=useLeague();
+export function RaceCenter({teams,teamId}:{teams:Teams;teamId?:string}){
+ const {data,error,reload}=useMatches();const focus=teamId&&teams[teamId]?teamId:undefined;
+ const [league,setLeague]=useState<League>(focus?teams[focus].league:1);
+ useEffect(()=>{if(focus)setLeague(teams[focus].league)},[focus]);
+ const list=Object.values(teams);
  return <section className="race">
   <Heading eyebrow="2026 / PROMOTION & RELEGATION RACE" title="끝까지 가는 승강 레이스." description="실제 2026 경기 결과로 계산한 매직넘버와, 남은 경기를 수천 번 시뮬레이션한 확률을 함께 보세요."/>
-  <LeagueTabs league={league} set={setLeague}/>
-  <Loading data={data} error={error} reload={reload}>{d=><CenterBody data={d} league={league} teams={teams}/>}</Loading>
+  <div className="race-toolbar"><LeagueTabs league={league} set={setLeague}/>
+   <label className="race-pick">우리 팀 매직넘버<select value={focus||''} onChange={e=>go(e.target.value?'center/'+e.target.value:'center')}><option value="">팀 선택</option>{([1,2] as League[]).map(l=><optgroup key={l} label={'K리그'+l}>{list.filter(t=>t.league===l).sort((a,b)=>a.name.localeCompare(b.name,'ko')).map(t=><option key={t.id} value={t.id}>{t.name}</option>)}</optgroup>)}</select></label>
+  </div>
+  <Loading data={data} error={error} reload={reload}>{d=><CenterBody data={d} league={league} teams={teams} focus={focus&&teams[focus].league===league?focus:undefined}/>}</Loading>
  </section>;
 }
-function CenterBody({data,league,teams}:{data:SeasonMatches;league:League;teams:Teams}){
+function CenterBody({data,league,teams,focus}:{data:SeasonMatches;league:League;teams:Teams;focus?:string}){
  const rows=table(data,league),sim=useSim(data,league),left=remainingMatches(data,league);
  return <>
+  {focus&&<TeamFocus team={focus} rows={rows} league={league} sim={sim} teams={teams} data={data}/>}
   <RuleNote league={league}/>
   <p className="race-meta">{asOf(data)} 기준 경기 결과 · 남은 경기 {left.length}개 · 시뮬레이션 {sim.runs.toLocaleString()}회</p>
   {league===1?<>
-   <RaceTable title="그룹A · 우승 경쟁" rows={rows.filter(r=>r.group==='A')} all={rows} league={1} sim={sim} teams={teams} probKey="title" probLabel="우승 확률"/>
-   <RaceTable title="그룹B · 생존 경쟁" rows={rows.filter(r=>r.group==='B')} all={rows} league={1} sim={sim} teams={teams} probKey="last" probLabel="12위 확률" startRank={7}/>
-  </>:<RaceTable title="K리그2 · 승격 경쟁" rows={rows} all={rows} league={2} sim={sim} teams={teams} probKey="auto" probLabel="자동 승격" probKey2="po" probLabel2="PO 진출(3~6위)"/>}
+   <RaceTable title="그룹A · 우승 경쟁" rows={rows.filter(r=>r.group==='A')} all={rows} league={1} sim={sim} teams={teams} focus={focus} probKey="title" probLabel="우승 확률"/>
+   <RaceTable title="그룹B · 생존 경쟁" rows={rows.filter(r=>r.group==='B')} all={rows} league={1} sim={sim} teams={teams} focus={focus} probKey="last" probLabel="12위 확률" startRank={7}/>
+  </>:<RaceTable title="K리그2 · 승격 경쟁" rows={rows} all={rows} league={2} sim={sim} teams={teams} focus={focus} probKey="auto" probLabel="자동 승격" probKey2="po" probLabel2="PO 진출(3~6위)"/>}
   <details className="race-method"><summary>계산 방법</summary>
    <p><b>매직넘버</b>는 "다른 팀이 남은 경기를 모두 이겨도" 목표를 확정하는 데 필요한 추가 승점이에요. 승점이 같아지면 넘어서지 못한 것으로 보는 보수적인 계산이라, 실제로는 다득점·득실차 덕분에 더 일찍 확정될 수 있어요.</p>
    <p><b>확률</b>은 남은 경기마다 두 팀의 이번 시즌 홈·원정 득실점으로 기대득점을 구하고(포아송 모형), 점수를 무작위로 뽑아 시즌을 {sim.runs.toLocaleString()}번 끝까지 치러 본 결과예요. 승점·다득점·득실차·다승까지 같으면 무작위로 순위를 정했어요(승자승·벌점은 반영하지 않음). 부상·동기부여 같은 요소는 반영하지 않으니 참고용으로 봐 주세요.</p>
   </details>
  </>;
 }
-function RaceTable({title,rows,all,league,sim,teams,probKey,probLabel,probKey2,probLabel2,startRank=1}:{title:string;rows:Row[];all:Row[];league:League;sim:SimResult;teams:Teams;probKey:string;probLabel:string;probKey2?:string;probLabel2?:string;startRank?:number}){
+function RaceTable({title,rows,all,league,sim,teams,focus,probKey,probLabel,probKey2,probLabel2,startRank=1}:{title:string;rows:Row[];all:Row[];league:League;sim:SimResult;teams:Teams;focus?:string;probKey:string;probLabel:string;probKey2?:string;probLabel2?:string;startRank?:number}){
  return <div className="race-block"><h2>{title}</h2><div className="table-scroll"><table className="race-table">
   <thead><tr><th>순위</th><th>팀</th><th className="num">승점</th><th className="num">경기</th><th className="num hide-sm">남은</th><th className="num hide-sm">최대 승점</th><th>매직넘버</th><th>{probLabel}</th>{probKey2&&<th>{probLabel2}</th>}</tr></thead>
-  <tbody>{rows.map((r,i)=>{const rank=startRank+i,zone=league===2?(rank<=2?'zone-up':rank<=6?'zone-po':''):r.group==='B'&&rank===12?'zone-down':'';return <tr key={r.team} className={zone}>
+  <tbody>{rows.map((r,i)=>{const rank=startRank+i,zone=league===2?(rank<=2?'zone-up':rank<=6?'zone-po':''):r.group==='B'&&rank===12?'zone-down':'';return <tr key={r.team} className={zone+(r.team===focus?' focus':'')} onClick={()=>go('center/'+r.team)}>
    <td><span className="race-rank">{rank}</span></td>
    <td><TeamCell team={teams[r.team]} id={r.team}/>{r.team===GIMCHEON&&<small className="race-flag">자동 강등</small>}</td>
    <td className="num strong">{r.pts}</td><td className="num">{r.played}</td><td className="num hide-sm">{r.remaining}</td><td className="num hide-sm">{r.max}</td>
@@ -140,4 +146,26 @@ function SimBody({data,league,teams}:{data:SeasonMatches;league:League;teams:Tea
    <p className="fine">"예상"은 시뮬레이션에서 가장 많이 나온 최종 순위예요. 승점은 지금까지의 실제 승점에 고른 결과(승 3점·무 1점)를 더한 값이에요. 변화량은 아무 결과도 고르지 않았을 때와 비교한 값이에요.</p>
   </div>
  </div>;
+}
+
+
+// 팀을 고르면 보이는 카드: 순위·매직넘버·확률, 그리고 남은 경기마다 이기면/비기면/지면 확률이 어떻게 되는지.
+function TeamFocus({team,rows,league,sim,teams,data}:{team:string;rows:Row[];league:League;sim:SimResult;teams:Teams;data:SeasonMatches}){
+ const r=rows.find(x=>x.team===team);if(!r)return null;
+ const t=teams[team],rank=rows.indexOf(r)+1,magic=magicFor(r,rows,league);
+ const keys=KEYS[league].filter(k=>league===2?k.id==='auto'||k.id==='top6':r.group==='A'?k.id==='title':k.id==='last');
+ const games=remainingMatches(data,league).filter(m=>m.home===team||m.away===team);
+ const open=keys.filter(k=>{const p=sim.prob[team]?.[k.id]??0;return p>.001&&p<.999});
+ const name=(id:string)=>teams[id]?.short||id;
+ const res=(o:'W'|'D'|'L',home:boolean):Outcome=>o==='D'?'D':(o==='W')===home?'H':'A';
+ return <section className="race-focus" style={{'--club-color':t?.color||'#1d2127'} as CSSProperties} aria-label={`${t?.name||team} 매직넘버`}>
+  <div className="rf-head">{t&&<Tile team={t}/>}<div><small>K리그{league}{r.group?` · 그룹${r.group}`:''}</small><h2>{t?.name||team}</h2></div><button className="text-button" onClick={()=>go('center')}>선택 해제</button></div>
+  <div className="rf-kpis"><div><small>현재 순위</small><b>{rank}위</b></div><div><small>승점</small><b>{r.pts}</b></div><div><small>남은 경기</small><b>{r.remaining}</b></div><div><small>최대 승점</small><b>{r.max}</b></div>{keys.map(k=><div key={k.id} className="prob"><small>{k.label} 확률</small><b>{pct(sim.prob[team]?.[k.id]??0)}</b></div>)}</div>
+  <div className="rf-magic">{magic.map(m=><div key={m.label} className={'magic-box '+m.tone}><b>{m.label}</b><span>{m.detail}</span></div>)}</div>
+  {games.length>0&&!open.length&&<p className="fine">남은 경기 결과와 상관없이 이미 정해졌어요.</p>}
+  {games.length>0&&open.length>0?<div className="rf-games"><h3>남은 경기와 걸린 것</h3>{games.map(m=>{const home=m.home===team,opp=home?m.away:m.home,c=sim.cond[m.id];return <div key={m.id} className="rf-game">
+   <div className="rf-game-top"><span>{m.round}R · {kickoffLabel(m)}</span><span className="rf-opp">{home?'홈':'원정'} vs {teams[opp]&&<Tile team={teams[opp]} small/>}<b>{name(opp)}</b></span></div>
+   <div className="rf-outcomes">{(['W','D','L'] as const).map(o=>{const oc=c?.[res(o,home)];return <div key={o} className={'rf-out '+o}><small>{o==='W'?'이기면':o==='D'?'비기면':'지면'}</small>{open.map(k=><span key={k.id}>{k.label} <b>{oc&&oc.n?pct(oc.prob[team]?.[k.id]??0):'—'}</b></span>)}</div>})}</div>
+  </div>})}</div>:!games.length?<p className="fine">남은 경기가 없어요. 최종 순위가 정해졌어요.</p>:null}
+ </section>;
 }

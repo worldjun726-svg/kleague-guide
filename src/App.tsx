@@ -55,7 +55,7 @@ function AppBody(){
  {page==='me'&&<MyRoute data={current}/>}
  {page==='big'&&<RaceBigMatches teams={teamMap}/>}
  {page==='final'&&<RaceSimulator teams={teamMap}/>}
- {page==='center'&&<RaceCenter teams={teamMap}/>}
+ {page==='center'&&<RaceCenter teams={teamMap} teamId={param}/>}
  {page==='archive'&&<Home data={sample}/>}
  {page==='match'&&<MatchPage data={sample} id={param}/>}
  {!['landing','live','schedule','game','me','matches','finder','team','big','final','center','match','players','player','archive','lounge','first'].includes(page)&&<Empty>찾을 수 없는 화면입니다. <a href="#/matches">시즌 순위로 돌아가기</a></Empty>}
