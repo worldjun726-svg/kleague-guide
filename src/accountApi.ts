@@ -92,6 +92,13 @@ export async function listComments(target: string) {
   if (error) throw error;
   return data as Comment[];
 }
+// 내가 쓴 글 (내 페이지)
+export async function listMyComments(userId: string) {
+  if (!supabase) return [];
+  const {data, error} = await supabase.from('comments').select('id,target,body,created_at').eq('user_id', userId).order('created_at', {ascending: false}).limit(6);
+  if (error) throw error;
+  return data as {id: number; target: string; body: string; created_at: string}[];
+}
 export async function addComment(user: User, target: string, body: string) {
   if (!supabase) return;
   const {error} = await supabase.from('comments').insert({user_id: user.id, nickname: nicknameOf(user), target, body});

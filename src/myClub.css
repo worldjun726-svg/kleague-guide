@@ -55,3 +55,66 @@
 .my-nick input{min-width:200px;border-radius:10px;border:1.5px solid var(--line);padding:10px 12px;font:inherit;font-weight:700}
 .auth-sub{font-size:10px;font-weight:800;opacity:.7;margin-left:6px;border-left:1px solid currentColor;padding-left:6px}
 @media(max-width:560px){.my-info dl>div{grid-template-columns:1fr}.my-info dt{padding-top:0}.auth-sub{display:none}}
+
+/* MY CLUB: 다가오는 일정 + 뉴스 */
+.mc-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:12px}
+.mc-schedule ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.mc-schedule li{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:6px 12px;background:#fff;border-radius:10px;padding:10px 12px;border:1px solid #eceef1}
+.mc-schedule li.next{border:2px solid var(--club-color);box-shadow:0 6px 16px rgba(17,24,39,.08)}
+.mc-schedule li .mc-meta{grid-column:1/-1}
+.mc-when{display:grid;gap:1px;min-width:118px}
+.mc-when b{font-size:13px}.mc-when span{font-size:12px;color:var(--muted)}
+.mc-vs{display:flex;align-items:center;gap:6px;font-size:14px;min-width:0}
+.mc-vs em{font-style:normal;font-size:11px;font-weight:800;color:var(--muted);border:1px solid #d8dce2;border-radius:6px;padding:1px 6px}
+.mc-schedule li .button{padding:7px 12px;font-size:12px;margin:0}
+.mc-last{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12px;color:#4d545d;margin-top:6px}
+.mc-last strong{font-size:14px;font-variant-numeric:tabular-nums}
+.mc-news ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.mc-news li a{display:grid;grid-template-columns:88px 1fr auto;gap:12px;align-items:center;background:#fff;border-radius:10px;padding:8px;border:1px solid #eceef1;color:var(--ink,#1b1d21)}
+.mc-news li a:hover{border-color:var(--club-color)}
+.mc-news img,.mc-noimg{width:88px;height:56px;border-radius:8px;object-fit:cover;background:#eef0f3;display:grid;place-items:center;color:#9aa0a8}
+.mc-news-text{display:grid;gap:2px;min-width:0}
+.mc-news-text small{font-size:11px;color:var(--muted);font-weight:700}
+.mc-news-text strong{font-size:13px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mc-news li svg{color:#9aa0a8}
+.mc-source{font-size:11px;color:var(--muted);margin-top:4px}
+.mc-foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.mc-foot .mc-magic{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;font-size:13px}
+@media(max-width:1000px){.mc-main{grid-template-columns:1fr}}
+@media(max-width:560px){.mc-schedule li{grid-template-columns:1fr auto}.mc-when{grid-column:1/-1}.mc-news li a{grid-template-columns:72px 1fr}.mc-news li svg{display:none}.mc-news img,.mc-noimg{width:72px;height:48px}}
+/* 첫 화면 영상 자리: MY 팀 엠블럼(멈춘 화면) */
+.club-stage{position:absolute;inset:0;z-index:-3;background:radial-gradient(circle at 74% 50%,color-mix(in srgb,var(--club-color) 55%,#fff) 0%,var(--club-color) 38%,#0f1114 100%)}
+.club-stage .club-ring{position:absolute;right:7%;top:50%;width:min(420px,52%);aspect-ratio:1;transform:translateY(-50%);border-radius:50%;background:#fff;box-shadow:0 30px 80px rgba(0,0,0,.35),0 0 0 18px #ffffff1f,0 0 0 40px #ffffff12;display:grid;place-items:center}
+.club-stage img{width:68%;height:68%;object-fit:contain}
+.club-stage .club-caption{position:absolute;right:7%;bottom:22px;font-weight:800;font-size:13px;color:#fff;letter-spacing:1px;opacity:.85}
+@media(max-width:900px){.club-stage .club-ring{right:50%;transform:translate(50%,-50%);width:min(260px,70%);opacity:.35}}
+
+/* 내 페이지 아래 (MyExtras.tsx) */
+.my-extras{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.me-card{display:grid;gap:12px;align-content:start;padding:20px 22px;min-width:0;overflow:hidden}
+.me-card h2{display:flex;align-items:center;gap:8px;font-size:17px}
+.me-club{border-top:5px solid var(--club-color)}
+.me-club-head{display:flex;align-items:center;gap:12px}
+.me-club-head b{display:block;font-size:18px}.me-club-head small{color:var(--muted)}
+.me-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.me-stats>div{background:#f5f6f8;border-radius:10px;padding:8px 10px;display:grid;gap:2px}
+.me-stats small{font-size:11px;color:var(--muted);font-weight:700}
+.me-stats b{font-size:19px;font-weight:900;font-variant-numeric:tabular-nums}
+.me-stats .accent{background:#fff4c2}
+.me-leaders{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.me-leaders li{display:flex;justify-content:space-between;gap:10px;align-items:baseline;border-bottom:1px dashed #e4e7eb;padding-bottom:6px;font-size:13px}
+.me-leaders small{color:var(--muted);font-weight:700}.me-leaders i{font-style:normal;color:#8a6400;margin-left:4px}.me-leaders span{color:var(--muted)}
+.me-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.me-list li{display:grid;grid-template-columns:auto 1fr;gap:2px 8px;align-items:center;font-size:13px;border-bottom:1px solid #f0f1f3;padding-bottom:8px}
+.me-list li>small,.me-list li>p{grid-column:2}
+.me-list li>a:first-child,.me-list li>span:first-child:not(.me-tag){grid-column:1/-1}
+.me-list p{margin:0;color:#3b4149;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.me-list small{color:var(--muted);font-size:11px}
+.me-list a{font-weight:700;color:var(--ink)}
+.me-tag{font-size:11px;font-weight:900;border-radius:6px;padding:2px 7px;grid-row:span 2}
+.me-tag.hit{background:#e3f4ea;color:#21704a}.me-tag.miss{background:#fde8e4;color:#b03a26}.me-tag.wait{background:#eef0f3;color:#6b7179}
+.me-chips{display:flex;flex-wrap:wrap;gap:6px}
+.me-chips a{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:4px 12px 4px 4px;font-size:13px;font-weight:700;color:var(--ink)}
+.me-ctas{display:flex;gap:8px;flex-wrap:wrap}
+.me-ctas .button{display:inline-flex;align-items:center;gap:6px;font-size:13px}
+@media(max-width:900px){.my-extras{grid-template-columns:1fr}.me-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}

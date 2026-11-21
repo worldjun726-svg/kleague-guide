@@ -167,11 +167,6 @@ export function MyPage({teamName, playerName, matchName}: {teamName: (id: string
   return <div className="my-page">
     <div className="page-heading"><div><div className="eyebrow">MY K LEAGUE</div><h1>{nicknameOf(user)}님의 관전 노트</h1><p>저장한 응원팀과 선수, 내가 남긴 경기 예측입니다.</p></div></div>
     <MyInfo/>
-    <div className="my-grid">
-      <section className="panel"><h2>응원팀</h2>{teams.length ? <ul>{teams.map(t => <li key={t.item_id}><a href={'#/team/' + t.item_id}>{teamName(t.item_id) ?? t.item_id}</a></li>)}</ul> : <p className="fine">팀 화면에서 하트를 눌러 응원팀을 저장해 보세요. <a href="#/finder">나의 팀 찾기</a></p>}</section>
-      <section className="panel"><h2>관심 선수</h2>{players.length ? <ul>{players.map(p => <li key={p.item_id}><a href={'#/player/' + p.item_id}>{playerName(p.item_id) ?? p.item_id}</a></li>)}</ul> : <p className="fine">선수 화면에서 하트를 눌러 저장할 수 있어요.</p>}</section>
-      <section className="panel"><h2>내 경기 예측</h2>{preds.length ? <ul>{preds.map(p => <li key={p.match_id}><a href={'#/live/' + p.match_id}>{matchName(p.match_id) ?? p.match_id}</a> · <b>{OUTCOMES[p.pick]}</b></li>)}</ul> : <p className="fine"><a href="#/live">라이브 센터</a>에서 경기 결과를 예측해 보세요.</p>}</section>
-    </div>
   </div>;
 }
 

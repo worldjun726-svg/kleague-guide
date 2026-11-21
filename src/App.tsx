@@ -8,6 +8,7 @@ import {Home,MatchPage} from './HomeTeam';
 import Finder from './Finder';
 import FirstVisit from './FirstVisit';
 import Sidebar from './Sidebar';
+import MyExtras from './MyExtras';
 import {withBase} from './base';
 import LiveScores from './LiveScores';
 import {RaceCenter,RaceBigMatches,RaceSimulator} from './RaceTabs';
@@ -24,7 +25,7 @@ function MyRoute({data}:{data:CurrentSeason}){
  const {data:live}=useLive();
  const team=(id:string)=>data.teams.find(t=>t.id===id);
  const gameName=useGameName(Object.fromEntries(data.teams.map(t=>[t.id,t])));
- return <MyPage teamName={id=>team(id)?.name} playerName={id=>data.players.find(p=>p.id===id)?.name} matchName={id=>{const m=live?.matches.find(x=>x.id===id);return m?`${m.round}R ${team(m.home)?.short} vs ${team(m.away)?.short}`:gameName(id)}}/>;
+ return <><MyPage teamName={id=>team(id)?.name} playerName={id=>data.players.find(p=>p.id===id)?.name} matchName={id=>{const m=live?.matches.find(x=>x.id===id);return m?`${m.round}R ${team(m.home)?.short} vs ${team(m.away)?.short}`:gameName(id)}}/><MyExtras data={data}/></>;
 }
 export default function App(){
  return <AccountProvider><AppBody/></AccountProvider>;
@@ -44,7 +45,7 @@ function AppBody(){
  const contextTeam=current.teams.find(t=>t.id===param);
  const dates=[...new Set(Object.values(current.sources).map(s=>s.asOf))].sort();
  const samplePage=page==='archive'||page==='match';
- const myColor=page==='landing'?current.teams.find(t=>t.id===clubOf(user))?.color:undefined,myInk=myColor?inkOn(myColor):null;
+ const myColor=current.teams.find(t=>t.id===clubOf(user))?.color,myInk=myColor?inkOn(myColor):null;
  return <div className={'app-shell '+(page==='landing'?'is-landing':'')+(myInk?' club-bg '+(myInk.dark?'club-dark':'club-light'):'')} style={myColor?({'--home-bg':myColor,'--on-club':myInk!.ink} as CSSProperties):undefined}><a className="skip-link" href="#main" onClick={e=>{e.preventDefault();document.getElementById('main')?.focus()}}>본문으로 이동</a><header className="header"><div className="header-inner"><a className="brand" href="#/" aria-label="K LEAGUE GUIDE 홈"><img className="brand-emblem" src={withBase('/media/league/kleague-emblem.png')} alt=""/><span className="brand-word">K LEAGUE<b>GUIDE</b></span></a><MainNav active={active} teamId={contextTeam?.id}/><span className="season-tag"><i/>{samplePage?'2025 예시':current.season+' SEASON'}</span><AuthButton/></div></header>
  {samplePage&&<div className="demo-banner"><Info size={14}/><span>{samplePage?<><strong>SAMPLE EDITION · 2025</strong> · 기능 체험용 예시 데이터입니다.</>:<><strong>LIVE CENTER · PREVIEW</strong> · 실제 경기 연동 전 미리보기 화면입니다.</>}</span></div>}
  <div className="shell-body"><Sidebar teams={current.teams} standings={current.standings} activeTeam={page==='team'?param:undefined}/><main id="main" tabIndex={-1} className="container" data-core={page}>

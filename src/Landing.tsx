@@ -4,6 +4,16 @@ import type {Dataset} from './types';
 import {Tile} from './components';
 import {withBase} from './base.ts';
 import MyClub from './MyClub';
+import {useAccount} from './Account';
+import {clubOf} from './accountApi';
+import {teamLogo} from './logos';
+import type {CSSProperties} from 'react';
+import type {Team} from './types';
+
+// 로그인하고 MY 팀을 고른 사람에게는 영상 대신 MY 팀 엠블럼을 멈춘 화면으로 보여 준다.
+function ClubHero({team}:{team:Team}){
+ return <div className="club-stage" aria-hidden="true" style={{'--club-color':team.color} as CSSProperties}><div className="club-ring">{teamLogo(team.id)&&<img src={teamLogo(team.id)} alt=""/>}</div><span className="club-caption">2026 / {team.name}</span></div>;
+}
 
 // 첫 화면 영상 재생 속도. 1보다 작을수록 장면이 천천히 넘어간다.
 const HERO_SPEED=0.5;
@@ -37,11 +47,12 @@ function HeroMedia({src,poster}:{src?:string|null;poster?:string|null}){
 
 export default function Landing({data}:{data:Dataset}){
  const features=useRef<HTMLElement>(null);
+ const {user}=useAccount(),myTeam=data.teams.find(t=>t.id===clubOf(user));
  function explore(){features.current?.focus({preventScroll:true});features.current?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
  return <div className="landing-page">
   <MyClub data={data}/>
   <section className="landing-hero" aria-labelledby="landing-title">
-   <HeroMedia src={data.heroMedia?.videoSrc?withBase(data.heroMedia.videoSrc):null} poster={data.heroMedia?.posterSrc?withBase(data.heroMedia.posterSrc):null}/>
+   {myTeam?<ClubHero team={myTeam}/>:<HeroMedia src={data.heroMedia?.videoSrc?withBase(data.heroMedia.videoSrc):null} poster={data.heroMedia?.posterSrc?withBase(data.heroMedia.posterSrc):null}/>}
    <div className="landing-shade" aria-hidden="true"/>
    <div className="landing-copy">
     <p className="landing-eyebrow"><span/>YOUR NEXT FAVORITE TEAM</p>
