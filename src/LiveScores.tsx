@@ -7,7 +7,7 @@ import {useMatches,outlook,type SeasonMatches} from './matchData';
 import './liveScores.css';
 
 // 라이브 탭: K리그1·2 오늘 경기의 실시간 점수와 분석.
-// 실시간 자료는 Supabase Edge Function(supabase/functions/kleague-live)이 공식 홈페이지에서 받아 준다.
+// 실시간 자료는 Supabase Edge Function(supabase/functions/kleaguelive)이 공식 홈페이지에서 받아 준다.
 // 함수가 아직 배포되지 않았거나 실패하면, 저장된 일정(matches-2026.json)으로 오늘 경기 목록만 보여 준다.
 type Pair=[number,number];
 interface LiveStats {shots:Pair;onTarget:Pair;possession:Pair;corners:Pair;fouls:Pair;offsides:Pair;yellow:Pair;red:Pair;shotsInBox:Pair|null;shotsOutBox:Pair|null;passes:Pair|null;keyPasses:Pair|null}
@@ -15,7 +15,7 @@ interface LiveEvent {half:number;minute:number;type:'goal'|'ownGoal'|'yellow'|'r
 interface LiveGame {id:string;league:League;round:number;date:string;kickoff:string;home:string;away:string;venue:string;phase:string|null;broadcast:string[];status:'NS'|'LIVE'|'FT';minute:number|null;label:string;score:Pair|null;stats:LiveStats|null;events:LiveEvent[]}
 interface LiveDay {date:string;updatedAt:string;source:string;next:string|null;matches:LiveGame[];offline?:boolean}
 
-const FN_URL=SUPABASE_URL?SUPABASE_URL+'/functions/v1/kleague-live':'';
+const FN_URL=SUPABASE_URL?SUPABASE_URL+'/functions/v1/kleaguelive':'';
 const todayKST=()=>new Date(Date.now()+9*3600_000).toISOString().slice(0,10);
 
 async function fetchLive(date:string,signal:AbortSignal):Promise<LiveDay>{

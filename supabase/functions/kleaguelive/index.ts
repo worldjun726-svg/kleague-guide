@@ -1,7 +1,7 @@
 // K리그 실시간 경기 중계 프록시 (Supabase Edge Function · Deno)
 // 사이트(GitHub Pages)는 브라우저에서 K리그 공식 홈페이지를 직접 부를 수 없어서(CORS), 이 함수가 대신 받아 정리해 준다.
-//  GET /functions/v1/kleague-live            → 오늘(한국 시간) K리그1·2 전 경기
-//  GET /functions/v1/kleague-live?date=2026-11-22
+//  GET /functions/v1/kleaguelive            → 오늘(한국 시간) K리그1·2 전 경기
+//  GET /functions/v1/kleaguelive?date=2026-11-22
 // 공식 서버 부담을 줄이려고 같은 날짜 요청은 30초 동안 저장해 둔 결과를 돌려준다.
 
 const BASE = 'https://www.kleague.com';
