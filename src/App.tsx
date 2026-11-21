@@ -7,6 +7,7 @@ import {SeasonRecords,CurrentTeam,PlayerBrowser,PlayerPage} from './Records';
 import {Home,MatchPage} from './HomeTeam';
 import Finder from './Finder';
 import FirstVisit from './FirstVisit';
+import PlayerRanks from './PlayerRanks';
 import {MainNav,NAV} from './Nav';
 import Landing from './Landing';
 import {FinalSimulator} from './Forecasts';
@@ -47,7 +48,7 @@ function AppBody(){
  {page==='finder'&&<Finder key={param||'own'} data={data} share={param}/>}
  {(page==='lounge'||page==='first')&&<FirstVisit teams={current.teams} teamId={param}/>}
  {page==='team'&&<><CurrentTeam key={param} data={current} id={param} initialTab={roundParam}/>{(()=>{const t=current.teams.find(x=>x.id===param)||current.teams[0];return <div className="fan-zone"><FavoriteButton kind="team" id={t.id} label={t.name}/><CommentBox target={'team:'+t.id} title={t.short+' 응원 글'}/></div>})()}</>}
- {page==='players'&&<PlayerBrowser data={current}/>}
+ {page==='players'&&(param==='search'?<PlayerBrowser data={current}/>:<PlayerRanks teams={teamMap}/>)}
  {page==='player'&&<><PlayerPage data={current} id={param}/>{param&&current.players.some(p=>p.id===param)&&<div className="fan-zone"><FavoriteButton kind="player" id={param} label={current.players.find(p=>p.id===param)!.name}/></div>}</>}
  {page==='schedule'&&<SchedulePage key={param||'all'} teams={teamMap} teamParam={param}/>}
  {page==='game'&&<GamePage key={param} id={param} teams={teamMap}/>}

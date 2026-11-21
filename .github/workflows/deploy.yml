@@ -30,6 +30,9 @@ jobs:
       # 공식 홈페이지에서 새로 끝난 경기만 추가로 받는다. 실패하면 저장소에 커밋된 자료로 그대로 배포한다.
       - run: node scripts/fetch-matches.mjs
         continue-on-error: true
+      # 공식 기록실에서 리그별 선수 순위(득점·도움·출전 등 상위 30명)를 새로 받는다. 실패하면 커밋된 자료로 배포한다.
+      - run: node scripts/fetch-player-ranks.mjs
+        continue-on-error: true
       # tsc -b는 tests 폴더의 기존 타입 오류로 멈추므로, 사이트 빌드만 실행한다.
       - run: npm run build:bundle
       - uses: actions/configure-pages@v5

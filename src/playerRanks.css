@@ -1,0 +1,39 @@
+/* 순위 탭 · 선수 기록 순위 (PlayerRanks.tsx) */
+.player-ranks{display:grid;gap:22px}
+.ranks-loading{display:flex;align-items:center;gap:10px;justify-content:center;padding:80px 0;color:var(--muted)}
+.ranks-toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.rank-leaders{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(min-width:1080px){.rank-leaders{grid-template-columns:repeat(7,1fr)}}
+.rank-leader{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:14px 14px 12px;background:#fff;border:1px solid var(--line);border-radius:12px;border-top:4px solid var(--club-color)}
+.rank-leader:hover{border-color:#b9c3cf;border-top-color:var(--club-color)}
+.rank-leader.selected{background:var(--navy);color:#fff;border-color:var(--navy);border-top-color:var(--club-color)}
+.rank-leader-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.2px}
+.rank-leader.selected .rank-leader-label,.rank-leader.selected small{color:rgba(255,255,255,.7)}
+.rank-leader strong{font-size:16px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.rank-leader small{color:var(--muted)}
+.rank-leader b{font-size:26px;font-weight:900;line-height:1.1;margin-top:6px}
+.rank-leader b i{font-style:normal;font-size:12px;font-weight:600;margin-left:3px;opacity:.7}
+.rank-table-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.rank-table-head h2{display:flex;align-items:center;gap:8px;font-size:20px}
+.rank-table-head span{font-size:12px;color:var(--muted)}
+.rank-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.rank-table th{font-size:11px;font-weight:700;color:var(--muted);text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);background:#fafbfc;white-space:nowrap}
+.rank-table td{padding:10px 14px;border-bottom:1px solid #eef1f5;font-size:13px}
+.rank-table tr:last-child td{border-bottom:0}
+.rank-table .num{text-align:right;font-variant-numeric:tabular-nums}
+.rank-table td.main{font-size:17px;font-weight:900;color:var(--navy)}
+.rank-table th.main{color:var(--navy)}
+.rank-table tr.podium{background:#fffaf3}
+.rank-no{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;font-weight:800;font-size:12px;background:#eef1f5;color:#4a5b70}
+.rank-no.r1{background:#d9a62e;color:#fff}.rank-no.r2{background:#9aa6b4;color:#fff}.rank-no.r3{background:#b9774a;color:#fff}
+.rank-player{display:flex;align-items:center;gap:10px}
+.rank-player a{display:inline-flex;align-items:center;gap:4px;font-weight:700;color:var(--navy)}
+.rank-player a svg{opacity:.4}
+.rank-player a:hover{text-decoration:underline}
+.rank-player small{display:block;color:var(--muted);font-size:11px}
+.player-ranks .record-source a{text-decoration:underline}
+@media(max-width:640px){
+ .rank-table .hide-sm{display:none}
+ .rank-table th,.rank-table td{padding:9px 8px}
+ .rank-leaders{grid-template-columns:repeat(2,1fr)}
+}
