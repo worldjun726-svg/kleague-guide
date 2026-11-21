@@ -22,7 +22,10 @@ async function fetchLive(date:string,signal:AbortSignal):Promise<LiveDay>{
  if(!FN_URL)throw Error('no function');
  const r=await fetch(FN_URL+'?date='+date,{signal,headers:{apikey:SUPABASE_ANON_KEY}});
  if(!r.ok)throw Error('HTTP '+r.status);
- const d=await r.json();if(!Array.isArray(d.matches))throw Error('format');return d;
+ const d=await r.json();if(!Array.isArray(d.matches))throw Error('format');
+ // 공식 상태 코드 보정: 1E = 전반 종료(하프타임), 2E = 후반 종료
+ for(const m of d.matches){if(/^1E/.test(m.label)){m.label='하프타임';m.minute=45}else if(/^2E/.test(m.label)){m.label='후반 종료';m.minute=90}}
+ return d;
 }
 // 실시간 연결이 안 될 때: 저장된 일정으로 오늘(또는 다음 경기일) 목록을 만든다.
 function fromSchedule(data:SeasonMatches,date:string):LiveDay{

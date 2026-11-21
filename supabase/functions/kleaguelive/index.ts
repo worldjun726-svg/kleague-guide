@@ -33,7 +33,8 @@ function status(raw: string, endYn: string) {
   if (!raw) return {status: 'NS', minute: null, label: '경기 전'};
   const m = /^([12])S\s*(\d+)/.exec(raw);
   if (m) { const half = Number(m[1]), n = Number(m[2]); const minute = half === 1 ? n : (n < 45 ? 45 + n : n); return {status: 'LIVE', minute, label: (half === 1 ? '전반 ' : '후반 ') + minute + "'"}; }
-  if (/HT|HALF|하프/i.test(raw)) return {status: 'LIVE', minute: 45, label: '하프타임'};
+  if (/^1E/.test(raw) || /HT|HALF|하프/i.test(raw)) return {status: 'LIVE', minute: 45, label: '하프타임'};
+  if (/^2E/.test(raw)) return {status: 'LIVE', minute: 90, label: '후반 종료'};
   return {status: 'LIVE', minute: null, label: raw};
 }
 
