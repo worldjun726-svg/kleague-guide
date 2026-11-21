@@ -15,9 +15,16 @@ const STEPS=[
  {icon:Megaphone,title:'응원 즐기기',body:'킥오프 1시간 전쯤 도착하면 선수 워밍업과 응원 준비까지 볼 수 있어요. 응원가는 몰라도 박수와 함성만으로 충분해요. 두세 번 가면 자연스럽게 따라 부르게 돼요.'},
  {icon:HeartHandshake,title:'직관 매너',body:'원정 팬 구역에는 그 팀 응원 도구를 들고 가지 않아요. 상대 선수가 다쳤을 때는 박수로 격려해요. 내 자리 쓰레기는 내가 챙겨요.'},
 ];
-const CHECK_KEY='kleague-first-visit-check-v1';
-const CHECKLIST=['경기 고르고 예매하기','좌석 구역 정하기','팀 색 옷·담요 챙기기','킥오프 1시간 전 도착','경기 후 응원 글 남기기'];
-function readChecks():boolean[]{try{const v=JSON.parse(localStorage.getItem(CHECK_KEY)||'[]');return CHECKLIST.map((_,i)=>v[i]===true)}catch{return CHECKLIST.map(()=>false)}}
+const CHECK_KEY='kleague-first-visit-check-v2';
+// 첫 직관 체크리스트: 경기 전 → 챙길 것 → 경기장에서 → 경기 후. 어느 구장에나 통하는 항목만 넣었다.
+const CHECK_GROUPS:{id:string;title:string;icon:typeof Ticket;items:string[]}[]=[
+ {id:'plan',title:'경기 전 준비',icon:Ticket,items:['볼 경기와 날짜 정하기','구단 공식 예매처에서 티켓 예매','좌석 구역 정하기 (응원석·일반석·가족석)','경기장 가는 길과 교통편 확인','구단 공지에서 반입 금지 물품 확인']},
+ {id:'bag',title:'챙길 것',icon:Backpack,items:['모바일 티켓·신분증','팀 색 옷이나 머플러','날씨에 맞는 겉옷·담요·핫팩','비 예보가 있으면 우산 대신 우비','휴대폰 보조배터리']},
+ {id:'stadium',title:'경기장에서',icon:Megaphone,items:['킥오프 1시간 전 도착','매점은 킥오프 전에 미리 이용','선수 워밍업 구경하기','박수와 함성으로 응원에 함께하기','골이 터지면 옆 팬과 하이파이브']},
+ {id:'after',title:'경기 후',icon:HeartHandshake,items:['혼잡을 피해 10~15분 여유 있게 퇴장','내 자리 쓰레기 챙기기','직관 라운지에 후기·꿀팁 남기기','다음 홈경기 일정 확인하기']},
+];
+const CHECK_ITEMS=CHECK_GROUPS.flatMap(g=>g.items.map((t,i)=>g.id+'-'+i));
+function readChecks():Record<string,boolean>{try{const v=JSON.parse(localStorage.getItem(CHECK_KEY)||'{}');return Object.fromEntries(CHECK_ITEMS.map(k=>[k,v[k]===true]))}catch{return {}}}
 
 export default function FirstVisit({teams,teamId}:{teams:Team[];teamId?:string}){
  const {user,ready}=useAccount();
@@ -42,7 +49,8 @@ function Lounge({teams,teamId}:{teams:Team[];teamId?:string}){
  const team=teams.find(t=>t.id===teamId);
  const [checks,setChecks]=useState(readChecks);
  useEffect(()=>{try{localStorage.setItem(CHECK_KEY,JSON.stringify(checks))}catch{}},[checks]);
- const done=checks.filter(Boolean).length;
+ const done=CHECK_ITEMS.filter(k=>checks[k]).length,total=CHECK_ITEMS.length;
+ const toggle=(k:string)=>setChecks(c=>({...c,[k]:!c[k]}));
  return <div className="first-visit">
   <section className="first-hero">
    <p className="eyebrow">K LEAGUE MATCHDAY LOUNGE · 직관 라운지</p>
@@ -61,10 +69,16 @@ function Lounge({teams,teamId}:{teams:Team[];teamId?:string}){
    <p className="fine">구장마다 좌석 이름과 반입 규정이 달라요. 예매 전에 구단 공지를 한 번 확인해 주세요.</p>
   </section>
 
-  <section className="first-checklist panel" aria-labelledby="first-check-title">
-   <div><h2 id="first-check-title">나의 첫 직관 체크리스트</h2><p>{done===CHECKLIST.length?'준비 완료! 즐거운 직관 되세요.':`${done} / ${CHECKLIST.length} 준비했어요`}</p></div>
-   <ul>{CHECKLIST.map((item,i)=><li key={item}><label><input type="checkbox" checked={checks[i]} onChange={e=>setChecks(c=>c.map((v,j)=>j===i?e.target.checked:v))}/><span className="first-check-box"><Check size={14}/></span>{item}</label></li>)}</ul>
-   <small>체크 상태는 이 브라우저에만 저장돼요.</small>
+  <section className="first-checklist" aria-labelledby="first-check-title">
+   <div className="fc-head">
+    <div><h2 id="first-check-title">첫 직관 체크리스트</h2><p>{done===total?'준비 완료! 즐거운 직관 되세요.':'경기 전부터 경기 후까지, 하나씩 체크해 보세요.'}</p></div>
+    <div className="fc-progress"><b>{done}<small> / {total}</small></b><div className="fc-bar"><i style={{width:done/total*100+'%'}}/></div>{done>0&&<button className="text-button" onClick={()=>setChecks({})}>모두 지우기</button>}</div>
+   </div>
+   <div className="fc-groups">{CHECK_GROUPS.map(g=>{const Icon=g.icon,n=g.items.filter((_,i)=>checks[g.id+'-'+i]).length;return <div key={g.id} className={'fc-group'+(n===g.items.length?' complete':'')}>
+    <div className="fc-group-head"><span className="fc-icon"><Icon size={18}/></span><h3>{g.title}</h3><small>{n}/{g.items.length}</small></div>
+    <ul>{g.items.map((item,i)=>{const k=g.id+'-'+i;return <li key={k}><label className={checks[k]?'on':''}><input type="checkbox" checked={!!checks[k]} onChange={()=>toggle(k)}/><span className="first-check-box"><Check size={13}/></span><span className="fc-text">{item}</span></label></li>})}</ul>
+   </div>})}</div>
+   <small className="fc-note">체크 상태는 이 브라우저에만 저장돼요.</small>
   </section>
 
   <section id="first-tips" className="first-tips" aria-labelledby="first-tips-title">
