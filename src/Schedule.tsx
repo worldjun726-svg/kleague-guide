@@ -1,8 +1,9 @@
 import {useMemo, useState, type CSSProperties, type ReactNode} from 'react';
-import {ArrowLeft, ArrowRight, CalendarPlus, ChevronLeft, ChevronRight, ExternalLink, LoaderCircle, RefreshCw, Ticket, Tv, MapPin, Newspaper, Instagram, Youtube, Globe, Users} from 'lucide-react';
+import {ArrowLeft, ArrowRight, CalendarDays, CalendarPlus, ChevronLeft, ChevronRight, ExternalLink, LoaderCircle, RefreshCw, Ticket, Tv, MapPin, Newspaper, Instagram, Youtube, Globe, Users} from 'lucide-react';
 import type {Team, League} from './types';
 import {Tile, Heading, Empty, SectionTitle, Form, Chart} from './components';
 import {CommentBox, PredictionBox} from './Account';
+import ScheduleCalendar from './ScheduleCalendar';
 import {
   useMatches, useMatchDetail, dayLabel, kickoff, minuteLabel, resultFor, teamProfile, metricTable, styleTags, outlook, backtest,
   matchInsights, previewPoints, METRICS, type SeasonMatch, type SeasonMatches, type MatchStats, type MatchDetail, type MetricKey, type Split, type TeamProfile,
@@ -70,6 +71,7 @@ export function SchedulePage({teams, teamParam}: {teams: Teams; teamParam?: stri
   const focusTeam = teamParam && teams[teamParam] ? teamParam : '';
   const [league, setLeague] = useState<League>(focusTeam ? teams[focusTeam].league : 1);
   const [round, setRound] = useState<number | null>(null);
+  const [day, setDay] = useState<string | null>(null), [showCal, setShowCal] = useState(true);
   if (!data) return <Loading error={error} reload={reload}/>;
   const leagueMatches = data.matches.filter(m => m.league === league);
   const rounds = [...new Set(leagueMatches.map(m => m.round))].sort((x, y) => x - y);
@@ -78,16 +80,20 @@ export function SchedulePage({teams, teamParam}: {teams: Teams; teamParam?: stri
   const shown = leagueMatches.filter(m => m.round === current);
   const upcoming = data.matches.filter(m => m.status === 'NS').slice(0, 1)[0];
   const teamList = focusTeam ? data.matches.filter(m => m.home === focusTeam || m.away === focusTeam) : [];
-  const setTeam = (id: string) => { location.hash = '/schedule' + (id ? '/' + id : ''); if (id) setLeague(teams[id].league); };
+  const setTeam = (id: string) => { location.hash = '/schedule' + (id ? '/' + id : ''); if (id) setLeague(teams[id].league); setDay(null); };
+  const dayList = day ? data.matches.filter(m => m.date === day && (!focusTeam || m.home === focusTeam || m.away === focusTeam)).sort((a, b) => a.time.localeCompare(b.time) || a.league - b.league) : [];
+  const pickDay = (d: string) => { setDay(d); setTimeout(() => document.getElementById('sc-dayview')?.scrollIntoView({behavior: 'smooth', block: 'start'}), 60); };
   return <>
     <Heading eyebrow="2026 / FIXTURES & TICKETS" title="이번 주말, 어디로 갈까?" description="경기 일정과 중계, 예매처를 확인하고 경기 전 프리뷰로 관전 포인트를 챙기세요."
       aside={upcoming && <a className="button primary" href={'#/game/' + upcoming.id}>가장 가까운 경기<ArrowRight size={16}/></a>}/>
     <div className="toolbar">
-      <div className="tabs" aria-label="리그">{([1, 2] as League[]).map(l => <button key={l} aria-pressed={!focusTeam && league === l} className={!focusTeam && league === l ? 'selected' : ''} onClick={() => { setTeam(''); setLeague(l); setRound(null); }}>K리그 {l}</button>)}</div>
+      <div className="tabs" aria-label="리그">{([1, 2] as League[]).map(l => <button key={l} aria-pressed={!focusTeam && league === l} className={!focusTeam && league === l ? 'selected' : ''} onClick={() => { setTeam(''); setLeague(l); setRound(null); setDay(null); }}>K리그 {l}</button>)}</div>
       <label className="select-label">우리 팀 일정<select aria-label="팀별 일정" value={focusTeam} onChange={e => setTeam(e.target.value)}><option value="">전체 경기 (라운드별)</option>{Object.values(teams).sort((x, y) => x.league - y.league || x.name.localeCompare(y.name)).map(t => <option key={t.id} value={t.id}>{t.name} · K{t.league}</option>)}</select></label>
     </div>
     <SourceLine data={data}/>
-    {focusTeam ? <TeamFixtures team={teams[focusTeam]} list={teamList} data={data} teams={teams}/> : <>
+    <div className="sc-togglebar"><button className="text-button sc-toggle" onClick={() => setShowCal(v => !v)}><CalendarDays size={14}/>{showCal ? '달력 접기' : '달력으로 보기'}</button></div>
+    {showCal && <ScheduleCalendar data={data} teams={teams} selected={day} onSelect={pickDay} focusTeam={focusTeam || undefined} startDate={(focusTeam ? teamList.find(m => m.status === 'NS') : shown[0])?.date}/>}
+    {day ? <section id="sc-dayview" className="sc-dayview"><div className="sc-dayhead"><h2>{dayList[0] ? dayLabel(dayList[0]) : day} 경기 {dayList.length}개</h2><button className="text-button" onClick={() => setDay(null)}><ArrowLeft size={14}/>{focusTeam ? '팀 일정으로' : '라운드별 보기로'}</button></div>{dayList.length ? <ByDate list={dayList} data={data} teams={teams}/> : <Empty>이날은 경기가 없어요.</Empty>}</section> : focusTeam ? <TeamFixtures team={teams[focusTeam]} list={teamList} data={data} teams={teams}/> : <>
       <div className="round-nav panel">
         <button className="icon-button" disabled={current === rounds[0]} onClick={() => setRound(rounds[rounds.indexOf(current) - 1])} aria-label="이전 라운드"><ChevronLeft size={18}/></button>
         <div><strong>{current}R</strong><span>{shown[0]?.phase ?? `K리그${league}`} · {shown.every(m => m.status === 'FT') ? '종료' : shown.some(m => m.status === 'FT') ? '진행 중' : '예정'}</span></div>

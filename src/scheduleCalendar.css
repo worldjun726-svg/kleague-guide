@@ -1,0 +1,44 @@
+/* 일정·예매 달력 (ScheduleCalendar.tsx) */
+.sched-cal{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(17,24,39,.06);padding:16px 18px 18px;display:grid;gap:12px;margin:14px 0}
+.sc-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.sc-head>div{display:grid;min-width:120px;text-align:center}
+.sc-head strong{font-size:18px}
+.sc-head small{font-size:12px;color:var(--muted)}
+.sc-legend{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+.sc-legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:6px}
+.sc-legend i.k1,.sc-dots i.k1{background:#1b1d21}.sc-legend i.k2,.sc-dots i.k2{background:#ffd21f}
+.sc-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.sc-dow{text-align:center;font-size:11px;font-weight:800;color:var(--muted);padding:4px 0}
+.sc-dow.sun{color:#e5484d}.sc-dow.sat{color:#3b72d9}
+.sc-cell{position:relative;min-height:62px;border-radius:10px;background:#f6f7f9;border:1.5px solid transparent;padding:6px 7px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;text-align:left;font:inherit;color:inherit}
+.sc-cell.empty{background:transparent}
+.sc-day{font-size:13px;font-weight:700;color:#9aa0a8}
+.sc-cell.sun .sc-day{color:#e5484d}.sc-cell.sat .sc-day{color:#3b72d9}
+.sc-cell.has{background:#fff;border-color:#e4e7eb;cursor:pointer}
+.sc-cell.has .sc-day{color:var(--ink)}
+.sc-cell.has:hover,.sc-cell.has:focus-visible{border-color:#1b1d21;z-index:5}
+.sc-cell.today{box-shadow:inset 0 0 0 2px #ffd21f}
+.sc-cell.selected{background:#1b1d21;border-color:#1b1d21}
+.sc-cell.selected .sc-day{color:#fff}
+.sc-dots{display:flex;gap:4px}
+.sc-dots i{min-width:18px;height:18px;border-radius:9px;font-style:normal;font-size:10px;font-weight:800;display:grid;place-items:center;padding:0 5px;color:#fff}
+.sc-dots i.k2{color:#1b1d21}
+.sc-cell.selected .sc-dots i.k1{background:#fff;color:#1b1d21}
+/* 마우스를 올리면 뜨는 경기 목록 */
+.sc-pop{display:none;position:absolute;top:calc(100% + 6px);left:0;z-index:20;min-width:300px;max-width:min(360px,80vw);background:#1b1d21;color:#fff;border-radius:12px;padding:10px 12px;box-shadow:0 16px 36px rgba(0,0,0,.28);text-align:left;cursor:default}
+.sc-cell.right .sc-pop{left:auto;right:0}
+.sc-cell.has:hover .sc-pop,.sc-cell.has:focus-visible .sc-pop{display:grid;gap:6px}
+.sc-pop>b{font-size:12px;color:#ffd21f;margin-bottom:2px}
+.sc-row{display:flex;align-items:center;gap:6px;font-size:12px;white-space:nowrap}
+.sc-row em{font-style:normal;font-size:9px;font-weight:900;border-radius:4px;padding:1px 4px}
+.sc-row em.k1{background:#fff;color:#1b1d21}.sc-row em.k2{background:#ffd21f;color:#1b1d21}
+.sc-row small{color:#9aa0a8;font-variant-numeric:tabular-nums;width:34px}
+.sc-row strong{font-variant-numeric:tabular-nums;min-width:36px;text-align:center;color:#ffd21f}
+.sc-row .team-tile.small{width:18px;height:18px}
+.sc-dayview{display:grid;gap:8px}
+.sc-dayhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.sc-dayhead h2{font-size:19px}
+.sc-toggle{margin-left:auto}
+@media(max-width:640px){.sc-cell{min-height:48px;padding:4px}.sc-dots i{min-width:14px;height:14px;font-size:9px;padding:0 3px}.sc-pop{display:none!important}.sc-legend{margin-left:0}}
+.sc-togglebar{display:flex;justify-content:flex-end;margin-top:6px}
+.sc-toggle{display:inline-flex;align-items:center;gap:5px}
