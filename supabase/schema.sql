@@ -71,3 +71,11 @@ drop trigger if exists comments_rate_limit on public.comments;
 create trigger comments_rate_limit before insert on public.comments for each row execute function public.comments_rate_limit();
 
 -- 문제 글 숨기기(관리자): Table Editor 에서 해당 글의 hidden 을 true 로 바꾸면 사이트에서 사라집니다.
+
+-- 4) 사이트(Data API)에서 표를 쓸 수 있게 권한 열기
+-- 새 Supabase 프로젝트는 SQL로 만든 표에 자동 권한을 주지 않습니다. 실제 허용 범위는 위의 보안 규칙(RLS)이 정합니다.
+grant usage on schema public to anon, authenticated;
+grant select on public.predictions, public.comments to anon, authenticated;
+grant select, insert, delete on public.favorites to authenticated;
+grant insert, update on public.predictions to authenticated;
+grant insert, delete on public.comments to authenticated;
