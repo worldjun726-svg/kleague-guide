@@ -1,5 +1,5 @@
 import {useEffect,useRef,useState} from 'react';
-import {ArrowRight,ArrowDown,Heart,Flame,Shield,Pause,Play} from 'lucide-react';
+import {ArrowRight,ArrowDown,Heart,CalendarDays,Shield,Pause,Play} from 'lucide-react';
 import type {Dataset} from './types';
 import {Tile} from './components';
 import {withBase} from './base.ts';
@@ -51,7 +51,7 @@ export default function Landing({data}:{data:Dataset}){
    <div className="landing-intro-heading"><p>FIND YOUR REASON TO CHEER</p><h2 id="landing-intro-title">나의 팀부터,<br/>놓칠 수 없는 한 경기까지.</h2><span>K리그가 처음이어도 괜찮아요.<br/>기록 속에서 나만의 관전 포인트를 찾아보세요.</span></div>
    <div className="landing-features">
     <a href="#/finder"><div className="feature-icon"><Heart size={25}/><span>01</span></div><h3>나의 팀 찾기</h3><p>사는 지역, 좋아하는 경기, 마음이 가는 팀.<br/>세 가지 취향으로 응원 후보를 만나세요.</p><strong>취향으로 시작하기<ArrowRight size={18}/></strong></a>
-    <a href="#/big"><div className="feature-icon"><Flame size={25}/><span>02</span></div><h3>빅매치</h3><p>한 경기의 결과가 순위 경쟁을 어떻게 바꿀까요?<br/>관전할 이유가 있는 경기를 골라보세요.</p><strong>중요한 경기 찾기<ArrowRight size={18}/></strong></a>
+    <a href="#/schedule"><div className="feature-icon"><CalendarDays size={25}/><span>02</span></div><h3>일정 · 프리뷰</h3><p>이번 주말 경기와 중계, 예매처를 확인하고<br/>기록으로 정리한 관전 포인트를 챙기세요.</p><strong>다음 경기 보기<ArrowRight size={18}/></strong></a>
     <a href="#/center"><div className="feature-icon"><Shield size={25}/><span>03</span></div><h3>승강 센터</h3><p>잔류와 승격까지 필요한 조건을 살펴보세요.<br/>다음 경기에 응원할 이유가 더해집니다.</p><strong>우리 팀의 조건 보기<ArrowRight size={18}/></strong></a>
    </div>
   </section>
