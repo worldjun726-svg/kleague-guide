@@ -22,3 +22,8 @@
  .header nav .nav-menu{left:0;transform:none;top:calc(100% - 4px)}
  .header nav .nav-group-wrap:last-child .nav-menu{left:auto;right:0}
 }
+.header nav .nav-group-wrap a.nav-group{color:#596462}
+.header nav .nav-group-wrap a.nav-group:hover,.header nav .nav-group-wrap a.nav-group.active{color:#a74732}
+.is-landing .header nav .nav-group-wrap a.nav-group{color:#d2dce0}
+.is-landing .header nav .nav-group-wrap a.nav-group:hover{color:#fff}
+@media(max-width:420px){.header nav{gap:14px!important}.header nav .nav-group{font-size:12px}}

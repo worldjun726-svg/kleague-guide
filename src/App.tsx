@@ -33,7 +33,7 @@ function AppBody(){
  useEffect(()=>{const controller=new AbortController();setError('');Promise.all([loadSampleDataset(controller.signal),loadCurrentSeason(controller.signal)]).then(([s,c])=>{setSample(s);setCurrent(c)}).catch(e=>{if(e.name!=='AbortError')setError(e.message)});return()=>controller.abort()},[retry]);
  if(error||!sample||!current)return <div className="load-screen"><span className="brand-mark"><Goal/></span><h1>K리그 관전 가이드</h1>{error?<><p role="alert">{error}</p><button className="button primary" onClick={()=>setRetry(n=>n+1)}><RefreshCw size={16}/>다시 불러오기</button></>:<><LoaderCircle className="spin"/><p>이번 시즌 기록을 준비하고 있어요.</p></>}</div>;
  const data:Dataset={...sample,teams:current.teams,matches:[],forecasts:{},seasonStats:current.standings,meta:{...sample.meta,mode:'verified',season:current.season,source:'K리그 공식 순위·선수 기록',sourceUrl:'https://www.kleague.com/record/player.do',model:'',simulationRuns:0,generatedAt:current.retrievedAt}};
- const active=page==='first'?'lounge':['player','players'].includes(page)?'team':page==='match'?'matches':page==='game'?'schedule':page;
+ const active=page==='first'?'lounge':['player','players'].includes(page)?'players':['team','match','archive'].includes(page)?'matches':page==='game'?'schedule':page;
  const teamMap=Object.fromEntries(current.teams.map(t=>[t.id,t]));
  const contextTeam=current.teams.find(t=>t.id===param);
  const dates=[...new Set(Object.values(current.sources).map(s=>s.asOf))].sort();
