@@ -9,6 +9,7 @@ import Finder from './Finder';
 import FirstVisit from './FirstVisit';
 import Sidebar from './Sidebar';
 import MyExtras from './MyExtras';
+import {TermsPage,PrivacyPage} from './Legal';
 import {withBase} from './base';
 import LiveScores from './LiveScores';
 import {RaceCenter,RaceBigMatches,RaceSimulator} from './RaceTabs';
@@ -60,13 +61,15 @@ function AppBody(){
  {page==='schedule'&&<SchedulePage key={param||'all'} teams={teamMap} teamParam={param}/>}
  {page==='game'&&<GamePage key={param} id={param} teams={teamMap}/>}
  {page==='live'&&<LiveScores teams={teamMap}/>}
+ {page==='terms'&&<TermsPage/>}
+ {page==='privacy'&&<PrivacyPage/>}
  {page==='me'&&<MyRoute data={current}/>}
  {page==='big'&&<RaceBigMatches teams={teamMap}/>}
  {page==='final'&&<RaceSimulator teams={teamMap}/>}
  {page==='center'&&<RaceCenter teams={teamMap} teamId={param}/>}
  {page==='archive'&&<Home data={sample}/>}
  {page==='match'&&<MatchPage data={sample} id={param}/>}
- {!['landing','live','schedule','game','me','matches','finder','team','big','final','center','match','players','player','archive','lounge','first'].includes(page)&&<Empty>찾을 수 없는 화면입니다. <a href="#/matches">시즌 순위로 돌아가기</a></Empty>}
+ {!['landing','live','schedule','game','me','matches','finder','team','big','final','center','match','players','player','archive','lounge','first','terms','privacy'].includes(page)&&<Empty>찾을 수 없는 화면입니다. <a href="#/matches">시즌 순위로 돌아가기</a></Empty>}
  </main></div><footer><div className="container footer-inner"><div><strong>K LEAGUE GUIDE</strong><p>숫자를 이해하면, 응원이 더 재미있어집니다.</p></div><div><strong>데이터 출처</strong><p>K리그 공식 기록 / FootyStats 팀별 TOP 5 · {current.season}시즌 · 수집일 {current.retrievedAt}</p><small>각 기록의 원문 링크와 기준일은 상세 화면에서 확인할 수 있습니다.</small><p><a href="#/players">선수 기록 보기</a> · <a href="#/schedule">경기 일정·리포트</a> · <a href="#/archive">2025 예시 경기</a></p></div></div></footer></div>;
 }
 

@@ -18,7 +18,15 @@ export async function setPreferredClub(club: string) {
 }
 export async function setNickname(nickname: string) {
   if (!supabase) throw new Error('로그인 기능이 아직 설정되지 않았습니다.');
-  const {error} = await supabase.auth.updateUser({data: {nickname}});
+  const {data: s} = await supabase.auth.getSession();
+  const id = s.session?.user.id;
+  // 프로필 표(닉네임 중복 불가)에 먼저 저장하고, 성공하면 계정 정보에도 반영한다.
+  if (id) {
+    const {error: pe} = await supabase.from('profiles').upsert({id, nickname: nickname.trim(), updated_at: new Date().toISOString()});
+    if (pe && pe.code === '23505') throw new Error('이미 사용 중인 닉네임이에요.');
+    if (pe && pe.code !== '42P01') throw new Error('닉네임을 저장하지 못했습니다: ' + pe.message);
+  }
+  const {error} = await supabase.auth.updateUser({data: {nickname: nickname.trim()}});
   if (error) throw new Error('닉네임을 저장하지 못했습니다: ' + error.message);
 }
 export const nicknameOf = (u: User | null) => (u?.user_metadata?.nickname as string | undefined) || (u?.email ? u.email.split('@')[0] : '팬');
@@ -26,22 +34,89 @@ export const nicknameOf = (u: User | null) => (u?.user_metadata?.nickname as str
 export function useUser() {
   const [user, setUser] = useState<User | null>(null);
   const [ready, setReady] = useState(!accountEnabled);
+  // 비밀번호 재설정 메일의 링크로 들어오면 true → 새 비밀번호 입력 창을 띄운다.
+  const [recovery, setRecovery] = useState(false);
   useEffect(() => {
     if (!supabase) return;
     supabase.auth.getSession().then(({data}) => { setUser(data.session?.user ?? null); setReady(true); });
-    const {data} = supabase.auth.onAuthStateChange((_e, session) => setUser(session?.user ?? null));
+    const {data} = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+      if (event === 'PASSWORD_RECOVERY') setRecovery(true);
+    });
     return () => data.subscription.unsubscribe();
   }, []);
-  return {user, ready};
+  return {user, ready, recovery, endRecovery: () => setRecovery(false)};
 }
 
 // 로그인 링크가 돌아올 주소: 지금 보고 있는 사이트 주소(경로까지, ?·# 제외)
 const redirectTo = () => location.origin + location.pathname;
 
-export async function sendLoginLink(email: string, nickname: string, club?: string) {
-  if (!supabase) throw new Error('로그인 기능이 아직 설정되지 않았습니다.');
-  const {error} = await supabase.auth.signInWithOtp({email, options: {emailRedirectTo: redirectTo(), data: club ? {nickname, club} : {nickname}}});
-  if (error) throw new Error(error.message.includes('rate') ? '잠시 후 다시 시도해 주세요. 메일 발송 횟수 제한에 걸렸습니다.' : '로그인 링크를 보내지 못했습니다: ' + error.message);
+// ── 회원가입·로그인 ──
+// Supabase 오류 문구를 사용자에게 보여 줄 한국어로 바꾼다.
+function authMessage(m: string) {
+  const t = m.toLowerCase();
+  if (t.includes('invalid login credentials')) return '이메일 또는 비밀번호가 맞지 않아요.';
+  if (t.includes('email not confirmed')) return '아직 이메일 인증을 하지 않으셨어요. 받은 메일의 인증 링크를 눌러 주세요.';
+  if (t.includes('already registered') || t.includes('already been registered')) return '이미 가입된 이메일이에요. 로그인하거나 비밀번호 찾기를 이용해 주세요.';
+  if (t.includes('database error saving new user')) return '이미 사용 중인 닉네임이에요. 다른 닉네임으로 다시 시도해 주세요.';
+  if (t.includes('password') && (t.includes('at least') || t.includes('weak') || t.includes('should'))) return '비밀번호가 규칙에 맞지 않아요. 8자 이상, 영문과 숫자를 함께 써 주세요.';
+  if (t.includes('rate') || t.includes('security purposes')) return '요청이 너무 잦아요. 잠시 후 다시 시도해 주세요.';
+  if (t.includes('provider') && (t.includes('not enabled') || t.includes('unsupported'))) return '아직 연결되지 않은 로그인 방식이에요. 잠시 후 다시 시도해 주세요.';
+  if (t.includes('same password') || t.includes('different from the old')) return '이전과 다른 비밀번호를 써 주세요.';
+  return '요청을 처리하지 못했어요: ' + m;
+}
+const need = () => { if (!supabase) throw new Error('로그인 기능이 아직 설정되지 않았습니다.'); return supabase; };
+
+export interface SignUpInput {email: string; password: string; nickname: string; club?: string; marketing: boolean}
+// 이메일 가입: 인증 메일을 보내고, 메일의 링크를 누르면 가입이 끝난다.
+export async function signUpEmail(v: SignUpInput) {
+  const now = new Date().toISOString();
+  const {data, error} = await need().auth.signUp({email: v.email, password: v.password, options: {emailRedirectTo: redirectTo(),
+    data: {nickname: v.nickname.trim(), ...(v.club ? {club: v.club} : {}), terms_agreed_at: now, privacy_agreed_at: now, marketing: v.marketing}}});
+  if (error) throw new Error(authMessage(error.message));
+  // 이미 가입된 이메일이면 Supabase가 오류 대신 identities 가 빈 사용자를 돌려준다.
+  if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) throw new Error(authMessage('already registered'));
+  return {needsConfirm: !data.session};
+}
+export async function signInEmail(email: string, password: string) {
+  const {error} = await need().auth.signInWithPassword({email, password});
+  if (error) throw new Error(authMessage(error.message));
+}
+export async function sendPasswordReset(email: string) {
+  const {error} = await need().auth.resetPasswordForEmail(email, {redirectTo: redirectTo()});
+  if (error) throw new Error(authMessage(error.message));
+}
+export async function updatePassword(password: string) {
+  const {error} = await need().auth.updateUser({password});
+  if (error) throw new Error(authMessage(error.message));
+}
+export type SocialProvider = 'kakao' | 'google';
+export async function signInWithProvider(provider: SocialProvider) {
+  const {error} = await need().auth.signInWithOAuth({provider, options: {redirectTo: redirectTo()}});
+  if (error) throw new Error(authMessage(error.message));
+}
+export const providerOf = (u: User | null) => (u?.app_metadata?.provider as string | undefined) ?? 'email';
+
+// ── 닉네임 중복 확인·프로필 ──
+export async function nicknameAvailable(name: string) {
+  const {data, error} = await need().rpc('nickname_available', {name: name.trim()});
+  if (error) throw new Error('닉네임을 확인하지 못했어요. 잠시 후 다시 시도해 주세요.');
+  return Boolean(data);
+}
+export interface Profile {nickname: string | null; terms_agreed_at: string | null; privacy_agreed_at: string | null; marketing: boolean}
+// 프로필 표가 아직 없으면(SQL 실행 전) null — 이때는 가입 마무리 화면을 띄우지 않는다.
+export async function getMyProfile(userId: string): Promise<Profile | null | 'none'> {
+  const {data, error} = await need().from('profiles').select('nickname,terms_agreed_at,privacy_agreed_at,marketing').eq('id', userId).maybeSingle();
+  if (error) return null;
+  return data ? data as Profile : 'none';
+}
+// 카카오·구글 첫 로그인, 또는 예전 방식으로 가입한 회원의 가입 마무리
+export async function completeProfile(userId: string, v: {nickname: string; club?: string; marketing: boolean}) {
+  const now = new Date().toISOString();
+  const {error} = await need().from('profiles').upsert({id: userId, nickname: v.nickname.trim(), terms_agreed_at: now, privacy_agreed_at: now, marketing: v.marketing, updated_at: now});
+  if (error) throw new Error(error.code === '23505' ? '이미 사용 중인 닉네임이에요.' : '가입 정보를 저장하지 못했어요: ' + error.message);
+  const {error: ue} = await need().auth.updateUser({data: {nickname: v.nickname.trim(), ...(v.club ? {club: v.club} : {})}});
+  if (ue) throw new Error('가입 정보를 저장하지 못했어요: ' + ue.message);
 }
 export async function signOut() { await supabase?.auth.signOut(); }
 
