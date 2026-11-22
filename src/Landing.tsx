@@ -1,5 +1,6 @@
-import {useEffect,useRef,useState} from 'react';
-import {ArrowRight,ArrowDown,Heart,CalendarDays,Shield,Pause,Play,Ticket} from 'lucide-react';
+import {useRef} from 'react';
+import {ArrowRight,ArrowDown,Heart,CalendarDays,Shield,Ticket,BarChart3} from 'lucide-react';
+import {useMatches,dayLabel} from './matchData';
 import type {Dataset} from './types';
 import {Tile} from './components';
 import {withBase} from './base.ts';
@@ -15,34 +16,55 @@ function ClubHero({team}:{team:Team}){
  return <div className="club-stage" aria-hidden="true" style={{'--club-color':team.color} as CSSProperties}><div className="club-ring">{teamLogo(team.id)&&<img src={teamLogo(team.id)} alt=""/>}</div><span className="club-caption">2026 / {team.name}</span></div>;
 }
 
-// 첫 화면 영상 재생 속도. 1보다 작을수록 장면이 천천히 넘어간다.
-const HERO_SPEED=0.5;
-function HeroMedia({src,poster}:{src?:string|null;poster?:string|null}){
- const video=useRef<HTMLVideoElement>(null);
- const [reduced,setReduced]=useState(()=>matchMedia('(prefers-reduced-motion: reduce)').matches);
- const [playing,setPlaying]=useState(false),[failed,setFailed]=useState(false),[ready,setReady]=useState(false);
- useEffect(()=>{
-  const preference=matchMedia('(prefers-reduced-motion: reduce)');
-  const change=()=>setReduced(preference.matches);
-  preference.addEventListener('change',change);return()=>preference.removeEventListener('change',change);
- },[]);
- useEffect(()=>{setFailed(false);setReady(false);setPlaying(false)},[src]);
- useEffect(()=>{
-  const element=video.current;if(!element||failed)return;
-  if(reduced)element.pause();else void element.play().catch(()=>setPlaying(false));
-  return()=>element.pause();
- },[src,reduced,failed]);
- async function toggle(){const element=video.current;if(!element)return;if(element.paused){try{await element.play()}catch{setPlaying(false)}}else element.pause()}
- return <>
-  <div className="landing-stage" aria-hidden="true">
-   <div className="stadium-glow"/><div className="stadium-field"><span className="field-midline"/><span className="field-circle"/><span className="field-goal left"/><span className="field-goal right"/></div>
-   {poster&&<img key={poster} className="landing-poster" src={poster} alt="" onError={e=>{e.currentTarget.hidden=true}}/>}
-   {src&&!failed&&<video ref={video} className={'landing-video '+(ready?'ready':'')} src={src} poster={poster??undefined} autoPlay={!reduced} muted loop playsInline preload="metadata" tabIndex={-1} disablePictureInPicture onLoadedData={e=>{e.currentTarget.playbackRate=HERO_SPEED;setReady(true)}} onRateChange={e=>{if(e.currentTarget.playbackRate!==HERO_SPEED)e.currentTarget.playbackRate=HERO_SPEED}} onPlay={()=>setPlaying(true)} onPause={()=>setPlaying(false)} onError={()=>{setFailed(true);setPlaying(false)}}/>}
+// 첫 화면 배경(데스크톱): K리그1·2 로고를 크게 두고, 아래에 구단 엠블럼이 천천히 흐르는 띠.
+// 예전 배경 영상(public/media/hero.mp4)은 2026-11-22에 이 화면으로 바꾸면서 쓰지 않는다.
+function LeagueStage({teams}:{teams:Team[]}){
+ const logos=teams.map(t=>({id:t.id,src:teamLogo(t.id)})).filter(t=>t.src);
+ return <div className="landing-stage league-stage" aria-hidden="true">
+  <div className="league-stage-logos">
+   <img src={withBase('/media/league/kleague1.png')} alt=""/>
+   <img src={withBase('/media/league/kleague2.png')} alt=""/>
   </div>
-  <div className="landing-media-tools">
-   {src&&!failed?<button className="media-control" onClick={toggle} aria-label={playing?'배경 영상 일시정지':'배경 영상 재생'}>{playing?<Pause size={14}/>:<Play size={14}/>}<span>{playing?'영상 일시정지':'영상 재생'}</span></button>:null}
-  </div>
- </>;
+  <div className="league-strip"><div className="league-strip-track">
+   {[...logos,...logos].map((t,i)=><span key={t.id+i}><img src={t.src!} alt="" loading="lazy"/></span>)}
+  </div></div>
+ </div>;
+}
+
+// 휴대폰 첫 화면 배경: K리그1·2 로고를 흐리게 새겨 넣는다(영상 대신, CSS로 휴대폰에서만 보임).
+function LeagueMarks(){
+ return <div className="league-marks" aria-hidden="true">
+  <img src={withBase('/media/league/kleague1.png')} alt=""/>
+  <img src={withBase('/media/league/kleague2.png')} alt=""/>
+ </div>;
+}
+
+// 휴대폰 첫 화면 바로 아래: 바로가기 3개 + 오늘(없으면 가장 가까운 날) 경기
+const todayKST=()=>new Date(Date.now()+9*3600e3).toISOString().slice(0,10);
+function MobileQuick({data}:{data:Dataset}){
+ const {data:season}=useMatches();
+ const today=todayKST();
+ const next=(season?.matches||[]).filter(m=>m.status==='NS'&&m.date>=today).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+ const day=next[0]?.date,games=next.filter(m=>m.date===day).slice(0,3);
+ const team=(id:string)=>data.teams.find(t=>t.id===id);
+ return <section className="mobile-quick" aria-label="바로가기와 오늘 경기">
+  <nav className="mq-links" aria-label="바로가기">
+   <a href="#/lounge"><Ticket size={20}/>직관 라운지</a>
+   <a href="#/matches"><BarChart3 size={20}/>시즌 기록</a>
+   <a href="#/schedule"><CalendarDays size={20}/>{day===today?'오늘 경기':'다음 경기'}</a>
+  </nav>
+  {games.length>0&&<div className="mq-games">
+   <h2>{day===today?'오늘 경기':'다음 경기'}<span>{dayLabel(games[0])}</span></h2>
+   <ul>{games.map(m=>{const h=team(m.home),a=team(m.away);return <li key={m.id}><a href={'#/game/'+m.id}>
+    <time>{m.time}</time>
+    <span className="mq-team">{h&&<Tile team={h} small/>}<b>{h?.short??m.home}</b></span>
+    <em>vs</em>
+    <span className="mq-team">{a&&<Tile team={a} small/>}<b>{a?.short??m.away}</b></span>
+    <small>K리그{m.league} {m.round}R</small>
+   </a></li>})}</ul>
+   <a className="mq-more" href="#/schedule">전체 일정·예매<ArrowRight size={15}/></a>
+  </div>}
+ </section>;
 }
 
 export default function Landing({data}:{data:Dataset}){
@@ -51,8 +73,9 @@ export default function Landing({data}:{data:Dataset}){
  function explore(){features.current?.focus({preventScroll:true});features.current?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
  return <div className="landing-page">
   <MyClub data={data}/>
-  <section className="landing-hero" aria-labelledby="landing-title">
-   {myTeam?<ClubHero team={myTeam}/>:<HeroMedia src={data.heroMedia?.videoSrc?withBase(data.heroMedia.videoSrc):null} poster={data.heroMedia?.posterSrc?withBase(data.heroMedia.posterSrc):null}/>}
+  <section className={"landing-hero"+(myTeam?"":" is-league")} aria-labelledby="landing-title">
+   {myTeam?<ClubHero team={myTeam}/>:<LeagueStage teams={data.teams}/>}
+   <LeagueMarks/>
    <div className="landing-shade" aria-hidden="true"/>
    <div className="landing-copy">
     <p className="landing-eyebrow"><span/>YOUR NEXT FAVORITE TEAM</p>
@@ -62,6 +85,7 @@ export default function Landing({data}:{data:Dataset}){
    </div>
    <div className="landing-bottom"><button onClick={explore}>가이드 살펴보기<ArrowDown size={17}/></button><span>{data.meta.season} 시즌 <i/> SEASON JOURNAL</span></div>
   </section>
+  <MobileQuick data={data}/>
   <section className="landing-intro" ref={features} tabIndex={-1} aria-labelledby="landing-intro-title">
    <div className="landing-intro-heading"><p>FIND YOUR REASON TO CHEER</p><h2 id="landing-intro-title">나의 팀부터,<br/>놓칠 수 없는 한 경기까지.</h2><span>K리그가 처음이어도 괜찮아요.<br/>기록 속에서 나만의 관전 포인트를 찾아보세요.</span></div>
    <div className="landing-features">
