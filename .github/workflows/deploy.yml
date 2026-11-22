@@ -4,9 +4,13 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  # 매일 오전 6시(KST)에 경기 일정·결과를 새로 받아 다시 배포한다.
+  # 경기 일정·결과, 선수 순위, 뉴스, 하이라이트를 새로 받아 다시 배포한다.
+  # GitHub은 정각(:00)에 몰리는 예약 실행을 늦추거나 건너뛸 수 있어서 정각을 피하고 하루 두 번 돌린다.
+  #  - 14:23 UTC = 23:23 KST (그날 저녁 경기가 끝난 뒤)
+  #  - 21:23 UTC = 06:23 KST (아침, 밤사이 갱신된 기록·뉴스 반영)
   schedule:
-    - cron: '0 21 * * *'
+    - cron: '23 14 * * *'
+    - cron: '23 21 * * *'
   workflow_dispatch:
 
 permissions:
