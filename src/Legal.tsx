@@ -19,7 +19,7 @@ export function TermsPage(){
    <li>욕설·비방·광고·개인정보 노출 등 다른 이용자에게 피해를 주는 글은 예고 없이 숨겨질 수 있습니다.</li>
   </ul></section>
   <section className="panel"><h2>4. 정보의 정확성</h2><p>경기 일정·결과·기록은 K리그 공식 홈페이지 등 공개 자료를 바탕으로 하며, 실시간이 아니거나 오류가 있을 수 있습니다. 예매·일정 확정은 반드시 공식 채널에서 확인해 주세요. 매직넘버·확률 같은 계산값은 참고용입니다.</p></section>
-  <section className="panel"><h2>5. 탈퇴</h2><p>회원은 언제든 탈퇴를 요청할 수 있으며, 탈퇴하면 계정 정보와 저장한 응원팀·예측은 삭제됩니다.</p></section>
+  <section className="panel"><h2>5. 탈퇴</h2><p>회원은 언제든 내 페이지 → 내 정보 → 회원 탈퇴에서 직접 탈퇴할 수 있으며, 탈퇴하면 계정 정보, 닉네임, 저장한 응원팀·선수, 경기 예측, 작성한 응원 글이 바로 삭제됩니다.</p></section>
  </article>;
 }
 
@@ -29,7 +29,8 @@ export function PrivacyPage(){
   {DRAFT}
   <section className="panel"><h2>수집하는 항목</h2><table className="legal-table"><thead><tr><th>구분</th><th>항목</th><th>목적</th></tr></thead><tbody>
    <tr><td>필수</td><td>이메일, 비밀번호(암호화 저장), 닉네임</td><td>회원 식별, 로그인, 응원 글 작성자 표시</td></tr>
-   <tr><td>카카오·Google 가입 시</td><td>각 서비스가 제공하는 고유 식별자, 이메일(동의한 경우)</td><td>간편 로그인</td></tr>
+   <tr><td>카카오 로그인 시</td><td>카카오 회원번호, 닉네임, 프로필 사진(동의한 경우), 이메일(동의한 경우)</td><td>간편 로그인, 회원 식별</td></tr>
+   <tr><td>Google 로그인 시</td><td>Google 계정 고유 식별자, 이메일, 이름, 프로필 사진</td><td>간편 로그인, 회원 식별</td></tr>
    <tr><td>선택</td><td>MY 팀(선호 구단), 소식 메일 수신 여부</td><td>맞춤 화면 제공, 경기·이벤트 소식 안내</td></tr>
   </tbody></table></section>
   <section className="panel"><h2>보관 기간</h2><p>회원 탈퇴 시 지체 없이 파기합니다. 다만 관련 법령에 따라 보관해야 하는 정보는 정해진 기간 동안 보관합니다.</p></section>

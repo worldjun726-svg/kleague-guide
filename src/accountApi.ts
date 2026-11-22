@@ -29,7 +29,8 @@ export async function setNickname(nickname: string) {
   const {error} = await supabase.auth.updateUser({data: {nickname: nickname.trim()}});
   if (error) throw new Error('닉네임을 저장하지 못했습니다: ' + error.message);
 }
-export const nicknameOf = (u: User | null) => (u?.user_metadata?.nickname as string | undefined) || (u?.email ? u.email.split('@')[0] : '팬');
+// 이메일은 개인정보라 화면 이름으로 쓰지 않는다(닉네임이 없으면 '팬').
+export const nicknameOf = (u: User | null) => (u?.user_metadata?.nickname as string | undefined)?.trim() || '팬';
 
 export function useUser() {
   const [user, setUser] = useState<User | null>(null);
@@ -119,6 +120,12 @@ export async function completeProfile(userId: string, v: {nickname: string; club
   if (ue) throw new Error('가입 정보를 저장하지 못했어요: ' + ue.message);
 }
 export async function signOut() { await supabase?.auth.signOut(); }
+// 회원 탈퇴: 계정과 프로필·응원팀·예측·응원 글을 모두 지운다(supabase/security-hardening.sql 의 delete_my_account).
+export async function deleteMyAccount() {
+  const {error} = await need().rpc('delete_my_account');
+  if (error) throw new Error('탈퇴를 처리하지 못했어요. 잠시 후 다시 시도해 주세요.');
+  await need().auth.signOut({scope: 'local'});
+}
 
 // ── 응원팀·관심 선수 ──
 export type FavoriteKind = 'team' | 'player';
@@ -140,11 +147,23 @@ export async function setFavorite(userId: string, kind: FavoriteKind, itemId: st
 // ── 경기 예측 ── pick: 0 홈 승, 1 무승부, 2 원정 승
 export async function predictionSummary(matchId: string, userId?: string) {
   if (!supabase) return {counts: [0, 0, 0] as [number, number, number], mine: null as number | null};
-  const {data, error} = await supabase.from('predictions').select('pick,user_id').eq('match_id', matchId);
+  // 다른 회원의 예측은 집계 숫자만 받는다(누가 골랐는지는 서버 밖으로 나가지 않음).
+  const {data, error} = await supabase.rpc('prediction_counts', {p_match_id: matchId});
+  if (error?.code === 'PGRST202') { // security-hardening.sql 실행 전: 예전 방식으로 집계
+    const {data: rows, error: e2} = await supabase.from('predictions').select('pick,user_id').eq('match_id', matchId);
+    if (e2) throw e2;
+    const c: [number, number, number] = [0, 0, 0]; let m: number | null = null;
+    for (const r of rows as {pick: number; user_id: string}[]) { c[r.pick]++; if (r.user_id === userId) m = r.pick; }
+    return {counts: c, mine: m};
+  }
   if (error) throw error;
   const counts: [number, number, number] = [0, 0, 0];
+  for (const r of (data ?? []) as {pick: number; votes: number}[]) counts[r.pick] = Number(r.votes);
   let mine: number | null = null;
-  for (const r of data as {pick: number; user_id: string}[]) { counts[r.pick]++; if (r.user_id === userId) mine = r.pick; }
+  if (userId) {
+    const {data: own} = await supabase.from('predictions').select('pick').eq('match_id', matchId).eq('user_id', userId).maybeSingle();
+    mine = own ? (own as {pick: number}).pick : null;
+  }
   return {counts, mine};
 }
 export async function savePrediction(userId: string, matchId: string, pick: number, kickoff: Date) {
@@ -177,7 +196,7 @@ export async function listMyComments(userId: string) {
 export async function addComment(user: User, target: string, body: string) {
   if (!supabase) return;
   const {error} = await supabase.from('comments').insert({user_id: user.id, nickname: nicknameOf(user), target, body});
-  if (error) throw new Error('글을 올리지 못했습니다. 300자 이내로 써 주세요.');
+  if (error) throw new Error(error.message.includes('가입 마무리') ? '가입 마무리(닉네임·약관 동의)를 먼저 해 주세요.' : error.message.includes('잠시 후') ? '잠시 후 다시 써 주세요.' : '글을 올리지 못했습니다. 300자 이내로 써 주세요.');
 }
 export async function deleteComment(id: number) {
   if (!supabase) return;

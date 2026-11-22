@@ -1,7 +1,7 @@
 import {createContext, useContext, useEffect, useRef, useState, type ReactNode} from 'react';
 import type {User} from '@supabase/supabase-js';
 import {Heart, LogIn, LogOut, Mail, Send, Trash2, X, UserRound, Check} from 'lucide-react';
-import {clubOf, setPreferredClub, setNickname, accountEnabled, addComment, deleteComment, listComments, listFavorites, myPredictions, nicknameOf, predictionSummary, savePrediction, setFavorite, signOut, useUser, signUpEmail, signInEmail, sendPasswordReset, updatePassword, signInWithProvider, providerOf, nicknameAvailable, getMyProfile, completeProfile, type Comment, type FavoriteKind, type SocialProvider, type Profile} from './accountApi';
+import {clubOf, setPreferredClub, setNickname, accountEnabled, addComment, deleteComment, listComments, listFavorites, myPredictions, nicknameOf, predictionSummary, savePrediction, setFavorite, signOut, useUser, signUpEmail, signInEmail, sendPasswordReset, updatePassword, signInWithProvider, providerOf, deleteMyAccount, nicknameAvailable, getMyProfile, completeProfile, type Comment, type FavoriteKind, type SocialProvider, type Profile} from './accountApi';
 import {OUTCOMES} from './components';
 
 // 가입 창·구단 선택에 쓰는 구단 목록. App이 현재 시즌 자료를 받으면 채운다.
@@ -332,5 +332,27 @@ function MyInfo() {
       <div><dt>닉네임</dt><dd><form onSubmit={saveNick} className="my-nick"><label htmlFor="my-nick" className="sr-only">닉네임</label><input id="my-nick" maxLength={20} value={nick} onChange={e => { setNick(e.target.value); setState('idle'); }}/><button className="button" disabled={!nick.trim() || nick.trim() === nicknameOf(user) || state === 'saving'}>{state === 'saving' ? '저장 중…' : state === 'saved' ? '저장했어요' : '닉네임 저장'}</button></form>{error && <p className="form-error" role="alert">{error}</p>}<small>앞으로 쓰는 응원 글에 이 이름이 보여요.</small></dd></div>
       <div><dt>MY 팀</dt><dd><ClubPicker/><small>MY 팀의 순위·다음 경기가 홈 화면 맨 위에 보이고, 홈 배경색과 왼쪽 순위표 강조가 이 팀으로 바뀌어요.</small></dd></div>
     </dl>
+    <DeleteAccount/>
   </section>;
+}
+
+// ── 회원 탈퇴: '탈퇴'를 직접 입력해야 버튼이 켜진다 ──
+function DeleteAccount() {
+  const [open, setOpen] = useState(false), [word, setWord] = useState(''), [busy, setBusy] = useState(false), [error, setError] = useState('');
+  async function run() {
+    setBusy(true); setError('');
+    try { await deleteMyAccount(); location.hash = '#/'; } catch (err) { setError((err as Error).message); setBusy(false); }
+  }
+  if (!open) return <p className="delete-account"><button type="button" className="link-button" onClick={() => setOpen(true)}>회원 탈퇴</button></p>;
+  return <div className="delete-account panel-inset" role="group" aria-labelledby="delete-account-title">
+    <h3 id="delete-account-title">회원 탈퇴</h3>
+    <p>탈퇴하면 계정, 닉네임, MY 팀, 저장한 응원팀·선수, 경기 예측, 내가 쓴 응원 글이 <b>바로 모두 지워지고 되돌릴 수 없어요.</b></p>
+    <label htmlFor="delete-word">계속하려면 <b>탈퇴</b>라고 입력해 주세요.</label>
+    <input id="delete-word" value={word} onChange={e => setWord(e.target.value)} autoComplete="off"/>
+    {error && <p className="form-error" role="alert">{error}</p>}
+    <div className="delete-actions">
+      <button type="button" className="button" onClick={() => { setOpen(false); setWord(''); }} disabled={busy}>취소</button>
+      <button type="button" className="button danger" onClick={run} disabled={word.trim() !== '탈퇴' || busy}>{busy ? '처리 중…' : '탈퇴하기'}</button>
+    </div>
+  </div>;
 }
