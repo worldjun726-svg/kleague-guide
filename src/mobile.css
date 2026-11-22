@@ -1,0 +1,84 @@
+/* ── 휴대폰 화면 정리 (C안: 지금 구조 다듬기) ──
+   main.tsx 에서 가장 마지막에 불러오므로 다른 css 의 모바일 규칙보다 우선한다.
+   760px 이하: 헤더·제목·표 압축 / 560px 이하: 덜 중요한 표 열 숨김 */
+
+/* 한국어 줄바꿈: 단어 중간에서 끊지 않는다 (모든 화면) */
+.app-shell :is(h1,h2,h3,h4,p,li,dd,summary,.button){word-break:keep-all;overflow-wrap:anywhere}
+
+@media(max-width:760px){
+ /* 1) 헤더: 로고 줄 + 메뉴 줄을 얇게 (128px → 약 92px) */
+ .app-shell .header-inner,.app-shell.is-landing .header-inner{padding:8px 16px 0;gap:0 12px;min-height:0;row-gap:0}
+ .app-shell .brand{margin:0}
+ .app-shell .brand-emblem{height:28px}
+ .app-shell .brand-word{font-size:19px}
+ .app-shell .header-inner>:is(.auth-button,.auth-user){margin-left:auto;margin-top:0}
+ .app-shell .header-inner>.auth-button,.app-shell .header-inner .auth-user .auth-button{min-height:32px;height:32px;padding:0 12px;font-size:13px;gap:5px;border-radius:8px}
+ .app-shell .header-inner .auth-button svg{width:14px;height:14px}
+ /* 메뉴 다섯 개가 한 줄에 다 들어가게: 양 끝 정렬, 글자 13px */
+ .app-shell .header nav{height:40px;margin-top:6px;gap:0!important;justify-content:space-between;width:100%}
+ .app-shell .header nav .nav-group,.app-shell .header nav .nav-group-wrap a.nav-group{font-size:13px;padding-bottom:10px;gap:2px}
+ .app-shell .header nav .nav-group svg{width:13px;height:13px}
+ .app-shell .header nav .nav-group-wrap:last-child .nav-menu{left:auto;right:0}
+
+ /* 2) 페이지 맨 위 제목 영역: 본문이 첫 화면에 보이도록 */
+ .app-shell .season-nav{margin:12px 0 0;font-size:12px}
+ .app-shell .page-heading{padding:16px 0 14px;gap:10px}
+ .app-shell .page-heading .eyebrow,.app-shell .eyebrow{font-size:11px;letter-spacing:1px;margin-bottom:6px}
+ .app-shell .page-heading h1{font-size:23px;line-height:1.35;letter-spacing:-.6px}
+ .app-shell .page-heading h1:after{width:32px;height:4px;margin-top:8px}
+ .app-shell .page-heading p{font-size:13px;line-height:1.6;margin-top:6px}
+ .app-shell .page-heading .button{min-height:38px;padding:8px 14px;font-size:13px}
+
+ /* 3) 작은 회색 글씨를 읽을 수 있는 크기로 */
+ .app-shell .fine{font-size:12px;line-height:1.7}
+ .app-shell .record-source{font-size:12px;margin:12px 0}
+
+ /* 4) 홈: 큰 제목 크기 줄이고, 기능 카드는 테마 색(흰 카드 + 노랑 포인트)으로 */
+ .app-shell .landing-copy h1{font-size:32px;letter-spacing:-1.2px;line-height:1.25}
+ .app-shell .landing-intro{padding:28px 0 12px}
+ .app-shell .landing-intro-heading h2{font-size:26px;line-height:1.35;letter-spacing:-.8px}
+ .app-shell .landing-features{gap:10px;margin-top:18px}
+ .app-shell .landing-features>a,
+ .app-shell .landing-features>a:nth-child(n){background:#fff;color:var(--ink);min-height:0;padding:16px 16px 14px;border-radius:14px;box-shadow:0 1px 0 var(--line),0 2px 10px rgba(17,24,39,.06);border-left:4px solid var(--accent)}
+ .app-shell .landing-features>a:hover{transform:none}
+ .app-shell .landing-features .feature-icon{margin-bottom:8px;color:#9a6f00}
+ .app-shell .landing-features h3{font-size:18px;letter-spacing:-.4px}
+ .app-shell .landing-features p{margin-top:6px;font-size:13px;line-height:1.6;opacity:1;color:var(--muted)}
+ .app-shell .landing-features strong{margin-top:10px;font-size:13px;color:#8a6400}
+
+ /* 5) 팀 순위: 장식용 큰 표지는 숨기고 표가 바로 보이게 */
+ .app-shell .records-cover{display:none}
+ .app-shell .record-table th,.app-shell .record-table td{padding:11px 7px;font-size:13px}
+ .app-shell .record-table caption{padding:12px;font-size:12px}
+}
+
+@media(max-width:560px){
+ /* 팀 순위 표: 득점·실점·최근 5경기 숨김 → 순위·구단·경기·승점·승·무·패·득실차 */
+ .app-shell .standings-table table{min-width:0}
+ .app-shell .standings-table :is(th,td):is(:nth-child(8),:nth-child(9),:nth-child(11)){display:none}
+ .app-shell .standings-table :is(th,td){padding:10px 4px;text-align:center}
+ .app-shell .standings-table :is(th,td):nth-child(-n+2){text-align:left}
+ .app-shell .standings-table :is(th,td):first-child{padding-left:10px}
+ .app-shell .standings-table .team-link{gap:6px}
+
+ /* 승강 레이스 표: 경기 수 숨김, 확률 막대 짧게 */
+ .app-shell .race-table :is(th,td):nth-child(4){display:none}
+ .app-shell .race-table th,.app-shell .race-table td{padding:8px 5px}
+ .app-shell .race-bar{min-width:0;gap:4px}
+ .app-shell .race-bar i{max-width:18px}
+ .app-shell .race-table .race-flag{display:block;width:max-content;margin:3px 0 0}
+ .app-shell .race-table th{font-size:11px}
+ .app-shell .race-table :is(th,td):first-child{padding-left:8px}
+ .app-shell .race-table :is(th,td):last-child{padding-right:8px}
+ .app-shell .race-magic .magic{font-size:11px;padding:3px 6px}
+}
+
+@media(max-width:380px){
+ .app-shell .standings-table :is(th,td){padding:9px 3px;font-size:12px}
+ .app-shell .standings-table :is(th,td):first-child{padding-left:8px}
+}
+
+@media(max-width:350px){
+ .app-shell .header nav .nav-group,.app-shell .header nav .nav-group-wrap a.nav-group{font-size:12px}
+ .app-shell .brand-word{font-size:17px}
+}
