@@ -119,7 +119,21 @@ export async function completeProfile(userId: string, v: {nickname: string; club
   const {error: ue} = await need().auth.updateUser({data: {nickname: v.nickname.trim(), ...(v.club ? {club: v.club} : {})}});
   if (ue) throw new Error('가입 정보를 저장하지 못했어요: ' + ue.message);
 }
-export async function signOut() { await supabase?.auth.signOut(); }
+// 로그아웃: 이 기기의 로그인 정보를 먼저 지운다(scope 'local').
+// 기본값('global')은 서버 요청이 실패하면(만료된 토큰·일시적 네트워크 오류) 로그인 정보를 그대로 남겨
+// 버튼을 눌러도 아무 일도 없는 것처럼 보였다. 'local'도 서버에 이 기기 로그인 무효화 요청은 보낸다.
+export async function signOut() {
+  if (!supabase) return;
+  try { await supabase.auth.signOut({scope: 'local'}); } catch { /* 아래에서 정리 */ }
+  // 그래도 남아 있으면 저장된 로그인 정보를 직접 지우고 새로고침한다.
+  const {data} = await supabase.auth.getSession().catch(() => ({data: {session: null}}));
+  if (data.session) {
+    try { Object.keys(localStorage).filter(k => /^sb-.*-auth-token/.test(k)).forEach(k => localStorage.removeItem(k)); } catch { /* 저장소 접근 불가 */ }
+    location.reload();
+    return;
+  }
+  if (location.hash.startsWith('#/me')) location.hash = '#/';
+}
 // 회원 탈퇴: 계정과 프로필·응원팀·예측·응원 글을 모두 지운다(supabase/security-hardening.sql 의 delete_my_account).
 export async function deleteMyAccount() {
   const {error} = await need().rpc('delete_my_account');
