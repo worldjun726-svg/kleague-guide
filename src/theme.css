@@ -9,7 +9,7 @@ body,.app-shell{background:var(--bg);color:var(--ink)}
 .app-shell .header,.app-shell.is-landing .header{position:sticky;inset:auto;top:0;z-index:30;background:var(--chrome);color:#fff;border:0;box-shadow:0 1px 0 #ffffff12}
 .app-shell .header-inner,.app-shell.is-landing .header-inner{max-width:none;border-bottom:0;min-height:68px;padding:0 28px}
 .app-shell .brand,.app-shell.is-landing .brand{display:flex;align-items:center;gap:11px;color:#fff;margin-bottom:0}
-.brand-emblem{height:40px;width:auto;background:#fff;border-radius:9px;padding:4px 5px;display:block}
+.brand-emblem{height:34px;width:auto;aspect-ratio:128/96;display:block;flex:0 0 auto}
 .brand-word{font-style:italic;font-weight:900;font-size:27px;line-height:1;letter-spacing:.3px;text-transform:uppercase;color:#fff;white-space:nowrap}
 .brand-word b{color:var(--accent);margin-left:7px;font-weight:900}
 .app-shell .header nav .nav-group,.app-shell .header nav .nav-group-wrap a.nav-group,.app-shell.is-landing .header nav .nav-group,.app-shell.is-landing .header nav .nav-group-wrap a.nav-group{color:#b9bec5;font-weight:700;text-transform:none}
@@ -127,7 +127,7 @@ body,.app-shell{background:var(--bg);color:var(--ink)}
 }
 @media(max-width:900px){
  .app-shell .header-inner,.app-shell.is-landing .header-inner{padding:12px 18px 0}
- .brand-word{font-size:23px}.brand-emblem{height:34px}
+ .brand-word{font-size:23px}.brand-emblem{height:30px}
  .app-shell .landing-hero{padding:40px 24px;min-height:440px}
  .app-shell .landing-features{grid-template-columns:1fr 1fr}
 }

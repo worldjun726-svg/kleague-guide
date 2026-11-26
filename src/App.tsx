@@ -1,4 +1,5 @@
 ﻿import {useEffect,useState,type CSSProperties} from 'react';
+import BrandMark from './BrandMark';
 import {Goal,Info,Sparkles,LoaderCircle,RefreshCw} from 'lucide-react';
 import type {Dataset} from './types';
 import {loadSampleDataset} from './sampleApi';
@@ -10,7 +11,6 @@ import FirstVisit from './FirstVisit';
 import Sidebar from './Sidebar';
 import MyExtras from './MyExtras';
 import {TermsPage,PrivacyPage} from './Legal';
-import {withBase} from './base';
 import LiveScores from './LiveScores';
 import {RaceCenter,RaceBigMatches,RaceSimulator} from './RaceTabs';
 import PlayerRanks from './PlayerRanks';
@@ -47,7 +47,7 @@ function AppBody(){
  const dates=[...new Set(Object.values(current.sources).map(s=>s.asOf))].sort();
  const samplePage=page==='archive'||page==='match';
  const myKit=KITS[clubOf(user)??''],myInk=myKit?kitInk(myKit):null;
- return <div className={'app-shell '+(page==='landing'?'is-landing':'')+(myInk?' club-bg '+(myInk.dark?'club-dark':'club-light'):'')} style={myKit&&myInk?({'--club-main':myKit.base,'--kit-bg':kitBackground(myKit),'--on-club':myInk.ink} as CSSProperties):undefined}><a className="skip-link" href="#main" onClick={e=>{e.preventDefault();document.getElementById('main')?.focus()}}>본문으로 이동</a><header className="header"><div className="header-inner"><a className="brand" href="#/" aria-label="K LEAGUE GUIDE 홈"><img className="brand-emblem" src={withBase('/media/league/kleague-emblem.png')} alt=""/><span className="brand-word">K LEAGUE<b>GUIDE</b></span></a><MainNav active={active} teamId={contextTeam?.id}/><span className="season-tag"><i/>{samplePage?'2025 예시':current.season+' SEASON'}</span><AuthButton/></div></header>
+ return <div className={'app-shell '+(page==='landing'?'is-landing':'')+(myInk?' club-bg '+(myInk.dark?'club-dark':'club-light'):'')} style={myKit&&myInk?({'--club-main':myKit.base,'--kit-bg':kitBackground(myKit),'--on-club':myInk.ink} as CSSProperties):undefined}><a className="skip-link" href="#main" onClick={e=>{e.preventDefault();document.getElementById('main')?.focus()}}>본문으로 이동</a><header className="header"><div className="header-inner"><a className="brand" href="#/" aria-label="K LEAGUE GUIDE 홈"><BrandMark className="brand-emblem"/><span className="brand-word">K LEAGUE<b>GUIDE</b></span></a><MainNav active={active} teamId={contextTeam?.id}/><span className="season-tag"><i/>{samplePage?'2025 예시':current.season+' SEASON'}</span><AuthButton/></div></header>
  {samplePage&&<div className="demo-banner"><Info size={14}/><span>{samplePage?<><strong>SAMPLE EDITION · 2025</strong> · 기능 체험용 예시 데이터입니다.</>:<><strong>LIVE CENTER · PREVIEW</strong> · 실제 경기 연동 전 미리보기 화면입니다.</>}</span></div>}
  <div className="shell-body"><Sidebar teams={current.teams} standings={current.standings} activeTeam={page==='team'?param:undefined}/><main id="main" tabIndex={-1} className="container" data-core={page}>
  {page==='landing'&&<Landing data={data}/>}
