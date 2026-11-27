@@ -14,9 +14,12 @@
  .app-shell .header-inner>:is(.auth-button,.auth-user){margin-left:auto;margin-top:0}
  .app-shell .header-inner>.auth-button,.app-shell .header-inner .auth-user .auth-button{min-height:32px;height:32px;padding:0 12px;font-size:13px;gap:5px;border-radius:8px}
  .app-shell .header-inner .auth-button svg{width:14px;height:14px}
+ /* 로그인·내 정보·로그아웃: 보이는 크기는 그대로, 누르는 영역은 44px */
+ .app-shell .header-inner :is(.auth-button,.auth-icon){position:relative}
+ .app-shell .header-inner :is(.auth-button,.auth-icon)::after{content:"";position:absolute;inset:-6px -2px}
  /* 메뉴 다섯 개가 한 줄에 다 들어가게: 양 끝 정렬, 글자 13px */
- .app-shell .header nav{height:40px;margin-top:6px;gap:0!important;justify-content:space-between;width:100%}
- .app-shell .header nav .nav-group,.app-shell .header nav .nav-group-wrap a.nav-group{font-size:13px;padding-bottom:10px;gap:2px}
+ .app-shell .header nav{height:44px;margin-top:6px;gap:0!important;justify-content:space-between;width:100%}
+ .app-shell .header nav .nav-group,.app-shell .header nav .nav-group-wrap a.nav-group{font-size:13px;min-height:44px;padding:0 3px 4px;gap:2px;box-sizing:border-box}
  .app-shell .header nav .nav-group svg{width:13px;height:13px}
  .app-shell .header nav .nav-group-wrap:last-child .nav-menu{left:auto;right:0}
 
@@ -33,18 +36,12 @@
  .app-shell .fine{font-size:12px;line-height:1.7}
  .app-shell .record-source{font-size:12px;margin:12px 0}
 
- /* 4) 홈: 큰 제목 크기 줄이고, 기능 카드는 테마 색(흰 카드 + 노랑 포인트)으로 */
+ /* 4) 홈: 큰 제목 크기 줄이고, 두 갈래 안내(home-paths)는 한 줄씩 */
  .app-shell .landing-copy h1{font-size:32px;letter-spacing:-1.2px;line-height:1.25}
  .app-shell .landing-intro{padding:28px 0 12px}
- .app-shell .landing-intro-heading h2{font-size:26px;line-height:1.35;letter-spacing:-.8px}
- .app-shell .landing-features{gap:10px;margin-top:18px}
- .app-shell .landing-features>a,
- .app-shell .landing-features>a:nth-child(n){background:#fff;color:var(--ink);min-height:0;padding:16px 16px 14px;border-radius:14px;box-shadow:0 1px 0 var(--line),0 2px 10px rgba(17,24,39,.06);border-left:4px solid var(--accent)}
- .app-shell .landing-features>a:hover{transform:none}
- .app-shell .landing-features .feature-icon{margin-bottom:8px;color:#9a6f00}
- .app-shell .landing-features h3{font-size:18px;letter-spacing:-.4px}
- .app-shell .landing-features p{margin-top:6px;font-size:13px;line-height:1.6;opacity:1;color:var(--muted)}
- .app-shell .landing-features strong{margin-top:10px;font-size:13px;color:#8a6400}
+ .app-shell .home-paths-title{font-size:22px;margin-bottom:14px}
+ .app-shell .home-paths{grid-template-columns:1fr;gap:12px}
+ .app-shell .home-path{padding:16px 16px 6px}
 
  /* 5) 팀 순위: 장식용 큰 표지는 숨기고 표가 바로 보이게 */
  .app-shell .records-cover{display:none}
@@ -87,37 +84,37 @@
    데스크톱은 기존 영상 히어로 그대로, 아래 요소는 휴대폰에서만 보인다. */
 .league-marks,.mobile-quick{display:none}
 @media(max-width:760px){
- .app-shell .landing-hero{margin:14px -18px 0;border-radius:0;min-height:0;padding:146px 20px 22px;align-items:flex-end;box-shadow:none;background:#15171b}
+ .app-shell .landing-hero{margin:14px -18px 0;border-radius:0;min-height:0;padding:104px 20px 22px;align-items:flex-end;box-shadow:none;background:#15171b}
  .app-shell .landing-page>.landing-hero:first-child{margin-top:-20px}
- .app-shell .landing-hero.is-league{padding-bottom:22px;background:#15171b}
- .app-shell .landing-hero :is(.landing-stage,.club-stage,.landing-media-tools,.landing-description,.landing-secondary,.landing-bottom){display:none}
+ .app-shell .landing-hero.is-league,.app-shell .landing-hero:has(.hero-fixtures){padding-bottom:22px}
+ .app-shell .landing-hero.is-league{background:#15171b}
+ .hero-fixtures{display:none}
+ .app-shell .landing-hero :is(.landing-stage,.club-stage,.landing-description,.landing-secondary){display:none}
  .app-shell .landing-shade{background:linear-gradient(180deg,#15171b00 0%,#15171bb3 55%,#15171bf2 100%)}
- .league-marks{display:flex;flex-direction:column;align-items:flex-start;gap:10px;position:absolute;top:24px;left:20px;right:20px;z-index:-2;pointer-events:none}
- .league-marks img{width:min(210px,58%);height:auto;filter:brightness(0) invert(1);opacity:.28}
+ .league-marks{display:flex;flex-direction:column;align-items:flex-start;gap:6px;position:absolute;top:20px;left:20px;right:20px;z-index:-2;pointer-events:none}
+ .league-marks img{width:min(150px,42%);height:auto;filter:brightness(0) invert(1);opacity:.28}
  .league-marks img+img{margin-left:auto}
  .app-shell .landing-copy{width:100%;max-width:none}
- .app-shell .landing-eyebrow{font-size:11px;letter-spacing:1.5px;margin-bottom:10px}
  .app-shell .landing-copy h1{font-size:30px;line-height:1.28;letter-spacing:-1px;margin:0}
+ .app-shell .landing-hero .landing-description:has(.hero-rounds){display:block;margin-top:10px;font-size:14px;line-height:1.55}
  .app-shell .landing-actions{margin-top:20px;display:block}
  .app-shell .landing-cta{display:flex;width:100%;justify-content:space-between;min-height:50px;padding:0 18px;border-radius:12px;font-size:16px}
 
  .mobile-quick{display:block;margin:14px 0 4px}
- .mq-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
- .mq-links a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:68px;background:#fff;border:1px solid var(--line);border-radius:12px;color:var(--ink);font-size:13px;font-weight:700;text-decoration:none!important}
- .mq-links a svg{color:#9a6f00}
- .mq-games{margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 14px 6px;color:var(--ink)}
+ .mq-games{margin-top:0;background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(17,24,39,.06);padding:14px 14px 6px;color:var(--ink)}
  .mq-games h2{display:flex;align-items:baseline;justify-content:space-between;font-size:16px;margin:0 0 6px}
- .mq-games h2 span{font-size:12px;font-weight:600;color:var(--muted)}
+ .mq-games h2 span{font-size:12px;font-weight:600;color:#5b616a}
  .mq-games ul{list-style:none;margin:0;padding:0}
- .mq-games li a{display:grid;grid-template-columns:44px minmax(0,1fr) 22px minmax(0,1fr);grid-template-areas:"t h v a" ". s s s";align-items:center;gap:2px 6px;padding:10px 0;border-top:1px solid var(--line);color:inherit;text-decoration:none!important}
+ .mq-games li a{display:grid;grid-template-columns:58px minmax(0,1fr) 34px minmax(0,1fr);grid-template-areas:"t h v a" ". s s s";align-items:center;gap:2px 6px;padding:10px 0;border-top:1px solid var(--line);color:inherit;text-decoration:none!important}
  .mq-games li:first-child a{border-top:0}
- .mq-games time{grid-area:t;font-weight:800;font-variant-numeric:tabular-nums;font-size:14px}
- .mq-games em{grid-area:v;font-style:normal;font-size:11px;color:var(--muted);text-align:center}
+ .mq-games .ms{grid-area:t;font-weight:800;font-variant-numeric:tabular-nums;font-size:14px}
+ .mq-games .ms-score{grid-area:v;text-align:center;font-size:15px;font-weight:800;font-variant-numeric:tabular-nums}
+ .mq-games em{grid-area:v;font-style:normal;font-size:12px;color:#5b616a;text-align:center}
  .mq-team{display:flex;align-items:center;gap:6px;min-width:0}
- .mq-team:nth-of-type(1){grid-area:h}.mq-team:nth-of-type(2){grid-area:a}
+ .mq-home{grid-area:h}.mq-away{grid-area:a}
  .mq-team b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
  .mq-team .team-tile{width:26px;height:26px;flex:0 0 auto}
- .mq-games small{grid-area:s;font-size:12px;color:var(--muted)}
+ .mq-games small{grid-area:s;font-size:12px;color:#5b616a}
  .mq-more{display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 0 8px;border-top:1px solid var(--line);font-size:13px;font-weight:700;color:#8a6400;text-decoration:none!important}
 }
 

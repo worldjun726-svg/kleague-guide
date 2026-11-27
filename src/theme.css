@@ -40,11 +40,11 @@ body,.app-shell{background:var(--bg);color:var(--ink)}
 .side-league a{display:flex;align-items:center;gap:9px;padding:6px 8px;border-radius:8px;font-size:13px;color:#d6d9dd}
 .side-league a:hover{background:var(--chrome-3);color:#fff}
 .side-league a.active{background:#ffd21f1f;color:var(--accent)}
-.side-rank{width:18px;text-align:right;font-size:11px;color:#7d838b;font-variant-numeric:tabular-nums}
+.side-rank{width:18px;text-align:right;font-size:12px;color:#a3a9b1;font-variant-numeric:tabular-nums}
 .side-name{flex:1;font-weight:600}
 .side-pts{font-size:12px;font-weight:800;color:#9aa0a8;font-variant-numeric:tabular-nums}
 .side-league .team-tile.small{width:22px;height:22px}
-.side-note{font-size:10px;color:#6f757d;margin:0 6px}
+.side-note{font-size:12px;color:#a3a9b1;margin:0 6px}
 
 /* ── 제목 ── */
 .app-shell .page-heading .eyebrow,.app-shell .eyebrow{color:#9a6f00;font-weight:800;letter-spacing:1.5px;font-size:13px}
@@ -67,7 +67,7 @@ body,.app-shell{background:var(--bg);color:var(--ink)}
 
 /* ── 카드·표 ── */
 .app-shell .panel,.app-shell .rank-table,.app-shell .race-table,.app-shell .ls-card,.app-shell .rbig-card,.app-shell .race-focus,.app-shell .first-checklist,.app-shell .share-card-section,.app-shell .rank-leader,.app-shell .first-steps li,.app-shell .race-rules,.app-shell .race-method{border-radius:14px;border-color:transparent;box-shadow:0 2px 12px rgba(17,24,39,.06)}
-.app-shell .rank-leader{border-top:4px solid var(--club-color)}
+.app-shell .rank-leader{background:color-mix(in srgb,var(--club-color) 9%,#fff)}
 .app-shell .rank-leader.selected,.app-shell .sim-pick button.on{background:var(--chrome);border-color:var(--chrome);color:#fff}
 .app-shell .rank-no.r1{background:var(--accent);color:var(--accent-ink)}
 .app-shell .pill{border-radius:999px}
@@ -89,36 +89,16 @@ body,.app-shell{background:var(--bg);color:var(--ink)}
 .app-shell .landing-stage{inset:0;width:auto;clip-path:none;z-index:-3}
 .app-shell .landing-shade{display:block;background:linear-gradient(90deg,#0b0d10f7 0%,#0b0d10eb 38%,#0b0d1080 58%,#0b0d1000 78%)}
 .app-shell .landing-copy{width:auto;max-width:560px;margin:0;position:relative;z-index:1}
-.app-shell .landing-eyebrow{color:var(--accent);letter-spacing:2px;margin-bottom:18px}
-.app-shell .landing-eyebrow>span{background:var(--accent)}
 .app-shell .landing-copy h1{color:#fff;font-size:clamp(34px,3.8vw,58px);letter-spacing:-2px;line-height:1.2}
 .app-shell .landing-description{color:#d2d6db;font-size:15px}
 .app-shell .landing-actions{flex-wrap:wrap;gap:14px 22px;margin-top:30px}
 .app-shell .landing-cta{background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:15px 22px;min-height:0;gap:22px}
 .app-shell .landing-cta:hover{background:#ffdc4d;transform:none}
 .app-shell .landing-secondary{color:#fff;border-bottom-color:var(--accent);font-weight:700}
-.app-shell .landing-bottom{display:none}
-.app-shell .landing-media-tools{right:24px;left:auto;bottom:22px}
-.app-shell .landing-video,.app-shell .landing-poster{object-position:70% 50%}
 .app-shell .landing-intro{max-width:none;width:auto;background:transparent;color:var(--ink);padding:44px 0 20px}
-.app-shell .landing-intro-heading>p{color:#9a6f00}
-.app-shell .landing-intro-heading h2{color:var(--ink);font-size:34px}
-.app-shell .landing-intro-heading>span{color:var(--muted)}
-.app-shell .landing-features{gap:16px;margin-top:30px}
-.app-shell .landing-features>a{color:#fff;border:0;border-radius:16px;padding:22px 20px;box-shadow:0 10px 24px rgba(17,24,39,.12);display:flex;flex-direction:column;transition:transform .2s;min-height:220px}
-.app-shell .landing-features>a:nth-child(1){background:#14b886}
-.app-shell .landing-features>a:nth-child(2){background:#ff8a3d}
-.app-shell .landing-features>a:nth-child(3){background:#ff5a5f}
-.app-shell .landing-features>a:nth-child(4){background:var(--accent);color:var(--accent-ink)}
-.app-shell .landing-features>a:hover{transform:translateY(-4px)}
-.app-shell .landing-features .feature-icon{color:inherit;opacity:.95}
-.app-shell .landing-features .feature-icon span{color:inherit;opacity:.7}
-.app-shell .landing-features h3{color:inherit}
-.app-shell .landing-features p{color:inherit;opacity:.88;flex:1}
-.app-shell .landing-features strong{color:inherit}
-.app-shell .landing-club-section{background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(17,24,39,.06);margin:20px 0 0;max-width:none;width:auto}
+.app-shell .landing-club-section{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(17,24,39,.06);margin:28px 0 0;padding:26px 28px 14px;max-width:none;width:auto;color:var(--ink)}
 .app-shell .landing-club-section a{color:#8a6400}
-.app-shell .landing-sample-note{color:var(--muted)}
+.app-shell .landing-sample-note{color:#5b616a;font-size:13px;padding:16px 20px 36px}
 
 @media(max-width:1100px){
  .shell-body{grid-template-columns:1fr}
@@ -129,19 +109,18 @@ body,.app-shell{background:var(--bg);color:var(--ink)}
  .app-shell .header-inner,.app-shell.is-landing .header-inner{padding:12px 18px 0}
  .brand-word{font-size:23px}.brand-emblem{height:30px}
  .app-shell .landing-hero{padding:40px 24px;min-height:440px}
- .app-shell .landing-features{grid-template-columns:1fr 1fr}
 }
-@media(max-width:560px){.app-shell .landing-features{grid-template-columns:1fr}.app-shell .tabs button{padding:8px 12px}.brand-word{font-size:21px}}
+@media(max-width:560px){.app-shell .tabs button{padding:8px 12px}.brand-word{font-size:21px}}
 @media(max-width:900px){.app-shell .landing-shade{background:linear-gradient(180deg,#0b0d10d9 0%,#0b0d10c7 60%,#0b0d10ee 100%)}}
 
 /* ── 선호 구단 배경: 모든 탭 ──
    본문 바탕에 직접 놓인 글자(제목·설명·안내·링크)만 구단색 위 글자색(--on-club)으로 바꾸고,
    흰 카드·표·입력 칸 안의 글자는 원래 색을 그대로 쓴다. */
 .app-shell.club-bg main.container{color:var(--on-club)}
-.app-shell.club-bg main :is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.landing-features,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar){color:var(--ink)}
-.app-shell.club-bg main :is(h1,h2,h3,h4,p,small,span,label,dt,dd,li,strong,b,a:not(.button),button.text-button,.eyebrow,.fine,.record-source,.race-meta):not(:is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.landing-features,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar) *):not(:is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.landing-features,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar)){color:var(--on-club)}
-.app-shell.club-bg main :is(.fine,.record-source,.race-meta,.page-heading p,.rank-table-head span,.first-tips-lead):not(:is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.landing-features,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar) *){opacity:.92}
-.app-shell.club-bg main a:not(.button):not(:is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.landing-features,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar) *){text-decoration:underline;text-underline-offset:3px}
+.app-shell.club-bg main :is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.home-path,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar){color:var(--ink)}
+.app-shell.club-bg main :is(h1,h2,h3,h4,p,small,span,label,dt,dd,li,strong,b,a:not(.button),button.text-button,.eyebrow,.fine,.record-source,.race-meta):not(:is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.home-path,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar) *):not(:is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.home-path,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar)){color:var(--on-club)}
+.app-shell.club-bg main :is(.fine,.record-source,.race-meta,.page-heading p,.rank-table-head span,.first-tips-lead):not(:is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.home-path,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar) *){opacity:.92}
+.app-shell.club-bg main a:not(.button):not(:is(.panel,table,.table-scroll,.ls-card,.rbig-card,.race-focus,.rank-leader,.myclub,.date-bar,.sched-cal,.first-checklist,.first-steps li,.share-card-section,.race-rules,.race-method,.tip-list li,.landing-club-section,.landing-hero,.first-hero,.home-path,.tabs,.sim-match,.shared-banner,.first-team-picker,.empty,.record-search,.recommendation,.comment-box,.fan-zone,.share-card,.sample-notice,.first-team-tips>header .button,.my-info,.match-card,.chart,.ls-offline,.rf-game,.player-browser .toolbar) *){text-decoration:underline;text-underline-offset:3px}
 .app-shell.club-bg main :is(.panel,.ls-card,.rbig-card,.race-focus,.rank-table,.race-table,.date-bar,.first-checklist,.share-card-section,.race-rules,.race-method,.rank-leader){box-shadow:0 8px 26px rgba(0,0,0,.18)}
 
 
@@ -157,16 +136,88 @@ body,.app-shell{background:var(--bg);color:var(--ink)}
 .app-shell.club-bg main :is(.page-heading h1,.page-heading p,.section-title h2,.race-block h2,.rank-table-head h2):not(:is(.panel,.myclub) *){text-shadow:0 1px 2px color-mix(in srgb,var(--club-main) 60%,transparent)}
 
 /* ── 첫 화면 배경(데스크톱): K리그1·2 로고 + 구단 엠블럼 띠 (Landing.tsx LeagueStage) ── */
-.app-shell .landing-hero.is-league{background:radial-gradient(ellipse 55% 80% at 80% 40%,#ffd21f14,transparent 65%),#121418;padding-bottom:132px}
+.app-shell .landing-hero.is-league{background:radial-gradient(ellipse 55% 80% at 80% 40%,#ffd21f14,transparent 65%),#121418}
 .app-shell .landing-hero.is-league .landing-shade{display:none}
 .app-shell .league-stage{background:none;z-index:0;pointer-events:none}
 .league-stage-logos{position:absolute;right:56px;top:64px;display:flex;flex-direction:column;align-items:flex-end;gap:22px}
 .league-stage-logos img{width:clamp(220px,24vw,330px);height:auto;filter:brightness(0) invert(1);opacity:.9}
 .league-stage-logos img+img{opacity:.5;margin-right:clamp(36px,4vw,60px)}
-.league-strip{position:absolute;left:0;right:0;bottom:0;height:88px;background:#ffffff08;border-top:1px solid #ffffff14;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.league-strip-track{display:flex;gap:34px;align-items:center;height:100%;padding-left:20px;width:max-content;animation:league-strip 70s linear infinite}
-.league-strip-track span{width:52px;height:52px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
-.league-strip-track img{width:38px;height:38px;object-fit:contain}
-@keyframes league-strip{to{transform:translateX(-50%)}}
-@media(prefers-reduced-motion:reduce){.league-strip-track{animation:none}}
 @media(max-width:1100px){.league-stage-logos{right:32px;top:40px}.league-stage-logos img{width:200px;opacity:.35}.league-stage-logos img+img{opacity:.22}}
+
+/* ── 홈: 방문 단계별 두 갈래 안내 (Landing.tsx home-paths) ──
+   예전 기능 카드 4개(히어로·메뉴와 같은 곳을 반복하던 원색 카드)를 대신한다. 흰 카드 + 그림자(DESIGN.md). */
+.app-shell .home-paths-title{font-size:28px;font-weight:800;letter-spacing:-.8px;line-height:1.3;color:var(--ink);margin:0 0 18px;word-break:keep-all}
+.app-shell .home-paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.app-shell .home-path{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(17,24,39,.06);padding:20px 20px 8px;color:var(--ink)}
+.app-shell .home-path h3{margin:0 0 6px;font-size:17px;font-weight:800;letter-spacing:-.3px}
+.app-shell .home-path ul{list-style:none;margin:0;padding:0}
+.app-shell .home-path li+li a{border-top:1px solid #eef0f3}
+.app-shell .home-path a{display:grid;grid-template-columns:22px minmax(0,1fr) 16px;align-items:center;gap:12px;min-height:60px;padding:10px 6px;margin:0 -6px;border-radius:10px;color:inherit;text-decoration:none!important;transition:background-color .15s ease-out}
+.app-shell .home-path a:hover{background:#f5f6f8}
+.app-shell .home-path a:focus-visible{outline:2px solid #9a6f00;outline-offset:2px}
+.app-shell .home-path a>svg:first-child{color:#9a6f00}
+.app-shell .home-path a>svg:last-child{color:#8a9099;transition:transform .15s ease-out}
+.app-shell .home-path a:hover>svg:last-child{transform:translateX(3px);color:var(--ink)}
+.app-shell .home-path b{display:block;font-size:16px;font-weight:700;letter-spacing:-.2px}
+.app-shell .home-path small{display:block;margin-top:2px;font-size:13px;line-height:1.5;color:#5b616a}
+@media(prefers-reduced-motion:reduce){.app-shell .home-path a>svg:last-child{transition:none}.app-shell .home-path a:hover>svg:last-child{transform:none}}
+
+/* 히어로 아래 띠: 오늘(다음) 경기 (Landing.tsx HeroFixtures) — 예전 장식용 엠블럼 띠 자리. 휴대폰은 mobile.css 에서 숨김 */
+.app-shell .landing-hero:has(.hero-fixtures){padding-bottom:156px}
+.hero-fixtures{position:absolute;left:0;right:0;bottom:0;z-index:1;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:20px;padding:16px 20px 16px 28px;background:#ffffff08;border-top:1px solid #ffffff14}
+.hf-head{display:grid;gap:2px;min-width:118px}
+.hf-head b{font-size:16px;font-weight:800;color:#fff}
+.hf-head span{font-size:13px;color:#b9bec5}
+.hf-head small{font-size:12px;color:#9aa0a8;font-variant-numeric:tabular-nums}
+.hf-head a{display:inline-flex;align-items:center;gap:4px;margin-top:4px;font-size:13px;font-weight:700;color:#ffd21f;text-decoration:none}
+.hf-head a:hover{text-decoration:underline;text-underline-offset:3px}
+.hf-list{list-style:none;margin:0;padding:2px 0;display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:#ffffff33 transparent;-webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);mask-image:linear-gradient(90deg,#000 92%,transparent)}
+.hf-list li{flex:0 0 auto;scroll-snap-align:start}
+.hf-list a{display:grid;grid-template-columns:auto auto;grid-template-areas:"t s" "m m";align-items:center;justify-content:space-between;gap:6px 14px;min-width:236px;padding:10px 14px;border-radius:12px;background:#ffffff0f;color:#fff;text-decoration:none;transition:background-color .15s ease-out}
+.hf-list a:hover{background:#ffffff1f}
+.hf-list a:focus-visible{outline:2px solid #ffd21f;outline-offset:2px}
+.hf-list .ms{grid-area:t;font-size:14px;font-weight:800;font-variant-numeric:tabular-nums;color:#ffd21f}
+.hf-list small{grid-area:s;font-size:12px;color:#b9bec5;justify-self:end}
+.hf-teams{grid-area:m;display:flex;align-items:center;gap:8px}
+.hf-teams>span{display:flex;align-items:center;gap:6px;min-width:0}
+.hf-teams b{font-size:15px;font-weight:700;white-space:nowrap}
+.hf-teams em{font-style:normal;font-size:12px;color:#b9bec5}
+.hf-teams .team-tile{width:26px;height:26px;flex:0 0 auto}
+
+/* 히어로 설명: 날짜별 문구(Landing.tsx HeroCopy) — 라운드 한 줄 + 걸린 것 한 줄 */
+.hero-rounds{display:block;font-weight:700;color:#fff}
+.hero-stakes{display:block;margin-top:4px;color:#ffd21f}
+
+/* 경기 상태 표시 (Landing.tsx MatchState) — 경기 중은 live-red, 종료는 회색, 점수는 고정폭 숫자 */
+.ms{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:800;white-space:nowrap}
+.ms-live{color:#ff4d4f}
+.ms-live i{width:7px;height:7px;border-radius:50%;background:#ff4d4f;animation:ms-pulse 1.6s ease-out infinite}
+@keyframes ms-pulse{0%{box-shadow:0 0 0 0 #ff4d4f80}100%{box-shadow:0 0 0 6px #ff4d4f00}}
+@media(prefers-reduced-motion:reduce){.ms-live i{animation:none}}
+.ms-pending{font-weight:700;white-space:normal;line-height:1.2}
+.hf-list .ms-done,.hf-list .ms-pending{color:#b9bec5}
+.hf-teams .ms-score{font-size:16px;font-weight:800;font-variant-numeric:tabular-nums;color:#fff;padding:0 2px}
+.mq-games .ms-done,.mq-games .ms-pending{color:#5b616a;font-size:12px}
+.mq-games .ms-live{color:#d92d2f;font-size:13px}
+
+/* 홈: 29개 구단 벽 — K리그1·2로 나누고 엠블럼 아래 짧은 이름. 한 줄 6개(12 = 6+6, 17 = 6+6+5) */
+.club-wall-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin-bottom:6px}
+.club-wall-head h2{margin:0;font-size:24px;font-weight:800;letter-spacing:-.6px;line-height:1.35;word-break:keep-all}
+.club-wall-head a{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:#8a6400;text-decoration:none}
+.club-wall-head a:hover{text-decoration:underline;text-underline-offset:3px}
+.club-wall{padding-top:16px}
+.club-wall+.club-wall{border-top:1px solid #eef0f3;margin-top:8px}
+.club-wall h3{margin:0 0 8px;font-size:15px;font-weight:800}
+.club-wall h3 span{margin-left:6px;font-size:13px;font-weight:600;color:#5b616a}
+.club-wall ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+.app-shell .club-wall a{display:flex;flex-direction:column;align-items:center;gap:6px;min-height:76px;padding:10px 4px 8px;border-radius:10px;color:var(--ink);text-decoration:none!important;transition:background-color .15s ease-out}
+.club-wall a:hover{background:#f5f6f8}
+.club-wall a:focus-visible{outline:2px solid #9a6f00;outline-offset:1px}
+.club-wall .team-tile{width:36px;height:40px;flex:0 0 auto}
+.club-wall a>span{font-size:13px;font-weight:700;line-height:1.2;text-align:center;word-break:keep-all}
+@media(max-width:560px){.app-shell .landing-club-section{padding:18px 12px 8px}.club-wall-head{padding:0 6px}.club-wall-head h2{font-size:20px}.club-wall h3{padding:0 6px}.club-wall ul{gap:2px}.club-wall a{min-height:66px;padding:8px 0 6px;gap:5px}.club-wall .team-tile{width:30px;height:34px}.club-wall a>span{font-size:12px}}
+.app-shell footer .footer-links{display:flex;gap:6px 16px;flex-wrap:wrap}
+.app-shell .footer-inner>div:last-child .footer-links{justify-content:flex-end}
+@media(max-width:760px){.app-shell .footer-inner>div:last-child .footer-links{justify-content:flex-start}}
+/* 텍스트 선택 색: 브라우저 기본 파랑 대신 브랜드 옐로 */
+::selection{background:#ffd21f;color:#1b1d21}

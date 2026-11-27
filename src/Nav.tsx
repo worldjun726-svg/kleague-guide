@@ -2,13 +2,13 @@ import {useEffect,useRef,useState} from 'react';
 import {ChevronDown} from 'lucide-react';
 import './nav.css';
 
-// 상단 메뉴: 라이브·순위·일정예매·승강 레이스·커뮤니티 5개 탭. 세부 화면이 여럿인 탭은 누르면 펼쳐진다.
+// 상단 메뉴: 라이브·순위·일정예매·승강 레이스·시작하기 5개 탭. 세부 화면이 여럿인 탭은 누르면 펼쳐진다.
 export const NAV_GROUPS:{label:string;items:[id:string,label:string,desc:string][]}[]=[
  {label:'라이브',items:[['live','라이브','K리그1·2 실시간 경기 센터']]},
  {label:'순위',items:[['matches','팀 순위','K리그1·2 시즌 순위'],['players','선수 기록','득점·도움·출전 순위']]},
  {label:'일정·예매',items:[['schedule','일정·예매','경기 일정과 예매처']]},
  {label:'승강 레이스',items:[['center','승강 매직넘버','잔류·승격까지 남은 승점'],['big','빅매치','순위가 걸린 경기'],['final','파이널 시뮬레이터','파이널 라운드 경우의 수']]},
- {label:'커뮤니티',items:[['lounge','직관 라운지','직관 꿀팁·질문 나누기'],['finder','나의 팀 찾기','취향으로 응원팀 추천']]},
+ {label:'시작하기',items:[['finder','나의 팀 찾기','취향으로 응원팀 추천'],['lounge','직관 라운지','첫 직관 가이드·꿀팁·질문']]},
 ];
 export const NAV:[string,string][]=NAV_GROUPS.flatMap(g=>g.items.map(([id,label])=>[id,label] as [string,string]));
 const TEAM_PAGES=['big','center','schedule'];

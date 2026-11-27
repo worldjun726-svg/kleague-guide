@@ -1,5 +1,5 @@
 /* 홈 화면 내 구단 대시보드 (MyClub.tsx) · 선호 구단 선택 */
-.myclub{background:#fff;border-radius:18px;box-shadow:0 2px 14px rgba(17,24,39,.07);border-top:6px solid var(--club-color,#ffd21f);padding:22px 24px;margin:0 0 22px;display:grid;gap:16px}
+.myclub{background:#fff;border-radius:18px;box-shadow:0 2px 14px rgba(17,24,39,.07);padding:22px 24px;margin:0 0 22px;display:grid;gap:16px}
 .myclub .eyebrow{display:inline-flex;align-items:center;gap:5px;margin:0}
 .mc-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .mc-head>div:nth-child(2){flex:1;min-width:180px}
