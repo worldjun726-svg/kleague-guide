@@ -348,7 +348,7 @@ function DeleteAccount() {
   if (!open) return <p className="delete-account"><button type="button" className="link-button" onClick={() => setOpen(true)}>회원 탈퇴</button></p>;
   return <div className="delete-account panel-inset" role="group" aria-labelledby="delete-account-title">
     <h3 id="delete-account-title">회원 탈퇴</h3>
-    <p>탈퇴하면 계정, 닉네임, MY 팀, 저장한 응원팀·선수, 경기 예측, 내가 쓴 응원 글이 <b>바로 모두 지워지고 되돌릴 수 없어요.</b></p>
+    <p>탈퇴하면 계정, 닉네임, MY 팀, 저장한 응원팀·선수, 경기 예측, 내가 쓴 응원 글, 직관 동행·양도 글과 대화·후기가 <b>바로 모두 지워지고 되돌릴 수 없어요.</b></p>
     <label htmlFor="delete-word">계속하려면 <b>탈퇴</b>라고 입력해 주세요.</label>
     <input id="delete-word" value={word} onChange={e => setWord(e.target.value)} autoComplete="off"/>
     {error && <p className="form-error" role="alert">{error}</p>}

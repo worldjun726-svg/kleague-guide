@@ -1,0 +1,100 @@
+/* 직관 동행·양도 (Meet.tsx) — 흰 카드 + 그림자, 강조는 옐로 하나(DESIGN.md) */
+.meet{display:grid;gap:16px;color:var(--ink)}
+.meet-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 0 4px}
+.meet-head h1{margin:0;font-size:28px;font-weight:800;letter-spacing:-.6px}
+.meet-head p{margin:6px 0 0;max-width:620px;font-size:14px;line-height:1.6;color:#5b616a}
+.meet-filters{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.meet-tabs{display:inline-flex;background:#fff;border-radius:12px;padding:4px;box-shadow:0 2px 12px rgba(17,24,39,.06)}
+.meet-tabs button{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 16px;border:0;background:none;border-radius:9px;font:inherit;font-size:14px;font-weight:700;color:#5b616a;cursor:pointer}
+.meet-tabs button.on{background:#1b1d21;color:#fff}
+.meet-tabs.big{display:grid;grid-template-columns:1fr 1fr}
+.meet-tabs.big button{justify-content:center;min-height:48px}
+.meet-select select{min-height:48px;border-radius:12px;border:0;box-shadow:0 2px 12px rgba(17,24,39,.06);padding:0 12px;font:inherit;font-size:14px;background:#fff;max-width:100%}
+.meet-rule{display:flex;align-items:flex-start;gap:8px;margin:0;padding:12px 14px;border-radius:12px;background:#fff7d1;font-size:13px;line-height:1.6;color:#3a3f46}
+.meet-rule svg{flex:0 0 auto;margin-top:2px;color:#9a6f00}
+.meet-empty{padding:28px;text-align:center;color:#5b616a;background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(17,24,39,.06);display:grid;gap:12px;justify-items:center}
+.meet-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.meet-card{display:grid;gap:6px;height:100%;padding:16px;border-radius:14px;background:#fff;box-shadow:0 2px 12px rgba(17,24,39,.06);color:var(--ink);text-decoration:none!important;transition:box-shadow .15s ease-out}
+.meet-card:hover{box-shadow:0 0 0 2px #ffd21f,0 6px 18px rgba(17,24,39,.1)}
+.meet-card:focus-visible{outline:2px solid #9a6f00;outline-offset:2px}
+.meet-card strong{font-size:16px;line-height:1.4;word-break:keep-all}
+.meet-kind{display:inline-flex;align-items:center;gap:5px;justify-self:start;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:800;background:#eef0f3;color:#1b1d21}
+.meet-kind.k-ticket{background:#fff1b8;color:#5c4300}
+.meet-match{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#3a3f46;font-variant-numeric:tabular-nums}
+.meet-match.big{font-size:15px;margin:4px 0 0}
+.meet-match .team-tile{width:22px;height:24px}
+.meet-meta{font-size:13px;color:#5b616a;font-variant-numeric:tabular-nums}
+.meet-meta s{margin-left:6px;color:#8a9099}
+.meet-meta em{margin-left:8px;font-style:normal;font-weight:800;color:#b03a26}
+.meet-back{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;justify-self:start}
+.meet-form,.meet-post,.meet-requests,.meet-apply,.meet-gate{display:grid;gap:14px;background:#fff;border:0;border-radius:14px;box-shadow:0 2px 12px rgba(17,24,39,.06);padding:22px;color:var(--ink)}
+.meet-form{max-width:640px}
+.meet-form h1,.meet-post h1,.meet-gate h1{margin:0;font-size:24px;font-weight:800;letter-spacing:-.4px;word-break:keep-all}
+.meet-form label,.meet-apply label{display:grid;gap:6px;font-size:14px;font-weight:700}
+.meet-form label small{font-weight:500;color:#5b616a}
+.meet-form :is(input,select,textarea),.meet-apply textarea,.meet-review input,.meet-report :is(input,select),.meet-chat input{width:100%;border:1.5px solid #dfe3e8;border-radius:10px;padding:11px 12px;font:inherit;font-size:15px;font-weight:500;background:#fff;color:var(--ink)}
+.meet-form :is(input,select,textarea):focus-visible,.meet-apply textarea:focus-visible,.meet-chat input:focus-visible{outline:2px solid #9a6f00;outline-offset:1px;border-color:#9a6f00}
+.meet-form [aria-invalid=true]{border-color:#b03a26}
+.meet-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.meet-note{margin:0;font-size:13px;line-height:1.6;color:#5b616a}
+.meet-facts{display:flex;flex-wrap:wrap;gap:8px 24px;margin:0}
+.meet-facts div{display:grid;gap:2px}
+.meet-facts dt{font-size:12px;font-weight:700;color:#5b616a}
+.meet-facts dd{margin:0;font-size:16px;font-weight:800;font-variant-numeric:tabular-nums}
+.meet-facts dd small{margin-left:6px;font-size:12px;font-weight:600;color:#5b616a}
+.meet-body{margin:0;white-space:pre-wrap;font-size:15px;line-height:1.7;word-break:keep-all}
+.meet-author{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:12px;border-top:1px solid #eef0f3}
+.meet-author>span{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.trust{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;background:#eef0f3;font-size:12px;font-weight:700;color:#3a3f46;font-variant-numeric:tabular-nums}
+.trust svg{color:#9a6f00}
+.trust.new{background:#f5f6f8;color:#5b616a}
+.meet-owner{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.text-button.danger{color:#b03a26}
+.meet-requests h2,.meet-apply h2{margin:0;display:flex;align-items:center;gap:8px;font-size:18px;font-weight:800}
+.meet-requests h2>span:not(.mr-status){font-size:14px;color:#5b616a}
+.meet-requests ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.meet-requests li{display:grid;gap:8px;padding:14px;border-radius:12px;background:#f7f8fa}
+.meet-requests li p,.meet-requests>p{margin:0;font-size:14px;line-height:1.6}
+.mr-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.mr-status{padding:2px 8px;border-radius:999px;font-size:12px;font-weight:800;background:#eef0f3;color:#3a3f46}
+.mr-status.s-accepted{background:#dff3e8;color:#1c5c3c}
+.mr-status.s-rejected,.mr-status.s-cancelled{background:#f3e4e1;color:#8a2e1f}
+.mr-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.meet-user-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.meet-user-actions .text-button{display:inline-flex;align-items:center;gap:4px;font-size:13px;color:#5b616a;min-height:36px}
+.meet-report{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:end;width:100%}
+.meet-report label{display:grid;gap:4px;font-size:12px;font-weight:700}
+.meet-apply small{color:#5b616a;font-size:12px;line-height:1.6}
+.meet-chat{display:grid;gap:8px;margin-top:4px;padding:12px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px #e6e9ee}
+.mc-bar{display:flex;align-items:center;justify-content:space-between;font-size:14px}
+.mc-live{font-size:12px;font-weight:700;color:#5b616a}
+.mc-live.on{color:#21704a}
+.mc-live.on::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#21704a;margin-right:5px;vertical-align:1px}
+.meet-chat ol{list-style:none;margin:0;padding:4px;display:grid;gap:8px;max-height:340px;overflow-y:auto;align-content:start;min-height:120px;scrollbar-width:thin}
+.meet-chat li{justify-self:start;max-width:80%;display:grid;gap:2px;position:relative}
+.meet-chat li p{margin:0;padding:9px 12px;border-radius:14px 14px 14px 4px;background:#f0f2f5;font-size:14px;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+.meet-chat li.me{justify-self:end}
+.meet-chat li.me p{background:#ffd21f;color:#1b1d21;border-radius:14px 14px 4px 14px}
+.meet-chat li time{font-size:11px;color:#6b7280;font-variant-numeric:tabular-nums}
+.meet-chat li.me time{text-align:right}
+.meet-chat .mc-empty{justify-self:center;max-width:none;font-size:13px;color:#5b616a;padding:20px 0}
+.mc-report{position:absolute;right:-28px;top:6px;border:0;background:none;color:#8a9099;cursor:pointer;padding:4px;font-size:11px}
+.mc-report:hover{color:#b03a26}
+.meet-chat form{display:grid;grid-template-columns:1fr auto;gap:8px}
+.meet-chat form .button{min-width:48px;min-height:44px;justify-content:center}
+.meet-review{display:grid;gap:8px;padding-top:10px;border-top:1px solid #eef0f3}
+.meet-review h3{margin:0;font-size:15px}
+.stars{display:flex;gap:2px}
+.stars button{border:0;background:none;padding:6px;cursor:pointer;color:#cfd3d9;min-width:36px;min-height:36px}
+.stars button.on{color:#e0a800}
+.stars button.on svg{fill:currentColor}
+@media(max-width:640px){
+ .meet-head h1{font-size:24px}
+ .meet-row{grid-template-columns:1fr}
+ .meet-list{grid-template-columns:1fr}
+ .meet-form,.meet-post,.meet-requests,.meet-apply,.meet-gate{padding:18px 16px}
+ .meet-report{grid-template-columns:1fr}
+ .meet-chat li{max-width:88%}
+ .meet-select,.meet-select select{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.meet-card{transition:none}}

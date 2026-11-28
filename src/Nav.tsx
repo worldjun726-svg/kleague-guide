@@ -8,7 +8,7 @@ export const NAV_GROUPS:{label:string;items:[id:string,label:string,desc:string]
  {label:'순위',items:[['matches','팀 순위','K리그1·2 시즌 순위'],['players','선수 기록','득점·도움·출전 순위']]},
  {label:'일정·예매',items:[['schedule','일정·예매','경기 일정과 예매처']]},
  {label:'승강 레이스',items:[['center','승강 매직넘버','잔류·승격까지 남은 승점'],['big','빅매치','순위가 걸린 경기'],['final','파이널 시뮬레이터','파이널 라운드 경우의 수']]},
- {label:'시작하기',items:[['finder','나의 팀 찾기','취향으로 응원팀 추천'],['lounge','직관 라운지','첫 직관 가이드·꿀팁·질문']]},
+ {label:'시작하기',items:[['finder','나의 팀 찾기','취향으로 응원팀 추천'],['lounge','직관 라운지','첫 직관 가이드·꿀팁·질문'],['meet','직관 동행·양도','같이 갈 사람 찾기·정가 양도']]},
 ];
 export const NAV:[string,string][]=NAV_GROUPS.flatMap(g=>g.items.map(([id,label])=>[id,label] as [string,string]));
 const TEAM_PAGES=['big','center','schedule'];

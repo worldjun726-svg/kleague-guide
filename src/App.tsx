@@ -16,6 +16,7 @@ import {RaceCenter,RaceBigMatches,RaceSimulator} from './RaceTabs';
 import PlayerRanks from './PlayerRanks';
 import {MainNav} from './Nav';
 import Landing from './Landing';
+import MeetPage from './Meet';
 import {Empty} from './components';
 import {useLive} from './Live';
 import {AccountProvider,AuthButton,FavoriteButton,CommentBox,MyPage,setClubOptions,useAccount} from './Account';
@@ -61,7 +62,8 @@ function AppBody(){
  {page==='schedule'&&<SchedulePage key={param||'all'} teams={teamMap} teamParam={param}/>}
  {page==='game'&&<GamePage key={param} id={param} teams={teamMap}/>}
  {page==='live'&&<LiveScores teams={teamMap}/>}
- {page==='terms'&&<TermsPage/>}
+ {page==='meet'&&<MeetPage teams={teamMap} param={param}/>}
+{page==='terms'&&<TermsPage/>}
  {page==='privacy'&&<PrivacyPage/>}
  {page==='me'&&<MyRoute data={current}/>}
  {page==='big'&&<RaceBigMatches teams={teamMap}/>}
@@ -69,7 +71,7 @@ function AppBody(){
  {page==='center'&&<RaceCenter teams={teamMap} teamId={param}/>}
  {page==='archive'&&<Home data={sample}/>}
  {page==='match'&&<MatchPage data={sample} id={param}/>}
- {!['landing','live','schedule','game','me','matches','finder','team','big','final','center','match','players','player','archive','lounge','first','terms','privacy'].includes(page)&&<Empty>찾을 수 없는 화면입니다. <a href="#/matches">시즌 순위로 돌아가기</a></Empty>}
+ {!['landing','live','schedule','game','me','matches','finder','team','big','final','center','match','players','player','archive','lounge','first','terms','privacy','meet'].includes(page)&&<Empty>찾을 수 없는 화면입니다. <a href="#/matches">시즌 순위로 돌아가기</a></Empty>}
  </main></div><footer><div className="container footer-inner"><div><strong>K LEAGUE GUIDE</strong><p>숫자를 이해하면, 응원이 더 재미있어집니다.</p></div><div><strong>데이터 출처</strong><p>K리그 공식 기록 · {current.season}시즌 경기 결과·순위는 매일 두 번 자동 갱신</p><p>팀별 TOP 5: FootyStats · 수집일 {current.retrievedAt}</p><small>각 기록의 원문 링크와 기준일은 상세 화면에서 확인할 수 있습니다.</small><p className="footer-links"><a href="#/players">선수 기록 보기</a><a href="#/schedule">경기 일정·리포트</a></p></div></div></footer></div>;
 }
 
