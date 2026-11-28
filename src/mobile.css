@@ -120,3 +120,11 @@
 
 /* 태블릿(1100px 이하)에서도 로그인 버튼을 헤더 오른쪽 끝으로 */
 @media(max-width:1100px){.app-shell .header-inner>:is(.auth-button,.auth-user){margin-left:auto}}
+
+/* 팀 찾기 선택지: 휴대폰에서 한 줄에 둘, 높이는 내용만큼 */
+@media(max-width:560px){
+ .app-shell .option-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px}
+ .app-shell .option-grid .option{min-height:0!important;padding:14px 12px!important}
+ .app-shell .option-grid .option:not(:has(.option-icon)){display:flex!important;flex-direction:column;align-items:flex-start;gap:4px;text-align:left}
+ .app-shell .option-grid.two .option:not(:has(.option-icon)){align-items:center;text-align:center}
+}

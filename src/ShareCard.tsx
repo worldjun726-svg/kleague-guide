@@ -6,21 +6,27 @@ import './firstVisit.css';
 // 팀 찾기 결과를 친구에게 보내는 카드.
 // 공유 링크는 #/finder/s-지역-스타일-성향 (각각 목록의 번호)로 만들어서, 받은 사람도 같은 결과를 본다.
 export const REGIONS=['capital','any','서울','경기','인천','강원','대전','세종','충북','충남','전북','전남','광주','대구','경북','경남','울산','부산','제주'];
-const STYLES=['attack','defense','open'],CHARACTERS=['strong','underdog'];
+const STYLES=['attack','defense','open'],CHARACTERS=['strong','underdog'],MOODS=['loud','family','calm','any'],VISITS=['often','sometimes','tv'];
 const STYLE_LABEL:Record<string,string>={attack:'골 넣는 즐거움',defense:'단단한 수비',open:'골이 많은 경기'};
 const CHARACTER_LABEL:Record<string,string>={strong:'자주 이기는 팀',underdog:'언더독'};
+const MOOD_LABEL:Record<string,string>={loud:'뜨거운 응원석',family:'편안한 분위기',calm:'경기에 집중'};
 const regionLabel=(r:string)=>r==='capital'?'수도권':r==='any'?'지역 상관없음':r;
 
+// 공유 코드: s-지역-스타일-성향[-분위기-빈도]. 예전 3자리 링크도 그대로 열린다.
 export function encodeShare(a:Answers){
  const i=[REGIONS.indexOf(a.region),STYLES.indexOf(a.style),CHARACTERS.indexOf(a.character)];
- return i.some(n=>n<0)?'':'s-'+i.join('-');
+ if(i.some(n=>n<0))return '';
+ const more=a.mood&&a.visit?[MOODS.indexOf(a.mood),VISITS.indexOf(a.visit)]:[];
+ return 's-'+[...i,...(more.some(n=>n<0)?[]:more)].join('-');
 }
 export function decodeShare(code?:string):Answers|null{
- const m=/^s-(\d+)-(\d+)-(\d+)$/.exec(code||'');if(!m)return null;
+ const m=/^s-(\d+)-(\d+)-(\d+)(?:-(\d+)-(\d+))?$/.exec(code||'');if(!m)return null;
  const [region,style,character]=[REGIONS[+m[1]],STYLES[+m[2]],CHARACTERS[+m[3]]];
- return region&&style&&character?{region,style,character}:null;
+ if(!region||!style||!character)return null;
+ const mood=m[4]!==undefined?MOODS[+m[4]]:undefined,visit=m[5]!==undefined?VISITS[+m[5]]:undefined;
+ return {region,style,character,...(mood&&visit?{mood,visit}:{})};
 }
-export const tasteLine=(a:Answers)=>`${regionLabel(a.region)} · ${STYLE_LABEL[a.style]} · ${CHARACTER_LABEL[a.character]}`;
+export const tasteLine=(a:Answers)=>[regionLabel(a.region),STYLE_LABEL[a.style],CHARACTER_LABEL[a.character],a.mood?MOOD_LABEL[a.mood]:''].filter(Boolean).join(' · ');
 
 interface Pick {team:Team;score:number}
 

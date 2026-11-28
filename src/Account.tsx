@@ -1,7 +1,7 @@
 import {createContext, useContext, useEffect, useRef, useState, type ReactNode} from 'react';
 import type {User} from '@supabase/supabase-js';
 import {Heart, LogIn, LogOut, Mail, Send, Trash2, X, UserRound, Check} from 'lucide-react';
-import {clubOf, setPreferredClub, setNickname, accountEnabled, addComment, deleteComment, listComments, listFavorites, myPredictions, nicknameOf, predictionSummary, savePrediction, setFavorite, signOut, useUser, signUpEmail, signInEmail, sendPasswordReset, updatePassword, signInWithProvider, providerOf, deleteMyAccount, nicknameAvailable, getMyProfile, completeProfile, type Comment, type FavoriteKind, type SocialProvider, type Profile} from './accountApi';
+import {clubOf, setPreferredClub, pendingClub, setPendingClub, setNickname, accountEnabled, addComment, deleteComment, listComments, listFavorites, myPredictions, nicknameOf, predictionSummary, savePrediction, setFavorite, signOut, useUser, signUpEmail, signInEmail, sendPasswordReset, updatePassword, signInWithProvider, providerOf, deleteMyAccount, nicknameAvailable, getMyProfile, completeProfile, type Comment, type FavoriteKind, type SocialProvider, type Profile} from './accountApi';
 import {OUTCOMES} from './components';
 
 // 가입 창·구단 선택에 쓰는 구단 목록. App이 현재 시즌 자료를 받으면 채운다.
@@ -44,6 +44,8 @@ export function AccountProvider({children}: {children: ReactNode}) {
   useEffect(() => { if (!user) { setProfile('loading'); return; } getMyProfile(user.id).then(setProfile); }, [user?.id]);
   useEffect(() => { const close = () => setReason(null); window.addEventListener('hashchange', close); return () => window.removeEventListener('hashchange', close); }, []);
   useEffect(() => { if (user) setReason(null); }, [user]);
+  // 팀 찾기에서 고른 팀(로그인 전 보관)을 로그인 후 MY 팀으로 저장. 이미 MY 팀이 있으면 바꾸지 않는다.
+  useEffect(() => { const p = pendingClub(); if (!user || !p) return; setPendingClub(''); if (!clubOf(user)) setPreferredClub(p).catch(() => setPendingClub(p)); }, [user?.id]);
   const needsFinish = !!user && !recovery && profile !== 'loading' && profile !== null && (profile === 'none' || !profile.nickname || !profile.terms_agreed_at);
   return <AccountContext.Provider value={{user, ready, openLogin: r => setReason(r ?? '')}}>
     {children}
@@ -117,7 +119,7 @@ function SocialButtons({onError}: {onError: (m: string) => void}) {
 type Mode = 'login' | 'signup' | 'reset' | 'signup-sent' | 'reset-sent';
 function AuthDialog({reason, onClose}: {reason: string; onClose: () => void}) {
   const [mode, setMode] = useState<Mode>('login');
-  const [email, setEmail] = useState(''), [pw, setPw] = useState(''), [pw2, setPw2] = useState(''), [club, setClub] = useState('');
+  const [email, setEmail] = useState(''), [pw, setPw] = useState(''), [pw2, setPw2] = useState(''), [club, setClub] = useState(pendingClub);
   const [consent, setConsent] = useState({terms: false, privacy: false, marketing: false});
   const n = useNicknameCheck();
   const [busy, setBusy] = useState(false), [error, setError] = useState('');
@@ -199,7 +201,7 @@ function RecoveryDialog({onDone}: {onDone: () => void}) {
 // 카카오·구글 첫 로그인(또는 예전 가입 회원): 닉네임·MY 팀·약관 동의를 받아 가입을 마무리한다.
 function FinishSignupDialog({user, initialNickname, onDone}: {user: User; initialNickname: string; onDone: () => void}) {
   const n = useNicknameCheck(initialNickname);
-  const [club, setClub] = useState(clubOf(user) ?? ''), [consent, setConsent] = useState({terms: false, privacy: false, marketing: false});
+  const [club, setClub] = useState(clubOf(user) ?? pendingClub()), [consent, setConsent] = useState({terms: false, privacy: false, marketing: false});
   const [busy, setBusy] = useState(false), [error, setError] = useState('');
   async function submit(e: React.FormEvent) {
     e.preventDefault(); if (!consent.terms || !consent.privacy) return setError('필수 약관에 동의해 주세요.');

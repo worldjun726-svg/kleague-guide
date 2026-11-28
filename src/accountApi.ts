@@ -16,6 +16,10 @@ export async function setPreferredClub(club: string) {
   const {error} = await supabase.auth.updateUser({data: {club}});
   if (error) throw new Error('선호 구단을 저장하지 못했습니다: ' + error.message);
 }
+// 로그인 전에 팀 찾기에서 '이 팀으로 정하기'를 누르면 이 기기에 잠시 보관했다가, 로그인·가입 후 MY 팀으로 저장한다.
+const PENDING_CLUB = 'kleague-pending-club';
+export const pendingClub = () => { try { return localStorage.getItem(PENDING_CLUB) || ''; } catch { return ''; } };
+export const setPendingClub = (club: string) => { try { if (club) localStorage.setItem(PENDING_CLUB, club); else localStorage.removeItem(PENDING_CLUB); } catch { /* 저장소 접근 불가 */ } };
 export async function setNickname(nickname: string) {
   if (!supabase) throw new Error('로그인 기능이 아직 설정되지 않았습니다.');
   const {data: s} = await supabase.auth.getSession();
